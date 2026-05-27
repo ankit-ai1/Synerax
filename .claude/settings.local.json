@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"c:\\\\Users\\\\babbu\\\\OneDrive\\\\Desktop\\\\synerax\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\babbu\\\\OneDrive\\\\Desktop\\\\synerax\\\\src\\\\pages\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\babbu\\\\OneDrive\\\\Desktop\\\\synerax\\\\src\\\\components\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\babbu\\\\OneDrive\\\\Desktop\\\\synerax\\\\src\\\\data\")"
+    ]
+  }
+}

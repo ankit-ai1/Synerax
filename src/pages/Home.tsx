@@ -421,7 +421,7 @@ export default function Home() {
               <span className="perk-chip">💡 R&D time</span>
               <span className="perk-chip">🎓 Learning budget</span>
             </div>
-            <Link to="/contact" className="btn btn--primary">Explore careers →</Link>
+            <Link to="/careers" className="btn btn--primary">Explore careers →</Link>
           </div>
           <div className="careers__img">
             <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"

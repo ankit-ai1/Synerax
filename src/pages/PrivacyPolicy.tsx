@@ -128,7 +128,7 @@ export default function PrivacyPolicy() {
       <section className="pp-cta">
         <div className="container pp-cta__inner">
           <div className="pp-cta__left">
-            <div className="pp-cta__brand">Synerax</div>
+            <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1780252831/synerax_logo_oc4xfs.png" alt="Synerax" className="pp-cta__brand-logo" />
             <div className="pp-cta__tagline">Building tomorrow's digital infrastructure.</div>
           </div>
           <div className="pp-cta__actions">

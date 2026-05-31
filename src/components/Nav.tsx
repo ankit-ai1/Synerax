@@ -71,8 +71,8 @@ export default function Nav() {
 
         {/* ── LEFT: Logo ── */}
         <Link to="/" className="nav__logo">
-          <span className="logo-mark">S</span>
-          <span className="logo-text">SYNERAX</span>
+          <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1780252831/synerax_logo_oc4xfs.png" alt="Synerax" className="nav__logo-img" />
+          <span className="nav__logo-text">Synerax</span>
         </Link>
 
         {/* ── CENTER: Nav links ── */}
@@ -144,6 +144,13 @@ export default function Nav() {
             </ul>
           </li>
 
+          {/* Careers */}
+          <li>
+            <Link to="/careers" className={location.pathname === '/careers' ? 'active' : ''}>
+              Careers
+            </Link>
+          </li>
+
           {/* About */}
           <li>
             <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>
@@ -185,6 +192,7 @@ export default function Nav() {
         {navResources.map(r => (
           <Link key={r.label} to={r.href}>→ {r.label}</Link>
         ))}
+        <Link to="/careers">Careers</Link>
         <Link to="/about">About</Link>
       </div>
     </nav>

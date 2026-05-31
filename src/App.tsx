@@ -11,6 +11,7 @@ import BlogPost from './pages/BlogPost'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import Admin from './pages/Admin'
+import Careers from './pages/Careers'
 import LeadModal from './components/LeadModal'
 
 function ScrollToTop() {
@@ -36,6 +37,7 @@ export default function App() {
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/careers" element={<Careers />} />
       </Routes>
     </>
   )

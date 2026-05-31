@@ -74,7 +74,7 @@ export default function Admin() {
   if (!authed) return (
     <div className="adm-login">
       <div className="adm-login__box">
-        <div className="adm-login__logo">Synerax</div>
+        <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1780252831/synerax_logo_oc4xfs.png" alt="Synerax" className="adm-login__logo" />
         <h2>Admin Dashboard</h2>
         <p>Enter your password to continue</p>
         <input
@@ -97,7 +97,7 @@ export default function Admin() {
     <div className="adm">
       {/* Sidebar */}
       <aside className="adm-sidebar">
-        <div className="adm-sidebar__logo">Synerax</div>
+        <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1780252831/synerax_logo_oc4xfs.png" alt="Synerax" className="adm-sidebar__logo" />
         <nav className="adm-sidebar__nav">
           <span className="adm-sidebar__item adm-sidebar__item--active">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

@@ -7,6 +7,7 @@ import Contact from './pages/Contact'
 import SolutionPage from './pages/SolutionPage'
 import IndustryPage from './pages/IndustryPage'
 import Blog from './pages/Blog'
+import BlogPost from './pages/BlogPost'
 import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import Admin from './pages/Admin'
@@ -31,6 +32,7 @@ export default function App() {
         <Route path="/solutions/:slug" element={<SolutionPage />} />
         <Route path="/industries/:slug" element={<IndustryPage />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/admin" element={<Admin />} />

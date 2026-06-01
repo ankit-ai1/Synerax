@@ -147,35 +147,34 @@ export default function Nav() {
         </button>
       </div>
 
-      {/* Mobile overlay */}
-      {mobileOpen && <div className="nav__overlay" onClick={() => setMobileOpen(false)} />}
-
-      {/* Mobile Drawer */}
+      {/* Mobile full-screen overlay menu */}
       <div className={`nav__mobile${mobileOpen ? ' open' : ''}`}>
 
-        {/* Header */}
-        <div className="nav__mobile-header">
+        {/* Top bar — same as nav */}
+        <div className="nav__mobile-topbar">
           <Link to="/" className="nav__logo" onClick={() => setMobileOpen(false)}>
             <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1780252831/synerax_logo_oc4xfs.png" alt="Synerax" className="nav__logo-img" />
             <span className="nav__logo-text">Synerax</span>
           </Link>
-          <button className="nav__mobile-close" onClick={() => setMobileOpen(false)} aria-label="Close">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M18 6L6 18M6 6l12 12"/>
-            </svg>
-          </button>
+          <div className="nav__mobile-topbar-right">
+            <Link to="/contact" className="nav__icon-btn" onClick={() => setMobileOpen(false)} aria-label="Contact">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/>
+              </svg>
+            </Link>
+            <button className="nav__mobile-close" onClick={() => setMobileOpen(false)} aria-label="Close">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M18 6L6 18M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
         </div>
 
-        {/* Nav items */}
+        {/* Menu items */}
         <div className="nav__mobile-body">
 
-          <Link to="/" className="nav__mobile-link">Home</Link>
-
           <button className={`nav__mobile-acc${mSolOpen ? ' open' : ''}`} onClick={() => setMSolOpen(o => !o)}>
-            <span>Solutions</span>
-            <span className="nav__mobile-chevron">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            </span>
+            <span className="nav__mobile-tri">{mSolOpen ? '▼' : '▶'}</span> Solutions
           </button>
           {mSolOpen && (
             <div className="nav__mobile-sub">
@@ -186,10 +185,7 @@ export default function Nav() {
           )}
 
           <button className={`nav__mobile-acc${mIndOpen ? ' open' : ''}`} onClick={() => setMIndOpen(o => !o)}>
-            <span>Industries</span>
-            <span className="nav__mobile-chevron">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            </span>
+            <span className="nav__mobile-tri">{mIndOpen ? '▼' : '▶'}</span> Industries
           </button>
           {mIndOpen && (
             <div className="nav__mobile-sub">
@@ -200,10 +196,7 @@ export default function Nav() {
           )}
 
           <button className={`nav__mobile-acc${mResOpen ? ' open' : ''}`} onClick={() => setMResOpen(o => !o)}>
-            <span>Resources</span>
-            <span className="nav__mobile-chevron">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-            </span>
+            <span className="nav__mobile-tri">{mResOpen ? '▼' : '▶'}</span> Resources
           </button>
           {mResOpen && (
             <div className="nav__mobile-sub">
@@ -213,19 +206,9 @@ export default function Nav() {
             </div>
           )}
 
-          <Link to="/careers" className="nav__mobile-link">Careers</Link>
-          <hr className="nav__mobile-hr" />
-          <Link to="/about"   className="nav__mobile-link">About</Link>
+          <Link to="/careers" className="nav__mobile-link"><span className="nav__mobile-tri">▶</span>Careers</Link>
+          <Link to="/about"   className="nav__mobile-link"><span className="nav__mobile-tri">▶</span>About</Link>
 
-        </div>
-
-        {/* Footer CTA */}
-        <div className="nav__mobile-footer">
-          <Link to="/contact" className="nav__mobile-cta">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Contact Us
-          </Link>
-          <p className="nav__mobile-tagline">Building tomorrow's digital infrastructure.</p>
         </div>
       </div>
     </nav>

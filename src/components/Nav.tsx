@@ -30,11 +30,17 @@ const navResources = [
 ]
 
 export default function Nav() {
-  const [scrolled,      setScrolled]      = useState(false)
-  const [mobileOpen,    setMobileOpen]    = useState(false)
-  const [solOpen,       setSolOpen]       = useState(false)
-  const [indOpen,       setIndOpen]       = useState(false)
-  const [resOpen,       setResOpen]       = useState(false)
+  const [scrolled,   setScrolled]   = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [solOpen,    setSolOpen]    = useState(false)
+  const [indOpen,    setIndOpen]    = useState(false)
+  const [resOpen,    setResOpen]    = useState(false)
+
+  // mobile accordion
+  const [mSolOpen, setMSolOpen] = useState(false)
+  const [mIndOpen, setMIndOpen] = useState(false)
+  const [mResOpen, setMResOpen] = useState(false)
+
   const location = useLocation()
   const isInner  = location.pathname !== '/'
 
@@ -52,10 +58,15 @@ export default function Nav() {
 
   useEffect(() => {
     setMobileOpen(false)
-    setSolOpen(false)
-    setIndOpen(false)
-    setResOpen(false)
+    setSolOpen(false); setIndOpen(false); setResOpen(false)
+    setMSolOpen(false); setMIndOpen(false); setMResOpen(false)
   }, [location.pathname])
+
+  // lock body scroll when drawer open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
 
   const mkHandlers = (
     setOpen: (v: boolean) => void,
@@ -69,26 +80,16 @@ export default function Nav() {
     <nav className={`nav${scrolled || isInner ? ' scrolled' : ''}`} id="nav">
       <div className="nav__inner">
 
-        {/* ── LEFT: Logo ── */}
+        {/* Logo */}
         <Link to="/" className="nav__logo">
           <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1780252831/synerax_logo_oc4xfs.png" alt="Synerax" className="nav__logo-img" />
           <span className="nav__logo-text">Synerax</span>
         </Link>
 
-        {/* ── CENTER: Nav links ── */}
+        {/* Desktop links */}
         <ul className="nav__links">
-
-          {/* Solutions ▾ */}
-          <li
-            className={`nav__dropdown${solOpen ? ' open' : ''}`}
-            {...mkHandlers(setSolOpen, solTimer)}
-          >
-            <button
-              className="nav__dropdown-trigger"
-              onClick={() => setSolOpen(o => !o)}
-              aria-haspopup="true"
-              aria-expanded={solOpen}
-            >
+          <li className={`nav__dropdown${solOpen ? ' open' : ''}`} {...mkHandlers(setSolOpen, solTimer)}>
+            <button className="nav__dropdown-trigger" onClick={() => setSolOpen(o => !o)} aria-haspopup="true" aria-expanded={solOpen}>
               Solutions <span className="dropdown-arrow">▾</span>
             </button>
             <ul className="nav__dropdown__menu">
@@ -100,100 +101,119 @@ export default function Nav() {
             </ul>
           </li>
 
-          {/* Industries ▾ */}
-          <li
-            className={`nav__dropdown${indOpen ? ' open' : ''}`}
-            {...mkHandlers(setIndOpen, indTimer)}
-          >
-            <button
-              className="nav__dropdown-trigger"
-              onClick={() => setIndOpen(o => !o)}
-              aria-haspopup="true"
-              aria-expanded={indOpen}
-            >
+          <li className={`nav__dropdown${indOpen ? ' open' : ''}`} {...mkHandlers(setIndOpen, indTimer)}>
+            <button className="nav__dropdown-trigger" onClick={() => setIndOpen(o => !o)} aria-haspopup="true" aria-expanded={indOpen}>
               Industries <span className="dropdown-arrow">▾</span>
             </button>
             <ul className="nav__dropdown__menu">
               {navIndustries.map(ind => (
-                <li key={ind.label}>
-                  <Link to={ind.href}>{ind.label}</Link>
-                </li>
+                <li key={ind.label}><Link to={ind.href}>{ind.label}</Link></li>
               ))}
             </ul>
           </li>
 
-          {/* Resources ▾ (Blog + Contact) */}
-          <li
-            className={`nav__dropdown${resOpen ? ' open' : ''}`}
-            {...mkHandlers(setResOpen, resTimer)}
-          >
-            <button
-              className="nav__dropdown-trigger"
-              onClick={() => setResOpen(o => !o)}
-              aria-haspopup="true"
-              aria-expanded={resOpen}
-            >
+          <li className={`nav__dropdown${resOpen ? ' open' : ''}`} {...mkHandlers(setResOpen, resTimer)}>
+            <button className="nav__dropdown-trigger" onClick={() => setResOpen(o => !o)} aria-haspopup="true" aria-expanded={resOpen}>
               Resources <span className="dropdown-arrow">▾</span>
             </button>
             <ul className="nav__dropdown__menu">
               {navResources.map(r => (
-                <li key={r.label}>
-                  <Link to={r.href}>{r.label}</Link>
-                </li>
+                <li key={r.label}><Link to={r.href}>{r.label}</Link></li>
               ))}
             </ul>
           </li>
 
-          {/* Careers */}
-          <li>
-            <Link to="/careers" className={location.pathname === '/careers' ? 'active' : ''}>
-              Careers
-            </Link>
-          </li>
-
-          {/* About */}
-          <li>
-            <Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>
-              About
-            </Link>
-          </li>
-
+          <li><Link to="/careers" className={location.pathname === '/careers' ? 'active' : ''}>Careers</Link></li>
+          <li><Link to="/about"   className={location.pathname === '/about'   ? 'active' : ''}>About</Link></li>
         </ul>
 
-        {/* ── RIGHT: Email icon ── */}
+        {/* Email icon */}
         <div className="nav__cta-wrap">
           <Link to="/contact" className="nav__icon-btn" aria-label="Contact us">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-              <rect x="2" y="4" width="20" height="16" rx="2" />
-              <path d="M2 7l10 7 10-7" />
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="M2 7l10 7 10-7"/>
             </svg>
           </Link>
         </div>
 
-        {/* ── HAMBURGER (mobile) ── */}
-        <button className="nav__hamburger" onClick={() => setMobileOpen(o => !o)} aria-label="Menu">
+        {/* Hamburger */}
+        <button
+          className={`nav__hamburger${mobileOpen ? ' open' : ''}`}
+          onClick={() => setMobileOpen(o => !o)}
+          aria-label="Menu"
+        >
           <span /><span /><span />
         </button>
-
       </div>
 
-      {/* ── MOBILE DRAWER ── */}
+      {/* Mobile overlay */}
+      {mobileOpen && <div className="nav__overlay" onClick={() => setMobileOpen(false)} />}
+
+      {/* Mobile Drawer */}
       <div className={`nav__mobile${mobileOpen ? ' open' : ''}`}>
-        <Link to="/">Home</Link>
-        <div className="nav__mobile-section">Solutions</div>
-        {navSolutions.filter(Boolean).map(s => s && (
-          <Link key={s.slug} to={`/solutions/${s.slug}`}>→ {s.label}</Link>
-        ))}
-        <div className="nav__mobile-section">Industries</div>
-        {navIndustries.map(ind => (
-          <Link key={ind.label} to={ind.href}>→ {ind.label}</Link>
-        ))}
-        <div className="nav__mobile-section">Resources</div>
-        {navResources.map(r => (
-          <Link key={r.label} to={r.href}>→ {r.label}</Link>
-        ))}
-        <Link to="/careers">Careers</Link>
-        <Link to="/about">About</Link>
+
+        {/* Close button */}
+        <button className="nav__mobile-close" onClick={() => setMobileOpen(false)} aria-label="Close menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <path d="M18 6L6 18M6 6l12 12"/>
+          </svg>
+        </button>
+
+        <Link to="/" className="nav__mobile-link">Home</Link>
+
+        {/* Solutions accordion */}
+        <button className="nav__mobile-acc" onClick={() => setMSolOpen(o => !o)}>
+          Solutions
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+            style={{ transform: mSolOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: '0.2s' }}>
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        {mSolOpen && (
+          <div className="nav__mobile-sub">
+            {navSolutions.filter(Boolean).map(s => s && (
+              <Link key={s.slug} to={`/solutions/${s.slug}`} className="nav__mobile-sublink">{s.label}</Link>
+            ))}
+          </div>
+        )}
+
+        {/* Industries accordion */}
+        <button className="nav__mobile-acc" onClick={() => setMIndOpen(o => !o)}>
+          Industries
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+            style={{ transform: mIndOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: '0.2s' }}>
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        {mIndOpen && (
+          <div className="nav__mobile-sub">
+            {navIndustries.map(ind => (
+              <Link key={ind.label} to={ind.href} className="nav__mobile-sublink">{ind.label}</Link>
+            ))}
+          </div>
+        )}
+
+        {/* Resources accordion */}
+        <button className="nav__mobile-acc" onClick={() => setMResOpen(o => !o)}>
+          Resources
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
+            style={{ transform: mResOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: '0.2s' }}>
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        {mResOpen && (
+          <div className="nav__mobile-sub">
+            {navResources.map(r => (
+              <Link key={r.label} to={r.href} className="nav__mobile-sublink">{r.label}</Link>
+            ))}
+          </div>
+        )}
+
+        <Link to="/careers" className="nav__mobile-link">Careers</Link>
+        <Link to="/about"   className="nav__mobile-link">About</Link>
+
+        <Link to="/contact" className="nav__mobile-cta">Contact Us →</Link>
       </div>
     </nav>
   )

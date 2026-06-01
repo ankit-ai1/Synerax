@@ -153,67 +153,80 @@ export default function Nav() {
       {/* Mobile Drawer */}
       <div className={`nav__mobile${mobileOpen ? ' open' : ''}`}>
 
-        {/* Close button */}
-        <button className="nav__mobile-close" onClick={() => setMobileOpen(false)} aria-label="Close menu">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <path d="M18 6L6 18M6 6l12 12"/>
-          </svg>
-        </button>
+        {/* Header */}
+        <div className="nav__mobile-header">
+          <Link to="/" className="nav__logo" onClick={() => setMobileOpen(false)}>
+            <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1780252831/synerax_logo_oc4xfs.png" alt="Synerax" className="nav__logo-img" />
+            <span className="nav__logo-text">Synerax</span>
+          </Link>
+          <button className="nav__mobile-close" onClick={() => setMobileOpen(false)} aria-label="Close">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M18 6L6 18M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
 
-        <Link to="/" className="nav__mobile-link">Home</Link>
+        {/* Nav items */}
+        <div className="nav__mobile-body">
 
-        {/* Solutions accordion */}
-        <button className="nav__mobile-acc" onClick={() => setMSolOpen(o => !o)}>
-          Solutions
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
-            style={{ transform: mSolOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: '0.2s' }}>
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </button>
-        {mSolOpen && (
-          <div className="nav__mobile-sub">
-            {navSolutions.filter(Boolean).map(s => s && (
-              <Link key={s.slug} to={`/solutions/${s.slug}`} className="nav__mobile-sublink">{s.label}</Link>
-            ))}
-          </div>
-        )}
+          <Link to="/" className="nav__mobile-link">Home</Link>
 
-        {/* Industries accordion */}
-        <button className="nav__mobile-acc" onClick={() => setMIndOpen(o => !o)}>
-          Industries
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
-            style={{ transform: mIndOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: '0.2s' }}>
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </button>
-        {mIndOpen && (
-          <div className="nav__mobile-sub">
-            {navIndustries.map(ind => (
-              <Link key={ind.label} to={ind.href} className="nav__mobile-sublink">{ind.label}</Link>
-            ))}
-          </div>
-        )}
+          <button className={`nav__mobile-acc${mSolOpen ? ' open' : ''}`} onClick={() => setMSolOpen(o => !o)}>
+            <span>Solutions</span>
+            <span className="nav__mobile-chevron">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          {mSolOpen && (
+            <div className="nav__mobile-sub">
+              {navSolutions.filter(Boolean).map(s => s && (
+                <Link key={s.slug} to={`/solutions/${s.slug}`} className="nav__mobile-sublink">{s.label}</Link>
+              ))}
+            </div>
+          )}
 
-        {/* Resources accordion */}
-        <button className="nav__mobile-acc" onClick={() => setMResOpen(o => !o)}>
-          Resources
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"
-            style={{ transform: mResOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: '0.2s' }}>
-            <polyline points="6 9 12 15 18 9"/>
-          </svg>
-        </button>
-        {mResOpen && (
-          <div className="nav__mobile-sub">
-            {navResources.map(r => (
-              <Link key={r.label} to={r.href} className="nav__mobile-sublink">{r.label}</Link>
-            ))}
-          </div>
-        )}
+          <button className={`nav__mobile-acc${mIndOpen ? ' open' : ''}`} onClick={() => setMIndOpen(o => !o)}>
+            <span>Industries</span>
+            <span className="nav__mobile-chevron">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          {mIndOpen && (
+            <div className="nav__mobile-sub">
+              {navIndustries.map(ind => (
+                <Link key={ind.label} to={ind.href} className="nav__mobile-sublink">{ind.label}</Link>
+              ))}
+            </div>
+          )}
 
-        <Link to="/careers" className="nav__mobile-link">Careers</Link>
-        <Link to="/about"   className="nav__mobile-link">About</Link>
+          <button className={`nav__mobile-acc${mResOpen ? ' open' : ''}`} onClick={() => setMResOpen(o => !o)}>
+            <span>Resources</span>
+            <span className="nav__mobile-chevron">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+            </span>
+          </button>
+          {mResOpen && (
+            <div className="nav__mobile-sub">
+              {navResources.map(r => (
+                <Link key={r.label} to={r.href} className="nav__mobile-sublink">{r.label}</Link>
+              ))}
+            </div>
+          )}
 
-        <Link to="/contact" className="nav__mobile-cta">Contact Us →</Link>
+          <Link to="/careers" className="nav__mobile-link">Careers</Link>
+          <hr className="nav__mobile-hr" />
+          <Link to="/about"   className="nav__mobile-link">About</Link>
+
+        </div>
+
+        {/* Footer CTA */}
+        <div className="nav__mobile-footer">
+          <Link to="/contact" className="nav__mobile-cta">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Contact Us
+          </Link>
+          <p className="nav__mobile-tagline">Building tomorrow's digital infrastructure.</p>
+        </div>
       </div>
     </nav>
   )

@@ -112,6 +112,18 @@ const servicesCards = [
       </svg>
     ),
   },
+  {
+    slug: 'devops',
+    title: 'DevOps & CI/CD',
+    desc: 'End-to-end DevOps transformation — automated pipelines, infrastructure-as-code, container orchestration, and 24/7 monitoring. Ship faster with zero-downtime deployments.',
+    svg: (
+      <svg viewBox="0 0 48 48" fill="none">
+        <path d="M24 8c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/>
+        <path d="M40 8l-8 8M40 8v8M40 8h-8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M17 24l4 4 10-10" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    ),
+  },
 ]
 
 const techCategories = [
@@ -194,7 +206,7 @@ export default function Services() {
         <div className="container">
           <div className="solutions__header">
             <div className="section-tag">Our Solutions</div>
-            <h2 className="section-title">9 Specialised Practice Areas</h2>
+            <h2 className="section-title">10 Specialised Practice Areas</h2>
             <p className="section-sub" style={{ margin: '0.75rem auto 0' }}>Every solution is delivered by dedicated specialists — ensuring deep expertise at every engagement.</p>
           </div>
           <div className="solutions__grid">

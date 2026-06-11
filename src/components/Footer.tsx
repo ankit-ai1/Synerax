@@ -12,25 +12,33 @@ export default function Footer() {
             <Link to="/solutions/contact-center">Contact Center Solutions</Link>
             <Link to="/solutions/frontend">Frontend Development</Link>
             <Link to="/solutions/backend">Backend Development</Link>
-            <Link to="/solutions/fullstack">Full Stack Development</Link>
+            <Link to="/solutions/fullstack">Full Stack & Mobile</Link>
             <Link to="/solutions/agentic-ai">Agentic AI Solutions</Link>
             <Link to="/solutions/aws">AWS Infrastructure</Link>
+            <Link to="/solutions/devops">DevOps & CI/CD</Link>
+            <Link to="/solutions/cybersecurity">Cybersecurity</Link>
             <Link to="/solutions/inventory">Inventory Management</Link>
+            <Link to="/solutions/consulting">IT Consulting</Link>
+          </div>
+
+          {/* Industries */}
+          <div className="footer__col">
+            <h5>Industries</h5>
+            <Link to="/industries/healthcare">Healthcare</Link>
+            <Link to="/industries/financial-services">Financial Services</Link>
+            <Link to="/industries/retail">Retail & E-Commerce</Link>
+            <Link to="/industries/government">Government</Link>
+            <Link to="/industries/education">Education & EdTech</Link>
+            <Link to="/industries/logistics">Logistics & Supply Chain</Link>
           </div>
 
           {/* Company */}
           <div className="footer__col">
             <h5>Company</h5>
             <Link to="/about">About Us</Link>
-            <a href="#">Partners &amp; Certifications</a>
-            <Link to="/contact">Contact</Link>
-          </div>
-
-          {/* Resources */}
-          <div className="footer__col">
-            <h5>Resources</h5>
+            <Link to="/careers">Careers</Link>
+            <Link to="/contact">Contact Us</Link>
             <Link to="/blog">Blog</Link>
-            <Link to="/contact">FAQ</Link>
           </div>
 
           {/* Legal */}
@@ -46,7 +54,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="footer__bottom">
         <div className="container footer__bottom-inner">
-          <span>© 2025 Synerax Technologies. All rights reserved.</span>
+          <span>© 2025–2026 Synerax Technologies. All rights reserved.</span>
 
           <div className="footer__socials">
             {/* LinkedIn */}

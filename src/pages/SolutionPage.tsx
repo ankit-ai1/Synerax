@@ -174,8 +174,8 @@ export default function SolutionPage() {
           </div>
           <div className="tl-caps__grid">
             {solution.capabilities.map((cap, i) => (
-              <div key={cap.title} className="tl-cap-card tl-reveal">
-                <div className="tl-cap-card__icon" style={{ background: `${accent}12`, color: accent }}>
+              <div key={cap.title} className="tl-cap-card tl-reveal" style={{ '--cap-accent': accent } as React.CSSProperties}>
+                <div className="tl-cap-card__icon" style={{ color: accent }}>
                   <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" width="26" height="26">
                     <path d={cap.svgPath} />
                   </svg>
@@ -264,8 +264,8 @@ export default function SolutionPage() {
               </p>
               <div className="tl-usecases__list">
                 {meta.useCases.map((uc, i) => (
-                  <div key={i} className="tl-usecase-item">
-                    <div className="tl-usecase-icon" style={{ background: `${accent}12`, color: accent }}>
+                  <div key={i} className="tl-usecase-item" style={{ '--cap-accent': accent } as React.CSSProperties}>
+                    <div className="tl-usecase-icon" style={{ color: accent }}>
                       {uc.icon}
                     </div>
                     <div>

@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import Home from './pages/Home'
 import Services from './pages/Services'
@@ -38,6 +38,7 @@ export default function App() {
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/careers" element={<Careers />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </>
   )

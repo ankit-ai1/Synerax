@@ -151,6 +151,7 @@ export default function Contact() {
                   <option>Full Stack / Mobile</option>
                   <option>Agentic AI Solutions</option>
                   <option>AWS Infrastructure</option>
+                  <option>DevOps &amp; CI/CD</option>
                   <option>Cybersecurity</option>
                   <option>Inventory Management</option>
                   <option>IT Consulting &amp; Outsourcing</option>

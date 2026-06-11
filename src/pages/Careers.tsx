@@ -16,89 +16,15 @@ const benefits = [
 ]
 
 const openings = [
-  {
-    id: 1,
-    title: 'Senior Full Stack Engineer',
-    dept: 'Engineering',
-    location: 'Remote (Global)',
-    type: 'Full-time',
-    exp: '4+ years',
-    desc: 'Build and scale our core platform products using React, Node.js, and TypeScript. You will own features end-to-end from design to deployment.',
-    skills: ['React', 'Node.js', 'TypeScript', 'PostgreSQL', 'AWS'],
-  },
-  {
-    id: 2,
-    title: 'AI / ML Engineer',
-    dept: 'AI & Automation',
-    location: 'Remote (Global)',
-    type: 'Full-time',
-    exp: '3+ years',
-    desc: 'Design and deploy LLM-powered agentic systems and NLP pipelines. Work with OpenAI, Anthropic Claude, LangChain, and custom fine-tuned models.',
-    skills: ['Python', 'LangChain', 'OpenAI API', 'FastAPI', 'Vector DBs'],
-  },
-  {
-    id: 3,
-    title: 'DevOps / Cloud Engineer',
-    dept: 'Infrastructure',
-    location: 'Remote (Global)',
-    type: 'Full-time',
-    exp: '3+ years',
-    desc: 'Own our AWS infrastructure, CI/CD pipelines, and Kubernetes clusters. Drive reliability, security, and cost optimisation across all environments.',
-    skills: ['AWS', 'Kubernetes', 'Terraform', 'GitHub Actions', 'ArgoCD'],
-  },
-  {
-    id: 4,
-    title: 'Frontend Engineer',
-    dept: 'Engineering',
-    location: 'Remote (Global)',
-    type: 'Full-time',
-    exp: '3+ years',
-    desc: 'Craft pixel-perfect, performant web applications. You care deeply about user experience, accessibility, and Core Web Vitals.',
-    skills: ['React', 'TypeScript', 'Tailwind CSS', 'Next.js', 'Figma'],
-  },
-  {
-    id: 5,
-    title: 'Contact Center Solutions Architect',
-    dept: 'Solutions',
-    location: 'Remote (India / APAC)',
-    type: 'Full-time',
-    exp: '5+ years',
-    desc: 'Design and deliver enterprise contact center platforms using AWS Connect, Genesys, and Twilio. Work directly with enterprise clients from discovery to go-live.',
-    skills: ['AWS Connect', 'Twilio Flex', 'WebRTC', 'Salesforce CTI', 'IVR Design'],
-  },
-  {
-    id: 6,
-    title: 'Product Manager',
-    dept: 'Product',
-    location: 'Remote (Global)',
-    type: 'Full-time',
-    exp: '4+ years',
-    desc: 'Define and drive the roadmap for one of our core product lines. You bridge the gap between engineering, design, and customer needs with clarity and urgency.',
-    skills: ['Roadmapping', 'Agile', 'Data Analysis', 'Stakeholder Mgmt', 'B2B SaaS'],
-  },
-  {
-    id: 7,
-    title: 'Cybersecurity Engineer',
-    dept: 'Security',
-    location: 'Remote (Global)',
-    type: 'Full-time',
-    exp: '4+ years',
-    desc: 'Lead our security posture — penetration testing, SOC 2 compliance, zero-trust architecture, and incident response. Protect systems handling millions of sensitive records.',
-    skills: ['Penetration Testing', 'SOC 2', 'Zero Trust', 'AWS Security', 'SIEM'],
-  },
-  {
-    id: 8,
-    title: 'Technical Writer',
-    dept: 'Engineering',
-    location: 'Remote (Global)',
-    type: 'Part-time / Contract',
-    exp: '2+ years',
-    desc: 'Document our APIs, SDKs, and internal engineering processes. You make complex technical concepts clear, concise, and usable for developers worldwide.',
-    skills: ['API Documentation', 'Markdown', 'OpenAPI', 'Developer Experience', 'Editing'],
-  },
+  { id: 1, title: 'Senior React Developer', dept: 'Engineering', location: 'Remote', experience: '4–6 years', type: 'Full-time', posted: '2026-05-20', isNew: true },
+  { id: 2, title: 'Node.js Backend Engineer', dept: 'Engineering', location: 'Hyderabad', experience: '3–5 years', type: 'Full-time', posted: '2026-05-18', isNew: true },
+  { id: 3, title: 'AI/ML Engineer', dept: 'AI & Research', location: 'Remote', experience: '3–6 years', type: 'Full-time', posted: '2026-05-10', isNew: false },
+  { id: 4, title: 'DevOps Engineer (AWS)', dept: 'Infrastructure', location: 'Remote', experience: '4–7 years', type: 'Full-time', posted: '2026-04-28', isNew: false },
+  { id: 5, title: 'UI/UX Designer', dept: 'Design', location: 'Delhi / Remote', experience: '2–4 years', type: 'Full-time', posted: '2026-05-25', isNew: true },
+  { id: 6, title: 'Business Development Manager', dept: 'Sales', location: 'Mumbai', experience: '5+ years', type: 'Full-time', posted: '2026-05-15', isNew: false },
 ]
 
-const DEPTS = ['All', 'Engineering', 'AI & Automation', 'Infrastructure', 'Solutions', 'Product', 'Security']
+const DEPTS = ['All', 'Engineering', 'AI & Research', 'Infrastructure', 'Design', 'Sales']
 
 const values = [
   { num: '01', title: 'Ship with pride', desc: 'We care deeply about the quality of what we build. Every PR is a reflection of our standards.' },
@@ -212,7 +138,7 @@ export default function Careers() {
 
           <div className="car-jobs__list">
             {filtered.map(job => (
-              <div key={job.id} className="car-job-card">
+              <div key={job.id} className="job-card">
                 <div className="car-job-card__left">
                   <div className="car-job-card__meta">
                     <span className="car-job-card__dept">{job.dept}</span>
@@ -224,20 +150,20 @@ export default function Careers() {
                     <span className="car-job-card__dot" />
                     <span className="car-job-card__type">{job.type}</span>
                     <span className="car-job-card__dot" />
-                    <span className="car-job-card__exp">{job.exp}</span>
+                    <span className="car-job-card__exp">{job.experience}</span>
+                    {job.isNew && (
+                      <>
+                        <span className="car-job-card__dot" />
+                        <span className="job-badge-new">New</span>
+                      </>
+                    )}
                   </div>
                   <h3 className="car-job-card__title">{job.title}</h3>
-                  <p className="car-job-card__desc">{job.desc}</p>
-                  <div className="car-job-card__skills">
-                    {job.skills.map(s => (
-                      <span key={s} className="car-skill-chip">{s}</span>
-                    ))}
-                  </div>
                 </div>
                 <div className="car-job-card__right">
-                  <button onClick={() => openLead('Careers — ' + job.title)} className="car-apply-btn">
+                  <a href={`mailto:careers@synerax.in?subject=Application for ${job.title}`} className="btn btn--primary" style={{ fontSize: '0.875rem', padding: '0.6rem 1.2rem' }}>
                     Apply Now →
-                  </button>
+                  </a>
                 </div>
               </div>
             ))}

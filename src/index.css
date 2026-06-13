@@ -2230,9 +2230,31 @@ input, textarea, select, button { font-family: var(--font); }
 }
 
 @media (max-width: 768px) {
+  .nav {
+    background: rgba(13, 20, 38, 0.95);
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.30);
+  }
+  .nav.scrolled {
+    background: rgba(13, 20, 38, 0.98);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.40);
+  }
+  .nav__logo-text { color: var(--primary); }
+  .nav__logo-img { filter: none; }
   .nav__inner { gap: 0; }
   .nav__links { display: none; }
-  .nav__cta-wrap { display: none; }
+  .nav__cta-wrap { display: flex; margin-left: auto; }
+  .nav__icon-btn {
+    color: rgba(255,255,255,0.8);
+    border-color: rgba(255,255,255,0.18);
+    background: transparent;
+  }
+  .nav__icon-btn:hover {
+    color: #fff;
+    border-color: rgba(255,255,255,0.45);
+    background: rgba(255,255,255,0.08);
+  }
+  .nav__hamburger span { background: rgba(255,255,255,0.9); }
   .nav__hamburger { display: flex; }
   .news__grid { grid-template-columns: 1fr 1fr; }
   .solutions__grid { grid-template-columns: 1fr 1fr; }
@@ -3636,7 +3658,6 @@ a { color: inherit; text-decoration: none; }
   .wp-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 600px) {
-  .ht-hero__content { padding: 3.5rem 0 3rem; }
   .ht-hero__h1 { font-size: 1.9rem; }
   .ht-hero__desc { font-size: 0.95rem; }
   .ht-hero__btn-primary, .ht-hero__btn-outline {
@@ -3884,8 +3905,9 @@ a { color: inherit; text-decoration: none; }
   .nav__mobile { padding: 0.75rem 1.25rem; }
 
   /* ── HOME HERO ── */
-  .ht-hero__content { padding: 2rem 0 2.5rem; }
+  .ht-hero__wrap { align-items: flex-start; padding-top: 120px; }
   .ht-hero__h1 { font-size: clamp(1.9rem, 6vw, 2.6rem); }
+  .ht-hero__desc { max-width: 100%; }
   .ht-hero__actions { flex-direction: column; width: 100%; gap: 0.75rem; }
   .ht-hero__btn-primary,
   .ht-hero__btn-outline {
@@ -3919,7 +3941,11 @@ a { color: inherit; text-decoration: none; }
   /* ── CTA BAND ── */
   .cta-band { padding: 4rem 0; }
   .cta-band__actions { flex-direction: column; align-items: center; gap: 0.75rem; }
-  .cta-band__actions .btn { width: 100%; max-width: 340px; text-align: center; justify-content: center; }
+  .cta-band__actions .btn,
+  .cta-band__actions .ht-hero__btn-primary,
+  .cta-band__actions .ht-hero__btn-outline {
+    width: 100%; max-width: 340px; text-align: center; justify-content: center;
+  }
 
   /* ── FOOTER ── */
   .footer__cols { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
@@ -4002,6 +4028,7 @@ a { color: inherit; text-decoration: none; }
   .container { padding: 0 1rem; }
 
   /* ── HOME HERO ── */
+  .ht-hero__wrap  { padding-top: 100px; }
   .ht-hero__h1    { font-size: 1.7rem; letter-spacing: -0.01em; }
   .ht-hero__desc  { font-size: 0.88rem; }
   .ht-hero__badge { font-size: 0.7rem; padding: 0.3em 0.9em; }
@@ -4888,8 +4915,8 @@ img, svg, video { max-width: 100%; }
   /* HERO — hide network SVG and figure on mobile */
   .ht-hero__net { display: none; }
   .ht-hero__figure { display: none; }
-  .ht-hero__wrap { padding: 0; }
-  .ht-hero__content { padding: 5.5rem 0 3rem; }
+  .ht-hero__wrap { align-items: flex-start; padding: 0; }
+  .ht-hero__content { padding: 140px 0 3rem; }
   .ht-hero__badge { font-size: 0.72rem; }
   .ht-hero__h1 { font-size: clamp(1.9rem, 7vw, 2.8rem); }
   .ht-hero__desc { font-size: 0.9rem; max-width: 100%; }

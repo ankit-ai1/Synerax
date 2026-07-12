@@ -30,17 +30,17 @@ const testimonials = [
 const statCards = [
   {
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>,
-    num: '200+', label: 'Projects Delivered',
+    num: '5+', label: 'Projects Delivered',
     desc: 'Across enterprise and mid-market clients globally'
   },
   {
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>,
-    num: '80+', label: 'Enterprise Clients',
+    num: '5+', label: 'Enterprise Clients',
     desc: 'Trusted by organizations across multiple industries'
   },
   {
     icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>,
-    num: '20+', label: 'Countries Served',
+    num: '3+', label: 'Countries Served',
     desc: 'Delivering impact globally across every continent'
   },
   {
@@ -101,8 +101,22 @@ export default function Home() {
   const { openLead } = useLead()
   const [testiIdx, setTestiIdx] = useState(0)
   const [solIdx, setSolIdx] = useState(0)
-  const solVisibleCount = 3
+  const [solVisibleCount, setSolVisibleCount] = useState(1)
   const solMaxIdx = homeSolCards.length - solVisibleCount
+
+  useEffect(() => {
+    const computeVisible = () => {
+      const w = window.innerWidth
+      setSolVisibleCount(w <= 768 ? 1 : 3)
+    }
+    computeVisible()
+    window.addEventListener('resize', computeVisible)
+    return () => window.removeEventListener('resize', computeVisible)
+  }, [])
+
+  useEffect(() => {
+    setSolIdx(i => Math.min(i, homeSolCards.length - solVisibleCount))
+  }, [solVisibleCount])
 
   useEffect(() => {
     const t = setInterval(() => setTestiIdx(i => (i + 1) % testimonials.length), 5000)
@@ -243,34 +257,37 @@ export default function Home() {
 
         {/* 5 — Content */}
         <div className="ht-hero__wrap">
-          <div className="container">
-            <div className="ht-hero__content">
+          <div className="ht-hero__center">
 
-              <div className="ht-hero__badge">
-                <span className="ht-hero__badge-dot" />
-                Enterprise Digital Infrastructure
-              </div>
+            <h1 className="ht-hero__h1">
+              From Code to Cloud.<br />
+              <span style={{ color: '#7091E6' }}>We Deliver What Others Promise.</span>
+            </h1>
 
-              <h1 className="ht-hero__h1 ht-hero__title">
-                Building the Next<br />
-                Era of <span style={{ color: '#7091E6' }}>AI Scale.</span>
-              </h1>
+            <p className="ht-hero__desc">
+              Enterprise contact centers, AI systems, cloud architecture, and full-stack
+              applications — all engineered for scale, built to last, and delivered on time.
+            </p>
 
-              <p className="ht-hero__desc">
-                Architecting resilient, AI-first infrastructure for the world's most
-                demanding enterprises. From custom LLM pipelines to global cloud orchestration.
-              </p>
-
-              <div className="ht-hero__actions">
-                <button onClick={() => openLead()} className="ht-hero__btn-primary">
-                  SCHEDULE A CONSULTATION
-                </button>
-                <Link to="/solutions/contact-center" className="ht-hero__btn-outline">
-                  EXPLORE SOLUTIONS
-                </Link>
-              </div>
-
+            <div className="ht-hero__actions">
+              <button onClick={() => openLead()} className="ht-hero__btn-primary">
+                Get a Free Consultation
+              </button>
+              <Link to="/solutions/contact-center" className="ht-hero__btn-outline">
+                Explore Solutions
+              </Link>
+              <Link to="/about" className="ht-hero__btn-ghost">
+                Learn About Us
+              </Link>
             </div>
+
+            <div className="ht-hero__checks">
+              <span className="ht-hero__check"><span className="ht-hero__check-icon">✓</span> NDA Available</span>
+              <span className="ht-hero__check"><span className="ht-hero__check-icon">✓</span> Reply within 24h</span>
+              <span className="ht-hero__check"><span className="ht-hero__check-icon">✓</span> Free Scoping</span>
+              <span className="ht-hero__check"><span className="ht-hero__check-icon">✓</span> Senior Engineers Only</span>
+            </div>
+
           </div>
         </div>
 

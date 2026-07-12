@@ -188,34 +188,42 @@ export default function Services() {
     <>
       <Nav />
 
-      <section className="page-hero">
+      <section className="page-hero solutions-hero">
         <div className="container">
           <nav className="breadcrumb"><Link to="/">Home</Link><span>›</span><span>Solutions</span></nav>
           <div className="section-tag" style={{ display: 'inline-block', marginBottom: '0.85rem' }}>What We Do</div>
-          <h1>End-to-End Digital<br /><span className="blue">Engineering</span></h1>
+          <h1 className="srv-hero__h1">
+            End-to-End Digital <span>Engineering</span>
+          </h1>
           <p>From pixel-perfect interfaces to intelligent AI systems, enterprise contact centers, and cloud infrastructure — we handle every layer of your digital stack.</p>
           <div style={{ display: 'flex', gap: '0.9rem', justifyContent: 'center', marginTop: '2rem', flexWrap: 'wrap' }}>
-            <Link to="/contact" className="btn btn--primary">Get a Free Consultation →</Link>
-            <a href="#solutions" className="btn btn--ghost">View Solutions ↓</a>
+            <Link to="/contact" className="srv-hero__btn-primary">
+              Get a Free Consultation →
+            </Link>
+            <a href="#solutions" className="srv-hero__btn-outline">
+              View Solutions ↓
+            </a>
           </div>
         </div>
       </section>
 
       {/* SOLUTIONS GRID */}
-      <section className="solutions" id="solutions" style={{ paddingTop: '4rem' }}>
+      <section className="solutions solutions--light srv-solutions" id="solutions" style={{ paddingTop: '4rem' }}>
         <div className="container">
           <div className="solutions__header">
             <div className="section-tag">Our Solutions</div>
-            <h2 className="section-title">10 Specialised Practice Areas</h2>
+            <h2 className="section-title">
+              10 Specialised Practice <span>Areas</span>
+            </h2>
             <p className="section-sub" style={{ margin: '0.75rem auto 0' }}>Every solution is delivered by dedicated specialists — ensuring deep expertise at every engagement.</p>
           </div>
-          <div className="solutions__grid">
+          <div className="solutions__grid srv-grid">
             {servicesCards.map(card => (
-              <div key={card.slug} className="sol-card">
-                <div className="sol-card__icon">{card.svg}</div>
+              <div key={card.slug} className="srv-card">
+                <div className="srv-card__icon">{card.svg}</div>
                 <h3>{card.title}</h3>
-                <p className="sol-card__desc">{card.desc}</p>
-                <Link to={`/solutions/${card.slug}`} className="sol-card__link">Learn more →</Link>
+                <p>{card.desc}</p>
+                <Link to={`/solutions/${card.slug}`} className="srv-card__link">Learn more →</Link>
               </div>
             ))}
           </div>
@@ -227,7 +235,9 @@ export default function Services() {
         <div className="container">
           <div className="tech-section__header">
             <div className="section-tag">Technology We Master</div>
-            <h2 className="section-title">Our Technology Stack</h2>
+            <h2 className="section-title">
+              Our Technology <span>Stack</span>
+            </h2>
             <p className="section-sub" style={{ margin: '0.75rem auto 0' }}>Certified across the most in-demand platforms — we stay ahead of the curve so you don't have to.</p>
           </div>
           <div className="tech-categories">
@@ -263,7 +273,9 @@ export default function Services() {
         <div className="container">
           <div className="process__header">
             <div className="section-tag">How We Work</div>
-            <h2 className="section-title">Our Delivery Process</h2>
+            <h2 className="section-title">
+              Our Delivery <span>Process</span>
+            </h2>
             <p className="section-sub" style={{ margin: '0 auto' }}>A structured four-phase approach ensuring clarity, quality, and confidence at every step.</p>
           </div>
           <div className="process__steps">
@@ -294,7 +306,9 @@ export default function Services() {
       <section className="cta-band">
         <div className="container">
           <div className="cta-band__tag">Have a Project in Mind?</div>
-          <h2>Get a Proposal<br />in 24 Hours</h2>
+          <h2>
+            Get a Proposal<br />in <span style={{ color: '#7091E6' }}>24 Hours</span>
+          </h2>
           <p>No commitment required. Just an honest conversation about your goals and how we can help.</p>
           <div className="cta-band__actions">
             <Link to="/contact" className="btn btn--white">Request a Proposal →</Link>

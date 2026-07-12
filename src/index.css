@@ -231,9 +231,9 @@ h4 { font-size: clamp(1rem, 1.8vw, 1.1rem); font-weight: 500; }
 ═══════════════════════ */
 .nav {
   position: fixed;
-  top: 12px;
-  left: 32px;
-  right: 32px;
+  top: 10px;
+  left: 20px;
+  right: 20px;
   width: auto;
   max-width: none;
   transform: none;
@@ -262,8 +262,8 @@ h4 { font-size: clamp(1rem, 1.8vw, 1.1rem); font-weight: 500; }
 .nav__inner {
   display: flex;
   align-items: center;
-  height: 60px;
-  padding: 0 1.5rem;
+  height: 72px;
+  padding: 0 2rem;
   width: 100%;
   gap: 0;
 }
@@ -1286,6 +1286,14 @@ h4 { font-size: clamp(1rem, 1.8vw, 1.1rem); font-weight: 500; }
     radial-gradient(ellipse 40% 35% at 10% 80%, rgba(255,255,255,0.04) 0%, transparent 60%);
   pointer-events: none;
 }
+
+/* ── Solutions section override (light, used on the Services page) ── */
+.solutions--light {
+  background: #F4F6FB;
+}
+.solutions--light::before {
+  display: none;
+}
 .solutions__header {
   text-align: center;
   margin-bottom: 2.5rem;
@@ -1349,13 +1357,108 @@ h4 { font-size: clamp(1rem, 1.8vw, 1.1rem); font-weight: 500; }
 .solutions__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 3px;
-  flex: 1;
-  width: 100%;
-  max-width: 100%;
-  padding: 0;
+  gap: 1.5rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ── Solutions section (light, Services page) ── */
+.srv-solutions {
+  background: #F4F6FB;
+  padding: 5rem 0;
+}
+.srv-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+@media (max-width: 1024px) {
+  .srv-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .srv-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Premium solution cards ── */
+.srv-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(173,187,218,0.35);
+  border-radius: 20px;
+  padding: 2rem 1.75rem;
+  position: relative;
   overflow: hidden;
+  transition: box-shadow 0.3s cubic-bezier(0.4,0,0.2,1), transform 0.3s, border-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.srv-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #3D52A0, #7091E6);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.srv-card:hover {
+  box-shadow: 0 20px 56px rgba(61,82,160,0.14);
+  transform: translateY(-6px);
+  border-color: rgba(61,82,160,0.25);
+}
+.srv-card:hover::before {
+  opacity: 1;
+}
+.srv-card__icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(61,82,160,0.08);
+  border: 1.5px solid rgba(61,82,160,0.15);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3D52A0;
+  flex-shrink: 0;
+}
+.srv-card__icon svg {
+  width: 22px !important;
+  height: 22px !important;
+}
+.srv-card h3 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: #1A2647;
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.3;
+}
+.srv-card p {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: #6B7280;
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+.srv-card__link {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #3D52A0;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: gap 0.2s;
+  margin-top: auto;
+}
+.srv-card:hover .srv-card__link {
+  gap: 0.6rem;
 }
 
 /* ── Premium Solutions Slider ── */
@@ -1480,13 +1583,11 @@ h4 { font-size: clamp(1rem, 1.8vw, 1.1rem); font-weight: 500; }
   padding: 0;
 }
 .wp-section .container {
+  max-width: 1550px;
+  margin: 0 auto;
+  padding: 0 1rem;
   width: 100%;
-  max-width: 100%;
-  padding: 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  overflow: visible;
+  display: block;
 }
 
 /* ── TECH STACK TILES ── */
@@ -2002,6 +2103,70 @@ h4 { font-size: clamp(1rem, 1.8vw, 1.1rem); font-weight: 500; }
   color: #7091E6;
   border-color: rgba(112,145,230,0.3);
 }
+
+/* ── Solutions hero override (dark) ── */
+.solutions-hero {
+  background: linear-gradient(135deg, #1A2647 0%, #3D52A0 55%, #2a3870 100%);
+  border-bottom: none;
+}
+.solutions-hero h1 {
+  color: #ffffff;
+}
+.solutions-hero h1 span {
+  color: #7091E6;
+}
+.solutions-hero p {
+  color: rgba(255,255,255,0.65);
+}
+.solutions-hero .breadcrumb a,
+.solutions-hero .breadcrumb span {
+  color: rgba(255,255,255,0.55);
+}
+.solutions-hero .section-tag {
+  background: rgba(112,145,230,0.15);
+  color: #7091E6;
+  border-color: rgba(112,145,230,0.3);
+}
+
+/* ── Hero CTA buttons ── */
+.srv-hero__btn-primary {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8rem 1.75rem;
+  background: #3D52A0;
+  color: #ffffff !important;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 999px;
+  text-decoration: none;
+  border: none;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 16px rgba(61,82,160,0.3);
+}
+.srv-hero__btn-primary:hover {
+  background: #2d3f7a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(61,82,160,0.4);
+}
+.srv-hero__btn-outline {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.8rem 1.75rem;
+  background: transparent;
+  color: #ffffff !important;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 999px;
+  text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,0.5);
+  transition: background 0.2s, border-color 0.2s;
+}
+.srv-hero__btn-outline:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.8);
+}
 .page-hero p {
   color: var(--text2);
   font-size: 1.05rem;
@@ -2080,10 +2245,11 @@ h4 { font-size: clamp(1rem, 1.8vw, 1.1rem); font-weight: 500; }
 .process-step__num {
   width: 48px; height: 48px;
   border-radius: 50%;
-  background: var(--primary);
+  background: linear-gradient(135deg, #3D52A0, #7091E6);
   color: #fff;
+  font-family: var(--font-heading);
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: 800;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -4005,11 +4171,9 @@ a { color: inherit; text-decoration: none; }
 }
 .wp-header {
   text-align: center;
-  margin-bottom: clamp(1.5rem, 3vh, 2.2rem);
-  padding: 0 1.5rem;
-  max-width: 1600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 2.5rem;
+  padding: 0;
+  max-width: 100%;
 }
 .wp-title {
   font-family: var(--font-heading);
@@ -4052,12 +4216,12 @@ a { color: inherit; text-decoration: none; }
 }
 .wp-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  padding: 0 1.5rem;
-  max-width: 1400px;
-  margin: 0 auto;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
   width: 100%;
+  padding: 0;
+  max-width: 100%;
+  margin: 0;
 }
 
 /* ── Why Synerax — orbit visual + card grid layout ── */

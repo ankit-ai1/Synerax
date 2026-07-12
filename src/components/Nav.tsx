@@ -80,8 +80,7 @@ export default function Nav() {
       <div className="nav__inner">
 
         <Link to="/" className="nav__logo">
-          <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1780252831/synerax_logo_oc4xfs.png" alt="Synerax" className="nav__logo-img" />
-          <span className="nav__logo-text">Synerax</span>
+          <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1783839642/Gemini_Generated_Image_wrba0fwrba0fwrba-removebg-preview_fujvtu.png" alt="Synerax" className="nav__logo-img" />
         </Link>
 
         <ul className="nav__links">
@@ -169,8 +168,7 @@ export default function Nav() {
       <div className={`nav__mobile${mobileOpen ? ' open' : ''}`}>
         <div className="nav__mobile-topbar">
           <Link to="/" className="nav__logo" onClick={() => setMobileOpen(false)}>
-            <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1780252831/synerax_logo_oc4xfs.png" alt="Synerax" className="nav__logo-img" />
-            <span className="nav__logo-text">Synerax</span>
+            <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1783839642/Gemini_Generated_Image_wrba0fwrba0fwrba-removebg-preview_fujvtu.png" alt="Synerax" className="nav__logo-img" />
           </Link>
           <div className="nav__mobile-topbar-right">
             <Link to="/contact" className="nav__icon-btn" onClick={() => setMobileOpen(false)} aria-label="Contact">

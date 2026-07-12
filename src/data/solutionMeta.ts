@@ -34,7 +34,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
     useCaseImage: 'https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=700&q=80',
     darkFeatureImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80',
     techStackImage: 'https://images.unsplash.com/photo-1573496546038-82f9c39f6365?auto=format&fit=crop&w=700&q=80',
-    accentColor: '#1A56DB',
+    accentColor: '#3D52A0',
     technologies: ['AWS Connect', 'Genesys Cloud', 'Twilio Flex', 'Asterisk', 'WebRTC', 'Salesforce CTI', 'Zendesk', 'HubSpot', 'Dialogflow CX', 'OpenAI', 'React', 'Node.js'],
   },
   'frontend': {
@@ -52,7 +52,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
     useCaseImage: 'https://res.cloudinary.com/dtg3lepr4/image/upload/v1779878646/ChatGPT_Image_May_27_2026_04_13_42_PM_ehty1h.png',
     darkFeatureImage: 'https://res.cloudinary.com/dtg3lepr4/image/upload/v1779879134/ChatGPT_Image_May_27_2026_04_20_57_PM_gehziw.png',
     techStackImage: 'https://images.unsplash.com/photo-1573496546038-82f9c39f6365?auto=format&fit=crop&w=700&q=80',
-    accentColor: '#7C3AED',
+    accentColor: '#3D52A0',
     technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Vue.js', 'Angular', 'Vite', 'Storybook', 'Figma', 'Jest', 'Cypress', 'GraphQL'],
   },
   'backend': {
@@ -70,7 +70,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
     useCaseImage: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=700&q=80',
     darkFeatureImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80',
     techStackImage: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=700&q=80',
-    accentColor: '#059669',
+    accentColor: '#3D52A0',
     technologies: ['Node.js', 'Python', 'FastAPI', 'Go', 'PostgreSQL', 'MongoDB', 'Redis', 'Apache Kafka', 'RabbitMQ', 'Docker', 'GraphQL', 'gRPC'],
   },
   'fullstack': {
@@ -88,7 +88,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
     useCaseImage: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=700&q=80',
     darkFeatureImage: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1600&q=80',
     techStackImage: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=700&q=80',
-    accentColor: '#D97706',
+    accentColor: '#3D52A0',
     technologies: ['React Native', 'Flutter', 'Next.js', 'Node.js', 'TypeScript', 'MongoDB', 'PostgreSQL', 'Stripe', 'Firebase', 'AWS', 'Figma', 'Storybook'],
   },
   'agentic-ai': {
@@ -106,7 +106,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
     useCaseImage: 'https://res.cloudinary.com/dtg3lepr4/image/upload/v1779881816/ChatGPT_Image_May_27_2026_05_06_44_PM_qt6tbv.png',
     darkFeatureImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80',
     techStackImage: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=700&q=80',
-    accentColor: '#7C3AED',
+    accentColor: '#3D52A0',
     technologies: ['OpenAI GPT-4o', 'Anthropic Claude', 'LangChain', 'LlamaIndex', 'HuggingFace', 'Pinecone', 'Weaviate', 'FastAPI', 'Python', 'Celery', 'AWS Bedrock', 'Redis'],
   },
   'aws': {
@@ -124,7 +124,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
     useCaseImage: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=700&q=80',
     darkFeatureImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80',
     techStackImage: 'https://images.unsplash.com/photo-1573496546038-82f9c39f6365?auto=format&fit=crop&w=700&q=80',
-    accentColor: '#FF9900',
+    accentColor: '#3D52A0',
     technologies: ['AWS', 'Azure', 'GCP', 'Terraform', 'Kubernetes', 'Docker', 'Helm', 'GitHub Actions', 'Prometheus', 'Grafana', 'Istio', 'ArgoCD'],
   },
   'devops': {
@@ -142,7 +142,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
     useCaseImage: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=700&q=80',
     darkFeatureImage: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1600&q=80',
     techStackImage: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=700&q=80',
-    accentColor: '#0891B2',
+    accentColor: '#3D52A0',
     technologies: ['Docker', 'Kubernetes', 'GitHub Actions', 'GitLab CI', 'Terraform', 'Ansible', 'Prometheus', 'Grafana', 'ArgoCD', 'HashiCorp Vault', 'Jenkins', 'PagerDuty'],
   },
   'inventory': {
@@ -160,7 +160,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
     useCaseImage: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80',
     darkFeatureImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80',
     techStackImage: 'https://images.unsplash.com/photo-1573496546038-82f9c39f6365?auto=format&fit=crop&w=700&q=80',
-    accentColor: '#0D9488',
+    accentColor: '#3D52A0',
     technologies: ['React', 'Node.js', 'PostgreSQL', 'Redis', 'SAP Connector', 'Oracle Integration', 'Shopify', 'WooCommerce', 'AWS', 'Barcode.js', 'RFID APIs', 'Power BI'],
   },
   'cybersecurity': {
@@ -178,7 +178,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
     useCaseImage: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=700&q=80',
     darkFeatureImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80',
     techStackImage: 'https://images.unsplash.com/photo-1573496546038-82f9c39f6365?auto=format&fit=crop&w=700&q=80',
-    accentColor: '#DC2626',
+    accentColor: '#3D52A0',
     technologies: ['CrowdStrike', 'Snyk', 'Splunk SIEM', 'HashiCorp Vault', 'Cloudflare', 'AWS Security Hub', 'Nessus', 'Burp Suite', 'Okta', 'CyberArk', 'Palo Alto', 'Wiz'],
   },
   'consulting': {
@@ -196,7 +196,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
     useCaseImage: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=700&q=80',
     darkFeatureImage: 'https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1600&q=80',
     techStackImage: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=700&q=80',
-    accentColor: '#1A56DB',
+    accentColor: '#3D52A0',
     technologies: ['Jira', 'Confluence', 'Azure DevOps', 'Notion', 'Figma', 'Miro', 'GitHub', 'AWS Well-Architected', 'TOGAF', 'SAFe Agile', 'OKR Frameworks', 'ITIL'],
   },
 }

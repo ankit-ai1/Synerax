@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
@@ -100,6 +100,9 @@ const newsItems = [
 export default function Home() {
   const { openLead } = useLead()
   const [testiIdx, setTestiIdx] = useState(0)
+  const [solIdx, setSolIdx] = useState(0)
+  const solVisibleCount = 3
+  const solMaxIdx = homeSolCards.length - solVisibleCount
 
   useEffect(() => {
     const t = setInterval(() => setTestiIdx(i => (i + 1) % testimonials.length), 5000)
@@ -107,6 +110,115 @@ export default function Home() {
   }, [])
 
   const testi = testimonials[testiIdx]
+
+  useEffect(() => {
+    const canvas = document.getElementById('ht-canvas') as HTMLCanvasElement
+    if (!canvas) return
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    let animId: number
+
+    const setSize = () => {
+      canvas.width = canvas.offsetWidth
+      canvas.height = canvas.offsetHeight
+    }
+    setSize()
+    window.addEventListener('resize', setSize)
+
+    const W = () => canvas.width
+    const H = () => canvas.height
+
+    const particles = Array.from({ length: 55 }, () => ({
+      x: Math.random(),
+      y: Math.random(),
+      r: Math.random() * 1.8 + 0.4,
+      dx: (Math.random() - 0.5) * 0.0008,
+      dy: (Math.random() - 0.5) * 0.0008,
+      opacity: Math.random() * 0.45 + 0.1,
+    }))
+
+    const cubes = Array.from({ length: 5 }, () => ({
+      x: Math.random(),
+      y: Math.random(),
+      size: Math.random() * 35 + 18,
+      rot: Math.random() * Math.PI * 2,
+      rotSpd: (Math.random() - 0.5) * 0.006,
+      dx: (Math.random() - 0.5) * 0.0004,
+      dy: (Math.random() - 0.5) * 0.0004,
+      op: Math.random() * 0.1 + 0.04,
+    }))
+
+    const drawCube = (x: number, y: number, s: number, rot: number, op: number) => {
+      ctx.save()
+      ctx.translate(x, y)
+      ctx.rotate(rot)
+      ctx.strokeStyle = `rgba(112,145,230,${op})`
+      ctx.lineWidth = 1
+      ctx.strokeRect(-s/2, -s/2, s, s)
+      const o = s * 0.38
+      ctx.strokeRect(-s/2+o, -s/2-o, s, s)
+      ctx.beginPath()
+      ctx.moveTo(-s/2,-s/2); ctx.lineTo(-s/2+o,-s/2-o)
+      ctx.moveTo(s/2,-s/2);  ctx.lineTo(s/2+o,-s/2-o)
+      ctx.moveTo(s/2,s/2);   ctx.lineTo(s/2+o,s/2-o)
+      ctx.moveTo(-s/2,s/2);  ctx.lineTo(-s/2+o,s/2-o)
+      ctx.stroke()
+      ctx.restore()
+    }
+
+    const draw = () => {
+      const w = W(), h = H()
+      ctx.clearRect(0, 0, w, h)
+
+      const pts = particles.map(p => ({ ax: p.x * w, ay: p.y * h, op: p.opacity }))
+
+      // Connection lines
+      for (let i = 0; i < pts.length; i++) {
+        for (let j = i+1; j < pts.length; j++) {
+          const dx = pts[i].ax - pts[j].ax
+          const dy = pts[i].ay - pts[j].ay
+          const d = Math.sqrt(dx*dx + dy*dy)
+          if (d < 130) {
+            ctx.beginPath()
+            ctx.strokeStyle = `rgba(112,145,230,${0.07 * (1 - d/130)})`
+            ctx.lineWidth = 0.5
+            ctx.moveTo(pts[i].ax, pts[i].ay)
+            ctx.lineTo(pts[j].ax, pts[j].ay)
+            ctx.stroke()
+          }
+        }
+      }
+
+      // Dots
+      particles.forEach((p, i) => {
+        ctx.beginPath()
+        ctx.arc(pts[i].ax, pts[i].ay, p.r, 0, Math.PI*2)
+        ctx.fillStyle = `rgba(173,187,218,${p.opacity})`
+        ctx.fill()
+        p.x += p.dx; p.y += p.dy
+        if (p.x < 0 || p.x > 1) p.dx *= -1
+        if (p.y < 0 || p.y > 1) p.dy *= -1
+      })
+
+      // Cubes
+      cubes.forEach(c => {
+        drawCube(c.x * w, c.y * h, c.size, c.rot, c.op)
+        c.rot += c.rotSpd
+        c.x += c.dx; c.y += c.dy
+        if (c.x < -0.1 || c.x > 1.1) c.dx *= -1
+        if (c.y < -0.1 || c.y > 1.1) c.dy *= -1
+      })
+
+      animId = requestAnimationFrame(draw)
+    }
+
+    draw()
+    return () => {
+      cancelAnimationFrame(animId)
+      window.removeEventListener('resize', setSize)
+    }
+  }, [])
 
   return (
     <>
@@ -117,9 +229,11 @@ export default function Home() {
       ══════════════════════════════════════════ */}
       <section className="ht-hero">
 
+        <canvas className="ht-hero__canvas" id="ht-canvas" />
+
         {/* Background image */}
         <img
-          src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1781091009/ChatGPT_Image_Jun_10_2026_04_59_28_PM_ezkfwd.png"
+          src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1783869514/wmremove-transformed_10_nnqgn2.png"
           className="ht-hero__photo"
           alt=""
         />
@@ -137,10 +251,9 @@ export default function Home() {
                 Enterprise Digital Infrastructure
               </div>
 
-              <h1 className="ht-hero__h1">
-                Building the<br />
-                Next<br />
-                Era of AI Scale.
+              <h1 className="ht-hero__h1 ht-hero__title">
+                Building the Next<br />
+                Era of <span style={{ color: '#7091E6' }}>AI Scale.</span>
               </h1>
 
               <p className="ht-hero__desc">
@@ -177,7 +290,7 @@ export default function Home() {
         <div className="container">
           <div className="wp-header">
             <div className="section-tag">Why Synerax</div>
-            <h2 className="wp-title">Built Different.<br />Delivered Better.</h2>
+            <h2 className="wp-title">Built Different.<br /><span>Delivered Better.</span></h2>
             <p className="wp-sub">We don't just write code — we engineer outcomes. Here's what sets us apart.</p>
           </div>
           <div className="wp-grid">
@@ -207,24 +320,73 @@ export default function Home() {
         <div className="container">
           <div className="solutions__header">
             <div className="section-tag">Our Solutions</div>
-            <h2 className="section-title solutions__title">From contact centers to cloud —<br />we deliver end-to-end.</h2>
+            <h2 className="section-title solutions__title">From contact centers to cloud —<br /><span>we deliver end-to-end.</span></h2>
             <p className="section-sub solutions__sub">Solutions engineered for performance, scale, and reliability.</p>
           </div>
-          <div className="solutions__grid">
-            {homeSolCards.map((card) => (
-              <Link key={card.slug} to={`/solutions/${card.slug}`} className="prem-card" style={{ backgroundImage: `url(${card.img})` }}>
-                <div className="prem-card__overlay" />
-                <div className="prem-card__body">
-                  <div className="prem-card__tag">{card.tag}</div>
-                  <div className="prem-card__line" />
-                  <h3 className="prem-card__title">
-                    {card.title}
-                    <span className="prem-card__arrow">▷</span>
-                  </h3>
-                  <p className="prem-card__desc">{card.desc}</p>
-                </div>
-              </Link>
-            ))}
+          <div className="sol-slider__wrapper">
+            {/* Left Arrow */}
+            <button
+              className="sol-slider__arrow sol-slider__arrow--left"
+              onClick={() => setSolIdx(i => Math.max(0, i - 1))}
+              disabled={solIdx === 0}
+              aria-label="Previous"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="15 18 9 12 15 6"/>
+              </svg>
+            </button>
+
+            {/* Cards Track */}
+            <div className="sol-slider__track">
+              <div
+                className="sol-slider__inner"
+                style={{ transform: `translateX(calc(-${solIdx} * (100% / ${solVisibleCount}) - ${solIdx} * 16px))` }}
+              >
+                {homeSolCards.map((card) => (
+                  <Link
+                    key={card.slug}
+                    to={`/solutions/${card.slug}`}
+                    className="sol-slider__card"
+                    style={{ backgroundImage: `url(${card.img})` }}
+                  >
+                    <div className="prem-card__overlay" />
+                    <div className="prem-card__body">
+                      <div className="prem-card__tag">{card.tag}</div>
+                      <div className="prem-card__line" />
+                      <h3 className="prem-card__title">
+                        {card.title}
+                        <span className="prem-card__arrow">▷</span>
+                      </h3>
+                      <p className="prem-card__desc">{card.desc}</p>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Arrow */}
+            <button
+              className="sol-slider__arrow sol-slider__arrow--right"
+              onClick={() => setSolIdx(i => Math.min(solMaxIdx, i + 1))}
+              disabled={solIdx === solMaxIdx}
+              aria-label="Next"
+            >
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </button>
+
+            {/* Dots */}
+            <div className="sol-slider__dots">
+              {Array.from({ length: solMaxIdx + 1 }).map((_, i) => (
+                <button
+                  key={i}
+                  className={`sol-slider__dot${solIdx === i ? ' active' : ''}`}
+                  onClick={() => setSolIdx(i)}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -237,24 +399,19 @@ export default function Home() {
           <div className="news__header">
             <div>
               <div className="news__tag">Knowledge Base</div>
-              <h2 className="news__title">Latest Insights.</h2>
+              <h2 className="news__title">Latest <span>Insights.</span></h2>
             </div>
             <Link to="/blog" className="news__see-all">EXPLORE ALL ARTICLES →</Link>
           </div>
           <div className="news__grid">
             {newsItems.map(item => (
-              <Link to="/blog" key={item.seed} className="insight-card">
-                <div className="insight-card__img-wrap">
-                  <img src={item.img} alt={item.title} className="insight-card__img" />
-                </div>
-                <div className="insight-card__body">
-                  <div className="insight-card__meta">
-                    <span className="insight-card__tag">{item.tag}</span>
-                    <span className="insight-card__dot">·</span>
-                    <span className="insight-card__read">{item.read}</span>
-                  </div>
-                  <h3 className="insight-card__title">{item.title}</h3>
-                  <p className="insight-card__desc">{item.desc}</p>
+              <Link to="/blog" key={item.seed} className="prem-card news-prem" style={{ backgroundImage: `url(${item.img})` }}>
+                <div className="prem-card__overlay" />
+                <div className="prem-card__body">
+                  <div className="prem-card__tag">{item.tag}</div>
+                  <div className="prem-card__line" />
+                  <h3 className="prem-card__title">{item.title}<span className="prem-card__arrow">▷</span></h3>
+                  <p className="prem-card__desc">{item.desc}</p>
                 </div>
               </Link>
             ))}
@@ -270,7 +427,7 @@ export default function Home() {
 
           {/* LEFT — heading + 2×3 stat cards */}
           <div className="st-section__left">
-            <h2 className="st-section__title">Synerax by the Numbers</h2>
+            <h2 className="st-section__title">Synerax by the <span>Numbers</span></h2>
             <p className="st-section__sub">
               Real results, measurable impact — powering the world's most demanding enterprises.
             </p>
@@ -306,7 +463,7 @@ export default function Home() {
       ══════════════════════════════════════════ */}
       <section className="testimonials">
         <div className="container">
-          <h2 className="testi-title">Testimonials</h2>
+          <h2 className="testi-title"><span>Testimonials</span></h2>
 
           <div className="testi-card">
             <div className="testi-card__avatar">{testi.initial}</div>
@@ -360,7 +517,7 @@ export default function Home() {
         <div className="container">
           <div className="careers__text">
             <div className="section-tag">We're Hiring</div>
-            <div className="careers__title">Careers at Synerax</div>
+            <div className="careers__title">Careers at <span>Synerax</span></div>
             <p className="careers__desc">
               We invite you to bring your expertise to our team. Join a team of engineers,
               designers, and AI builders shaping the digital future.
@@ -375,7 +532,7 @@ export default function Home() {
             <Link to="/careers" className="btn btn--primary">Explore careers →</Link>
           </div>
           <div className="careers__img">
-            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
+            <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1783867920/close-up-portrait-young-beautiful-attractive-redhair-girl-happy-smiling-digital-table-with-wining_1_zgtaq7.jpg"
               alt="Careers at Synerax" loading="lazy"
               onError={e => { const t=e.currentTarget; t.style.display='none'; const ph=t.nextElementSibling as HTMLElement|null; if(ph) ph.style.display='flex' }} />
             <div className="careers__img-placeholder" style={{ display:'none' }}>
@@ -392,11 +549,11 @@ export default function Home() {
       <section className="cta-band">
         <div className="container">
           <div className="cta-band__tag">Let's Build Together</div>
-          <h2>Ready to Start Your<br />Next Project?</h2>
+          <h2>Ready to Start Your<br /><span>Next Project?</span></h2>
           <p>Get a detailed proposal within 24 hours — no commitment required.</p>
           <div className="cta-band__actions">
-            <button onClick={() => openLead()} className="ht-hero__btn-primary">Start a Project →</button>
-            <Link to="/services" className="ht-hero__btn-outline" style={{ color:'#C2542A', borderColor:'rgba(194,84,42,0.45)', background:'transparent' }}>View All Solutions</Link>
+            <button onClick={() => openLead()} className="ht-hero__btn-primary cta-band__btn cta-band__btn--primary">Start a Project →</button>
+            <Link to="/services" className="ht-hero__btn-outline cta-band__btn cta-band__btn--secondary">View All Solutions</Link>
           </div>
         </div>
       </section>

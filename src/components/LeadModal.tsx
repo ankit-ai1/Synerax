@@ -127,22 +127,22 @@ export default function LeadModal() {
               <div className="lm-row">
                 <div className="lm-field">
                   <label>Full Name <span>*</span></label>
-                  <input name="name" value={form.name} onChange={change} placeholder="John Doe" required />
+                  <input name="name" value={form.name} onChange={change} placeholder="" required />
                 </div>
                 <div className="lm-field">
                   <label>Email Address <span>*</span></label>
-                  <input name="email" type="email" value={form.email} onChange={change} placeholder="john@company.com" required />
+                  <input name="email" type="email" value={form.email} onChange={change} placeholder="" required />
                 </div>
               </div>
 
               <div className="lm-row">
                 <div className="lm-field">
                   <label>Phone Number</label>
-                  <input name="phone" type="tel" value={form.phone} onChange={change} placeholder="+91 98765 43210" />
+                  <input name="phone" type="tel" value={form.phone} onChange={change} placeholder="" />
                 </div>
                 <div className="lm-field">
                   <label>Company / Organisation</label>
-                  <input name="company" value={form.company} onChange={change} placeholder="Acme Corp" />
+                  <input name="company" value={form.company} onChange={change} placeholder="" />
                 </div>
               </div>
 
@@ -166,7 +166,7 @@ export default function LeadModal() {
               <div className="lm-field lm-field--full">
                 <label>Message / Project Details</label>
                 <textarea name="message" value={form.message} onChange={change}
-                  rows={4} placeholder="Tell us more about your goals, timeline, or specific requirements…" />
+                  rows={4} placeholder="" />
               </div>
 
               {error && <p className="lm-error">{error}</p>}

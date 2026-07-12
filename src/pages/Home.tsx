@@ -307,25 +307,51 @@ export default function Home() {
         <div className="container">
           <div className="wp-header">
             <div className="section-tag">Why Synerax</div>
-            <h2 className="wp-title">Built Different.<br /><span>Delivered Better.</span></h2>
-            <p className="wp-sub">We don't just write code — we engineer outcomes. Here's what sets us apart.</p>
+            <h2 className="wp-title">
+              Engineering Beyond <span>Expectations.</span>
+            </h2>
+            <p className="wp-sub">Creating secure, scalable, and high-performance digital experiences for ambitious businesses.</p>
           </div>
-          <div className="wp-grid">
-            {whyCards.map((c, i) => (
-              <div key={i} className="eska-card eska-card--img" style={{ backgroundImage: `url(${c.img})`, '--accent': c.accent } as React.CSSProperties}>
-                <div className="eska-card__overlay" />
-                <div className="eska-card__body">
-                  <div className="eska-card__icon-wrap">{c.icon}</div>
-                  <div className="eska-card__tag">{c.tag}</div>
-                  <div className="eska-card__line" />
-                  <h3 className="eska-card__title">
-                    {c.title}
-                    <span className="eska-card__arrow">▷</span>
-                  </h3>
-                  <p className="eska-card__desc">{c.desc}</p>
-                </div>
+          <div className="wp-layout">
+
+            {/* Animated orbit visual */}
+            <div className="wp-orbit">
+              <div className="wp-orbit__glow" />
+              <div className="wp-orbit__ring wp-orbit__ring--outer" />
+              <div className="wp-orbit__ring wp-orbit__ring--inner" />
+              <div className="wp-orbit__core">
+                <span className="wp-orbit__core-icon">✦</span>
+                <span className="wp-orbit__core-label">SYNERAX</span>
               </div>
-            ))}
+              {whyCards.map((c, i) => (
+                <div key={i} className={`wp-orbit__pill wp-orbit__pill--${i + 1}`}>
+                  <span className="wp-orbit__pill-dot" style={{ background: c.accent }} />
+                  {c.tag}
+                </div>
+              ))}
+              <div className="wp-orbit__pill wp-orbit__pill--5">
+                <span className="wp-orbit__pill-dot" style={{ background: '#7091E6' }} />
+                INNOVATION
+              </div>
+              <div className="wp-orbit__pill wp-orbit__pill--6">
+                <span className="wp-orbit__pill-dot" style={{ background: '#3D52A0' }} />
+                24/7 SUPPORT
+              </div>
+            </div>
+
+            <div className="wp-grid wp-grid--orbit">
+              {whyCards.map((c, i) => (
+                <div key={i} className="wp-card" style={{ '--wp-accent': c.accent } as React.CSSProperties}>
+                  <div className="wp-card__top" />
+                  <div className="wp-card__icon" style={{ background: c.iconBg, color: c.accent, fontSize: '1.3rem' }}>
+                    {c.icon}
+                  </div>
+                  <h4 className="wp-card__title">{c.title}</h4>
+                  <p className="wp-card__desc">{c.desc}</p>
+                </div>
+              ))}
+            </div>
+
           </div>
         </div>
       </section>

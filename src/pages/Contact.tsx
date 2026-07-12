@@ -109,6 +109,43 @@ export default function Contact() {
               Tell us about your project and we'll get back to you within 24 hours
               with a detailed, no-obligation proposal.
             </p>
+
+            {/* Trust badges */}
+            <div className="ct-hero__badges">
+              <div className="ct-hero__badge-item">
+                <span className="ct-hero__badge-check">✓</span>
+                NDA Available
+              </div>
+              <div className="ct-hero__badge-item">
+                <span className="ct-hero__badge-check">✓</span>
+                Reply within 24h
+              </div>
+              <div className="ct-hero__badge-item">
+                <span className="ct-hero__badge-check">✓</span>
+                Free Scoping
+              </div>
+              <div className="ct-hero__badge-item">
+                <span className="ct-hero__badge-check">✓</span>
+                Senior Engineers Only
+              </div>
+            </div>
+
+            {/* CTA Button */}
+            <button
+              className="ct-hero__cta"
+              onClick={() => {
+                const el = document.getElementById('contact-form')
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              }}
+            >
+              <span>Start a Project</span>
+              <span className="ct-hero__cta-arrow">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+                </svg>
+              </span>
+            </button>
+
           </div>
 
           {/* Contact info cards inside hero */}
@@ -128,7 +165,7 @@ export default function Contact() {
       </section>
 
       {/* ── MAIN FORM SECTION ── */}
-      <section className="ct-main">
+      <section className="ct-main" id="contact-form">
         <div className="ct-container ct-main__grid">
 
           {/* Left */}
@@ -194,21 +231,21 @@ export default function Contact() {
                 <div className="ct-form__row">
                   <div className="ct-form__group">
                     <label>Full Name <span>*</span></label>
-                    <input type="text" name="name" placeholder="John Doe" value={form.name} onChange={handleChange} required />
+                    <input type="text" name="name" placeholder="" value={form.name} onChange={handleChange} required />
                   </div>
                   <div className="ct-form__group">
                     <label>Email <span>*</span></label>
-                    <input type="email" name="email" placeholder="john@company.com" value={form.email} onChange={handleChange} required />
+                    <input type="email" name="email" placeholder="" value={form.email} onChange={handleChange} required />
                   </div>
                 </div>
                 <div className="ct-form__row">
                   <div className="ct-form__group">
                     <label>Phone</label>
-                    <input type="tel" name="phone" placeholder="+91 98765 43210" value={form.phone} onChange={handleChange} />
+                    <input type="tel" name="phone" placeholder="" value={form.phone} onChange={handleChange} />
                   </div>
                   <div className="ct-form__group">
                     <label>Company</label>
-                    <input type="text" name="company" placeholder="Your Company Ltd." value={form.company} onChange={handleChange} />
+                    <input type="text" name="company" placeholder="" value={form.company} onChange={handleChange} />
                   </div>
                 </div>
                 <div className="ct-form__group">
@@ -243,7 +280,7 @@ export default function Contact() {
                   <textarea
                     name="message"
                     rows={5}
-                    placeholder="Tell us about your project — goals, timeline, current challenges, and what success looks like for you…"
+                    placeholder=""
                     value={form.message}
                     onChange={handleChange}
                     required

@@ -49,8 +49,7 @@ export default function Careers() {
         <div className="container car-hero__inner">
           <div className="car-hero__label">We're Hiring</div>
           <h1 className="car-hero__h1">
-            Build the future<br />
-            <span className="car-hero__accent">with us</span>
+            Join Our <span className="car-hero__accent">Team</span>
           </h1>
           <p className="car-hero__sub">
             Join a team of world-class engineers, AI researchers, and product thinkers

@@ -61,7 +61,7 @@ export default function SolutionPage() {
 
   if (!solution) return <Navigate to="/services" replace />
 
-  const accent = meta?.accentColor ?? '#1A56DB'
+  const accent = meta?.accentColor ?? '#3D52A0'
 
   return (
     <>
@@ -70,7 +70,7 @@ export default function SolutionPage() {
       {/* ═══════════════════════════════════════
           1. HERO — dark navy, white text
       ═══════════════════════════════════════ */}
-      <section className="tl-hero" style={{ background: 'linear-gradient(135deg, #0B1628 0%, #0F2040 50%, #0A1A35 100%)' }}>
+      <section className="tl-hero" style={{ background: 'linear-gradient(135deg, #1A2647 0%, #3D52A0 50%, #2a3870 100%)' }}>
         {/* Breadcrumb */}
         <div className="container">
           <nav className="tl-breadcrumb">
@@ -90,7 +90,7 @@ export default function SolutionPage() {
             </div>
             <h1 className="tl-hero__h1">
               {solution.headline}{' '}
-              <span style={{ color: accent }}>{solution.headlineBlue}</span>
+              <span style={{ color: '#7091E6' }}>{solution.headlineBlue}</span>
             </h1>
             <p className="tl-hero__desc">{solution.heroDesc}</p>
             <div className="tl-hero__trust">
@@ -139,26 +139,6 @@ export default function SolutionPage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════
-          2. FULL-WIDTH BANNER IMAGE
-      ═══════════════════════════════════════ */}
-      {meta && (
-        <div className="tl-banner">
-          {!bannerImgErr ? (
-            <img
-              src={meta.bannerImage}
-              alt={`${solution.name} banner`}
-              className="tl-banner__img"
-              onError={() => setBannerImgErr(true)}
-            />
-          ) : (
-            <div className="tl-banner__ph" style={{ background: `linear-gradient(135deg, ${accent}22, ${accent}08)` }}>
-              <span style={{ fontSize: '3rem' }}>{solution.pillars[0]?.icon}</span>
-            </div>
-          )}
-          <div className="tl-banner__overlay" />
-        </div>
-      )}
 
       {/* ═══════════════════════════════════════
           3. CAPABILITIES — "Everything you need"
@@ -167,7 +147,7 @@ export default function SolutionPage() {
         <div className="container">
           <div className="tl-caps__header tl-reveal">
             <div className="section-tag" style={{ color: accent }}>Capabilities</div>
-            <h2 className="section-title">Everything you need</h2>
+            <h2 className="section-title">Everything you <span>need</span></h2>
             <p className="section-sub">
               Six core {solution.name.toLowerCase()} capabilities engineered to turn strategy into measurable results.
             </p>
@@ -258,7 +238,7 @@ export default function SolutionPage() {
             {/* LEFT — List */}
             <div className="tl-usecases__text tl-reveal">
               <div className="section-tag" style={{ color: accent }}>Use Cases</div>
-              <h2 className="section-title">Industry Use Cases</h2>
+              <h2 className="section-title">Industry Use <span>Cases</span></h2>
               <p className="section-sub" style={{ marginBottom: '2.5rem' }}>
                 Trusted across industries to solve real business problems at scale.
               </p>
@@ -316,11 +296,11 @@ export default function SolutionPage() {
               <span style={{ fontSize: '4rem' }}>{solution.pillars[3]?.icon}</span>
             </div>
           )}
-          <div className="tl-dark-feature__overlay" style={{ background: 'linear-gradient(90deg, rgba(11,22,40,0.85) 0%, rgba(11,22,40,0.4) 60%, transparent 100%)' }}>
+          <div className="tl-dark-feature__overlay" style={{ background: 'linear-gradient(90deg, rgba(26,38,71,0.88) 0%, rgba(26,38,71,0.45) 60%, transparent 100%)' }}>
             <div className="container">
               <div className="tl-dark-feature__text">
                 <h3 className="tl-dark-feature__headline">
-                  Enterprise-grade {solution.name.toLowerCase()} for the modern stack
+                  Enterprise-grade {solution.name.toLowerCase()} for the <span>modern stack</span>
                 </h3>
                 <p className="tl-dark-feature__sub">
                   Scalable. Secure. Delivered on time — every time.
@@ -361,7 +341,7 @@ export default function SolutionPage() {
             {/* RIGHT — Text + Pills */}
             <div className="tl-techstack__text tl-reveal">
               <div className="section-tag" style={{ color: accent }}>Tech Stack</div>
-              <h2 className="section-title">Technologies &amp; Tools We Use</h2>
+              <h2 className="section-title">Technologies &amp; Tools We <span>Use</span></h2>
               <p className="section-sub" style={{ marginBottom: '2rem' }}>
                 Battle-tested tools and platforms powering every {solution.name.toLowerCase()} engagement.
               </p>

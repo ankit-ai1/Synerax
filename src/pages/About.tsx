@@ -15,10 +15,10 @@ const testimonials = [
 
 /* ─── Values cards ─────────────────────────────────── */
 const values = [
-  { accent: '#1A56DB', iconBg: '#EBF2FF', icon: '⭐', title: 'Excellence', desc: 'We hold ourselves to the highest technical and service standards in everything we deliver. Good enough is never good enough.' },
-  { accent: '#7C3AED', iconBg: '#F3EEFF', icon: '🤝', title: 'Partnership', desc: "We're deeply invested in your success beyond the project. Your wins are our wins — we think long-term, not transactional." },
-  { accent: '#0891B2', iconBg: '#E0F7FA', icon: '🔍', title: 'Integrity', desc: 'Honest timelines, transparent pricing, and clear communication — always. We tell you what you need to hear, even when it\'s hard.' },
-  { accent: '#D97706', iconBg: '#FFF8E1', icon: '💡', title: 'Innovation', desc: 'We stay ahead of the curve so you don\'t have to. AI, cloud, and emerging tech are not buzzwords — they\'re our daily toolkit.' },
+  { accent: '#3D52A0', iconBg: 'rgba(61,82,160,0.1)', icon: '⭐', title: 'Excellence', desc: 'We hold ourselves to the highest technical and service standards in everything we deliver. Good enough is never good enough.' },
+  { accent: '#3D52A0', iconBg: 'rgba(61,82,160,0.1)', icon: '🤝', title: 'Partnership', desc: "We're deeply invested in your success beyond the project. Your wins are our wins — we think long-term, not transactional." },
+  { accent: '#3D52A0', iconBg: 'rgba(61,82,160,0.1)', icon: '🔍', title: 'Integrity', desc: 'Honest timelines, transparent pricing, and clear communication — always. We tell you what you need to hear, even when it\'s hard.' },
+  { accent: '#3D52A0', iconBg: 'rgba(61,82,160,0.1)', icon: '💡', title: 'Innovation', desc: 'We stay ahead of the curve so you don\'t have to. AI, cloud, and emerging tech are not buzzwords — they\'re our daily toolkit.' },
 ]
 
 /* ─── Stat cards (reuse st-card style) ────────────── */
@@ -161,7 +161,7 @@ export default function About() {
         <div className="container">
           <div className="wp-header">
             <div className="section-tag">Our Principles</div>
-            <h2 className="wp-title">The Values That Drive Us</h2>
+            <h2 className="wp-title">The Values That <span>Drive Us</span></h2>
             <p className="wp-sub">These guide every technical decision, every client interaction, and every hire we make.</p>
           </div>
           <div className="wp-grid">
@@ -185,7 +185,7 @@ export default function About() {
       <section className="st-section">
         <div className="container st-section__inner">
           <div className="st-section__left">
-            <h2 className="st-section__title">Synerax by the Numbers</h2>
+            <h2 className="st-section__title">Synerax by the <span>Numbers</span></h2>
             <p className="st-section__sub">Real results, measurable impact — powering the world's most demanding enterprises.</p>
             <div className="st-section__grid">
               {statCards.map((s, i) => (
@@ -218,7 +218,7 @@ export default function About() {
         <div className="container">
           <div className="ab-process__header">
             <div style={{ color: 'rgba(255,255,255,0.8)', background: 'rgba(255,255,255,0.12)', display: 'inline-block', padding: '0.28em 1em', borderRadius: 999, marginBottom: '1rem', fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase' as const }}>How We Work</div>
-            <h2 className="ab-process__title">Our Proven Process</h2>
+            <h2 className="ab-process__title">Our Proven <span>Process</span></h2>
             <p className="ab-process__sub">Four phases built to eliminate risk, maximise quality, and keep you informed every step.</p>
           </div>
           <div className="ab-process__grid">
@@ -238,7 +238,7 @@ export default function About() {
       ══════════════════════════════════════════ */}
       <section className="testimonials">
         <div className="container">
-          <h2 className="testi-title">What Our Clients Say</h2>
+          <h2 className="testi-title">What Our Clients <span>Say</span></h2>
           <div className="testi-card">
             <div className="testi-card__avatar">{testi.initial}</div>
             <p className="testi-card__quote">{testi.quote}</p>
@@ -269,7 +269,7 @@ export default function About() {
       <section className="cta-band">
         <div className="container">
           <div className="cta-band__tag">Work With Us</div>
-          <h2>Ready to Build<br />Something Great?</h2>
+          <h2>Ready to Build<br /><span>Something Great?</span></h2>
           <p>Join 80+ enterprises that trust Synerax to power their digital transformation.</p>
           <div className="cta-band__actions">
             <button onClick={() => openLead()} className="btn btn--white">Start a Conversation →</button>

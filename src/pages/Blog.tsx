@@ -4,12 +4,12 @@ import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 
 const TAG_COLORS: Record<string, { bg: string; color: string }> = {
-  Product:     { bg: 'rgba(29,78,216,0.15)',  color: '#60A5FA' },
-  Engineering: { bg: 'rgba(234,88,12,0.15)',  color: '#FB923C' },
-  Culture:     { bg: 'rgba(124,58,237,0.15)', color: '#C084FC' },
-  Industry:    { bg: 'rgba(21,128,61,0.15)',  color: '#4ADE80' },
-  AI:          { bg: 'rgba(202,138,4,0.15)',  color: '#FACC15' },
-  DevOps:      { bg: 'rgba(190,18,60,0.15)',  color: '#FB7185' },
+  Product:     { bg: 'rgba(61,82,160,0.12)',  color: '#3D52A0' },
+  Engineering: { bg: 'rgba(112,145,230,0.15)', color: '#5a78c8' },
+  Culture:     { bg: 'rgba(134,151,196,0.18)', color: '#6b7fb8' },
+  Industry:    { bg: 'rgba(61,82,160,0.10)',   color: '#3D52A0' },
+  AI:          { bg: 'rgba(173,187,218,0.25)', color: '#1A2647' },
+  DevOps:      { bg: 'rgba(61,82,160,0.12)',   color: '#3D52A0' },
 }
 
 export const posts = [
@@ -239,8 +239,7 @@ export default function Blog() {
         <div className="container bl-hero__inner">
           <div className="bl-hero__label">Insights &amp; Perspectives</div>
           <h1 className="bl-hero__h1">
-            The Synerax<br />
-            <span className="bl-hero__accent">Blog</span>
+            Latest <span className="bl-hero__accent">Insights</span>
           </h1>
           <p className="bl-hero__sub">
             Technical deep dives, AI trends, cloud architecture, and engineering

@@ -488,14 +488,6 @@ export default function Home() {
             What our clients <span className="iq-accent">say.</span>
           </h2>
           <div className="iq-testi-row iq-reveal iq-d2">
-            <button
-              className="iq-testi-arrow iq-testi-arrow--prev"
-              onClick={() => setTestiIdx(i => (i - 1 + testimonials.length) % testimonials.length)}
-              aria-label="Previous"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
-
             <div className="iq-testi-track">
               {[0, 1].map(off => {
                 const t = testimonials[(testiIdx + off) % testimonials.length]
@@ -513,19 +505,32 @@ export default function Home() {
                 )
               })}
             </div>
-
+          </div>
+          <div className="iq-testi-nav">
             <button
-              className="iq-testi-arrow iq-testi-arrow--next"
+              className="iq-testi-nav__arrow"
+              onClick={() => setTestiIdx(i => (i - 1 + testimonials.length) % testimonials.length)}
+              aria-label="Previous"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <div className="iq-testi-segments">
+              {testimonials.map((_,i)=>(
+                <button
+                  key={i}
+                  className={`iq-testi-segment${testiIdx===i?' active':''}`}
+                  onClick={()=>setTestiIdx(i)}
+                  aria-label={`Go to testimonial ${i+1}`}
+                />
+              ))}
+            </div>
+            <button
+              className="iq-testi-nav__arrow"
               onClick={() => setTestiIdx(i => (i + 1) % testimonials.length)}
               aria-label="Next"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
-          </div>
-          <div className="iq-dots">
-            {testimonials.map((_,i)=>(
-              <button key={i} className={`iq-dot${testiIdx===i?' active':''}`} onClick={()=>setTestiIdx(i)} />
-            ))}
           </div>
         </div>
       </section>

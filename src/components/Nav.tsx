@@ -157,11 +157,10 @@ export default function Nav() {
               <path d="M2 7l10 7 10-7"/>
             </svg>
           </Link>
+          <button className={`nav__hamburger${mobileOpen ? ' open' : ''}`} onClick={() => setMobileOpen(o => !o)} aria-label="Menu">
+            <span /><span /><span />
+          </button>
         </div>
-
-        <button className={`nav__hamburger${mobileOpen ? ' open' : ''}`} onClick={() => setMobileOpen(o => !o)} aria-label="Menu">
-          <span /><span /><span />
-        </button>
       </div>
 
       {/* ── Mobile overlay ── */}

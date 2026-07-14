@@ -55,6 +55,10 @@ html {
   --max-w:          1600px;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* ── Fixed-height sections ── */
 .wp-section,
 .solutions,
@@ -124,10 +128,11 @@ h3 { font-size: clamp(1.15rem, 2.2vw, 1.35rem); font-weight: 600; }
 h4 { font-size: clamp(1rem, 1.8vw, 1.1rem); font-weight: 500; }
 
 .container {
-  width: 100%;
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 1.25rem;
+  width: 100% !important;
+  max-width: 1400px !important;
+  margin: 0 auto !important;
+  padding: 0 1.5rem !important;
+  box-sizing: border-box !important;
 }
 
 /* ── SECTION HELPERS ── */
@@ -8090,14 +8095,6 @@ img, svg, video { max-width: 100%; }
   width: 100%;
 }
 
-/* FIX 3 — Global container fix (make sure ALL pages have proper padding) */
-.container {
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
 /* ══ CAREERS PAGE — BRAND COLOR FIXES ══ */
 /* Real class names from Careers.tsx (car-benefits, car-process, car-val-card,
    car-benefit-card, car-process__step-*, car-jobs) — not the guessed ones. */
@@ -9456,11 +9453,23 @@ img, svg, video { max-width: 100%; }
 
 /* Layout */
 .iq-wrap {
-  max-width: 1450px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 1.5rem;
   width: 100%;
   box-sizing: border-box;
+}
+@media (max-width: 1024px) {
+  .iq-wrap,
+  .container {
+    padding: 0 2.5rem !important;
+  }
+}
+@media (max-width: 768px) {
+  .iq-wrap,
+  .container {
+    padding: 0 1.25rem !important;
+  }
 }
 .iq-section { padding: 4.5rem 0; background: #ffffff; position: relative; overflow: hidden; }
 .iq-section > .iq-wrap { position: relative; z-index: 1; }
@@ -10952,7 +10961,7 @@ img, svg, video { max-width: 100%; }
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .iq-hero__inner { grid-template-columns: 1fr; padding-top: 5rem; }
+  .iq-hero__inner { grid-template-columns: 1fr; padding-top: 5rem !important; }
   .iq-hero__text { padding-bottom: 3rem; }
   .iq-hero__visual { display: none; }
   .iq-split { grid-template-columns: 1fr; gap: 3rem; }
@@ -10982,8 +10991,7 @@ img, svg, video { max-width: 100%; }
   .iq-news-grid { grid-template-columns: 1fr; }
   .iq-bigstats { grid-template-columns: 1fr; gap: 1.5rem; }
   .iq-section { padding: 3rem 0; }
-  .iq-wrap { padding: 0 1.25rem; }
-  .iq-hero__inner { padding-top: 5.5rem; }
+  .iq-hero__inner { padding-top: 5.5rem !important; }
   .iq-testi-row { gap: 0.75rem; }
   .iq-testi-track .iq-testi:nth-child(2) { display: none; }
   .iq-testi-arrow { width: 38px; height: 38px; }

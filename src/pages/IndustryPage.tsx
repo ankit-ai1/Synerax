@@ -28,7 +28,7 @@ export default function IndustryPage() {
 
   if (!industry) return <Navigate to="/" replace />
 
-  const ac = '#3D52A0'
+  const ac = '#0D487E'
 
   return (
     <>
@@ -37,7 +37,7 @@ export default function IndustryPage() {
       {/* ═══════════════════════════════════════
           1. HERO — dark colored bg
       ═══════════════════════════════════════ */}
-      <section className="ind-hero" style={{ background: 'linear-gradient(135deg, #1A2647 0%, #3D52A0 55%, #2a3870 100%)' }}>
+      <section className="ind-hero" style={{ background: 'linear-gradient(135deg, #0D487E 0%, #0D487E 55%, #2a3870 100%)' }}>
         <div className="container">
           {/* Breadcrumb */}
           <nav className="ind-breadcrumb">
@@ -50,7 +50,7 @@ export default function IndustryPage() {
             <div className="ind-hero__chip">{industry.tag}</div>
             <h1 className="ind-hero__h1">
               {industry.heroTitle}<br />
-              <span style={{ color: '#7091E6' }}>{industry.heroTitleBlue}</span>
+              <span style={{ color: '#4FA9E8' }}>{industry.heroTitleBlue}</span>
             </h1>
             <p className="ind-hero__desc">{industry.heroDesc}</p>
             <div className="ind-hero__actions">

@@ -1,19 +1,46 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import { useLead } from '../context/LeadContext'
 /* ─── Solution cards ─────────────────────────── */
 const homeSolCards = [
-  { slug:'contact-center', title:'Contact Center Solutions',    tag:'Enterprise',  img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781091750/ChatGPT_Image_Jun_10_2026_05_12_08_PM_vouyiu.png', desc:'Enterprise-grade omnichannel platform handling 10,000+ calls/hour with AI-powered IVR, intelligent routing, and a 99.9% uptime SLA.' },
-  { slug:'frontend',       title:'Frontend Development',        tag:'Development', img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781091899/ChatGPT_Image_Jun_10_2026_05_14_32_PM_wb2ubo.png', desc:'Blazing-fast, responsive web apps with React, Next.js, and TypeScript. Performance-first with Core Web Vitals optimisation.' },
-  { slug:'backend',        title:'Backend Development',         tag:'Development', img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781092016/ChatGPT_Image_Jun_10_2026_05_16_44_PM_vpm7nm.png', desc:'Scalable REST/GraphQL APIs and microservices. Node.js, Python, FastAPI — engineered for high-traffic production systems.' },
-  { slug:'agentic-ai',     title:'Agentic AI Solutions',        tag:'AI & Cloud',  img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781092144/ChatGPT_Image_Jun_10_2026_05_18_51_PM_vt62mr.png', desc:'Autonomous LLM agents, NLP pipelines, and agentic workflows. OpenAI, LangChain, HuggingFace — AI that works 24/7.' },
-  { slug:'aws',            title:'AWS Infrastructure',          tag:'AI & Cloud',  img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781092334/ChatGPT_Image_Jun_10_2026_05_22_02_PM_msfgms.png', desc:'Enterprise AWS with 99.99% availability SLAs. Terraform IaC, Kubernetes, CI/CD pipelines, and cloud cost optimisation.' },
-  { slug:'cybersecurity',  title:'Cybersecurity',               tag:'AI & Cloud',  img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781092580/ChatGPT_Image_Jun_10_2026_05_25_49_PM_vbnagv.png', desc:'24/7 SOC operations, zero-trust architecture, and penetration testing. SOC 2 & ISO 27001 certified infrastructure.' },
-  { slug:'inventory',      title:'Inventory Management',        tag:'Enterprise',  img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781092765/ChatGPT_Image_Jun_10_2026_05_27_29_PM_hgknao.png', desc:'Real-time stock tracking, AI demand forecasting, multi-warehouse support, and ERP integrations.' },
-  { slug:'fullstack',      title:'Full Stack & Mobile',         tag:'Development', img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781092853/ChatGPT_Image_Jun_10_2026_05_30_37_PM_gn5rei.png', desc:'Complete application development — web and mobile. Flutter, React Native, Swift, Kotlin. App Store-ready delivery in weeks.' },
-  { slug:'consulting',     title:'IT Consulting & Outsourcing', tag:'Enterprise',  img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781093112/ChatGPT_Image_Jun_10_2026_05_35_01_PM_vbjuf8.png', desc:'CTO-as-a-Service, digital transformation roadmaps, talent outsourcing, and strategic IT advisory.' },
+  {
+    slug:'contact-center', title:'Contact Center Solutions',    tag:'Enterprise',  img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781091750/ChatGPT_Image_Jun_10_2026_05_12_08_PM_vouyiu.png', desc:'Enterprise-grade omnichannel platform handling 10,000+ calls/hour with AI-powered IVR, intelligent routing, and a 99.9% uptime SLA.',
+    svg: (<svg viewBox="0 0 48 48" fill="none"><path d="M8 14a4 4 0 014-4h6l3 8-4 2.5a22 22 0 009.5 9.5L29 26l8 3v6a4 4 0 01-4 4C17.2 39 9 30.8 9 20.8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/><path d="M34 14a2 2 0 110-4 2 2 0 010 4zM34 22a2 2 0 110-4 2 2 0 010 4z" fill="currentColor" opacity=".4"/></svg>),
+  },
+  {
+    slug:'frontend',       title:'Frontend Development',        tag:'Development', img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781091899/ChatGPT_Image_Jun_10_2026_05_14_32_PM_wb2ubo.png', desc:'Blazing-fast, responsive web apps with React, Next.js, and TypeScript. Performance-first with Core Web Vitals optimisation.',
+    svg: (<svg viewBox="0 0 48 48" fill="none"><rect x="4" y="8" width="40" height="28" rx="3" stroke="currentColor" strokeWidth="2.2"/><path d="M16 44h16M24 36v8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/><path d="M13 22l6 6-6 6M22 32h10" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>),
+  },
+  {
+    slug:'backend',        title:'Backend Development',         tag:'Development', img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781092016/ChatGPT_Image_Jun_10_2026_05_16_44_PM_vpm7nm.png', desc:'Scalable REST/GraphQL APIs and microservices. Node.js, Python, FastAPI — engineered for high-traffic production systems.',
+    svg: (<svg viewBox="0 0 48 48" fill="none"><rect x="6" y="8" width="36" height="10" rx="3" stroke="currentColor" strokeWidth="2.2"/><rect x="6" y="22" width="36" height="10" rx="3" stroke="currentColor" strokeWidth="2.2"/><circle cx="13" cy="13" r="2" fill="currentColor"/><circle cx="13" cy="27" r="2" fill="currentColor"/><path d="M20 36v6M28 36v6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>),
+  },
+  {
+    slug:'agentic-ai',     title:'Agentic AI Solutions',        tag:'AI & Cloud',  img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781092144/ChatGPT_Image_Jun_10_2026_05_18_51_PM_vt62mr.png', desc:'Autonomous LLM agents, NLP pipelines, and agentic workflows. OpenAI, LangChain, HuggingFace — AI that works 24/7.',
+    svg: (<svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="10" stroke="currentColor" strokeWidth="2.2"/><circle cx="24" cy="24" r="4" fill="currentColor" opacity=".35"/><path d="M24 4v4M24 40v4M44 24h-4M8 24H4M37.07 10.93l-2.83 2.83M13.76 34.24l-2.83 2.83M37.07 37.07l-2.83-2.83M13.76 13.76l-2.83-2.83" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>),
+  },
+  {
+    slug:'aws',            title:'AWS Infrastructure',          tag:'AI & Cloud',  img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781092334/ChatGPT_Image_Jun_10_2026_05_22_02_PM_msfgms.png', desc:'Enterprise AWS with 99.99% availability SLAs. Terraform IaC, Kubernetes, CI/CD pipelines, and cloud cost optimisation.',
+    svg: (<svg viewBox="0 0 48 48" fill="none"><path d="M24 8C15.16 8 8 15.16 8 24s7.16 16 16 16 16-7.16 16-16S32.84 8 24 8z" stroke="currentColor" strokeWidth="2.2"/><path d="M24 8c-4.5 6.5-6 13-6 16s1.5 9.5 6 16M24 8c4.5 6.5 6 13 6 16s-1.5 9.5-6 16M8 24h32" stroke="currentColor" strokeWidth="2"/><path d="M10 17h28M10 31h28" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 3"/></svg>),
+  },
+  {
+    slug:'cybersecurity',  title:'Cybersecurity',               tag:'AI & Cloud',  img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781092580/ChatGPT_Image_Jun_10_2026_05_25_49_PM_vbnagv.png', desc:'24/7 SOC operations, zero-trust architecture, and penetration testing. SOC 2 & ISO 27001 certified infrastructure.',
+    svg: (<svg viewBox="0 0 48 48" fill="none"><path d="M24 6L8 14v12c0 9.4 6.8 18.2 16 20.4C33.2 44.2 40 35.4 40 26V14L24 6z" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round"/><path d="M17 24l5 5 9-10" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>),
+  },
+  {
+    slug:'inventory',      title:'Inventory Management',        tag:'Enterprise',  img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781092765/ChatGPT_Image_Jun_10_2026_05_27_29_PM_hgknao.png', desc:'Real-time stock tracking, AI demand forecasting, multi-warehouse support, and ERP integrations.',
+    svg: (<svg viewBox="0 0 48 48" fill="none"><rect x="6" y="16" width="36" height="26" rx="3" stroke="currentColor" strokeWidth="2.2"/><path d="M16 16V12a8 8 0 0116 0v4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/><path d="M18 28h12M18 34h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>),
+  },
+  {
+    slug:'fullstack',      title:'Full Stack & Mobile',         tag:'Development', img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781092853/ChatGPT_Image_Jun_10_2026_05_30_37_PM_gn5rei.png', desc:'Complete application development — web and mobile. Flutter, React Native, Swift, Kotlin. App Store-ready delivery in weeks.',
+    svg: (<svg viewBox="0 0 48 48" fill="none"><rect x="14" y="4" width="20" height="36" rx="4" stroke="currentColor" strokeWidth="2.2"/><rect x="18" y="8" width="12" height="20" rx="1.5" stroke="currentColor" strokeWidth="1.8"/><circle cx="24" cy="35" r="2" fill="currentColor"/><path d="M6 18l4 4-4 4M42 18l-4 4 4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>),
+  },
+  {
+    slug:'consulting',     title:'IT Consulting & Outsourcing', tag:'Enterprise',  img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781093112/ChatGPT_Image_Jun_10_2026_05_35_01_PM_vbjuf8.png', desc:'CTO-as-a-Service, digital transformation roadmaps, talent outsourcing, and strategic IT advisory.',
+    svg: (<svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="16" r="8" stroke="currentColor" strokeWidth="2.2"/><path d="M8 40c0-8.84 7.16-16 16-16s16 7.16 16 16" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/><path d="M30 28l8 4M38 28l-8 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>),
+  },
 ]
 
 /* ─── Testimonials ───────────────────────────── */
@@ -23,41 +50,6 @@ const testimonials = [
   { quote:"The agentic AI solution Synerax built for us automated 70% of our document processing workflows. ROI achieved in under 4 months. Genuinely transformational.", name:'Sara Al-Rashid', role:'Head of Digital, Insurance Group', initial:'S' },
   { quote:"Our AWS bill dropped by 38% after Synerax's cost optimisation engagement. CI/CD pipelines cut deployment time from 2 hours to 12 minutes.", name:'Marcus Chen', role:'Engineering Director, SaaS Company', initial:'M' },
   { quote:"I've been a customer for more than a decade. Synerax is an example of the way managed services should be done. We will continue to be a customer for years to come.", name:'Daniel Legrante', role:'CIO, Restaurant Product Supplier', initial:'D' },
-]
-
-
-/* ─── Stat cards (Telisof style) ────────────── */
-const statCards = [
-  {
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>,
-    num: '5+', label: 'Projects Delivered',
-    desc: 'Across enterprise and mid-market clients globally'
-  },
-  {
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>,
-    num: '5+', label: 'Enterprise Clients',
-    desc: 'Trusted by organizations across multiple industries'
-  },
-  {
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>,
-    num: '3+', label: 'Countries Served',
-    desc: 'Delivering impact globally across every continent'
-  },
-  {
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
-    num: '99.9%', label: 'Uptime SLA',
-    desc: 'Guaranteed availability on all managed services'
-  },
-  {
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>,
-    num: '15+', label: 'Years of Experience',
-    desc: 'Decades of expertise in enterprise IT solutions'
-  },
-  {
-    icon: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.09 6.09l1.07-1.08a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>,
-    num: '24/7', label: 'Expert Support',
-    desc: 'Round-the-clock monitoring and incident response'
-  },
 ]
 
 const whyCards = [
@@ -92,369 +84,395 @@ const whyCards = [
 ]
 
 const newsItems = [
-  { seed:'news1', tag:'AI & Automation', read:'5 min read', title:'The Future of Contact Centers: AI Excellence', desc:'How generative AI is reshaping customer service architectures in the enterprise...', img:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80' },
-  { seed:'news2', tag:'Infrastructure',  read:'7 min read', title:'Scaling to 50 Million Monthly Hits', desc:'A deep dive into the AWS architecture that powered our latest multi-national rollout.', img:'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80' },
-  { seed:'news3', tag:'Engineering',     read:'4 min read', title:'High-Performance Distributed Teams', desc:'Strategies for maintaining velocity and quality in global engineering cultures.', img:'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80' },
+  { seed:'news1', tag:'AI & Automation', read:'5 min read', title:'The Future of Contact Centers: AI Excellence', desc:'How generative AI is reshaping customer service architectures in the enterprise...', img:'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80', date:'Jul 8, 2026' },
+  { seed:'news2', tag:'Infrastructure',  read:'7 min read', title:'Scaling to 50 Million Monthly Hits', desc:'A deep dive into the AWS architecture that powered our latest multi-national rollout.', img:'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80', date:'Jun 24, 2026' },
+  { seed:'news3', tag:'Engineering',     read:'4 min read', title:'High-Performance Distributed Teams', desc:'Strategies for maintaining velocity and quality in global engineering cultures.', img:'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80', date:'Jun 15, 2026' },
+]
+
+const intelItems = [
+  { icon:'🧠', t:'Predictive Forecasting',      d:'ML models that predict demand, churn, and revenue with high accuracy.' },
+  { icon:'🔗', t:'Intelligent Recommendations', d:'Context-aware AI suggestions that drive better business decisions.' },
+  { icon:'⚡', t:'Sales Learning Engine',       d:'Autonomous systems that learn and optimize your workflows continuously.' },
+  { icon:'📊', t:'Visual Dispute Analytics',    d:'AI-powered dashboards that surface insights and anomalies in real-time.' },
+  { icon:'🤖', t:'Agentic AI Workflows',        d:'Autonomous agents handling complex multi-step business processes.' },
+  { icon:'📈', t:'Quota Management AI',         d:'Intelligent quota setting and territory management at enterprise scale.' },
+  { icon:'🔍', t:'Process Intelligence',        d:'Deep analysis of business processes to identify optimization opportunities.' },
+  { icon:'🌐', t:'Global Scale Architecture',   d:'Infrastructure designed for global deployment with local compliance.' },
 ]
 
 export default function Home() {
   const { openLead } = useLead()
   const [testiIdx, setTestiIdx] = useState(0)
-  const [solIdx, setSolIdx] = useState(0)
-  const [solVisibleCount, setSolVisibleCount] = useState(1)
-  const solMaxIdx = homeSolCards.length - solVisibleCount
-
-  useEffect(() => {
-    const computeVisible = () => {
-      const w = window.innerWidth
-      setSolVisibleCount(w <= 768 ? 1 : 3)
-    }
-    computeVisible()
-    window.addEventListener('resize', computeVisible)
-    return () => window.removeEventListener('resize', computeVisible)
-  }, [])
-
-  useEffect(() => {
-    setSolIdx(i => Math.min(i, homeSolCards.length - solVisibleCount))
-  }, [solVisibleCount])
 
   useEffect(() => {
     const t = setInterval(() => setTestiIdx(i => (i + 1) % testimonials.length), 5000)
     return () => clearInterval(t)
   }, [])
 
-  const testi = testimonials[testiIdx]
-
+  // Scroll reveal
   useEffect(() => {
-    const canvas = document.getElementById('ht-canvas') as HTMLCanvasElement
-    if (!canvas) return
-    const ctx = canvas.getContext('2d')
-    if (!ctx) return
-
-    let animId: number
-
-    const setSize = () => {
-      canvas.width = canvas.offsetWidth
-      canvas.height = canvas.offsetHeight
-    }
-    setSize()
-    window.addEventListener('resize', setSize)
-
-    const W = () => canvas.width
-    const H = () => canvas.height
-
-    const particles = Array.from({ length: 55 }, () => ({
-      x: Math.random(),
-      y: Math.random(),
-      r: Math.random() * 1.8 + 0.4,
-      dx: (Math.random() - 0.5) * 0.0008,
-      dy: (Math.random() - 0.5) * 0.0008,
-      opacity: Math.random() * 0.45 + 0.1,
-    }))
-
-    const cubes = Array.from({ length: 5 }, () => ({
-      x: Math.random(),
-      y: Math.random(),
-      size: Math.random() * 35 + 18,
-      rot: Math.random() * Math.PI * 2,
-      rotSpd: (Math.random() - 0.5) * 0.006,
-      dx: (Math.random() - 0.5) * 0.0004,
-      dy: (Math.random() - 0.5) * 0.0004,
-      op: Math.random() * 0.1 + 0.04,
-    }))
-
-    const drawCube = (x: number, y: number, s: number, rot: number, op: number) => {
-      ctx.save()
-      ctx.translate(x, y)
-      ctx.rotate(rot)
-      ctx.strokeStyle = `rgba(112,145,230,${op})`
-      ctx.lineWidth = 1
-      ctx.strokeRect(-s/2, -s/2, s, s)
-      const o = s * 0.38
-      ctx.strokeRect(-s/2+o, -s/2-o, s, s)
-      ctx.beginPath()
-      ctx.moveTo(-s/2,-s/2); ctx.lineTo(-s/2+o,-s/2-o)
-      ctx.moveTo(s/2,-s/2);  ctx.lineTo(s/2+o,-s/2-o)
-      ctx.moveTo(s/2,s/2);   ctx.lineTo(s/2+o,s/2-o)
-      ctx.moveTo(-s/2,s/2);  ctx.lineTo(-s/2+o,s/2-o)
-      ctx.stroke()
-      ctx.restore()
-    }
-
-    const draw = () => {
-      const w = W(), h = H()
-      ctx.clearRect(0, 0, w, h)
-
-      const pts = particles.map(p => ({ ax: p.x * w, ay: p.y * h, op: p.opacity }))
-
-      // Connection lines
-      for (let i = 0; i < pts.length; i++) {
-        for (let j = i+1; j < pts.length; j++) {
-          const dx = pts[i].ax - pts[j].ax
-          const dy = pts[i].ay - pts[j].ay
-          const d = Math.sqrt(dx*dx + dy*dy)
-          if (d < 130) {
-            ctx.beginPath()
-            ctx.strokeStyle = `rgba(112,145,230,${0.07 * (1 - d/130)})`
-            ctx.lineWidth = 0.5
-            ctx.moveTo(pts[i].ax, pts[i].ay)
-            ctx.lineTo(pts[j].ax, pts[j].ay)
-            ctx.stroke()
-          }
+    const els = document.querySelectorAll('.iq-reveal')
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('iq-visible')
+          obs.unobserve(e.target)
         }
-      }
-
-      // Dots
-      particles.forEach((p, i) => {
-        ctx.beginPath()
-        ctx.arc(pts[i].ax, pts[i].ay, p.r, 0, Math.PI*2)
-        ctx.fillStyle = `rgba(173,187,218,${p.opacity})`
-        ctx.fill()
-        p.x += p.dx; p.y += p.dy
-        if (p.x < 0 || p.x > 1) p.dx *= -1
-        if (p.y < 0 || p.y > 1) p.dy *= -1
       })
-
-      // Cubes
-      cubes.forEach(c => {
-        drawCube(c.x * w, c.y * h, c.size, c.rot, c.op)
-        c.rot += c.rotSpd
-        c.x += c.dx; c.y += c.dy
-        if (c.x < -0.1 || c.x > 1.1) c.dx *= -1
-        if (c.y < -0.1 || c.y > 1.1) c.dy *= -1
-      })
-
-      animId = requestAnimationFrame(draw)
-    }
-
-    draw()
-    return () => {
-      cancelAnimationFrame(animId)
-      window.removeEventListener('resize', setSize)
-    }
+    }, { threshold: 0.1 })
+    els.forEach(el => obs.observe(el))
+    return () => obs.disconnect()
   }, [])
 
   return (
     <>
       <Nav />
 
-      {/* ══════════════════════════════════════════
-          HERO — ITS-style full-bleed dark photo
-      ══════════════════════════════════════════ */}
-      <section className="ht-hero">
+      {/* ══ 1. HERO — Centered text, wide mockup below ══ */}
+      <section className="iq-hero">
+        <div className="iq-hero__glow" />
+        <div className="iq-wrap iq-hero__inner">
 
-        <canvas className="ht-hero__canvas" id="ht-canvas" />
-
-        {/* Background image */}
-        <img
-          src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1783869514/wmremove-transformed_10_nnqgn2.png"
-          className="ht-hero__photo"
-          alt=""
-        />
-
-        {/* Subtle left fade for text readability only */}
-        <div className="ht-hero__overlay" />
-
-        {/* 5 — Content */}
-        <div className="ht-hero__wrap">
-          <div className="ht-hero__center">
-
-            <h1 className="ht-hero__h1">
+          {/* Centered text */}
+          <div className="iq-hero__text">
+            <h1 className="iq-hero__h1 iq-reveal iq-d1">
               From Code to Cloud.<br />
-              <span style={{ color: '#7091E6' }}>We Deliver What Others Promise.</span>
+              We Deliver What <em className="iq-em">Others Promise.</em>
             </h1>
-
-            <p className="ht-hero__desc">
+            <p className="iq-hero__sub iq-reveal iq-d2">
               Enterprise contact centers, AI systems, cloud architecture, and full-stack
               applications — all engineered for scale, built to last, and delivered on time.
             </p>
-
-            <div className="ht-hero__actions">
-              <button onClick={() => openLead()} className="ht-hero__btn-primary">
+            <div className="iq-hero__btns iq-reveal iq-d3">
+              <button onClick={() => openLead()} className="iq-btn-fill">
                 Get a Free Consultation
               </button>
-              <Link to="/solutions/contact-center" className="ht-hero__btn-outline">
+              <Link to="/solutions" className="iq-btn-ring">
                 Explore Solutions
               </Link>
-              <Link to="/about" className="ht-hero__btn-ghost">
-                Learn About Us
-              </Link>
             </div>
-
-            <div className="ht-hero__checks">
-              <span className="ht-hero__check"><span className="ht-hero__check-icon">✓</span> NDA Available</span>
-              <span className="ht-hero__check"><span className="ht-hero__check-icon">✓</span> Reply within 24h</span>
-              <span className="ht-hero__check"><span className="ht-hero__check-icon">✓</span> Free Scoping</span>
-              <span className="ht-hero__check"><span className="ht-hero__check-icon">✓</span> Senior Engineers Only</span>
+            <div className="iq-hero__trust iq-reveal iq-d4">
+              {['NDA Available','Reply in 24h','Free Scoping','Senior Engineers'].map(t=>(
+                <span key={t} className="iq-trust">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  {t}
+                </span>
+              ))}
             </div>
-
           </div>
         </div>
 
-        {/* 5 — Down arrow */}
-        <div className="ht-hero__arrow">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="10"/><polyline points="8 12 12 16 16 12"/><line x1="12" y1="8" x2="12" y2="16"/>
-          </svg>
+        {/* Tech strip */}
+        <div className="iq-techstrip iq-reveal iq-d3">
+          <div className="iq-wrap">
+            <p className="iq-techstrip__lbl">Built on world-class platforms</p>
+            <div className="iq-techstrip__pills">
+              {['React','Node.js','AWS','OpenAI','Kubernetes','Python','TypeScript','Docker','FastAPI','LangChain'].map(t=>(
+                <span key={t} className="iq-techstrip__pill">{t}</span>
+              ))}
+            </div>
+          </div>
         </div>
-
       </section>
 
-      {/* ══════════════════════════════════════════
-          WHY SYNERAX — Premium 4-card strip
-      ══════════════════════════════════════════ */}
-      <section className="wp-section">
-        <div className="container">
-          <div className="wp-header">
-            <div className="section-tag">Why Synerax</div>
-            <h2 className="wp-title">
-              Engineering Beyond <span>Expectations.</span>
+      {/* ══ 2. PROBLEM — big stats + comparison ══ */}
+      <section className="iq-section iq-section--white-a">
+        <div className="iq-wrap">
+          <p className="iq-eye iq-reveal">The Problem</p>
+          <h2 className="iq-h2 iq-reveal iq-d1" style={{maxWidth:'680px'}}>
+            Most tech vendors overpromise<br />
+            and <span className="iq-accent">underdeliver!!!</span>
+          </h2>
+          <p className="iq-body iq-reveal iq-d2" style={{maxWidth:'560px', marginBottom:'3rem'}}>
+            You've dealt with junior developers, missed deadlines, and bloated invoices.
+            Synerax is built differently — senior-only execution, radical transparency.
+          </p>
+
+          {/* Big stats row */}
+          <div className="iq-bigstats iq-reveal iq-d3">
+            {[
+              { num:'5+',    lbl:'Projects Delivered', sub:'Across enterprise and mid-market clients globally' },
+              { num:'99.8%', lbl:'Client Satisfaction', sub:'We don\'t just deliver projects — we build partnerships' },
+              { num:'60%',   lbl:'Faster Delivery', sub:'vs traditional agencies through our senior-only model' },
+            ].map(s=>(
+              <div key={s.lbl} className="iq-bigstat">
+                <div className="iq-bigstat__num">{s.num}</div>
+                <div className="iq-bigstat__lbl">{s.lbl}</div>
+                <div className="iq-bigstat__sub">{s.sub}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Comparison table */}
+          <div className="iq-compare">
+            <div className="iq-compare__vs"><span /></div>
+            <div className="iq-compare__col iq-compare__col--bad iq-reveal iq-d3">
+              <div className="iq-compare__head">
+                <span className="iq-compare__head-icon iq-compare__head-icon--bad">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                </span>
+                Most dev shops
+              </div>
+              {['Code shipped by whoever\'s free, not who\'s best fit','Estimate balloons once the sprint starts','You chase updates instead of getting them','Your ticket gets passed between three teams','Same boilerplate stack regardless of what you need'].map((i,idx)=>(
+                <div key={i} className={`iq-compare__row iq-reveal iq-d${Math.min(idx+1,4)}`}>
+                  <span className="iq-compare__row-icon iq-compare__row-icon--bad">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                  </span>
+                  {i}
+                </div>
+              ))}
+            </div>
+            <div className="iq-compare__col iq-compare__col--good iq-reveal iq-d3">
+              <span className="iq-compare__ribbon">Recommended</span>
+              <div className="iq-compare__head">
+                <span className="iq-compare__head-icon iq-compare__head-icon--good">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                Synerax
+              </div>
+              {['Same senior engineer from kickoff to launch','Fixed quote in writing, no surprise invoices','Weekly demo, not a status email you have to chase','One PM owns your project start to finish','Stack chosen for your product, not our comfort zone'].map((i,idx)=>(
+                <div key={i} className={`iq-compare__row iq-reveal iq-d${Math.min(idx+1,4)}`}>
+                  <span className="iq-compare__row-icon iq-compare__row-icon--good">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  </span>
+                  {i}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 3. ONE PLATFORM — split, rounded container ══ */}
+      <section className="iq-section iq-section--tint">
+        <div className="iq-wrap">
+        <div className="iq-boxed iq-split">
+          <div className="iq-split__text">
+            <p className="iq-eye iq-reveal">End-to-End Expertise</p>
+            <h2 className="iq-h2 iq-reveal iq-d1">
+              One Technology Partner,<br />
+              <span className="iq-accent">Every Digital Solution.</span>
             </h2>
-            <p className="wp-sub">Creating secure, scalable, and high-performance digital experiences for ambitious businesses.</p>
-          </div>
-          <div className="wp-layout">
-
-            {/* Animated orbit visual */}
-            <div className="wp-orbit">
-              <div className="wp-orbit__glow" />
-              <div className="wp-orbit__ring wp-orbit__ring--outer" />
-              <div className="wp-orbit__ring wp-orbit__ring--inner" />
-              <div className="wp-orbit__core">
-                <span className="wp-orbit__core-icon">✦</span>
-                <span className="wp-orbit__core-label">SYNERAX</span>
-              </div>
-              {whyCards.map((c, i) => (
-                <div key={i} className={`wp-orbit__pill wp-orbit__pill--${i + 1}`}>
-                  <span className="wp-orbit__pill-dot" style={{ background: c.accent }} />
-                  {c.tag}
-                </div>
-              ))}
-              <div className="wp-orbit__pill wp-orbit__pill--5">
-                <span className="wp-orbit__pill-dot" style={{ background: '#7091E6' }} />
-                INNOVATION
-              </div>
-              <div className="wp-orbit__pill wp-orbit__pill--6">
-                <span className="wp-orbit__pill-dot" style={{ background: '#3D52A0' }} />
-                24/7 SUPPORT
-              </div>
-            </div>
-
-            <div className="wp-grid wp-grid--orbit">
-              {whyCards.map((c, i) => (
-                <div key={i} className="wp-card" style={{ '--wp-accent': c.accent } as React.CSSProperties}>
-                  <div className="wp-card__top" />
-                  <div className="wp-card__icon" style={{ background: c.iconBg, color: c.accent, fontSize: '1.3rem' }}>
-                    {c.icon}
+            <p className="iq-body iq-reveal iq-d2">
+              From AI-powered applications and cloud infrastructure to enterprise software, DevOps, and digital transformation, Synerax delivers scalable, secure, and future-ready technology solutions under one trusted partner.
+            </p>
+            <div className="iq-platform-list iq-reveal iq-d3">
+              {[
+                { icon:'🏗️', t:'Built on AWS', d:'99.99% availability, Terraform IaC, Kubernetes' },
+                { icon:'🔒', t:'Enterprise Security', d:'SOC 2, ISO 27001, HIPAA certified infrastructure' },
+                { icon:'⚡', t:'AI-Powered', d:'Custom LLM pipelines, autonomous agents, ML systems' },
+                { icon:'📊', t:'Full Visibility', d:'Real-time dashboards, weekly demos, dedicated PM' },
+              ].map(item=>(
+                <div key={item.t} className="iq-platform-item">
+                  <span className="iq-platform-item__icon">{item.icon}</span>
+                  <div>
+                    <div className="iq-platform-item__title">{item.t}</div>
+                    <div className="iq-platform-item__desc">{item.d}</div>
                   </div>
-                  <h4 className="wp-card__title">{c.title}</h4>
-                  <p className="wp-card__desc">{c.desc}</p>
                 </div>
               ))}
             </div>
+            <div className="iq-hero__btns iq-reveal iq-d4" style={{marginTop:'2rem', justifyContent:'flex-start'}}>
+              <button onClick={() => openLead()} className="iq-btn-fill">Start a Project →</button>
+              <Link to="/solutions" className="iq-btn-ring">View All Solutions</Link>
+            </div>
+          </div>
+          <div className="iq-split__img iq-reveal iq-d2">
+            <div className="iq-mini-stack">
+              <div className="iq-mini-card">
+                <div className="iq-hero__card-header">
+                  <span className="iq-hero__card-title">Platform Overview</span>
+                </div>
+                <div className="iq-mini-card__body">
+                  <div className="iq-mini-chart">
+                    {[38,55,44,62,50,70,58,80].map((h,i)=>(
+                      <span key={i} style={{height:`${h}%`}} />
+                    ))}
+                  </div>
+                  <div className="iq-mini-donut-row">
+                    <div className="iq-mini-donut" />
+                    <div className="iq-mini-legend">
+                      {[
+                        {c:'#0D487E', t:'Cloud & DevOps'},
+                        {c:'#4FA9E8', t:'AI & Automation'},
+                        {c:'#DCEFFD', t:'Development'},
+                      ].map(l=>(
+                        <span key={l.t} className="iq-mini-legend__item">
+                          <span className="iq-mini-legend__dot" style={{background:l.c}} />{l.t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="iq-mini-card iq-mini-card--sm">
+                <div className="iq-hero__card-header">
+                  <span className="iq-hero__card-title">Security &amp; Compliance</span>
+                  <span className="iq-mini-badge">
+                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    Verified
+                  </span>
+                </div>
+                <div className="iq-mini-card__body iq-mini-card__body--sm">
+                  <div className="iq-mini-feed">
+                    {[
+                      { t:'SOC 2 Type II', s:'Independently audited annually', time:'Certified' },
+                      { t:'ISO 27001', s:'Information security management', time:'Certified' },
+                      { t:'HIPAA', s:'Healthcare data compliance', time:'Compliant' },
+                    ].map(f=>(
+                      <div key={f.t} className="iq-mini-feed__item">
+                        <span className="iq-mini-feed__check">
+                          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                        </span>
+                        <div className="iq-mini-feed__text">
+                          <div className="iq-mini-feed__title">{f.t}</div>
+                          <div className="iq-mini-feed__sub">{f.s}</div>
+                        </div>
+                        <span className="iq-mini-feed__time">{f.time}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+      </section>
 
+      {/* ══ 4. EVERYTHING — featured row + card grid ══ */}
+      <section className="iq-section iq-section--white-b">
+        <div className="iq-wrap">
+          <p className="iq-eye iq-reveal">Everything You Need</p>
+          <h2 className="iq-h2 iq-reveal iq-d1">
+            Everything your business needs,<br />
+            <span className="iq-accent">in one place.</span>
+          </h2>
+          <p className="iq-body iq-reveal iq-d2" style={{marginBottom:'3rem'}}>
+            From log modeling to AI-assisted answers — we deliver the full capabilities.
+          </p>
+
+          {/* Featured row */}
+          <div className="iq-feat-hero-row">
+            <div className="iq-feat-hero iq-reveal iq-d2">
+              <div className="iq-feat-hero__content">
+                <div className="iq-feat-hero__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 5a2 2 0 012-2h3l1.5 4-2 1.25a10 10 0 004.25 4.25L14 10.5l4 1.5v3a2 2 0 01-2 2C8.16 17 3 11.84 3 5.5"/></svg>
+                </div>
+                <h4 className="iq-feat-hero__title">Contact Center Solutions</h4>
+                <p className="iq-feat-hero__desc">
+                  Enterprise omnichannel platform handling 10,000+ calls/hour with
+                  AI-powered IVR, intelligent routing, and a 99.9% uptime SLA.
+                </p>
+                <Link to="/solutions/contact-center" className="iq-feat__link">Learn more →</Link>
+              </div>
+              <div className="iq-feat-hero__visual">
+                <span className="iq-feat-hero__visual-lbl">Live Metrics</span>
+                <div className="iq-feat-hero__stat">
+                  <span className="iq-feat-hero__stat-num">10K+</span>
+                  <span className="iq-feat-hero__stat-lbl">Calls / hour</span>
+                </div>
+                <div className="iq-feat-hero__stat">
+                  <span className="iq-feat-hero__stat-num">99.9%</span>
+                  <span className="iq-feat-hero__stat-lbl">Uptime SLA</span>
+                </div>
+                <div className="iq-mini-chart iq-mini-chart--sm">
+                  {[45,65,50,75,60].map((h,i)=>(<span key={i} style={{height:`${h}%`}} />))}
+                </div>
+              </div>
+            </div>
+
+            <div className="iq-feat-hero iq-reveal iq-d3">
+              <div className="iq-feat-hero__content">
+                <div className="iq-feat-hero__icon">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4" fill="currentColor" opacity=".35"/><path d="M12 2v4M12 18v4M22 12h-4M6 12H2"/></svg>
+                </div>
+                <h4 className="iq-feat-hero__title">Agentic AI Solutions</h4>
+                <p className="iq-feat-hero__desc">
+                  Autonomous LLM agents, NLP pipelines, OpenAI, LangChain —
+                  AI that works for your business 24/7.
+                </p>
+                <Link to="/solutions/agentic-ai" className="iq-feat__link">Learn more →</Link>
+              </div>
+              <div className="iq-feat-hero__chat">
+                <span className="iq-feat-hero__chat-lbl">AI Assistant</span>
+                <div className="iq-chat-bubble iq-chat-bubble--user">How's our uptime this month?</div>
+                <div className="iq-chat-bubble iq-chat-bubble--ai">
+                  <span className="iq-chat-bubble__spark">✦</span>
+                  99.9% uptime, zero incidents. Response time down 18% vs last month.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="iq-feat-grid">
+            {[
+              { icon:'⚙️', t:'Backend Development',         d:'Scalable REST/GraphQL APIs and microservices. Node.js, Python, FastAPI for high-traffic systems.' },
+              { icon:'🎨', t:'Frontend Development',        d:'React, Next.js, Vue applications with exceptional UX. Performance-first with Core Web Vitals.' },
+              { icon:'☁️', t:'AWS Infrastructure',          d:'Enterprise AWS with 99.99% availability SLAs. Terraform IaC, Kubernetes, CI/CD pipelines.' },
+              { icon:'🔐', t:'Cybersecurity',               d:'24/7 SOC operations, zero-trust architecture. SOC 2 & ISO 27001 certified infrastructure.' },
+              { icon:'📦', t:'Inventory Management',        d:'Real-time stock tracking, AI demand forecasting, multi-warehouse support and ERP integrations.' },
+              { icon:'📱', t:'Full Stack & Mobile',          d:'Flutter, React Native, Swift, Kotlin. Complete app development from UX to App Store delivery.' },
+              { icon:'🏢', t:'IT Consulting & Outsourcing', d:'CTO-as-a-Service, digital transformation roadmaps, talent outsourcing and strategic advisory.' },
+            ].map((f,i)=>(
+              <div key={f.t} className={`iq-feat iq-reveal iq-d${(i%3)+1}`}>
+                <div className="iq-feat__icon">{f.icon}</div>
+                <h4 className="iq-feat__title">{f.t}</h4>
+                <p className="iq-feat__desc">{f.d}</p>
+                <Link to="/solutions" className="iq-feat__link">Learn more →</Link>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════
-          SOLUTIONS GRID
-      ══════════════════════════════════════════ */}
-      <section className="solutions">
-        <div className="container">
-          <div className="solutions__header">
-            <div className="section-tag">Our Solutions</div>
-            <h2 className="section-title solutions__title">From contact centers to cloud —<br /><span>we deliver end-to-end.</span></h2>
-            <p className="section-sub solutions__sub">Solutions engineered for performance, scale, and reliability.</p>
-          </div>
-          <div className="sol-slider__wrapper">
-            {/* Left Arrow */}
-            <button
-              className="sol-slider__arrow sol-slider__arrow--left"
-              onClick={() => setSolIdx(i => Math.max(0, i - 1))}
-              disabled={solIdx === 0}
-              aria-label="Previous"
-            >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="15 18 9 12 15 6"/>
-              </svg>
-            </button>
+      {/* ══ 5. INTELLIGENCE — continuous marquee ══ */}
+      <section className="iq-section iq-section--gradient">
+        <div className="iq-wrap">
+          <p className="iq-eye iq-reveal">AI-Powered</p>
+          <h2 className="iq-h2 iq-reveal iq-d1" style={{marginBottom:'0.75rem'}}>
+            Intelligence beyond <span className="iq-accent">development.</span>
+          </h2>
+          <p className="iq-body iq-reveal iq-d2" style={{maxWidth:'560px', marginBottom:'3rem'}}>
+            From custom LLM pipelines to autonomous agents — we bring cutting-edge
+            AI capabilities to your business workflows.
+          </p>
 
-            {/* Cards Track */}
-            <div className="sol-slider__track">
-              <div
-                className="sol-slider__inner"
-                style={{ transform: `translateX(calc(-${solIdx} * (100% / ${solVisibleCount}) - ${solIdx} * 16px))` }}
-              >
-                {homeSolCards.map((card) => (
-                  <Link
-                    key={card.slug}
-                    to={`/solutions/${card.slug}`}
-                    className="sol-slider__card"
-                    style={{ backgroundImage: `url(${card.img})` }}
-                  >
-                    <div className="prem-card__overlay" />
-                    <div className="prem-card__body">
-                      <div className="prem-card__tag">{card.tag}</div>
-                      <div className="prem-card__line" />
-                      <h3 className="prem-card__title">
-                        {card.title}
-                        <span className="prem-card__arrow">▷</span>
-                      </h3>
-                      <p className="prem-card__desc">{card.desc}</p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            {/* Right Arrow */}
-            <button
-              className="sol-slider__arrow sol-slider__arrow--right"
-              onClick={() => setSolIdx(i => Math.min(solMaxIdx, i + 1))}
-              disabled={solIdx === solMaxIdx}
-              aria-label="Next"
-            >
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="9 18 15 12 9 6"/>
-              </svg>
-            </button>
-
-            {/* Dots */}
-            <div className="sol-slider__dots">
-              {Array.from({ length: solMaxIdx + 1 }).map((_, i) => (
-                <button
-                  key={i}
-                  className={`sol-slider__dot${solIdx === i ? ' active' : ''}`}
-                  onClick={() => setSolIdx(i)}
-                  aria-label={`Go to slide ${i + 1}`}
-                />
+          <div className="iq-intel-marquee iq-reveal iq-d3">
+            <div className="iq-intel-track">
+              {[...intelItems, ...intelItems].map((item, i) => (
+                <div className="iq-intel-slide" key={i}>
+                  <div className="iq-intel-slide__icon">
+                    <span>{item.icon}</span>
+                  </div>
+                  <h3 className="iq-intel-slide__title">{item.t}</h3>
+                  <p className="iq-intel-slide__desc">{item.d}</p>
+                </div>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════
-          LATEST INSIGHTS
-      ══════════════════════════════════════════ */}
-      <section className="news">
-        <div className="container">
-          <div className="news__header">
+      {/* ══ 7. LATEST INSIGHTS ══ */}
+      <section className="iq-section iq-section--tint-b">
+        <div className="iq-wrap">
+          <div className="iq-section-hdr iq-reveal">
             <div>
-              <div className="news__tag">Knowledge Base</div>
-              <h2 className="news__title">Latest <span>Insights.</span></h2>
+              <p className="iq-eye">Knowledge Base</p>
+              <h2 className="iq-h2">Latest <span className="iq-accent">Insights.</span></h2>
             </div>
-            <Link to="/blog" className="news__see-all">EXPLORE ALL ARTICLES →</Link>
+            <Link to="/blog" className="iq-btn-ring">Explore All →</Link>
           </div>
-          <div className="news__grid">
-            {newsItems.map(item => (
-              <Link to="/blog" key={item.seed} className="prem-card news-prem" style={{ backgroundImage: `url(${item.img})` }}>
-                <div className="prem-card__overlay" />
-                <div className="prem-card__body">
-                  <div className="prem-card__tag">{item.tag}</div>
-                  <div className="prem-card__line" />
-                  <h3 className="prem-card__title">{item.title}<span className="prem-card__arrow">▷</span></h3>
-                  <p className="prem-card__desc">{item.desc}</p>
+          <div className="iq-news-grid">
+            {newsItems.map((item,i)=>(
+              <Link to="/blog" key={item.seed} className={`iq-news iq-reveal iq-d${i+1}`}>
+                <img src={`https://picsum.photos/seed/${item.seed}/600/340`} alt={item.tag} className="iq-news__img" />
+                <div className="iq-news__body">
+                  <span className="iq-news__tag">{item.tag} · {item.read}</span>
+                  <h4 className="iq-news__title">{item.title}</h4>
+                  <p className="iq-news__desc">{item.date}</p>
+                  <span className="iq-news__link">Read more →</span>
                 </div>
               </Link>
             ))}
@@ -462,141 +480,104 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════
-          SYNERAX BY THE NUMBERS — Telisof style
-      ══════════════════════════════════════════ */}
-      <section className="st-section">
-        <div className="container st-section__inner">
-
-          {/* LEFT — heading + 2×3 stat cards */}
-          <div className="st-section__left">
-            <h2 className="st-section__title">Synerax by the <span>Numbers</span></h2>
-            <p className="st-section__sub">
-              Real results, measurable impact — powering the world's most demanding enterprises.
-            </p>
-            <div className="st-section__grid">
-              {statCards.map((s, i) => (
-                <div key={i} className="st-card">
-                  <div className="st-card__icon">{s.icon}</div>
-                  <div className="st-card__body">
-                    <div className="st-card__num">{s.num}</div>
-                    <div className="st-card__label">{s.label}</div>
-                    <div className="st-card__desc">{s.desc}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* RIGHT — tall rounded image */}
-          <div className="st-section__right">
-            <img
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=700&q=80"
-              alt="Synerax team"
-              className="st-section__img"
-              onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
-            />
-          </div>
-
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════
-          TESTIMONIALS
-      ══════════════════════════════════════════ */}
-      <section className="testimonials">
-        <div className="container">
-          <h2 className="testi-title"><span>Testimonials</span></h2>
-
-          <div className="testi-card">
-            <div className="testi-card__avatar">{testi.initial}</div>
-            <p className="testi-card__quote">{testi.quote}</p>
-            <div className="testi-card__author">
-              <div className="testi-card__name">{testi.name}</div>
-              <div className="testi-card__role">{testi.role}</div>
-            </div>
-          </div>
-
-          <div className="testi-nav">
+      {/* ══ 8. TESTIMONIAL ══ */}
+      <section className="iq-section iq-section--radial" style={{textAlign:'center'}}>
+        <div className="iq-wrap">
+          <p className="iq-eye iq-reveal" style={{textAlign:'center'}}>Client Stories</p>
+          <h2 className="iq-h2 iq-reveal iq-d1" style={{textAlign:'center', marginBottom:'2.5rem'}}>
+            What our clients <span className="iq-accent">say.</span>
+          </h2>
+          <div className="iq-testi-row iq-reveal iq-d2">
             <button
-              className="testi-nav__btn"
+              className="iq-testi-arrow iq-testi-arrow--prev"
               onClick={() => setTestiIdx(i => (i - 1 + testimonials.length) % testimonials.length)}
-              aria-label="Previous testimonial"
+              aria-label="Previous"
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="15 18 9 12 15 6"/>
-              </svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
             </button>
 
-            <div className="testi-tracks">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  className={`testi-track${testiIdx === i ? ' active' : ''}`}
-                  onClick={() => setTestiIdx(i)}
-                  aria-label={`Testimonial ${i + 1}`}
-                />
-              ))}
+            <div className="iq-testi-track">
+              {[0, 1].map(off => {
+                const t = testimonials[(testiIdx + off) % testimonials.length]
+                return (
+                  <div className="iq-testi" key={off}>
+                    <p className="iq-testi__quote">"{t.quote}"</p>
+                    <div className="iq-testi__author">
+                      <div className="iq-testi__av">{t.name[0]}</div>
+                      <div style={{textAlign:'left'}}>
+                        <div className="iq-testi__name">{t.name}</div>
+                        <div className="iq-testi__role">{t.role}</div>
+                      </div>
+                    </div>
+                  </div>
+                )
+              })}
             </div>
 
             <button
-              className="testi-nav__btn"
+              className="iq-testi-arrow iq-testi-arrow--next"
               onClick={() => setTestiIdx(i => (i + 1) % testimonials.length)}
-              aria-label="Next testimonial"
+              aria-label="Next"
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="9 18 15 12 9 6"/>
-              </svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
           </div>
-
+          <div className="iq-dots">
+            {testimonials.map((_,i)=>(
+              <button key={i} className={`iq-dot${testiIdx===i?' active':''}`} onClick={()=>setTestiIdx(i)} />
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════
-          CAREERS
-      ══════════════════════════════════════════ */}
-      <section className="careers">
-        <div className="container">
-          <div className="careers__text">
-            <div className="section-tag">We're Hiring</div>
-            <div className="careers__title">Careers at <span>Synerax</span></div>
-            <p className="careers__desc">
-              We invite you to bring your expertise to our team. Join a team of engineers,
-              designers, and AI builders shaping the digital future.
+      {/* ══ 8.5 CAREERS — split banner ══ */}
+      <section className="iq-section">
+        <div className="iq-wrap">
+          <div className="iq-careers-banner iq-reveal">
+            <div className="iq-careers-banner__text">
+              <h2 className="iq-careers-banner__title">
+                Careers at <span className="iq-accent">Synerax.</span>
+              </h2>
+              <p className="iq-careers-banner__desc">
+                We invite you to supercharge your potential. Find what inspires
+                and drives you. Find your spark.
+              </p>
+              <Link to="/careers" className="iq-btn-fill">
+                Explore Careers →
+              </Link>
+            </div>
+            <div className="iq-careers-banner__media">
+              <img
+                src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=1200&q=80"
+                alt="Careers at Synerax"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 9. CTA — rounded floating panel ══ */}
+      <section className="iq-cta">
+        <div className="iq-wrap">
+          <div className="iq-cta__panel iq-reveal" style={{textAlign:'center'}}>
+            <p className="iq-eye iq-eye--light">Ready to Build the Future</p>
+            <h2 className="iq-cta__h2">
+              Technology That<br />
+              Moves Business <span className="iq-cta__em">Forward.</span>
+            </h2>
+            <p className="iq-cta__sub">
+              Partner with Synerax to build secure cloud platforms, AI-powered applications,
+              and enterprise software engineered for performance, scalability, and long-term growth.
             </p>
-            <div className="careers__perks">
-              <span className="perk-chip">🏠 Remote-first</span>
-              <span className="perk-chip">📈 Fast growth</span>
-              <span className="perk-chip">🌍 Global team</span>
-              <span className="perk-chip">💡 R&D time</span>
-              <span className="perk-chip">🎓 Learning budget</span>
+            <div className="iq-cta__btns">
+              <button onClick={() => openLead()} className="iq-btn-fill iq-btn-fill--lg">
+                Start a Project →
+              </button>
+              <Link to="/solutions" className="iq-btn-ring iq-btn-ring--light">
+                View All Solutions
+              </Link>
             </div>
-            <Link to="/careers" className="btn btn--primary">Explore careers →</Link>
-          </div>
-          <div className="careers__img">
-            <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1783867920/close-up-portrait-young-beautiful-attractive-redhair-girl-happy-smiling-digital-table-with-wining_1_zgtaq7.jpg"
-              alt="Careers at Synerax" loading="lazy"
-              onError={e => { const t=e.currentTarget; t.style.display='none'; const ph=t.nextElementSibling as HTMLElement|null; if(ph) ph.style.display='flex' }} />
-            <div className="careers__img-placeholder" style={{ display:'none' }}>
-              <span className="big-icon">👩‍💻</span>
-              <div><strong style={{ color:'rgba(255,255,255,0.8)', display:'block' }}>Join Our Team</strong>Careers at Synerax</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════
-          CTA BAND
-      ══════════════════════════════════════════ */}
-      <section className="cta-band">
-        <div className="container">
-          <div className="cta-band__tag">Let's Build Together</div>
-          <h2>Ready to Start Your<br /><span>Next Project?</span></h2>
-          <p>Get a detailed proposal within 24 hours — no commitment required.</p>
-          <div className="cta-band__actions">
-            <button onClick={() => openLead()} className="ht-hero__btn-primary cta-band__btn cta-band__btn--primary">Start a Project →</button>
-            <Link to="/services" className="ht-hero__btn-outline cta-band__btn cta-band__btn--secondary">View All Solutions</Link>
           </div>
         </div>
       </section>

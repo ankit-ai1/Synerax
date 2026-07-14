@@ -61,7 +61,7 @@ export default function SolutionPage() {
 
   if (!solution) return <Navigate to="/services" replace />
 
-  const accent = meta?.accentColor ?? '#3D52A0'
+  const accent = meta?.accentColor ?? '#0D487E'
 
   return (
     <>
@@ -70,7 +70,7 @@ export default function SolutionPage() {
       {/* ═══════════════════════════════════════
           1. HERO — dark navy, white text
       ═══════════════════════════════════════ */}
-      <section className="tl-hero" style={{ background: 'linear-gradient(135deg, #1A2647 0%, #3D52A0 50%, #2a3870 100%)' }}>
+      <section className="tl-hero" style={{ background: 'linear-gradient(135deg, #0D487E 0%, #0D487E 50%, #2a3870 100%)' }}>
         {/* Breadcrumb */}
         <div className="container">
           <nav className="tl-breadcrumb">
@@ -90,7 +90,7 @@ export default function SolutionPage() {
             </div>
             <h1 className="tl-hero__h1">
               {solution.headline}{' '}
-              <span style={{ color: '#7091E6' }}>{solution.headlineBlue}</span>
+              <span style={{ color: '#4FA9E8' }}>{solution.headlineBlue}</span>
             </h1>
             <p className="tl-hero__desc">{solution.heroDesc}</p>
             <div className="tl-hero__trust">
@@ -296,7 +296,7 @@ export default function SolutionPage() {
               <span style={{ fontSize: '4rem' }}>{solution.pillars[3]?.icon}</span>
             </div>
           )}
-          <div className="tl-dark-feature__overlay" style={{ background: 'linear-gradient(90deg, rgba(26,38,71,0.88) 0%, rgba(26,38,71,0.45) 60%, transparent 100%)' }}>
+          <div className="tl-dark-feature__overlay" style={{ background: 'linear-gradient(90deg, rgba(13,72,126,0.88) 0%, rgba(13,72,126,0.45) 60%, transparent 100%)' }}>
             <div className="container">
               <div className="tl-dark-feature__text">
                 <h3 className="tl-dark-feature__headline">

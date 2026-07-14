@@ -15,10 +15,10 @@ const testimonials = [
 
 /* ─── Values cards ─────────────────────────────────── */
 const values = [
-  { accent: '#3D52A0', iconBg: 'rgba(61,82,160,0.1)', icon: '⭐', title: 'Excellence', desc: 'We hold ourselves to the highest technical and service standards in everything we deliver. Good enough is never good enough.' },
-  { accent: '#3D52A0', iconBg: 'rgba(61,82,160,0.1)', icon: '🤝', title: 'Partnership', desc: "We're deeply invested in your success beyond the project. Your wins are our wins — we think long-term, not transactional." },
-  { accent: '#3D52A0', iconBg: 'rgba(61,82,160,0.1)', icon: '🔍', title: 'Integrity', desc: 'Honest timelines, transparent pricing, and clear communication — always. We tell you what you need to hear, even when it\'s hard.' },
-  { accent: '#3D52A0', iconBg: 'rgba(61,82,160,0.1)', icon: '💡', title: 'Innovation', desc: 'We stay ahead of the curve so you don\'t have to. AI, cloud, and emerging tech are not buzzwords — they\'re our daily toolkit.' },
+  { accent: '#0D487E', iconBg: 'rgba(13,72,126,0.1)', icon: '⭐', title: 'Excellence', desc: 'We hold ourselves to the highest technical and service standards in everything we deliver. Good enough is never good enough.' },
+  { accent: '#0D487E', iconBg: 'rgba(13,72,126,0.1)', icon: '🤝', title: 'Partnership', desc: "We're deeply invested in your success beyond the project. Your wins are our wins — we think long-term, not transactional." },
+  { accent: '#0D487E', iconBg: 'rgba(13,72,126,0.1)', icon: '🔍', title: 'Integrity', desc: 'Honest timelines, transparent pricing, and clear communication — always. We tell you what you need to hear, even when it\'s hard.' },
+  { accent: '#0D487E', iconBg: 'rgba(13,72,126,0.1)', icon: '💡', title: 'Innovation', desc: 'We stay ahead of the curve so you don\'t have to. AI, cloud, and emerging tech are not buzzwords — they\'re our daily toolkit.' },
 ]
 
 /* ─── Stat cards (reuse st-card style) ────────────── */

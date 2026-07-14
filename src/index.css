@@ -11004,3 +11004,34 @@ img, svg, video { max-width: 100%; }
   .iq-careers-banner__media { height: 280px; order: -1; }
   .iq-careers-banner__text { padding: 2.5rem 1.75rem; }
 }
+
+.iq-wrap,
+.h4-wrap,
+.ht2-container,
+.h3-wrap,
+.container,
+.ct-container,
+.ft-new__container,
+[class*="wrap"],
+[class*="container"] {
+  max-width: 1600px !important;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+@media (min-width: 1400px) {
+  .iq-wrap,
+  .h4-wrap,
+  .ht2-container,
+  .h3-wrap,
+  .container,
+  .ct-container,
+  .ft-new__container {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+}

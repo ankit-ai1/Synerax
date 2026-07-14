@@ -151,14 +151,6 @@ export default function Home() {
                 Explore Solutions
               </Link>
             </div>
-            <div className="iq-hero__trust iq-reveal iq-d4">
-              {['NDA Available','Reply in 24h','Free Scoping','Senior Engineers'].map(t=>(
-                <span key={t} className="iq-trust">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  {t}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
 
@@ -167,8 +159,21 @@ export default function Home() {
           <div className="iq-wrap">
             <p className="iq-techstrip__lbl">Built on world-class platforms</p>
             <div className="iq-techstrip__pills">
-              {['React','Node.js','AWS','OpenAI','Kubernetes','Python','TypeScript','Docker','FastAPI','LangChain'].map(t=>(
-                <span key={t} className="iq-techstrip__pill">{t}</span>
+              {[
+                { name:'React',      src:'https://cdn.simpleicons.org/react/61DAFB' },
+                { name:'Node.js',    src:'https://cdn.simpleicons.org/nodedotjs/339933' },
+                { name:'AWS',        src:'https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=128' },
+                { name:'OpenAI',     src:'https://www.google.com/s2/favicons?domain=openai.com&sz=128' },
+                { name:'Kubernetes', src:'https://cdn.simpleicons.org/kubernetes/326CE5' },
+                { name:'Python',     src:'https://cdn.simpleicons.org/python/3776AB' },
+                { name:'TypeScript', src:'https://cdn.simpleicons.org/typescript/3178C6' },
+                { name:'Docker',     src:'https://cdn.simpleicons.org/docker/2496ED' },
+                { name:'FastAPI',    src:'https://cdn.simpleicons.org/fastapi/009688' },
+                { name:'LangChain',  src:'https://cdn.simpleicons.org/langchain/1C3C3C' },
+              ].map(t=>(
+                <span key={t.name} className="iq-techstrip__pill" title={t.name}>
+                  <img src={t.src} alt={t.name} className="iq-techstrip__logo" loading="lazy" />
+                </span>
               ))}
             </div>
           </div>
@@ -178,33 +183,36 @@ export default function Home() {
       {/* ══ 2. PROBLEM — big stats + comparison ══ */}
       <section className="iq-section iq-section--white-a">
         <div className="iq-wrap">
-          <p className="iq-eye iq-reveal">The Problem</p>
-          <h2 className="iq-h2 iq-reveal iq-d1" style={{maxWidth:'680px'}}>
-            Most tech vendors overpromise<br />
-            and <span className="iq-accent">underdeliver!!!</span>
-          </h2>
-          <p className="iq-body iq-reveal iq-d2" style={{maxWidth:'560px', marginBottom:'3rem'}}>
-            You've dealt with junior developers, missed deadlines, and bloated invoices.
-            Synerax is built differently — senior-only execution, radical transparency.
-          </p>
+          <div className="iq-problem-grid">
+            <div className="iq-problem-left">
+              <p className="iq-eye iq-reveal">The Problem</p>
+              <h2 className="iq-h2 iq-reveal iq-d1" style={{maxWidth:'480px'}}>
+                Most tech vendors overpromise<br />
+                and <span className="iq-accent">underdeliver!!!</span>
+              </h2>
+              <p className="iq-body iq-reveal iq-d2" style={{maxWidth:'440px'}}>
+                You've dealt with junior developers, missed deadlines, and bloated invoices.
+                Synerax is built differently — senior-only execution, radical transparency.
+              </p>
+            </div>
 
-          {/* Big stats row */}
-          <div className="iq-bigstats iq-reveal iq-d3">
-            {[
-              { num:'5+',    lbl:'Projects Delivered', sub:'Across enterprise and mid-market clients globally' },
-              { num:'99.8%', lbl:'Client Satisfaction', sub:'We don\'t just deliver projects — we build partnerships' },
-              { num:'60%',   lbl:'Faster Delivery', sub:'vs traditional agencies through our senior-only model' },
-            ].map(s=>(
-              <div key={s.lbl} className="iq-bigstat">
-                <div className="iq-bigstat__num">{s.num}</div>
-                <div className="iq-bigstat__lbl">{s.lbl}</div>
-                <div className="iq-bigstat__sub">{s.sub}</div>
-              </div>
-            ))}
+            <div className="iq-problem-right iq-reveal iq-d3">
+              {[
+                { num:'5+',    lbl:'Projects Delivered', sub:'Across enterprise and mid-market clients globally' },
+                { num:'99.8%', lbl:'Client Satisfaction', sub:'We don\'t just deliver projects — we build partnerships' },
+                { num:'60%',   lbl:'Faster Delivery', sub:'vs traditional agencies through our senior-only model' },
+              ].map(s=>(
+                <div key={s.lbl} className="iq-bigstat">
+                  <div className="iq-bigstat__num">{s.num}</div>
+                  <div className="iq-bigstat__lbl">{s.lbl}</div>
+                  <div className="iq-bigstat__sub">{s.sub}</div>
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* Comparison table */}
-          <div className="iq-compare">
+          <div className="iq-compare" style={{marginTop:'3rem'}}>
             <div className="iq-compare__vs"><span /></div>
             <div className="iq-compare__col iq-compare__col--bad iq-reveal iq-d3">
               <div className="iq-compare__head">
@@ -407,19 +415,44 @@ export default function Home() {
 
           <div className="iq-feat-grid">
             {[
-              { icon:'⚙️', t:'Backend Development',         d:'Scalable REST/GraphQL APIs and microservices. Node.js, Python, FastAPI for high-traffic systems.' },
-              { icon:'🎨', t:'Frontend Development',        d:'React, Next.js, Vue applications with exceptional UX. Performance-first with Core Web Vitals.' },
-              { icon:'☁️', t:'AWS Infrastructure',          d:'Enterprise AWS with 99.99% availability SLAs. Terraform IaC, Kubernetes, CI/CD pipelines.' },
-              { icon:'🔐', t:'Cybersecurity',               d:'24/7 SOC operations, zero-trust architecture. SOC 2 & ISO 27001 certified infrastructure.' },
-              { icon:'📦', t:'Inventory Management',        d:'Real-time stock tracking, AI demand forecasting, multi-warehouse support and ERP integrations.' },
-              { icon:'📱', t:'Full Stack & Mobile',          d:'Flutter, React Native, Swift, Kotlin. Complete app development from UX to App Store delivery.' },
-              { icon:'🏢', t:'IT Consulting & Outsourcing', d:'CTO-as-a-Service, digital transformation roadmaps, talent outsourcing and strategic advisory.' },
+              { icon:(<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><circle cx="7.5" cy="7" r=".6" fill="currentColor"/><circle cx="7.5" cy="17" r=".6" fill="currentColor"/></svg>), t:'Backend Development',         d:'Scalable REST/GraphQL APIs and microservices. Node.js, Python, FastAPI for high-traffic systems.' },
+              { icon:(<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>), t:'Frontend Development',        d:'React, Next.js, Vue applications with exceptional UX. Performance-first with Core Web Vitals.' },
+              { icon:(<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>), t:'AWS Infrastructure',          d:'Enterprise AWS with 99.99% availability SLAs. Terraform IaC, Kubernetes, CI/CD pipelines.' },
+              { icon:(<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><polyline points="9 12 11 14 15 10"/></svg>), t:'Cybersecurity',               d:'24/7 SOC operations, zero-trust architecture. SOC 2 & ISO 27001 certified infrastructure.' },
+              { icon:(<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>), t:'Inventory Management',        d:'Real-time stock tracking, AI demand forecasting, multi-warehouse support and ERP integrations.' },
+              { icon:(<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg>), t:'Full Stack & Mobile',          d:'Flutter, React Native, Swift, Kotlin. Complete app development from UX to App Store delivery.' },
+              { icon:(<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>), t:'IT Consulting & Outsourcing', d:'CTO-as-a-Service, digital transformation roadmaps, talent outsourcing and strategic advisory.' },
             ].map((f,i)=>(
-              <div key={f.t} className={`iq-feat iq-reveal iq-d${(i%3)+1}`}>
-                <div className="iq-feat__icon">{f.icon}</div>
+              <div
+                key={f.t}
+                className={`iq-feat iq-reveal iq-d${(i%3)+1}`}
+                onMouseMove={(e)=>{
+                  const el = e.currentTarget;
+                  const r = el.getBoundingClientRect();
+                  const px = e.clientX - r.left;
+                  const py = e.clientY - r.top;
+                  el.style.setProperty('--mx', `${px}px`);
+                  el.style.setProperty('--my', `${py}px`);
+                  const cx = px / r.width - 0.5;
+                  const cy = py / r.height - 0.5;
+                  el.style.setProperty('--ry', `${cx * 12}deg`);
+                  el.style.setProperty('--rx', `${cy * -12}deg`);
+                }}
+                onMouseLeave={(e)=>{
+                  const el = e.currentTarget;
+                  el.style.setProperty('--rx', '0deg');
+                  el.style.setProperty('--ry', '0deg');
+                }}
+              >
+                <div className="iq-feat__icon-ring">
+                  <div className="iq-feat__icon">{f.icon}</div>
+                </div>
                 <h4 className="iq-feat__title">{f.t}</h4>
                 <p className="iq-feat__desc">{f.d}</p>
-                <Link to="/solutions" className="iq-feat__link">Learn more →</Link>
+                <Link to="/solutions" className="iq-feat__link">
+                  <span>Learn more</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+                </Link>
               </div>
             ))}
           </div>

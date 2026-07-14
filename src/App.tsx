@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
+import { ReactLenis, useLenis } from 'lenis/react'
 import Home from './pages/Home'
 import Services from './pages/Services'
 import About from './pages/About'
@@ -16,13 +17,17 @@ import LeadModal from './components/LeadModal'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
-  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
+  const lenis = useLenis()
+  useEffect(() => {
+    if (lenis) lenis.scrollTo(0, { immediate: true })
+    else window.scrollTo(0, 0)
+  }, [pathname, lenis])
   return null
 }
 
 export default function App() {
   return (
-    <>
+    <ReactLenis root options={{ lerp: 0.1, smoothWheel: true, wheelMultiplier: 1, anchors: true }}>
       <ScrollToTop />
       <LeadModal />
       <Routes>
@@ -40,6 +45,6 @@ export default function App() {
         <Route path="/careers" element={<Careers />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
-    </>
+    </ReactLenis>
   )
 }

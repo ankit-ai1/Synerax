@@ -164,6 +164,7 @@ export default function Nav() {
       </div>
 
       {/* ── Mobile overlay ── */}
+      <div className={`nav__mobile-backdrop${mobileOpen ? ' open' : ''}`} onClick={() => setMobileOpen(false)} />
       <div className={`nav__mobile${mobileOpen ? ' open' : ''}`}>
         <div className="nav__mobile-topbar">
           <Link to="/" className="nav__logo" onClick={() => setMobileOpen(false)}>
@@ -183,38 +184,107 @@ export default function Nav() {
           </div>
         </div>
         <div className="nav__mobile-body">
-          <button className={`nav__mobile-acc${mSolOpen ? ' open' : ''}`} onClick={() => setMSolOpen(o => !o)}>
-            <span className="nav__mobile-tri">{mSolOpen ? '▼' : '▶'}</span> Solutions
-          </button>
-          {mSolOpen && (
-            <div className="nav__mobile-sub">
-              {navSolutions.map(s => (
-                <Link key={s.slug} to={`/solutions/${s.slug}`} className="nav__mobile-sublink">{s.label}</Link>
-              ))}
+          <div className="nav__mobile-list">
+
+            <div className="nav__mobile-row" style={{ ['--i' as string]: 0 }}>
+              <button className={`nav__mobile-acc${mSolOpen ? ' open' : ''}`} onClick={() => setMSolOpen(o => !o)}>
+                <span className="nav__mobile-acc-left">
+                  <span className="nav__mobile-icon">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+                  </span>
+                  Solutions
+                </span>
+                <svg className="nav__mobile-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+              </button>
+              <div className={`nav__mobile-sub-wrap${mSolOpen ? ' open' : ''}`}>
+                <div className="nav__mobile-sub-inner">
+                  <div className="nav__mobile-sub">
+                    {navSolutions.map(s => (
+                      <Link key={s.slug} to={`/solutions/${s.slug}`} className="nav__mobile-sublink" onClick={() => setMobileOpen(false)}>
+                        <span className="nav__mobile-sublink-dot" style={{ background: s.color }} />
+                        {s.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
-          )}
-          <button className={`nav__mobile-acc${mIndOpen ? ' open' : ''}`} onClick={() => setMIndOpen(o => !o)}>
-            <span className="nav__mobile-tri">{mIndOpen ? '▼' : '▶'}</span> Industries
-          </button>
-          {mIndOpen && (
-            <div className="nav__mobile-sub">
-              {navIndustries.map(i => (
-                <Link key={i.label} to={i.href} className="nav__mobile-sublink">{i.label}</Link>
-              ))}
+
+            <div className="nav__mobile-row" style={{ ['--i' as string]: 1 }}>
+              <button className={`nav__mobile-acc${mIndOpen ? ' open' : ''}`} onClick={() => setMIndOpen(o => !o)}>
+                <span className="nav__mobile-acc-left">
+                  <span className="nav__mobile-icon">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 8h2M13 8h2M9 12h2M13 12h2M9 16h2M13 16h2"/></svg>
+                  </span>
+                  Industries
+                </span>
+                <svg className="nav__mobile-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+              </button>
+              <div className={`nav__mobile-sub-wrap${mIndOpen ? ' open' : ''}`}>
+                <div className="nav__mobile-sub-inner">
+                  <div className="nav__mobile-sub">
+                    {navIndustries.map(i => (
+                      <Link key={i.label} to={i.href} className="nav__mobile-sublink" onClick={() => setMobileOpen(false)}>
+                        <span className="nav__mobile-sublink-emoji">{i.icon}</span>
+                        {i.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
-          )}
-          <button className={`nav__mobile-acc${mResOpen ? ' open' : ''}`} onClick={() => setMResOpen(o => !o)}>
-            <span className="nav__mobile-tri">{mResOpen ? '▼' : '▶'}</span> Resources
-          </button>
-          {mResOpen && (
-            <div className="nav__mobile-sub">
-              {navResources.map(r => (
-                <Link key={r.label} to={r.href} className="nav__mobile-sublink">{r.label}</Link>
-              ))}
+
+            <div className="nav__mobile-row" style={{ ['--i' as string]: 2 }}>
+              <button className={`nav__mobile-acc${mResOpen ? ' open' : ''}`} onClick={() => setMResOpen(o => !o)}>
+                <span className="nav__mobile-acc-left">
+                  <span className="nav__mobile-icon">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 5a2 2 0 012-2h11a1 1 0 011 1v14a1 1 0 01-1 1H6a2 2 0 00-2 2V5z"/><path d="M4 19a2 2 0 002 2h12"/></svg>
+                  </span>
+                  Resources
+                </span>
+                <svg className="nav__mobile-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+              </button>
+              <div className={`nav__mobile-sub-wrap${mResOpen ? ' open' : ''}`}>
+                <div className="nav__mobile-sub-inner">
+                  <div className="nav__mobile-sub">
+                    {navResources.map(r => (
+                      <Link key={r.label} to={r.href} className="nav__mobile-sublink" onClick={() => setMobileOpen(false)}>
+                        <span className="nav__mobile-sublink-emoji">{r.icon}</span>
+                        {r.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
-          )}
-          <Link to="/careers" className="nav__mobile-link"><span className="nav__mobile-tri">▶</span>Careers</Link>
-          <Link to="/about"   className="nav__mobile-link"><span className="nav__mobile-tri">▶</span>About</Link>
+
+            <div className="nav__mobile-row" style={{ ['--i' as string]: 3 }}>
+              <Link to="/careers" className="nav__mobile-link" onClick={() => setMobileOpen(false)}>
+                <span className="nav__mobile-acc-left">
+                  <span className="nav__mobile-icon">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                  </span>
+                  Careers
+                </span>
+              </Link>
+            </div>
+            <div className="nav__mobile-row" style={{ ['--i' as string]: 4 }}>
+              <Link to="/about" className="nav__mobile-link" onClick={() => setMobileOpen(false)}>
+                <span className="nav__mobile-acc-left">
+                  <span className="nav__mobile-icon">
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+                  </span>
+                  About
+                </span>
+              </Link>
+            </div>
+
+          </div>
+
+          <Link to="/contact" className="nav__mobile-cta-btn" onClick={() => setMobileOpen(false)}>
+            Get a Free Consultation
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+          </Link>
         </div>
       </div>
     </nav>

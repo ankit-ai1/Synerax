@@ -29,10 +29,10 @@ const Chips = ({ items }: { items: string[] }) => (
   </div>
 )
 
-/* ── 1. Contact Center — interaction analytics console ──────── */
+/* ── Observability & SRE — telemetry analytics console ──────── */
 
 type CcRange = '7d' | '30d' | '90d'
-type CcGroup = 'channel' | 'team'
+type CcGroup = 'service' | 'team'
 
 const CC_RANGES: [CcRange, string][] = [
   ['7d', 'Last 7 days'],
@@ -42,23 +42,23 @@ const CC_RANGES: [CcRange, string][] = [
 
 /* Each series is one slice of the stack, drawn bottom-up. */
 const CC_SERIES: Record<CcGroup, { label: string; color: string; weight: number }[]> = {
-  channel: [
-    { label: 'Voice',       color: '#e2703a', weight: 34 },
-    { label: 'Chat',        color: '#6fae7c', weight: 26 },
-    { label: 'Email',       color: '#e8b04b', weight: 9 },
-    { label: 'WhatsApp',    color: '#e2553a', weight: 8 },
-    { label: 'Social',      color: '#5fb0a8', weight: 13 },
-    { label: 'Self-serve',  color: '#b9a882', weight: 6 },
-    { label: 'Escalation',  color: '#9a9a95', weight: 4 },
+  service: [
+    { label: 'API',       color: '#e2703a', weight: 34 },
+    { label: 'Web',       color: '#6fae7c', weight: 26 },
+    { label: 'Workers',   color: '#e8b04b', weight: 9 },
+    { label: 'Database',  color: '#e2553a', weight: 8 },
+    { label: 'Cache',     color: '#5fb0a8', weight: 13 },
+    { label: 'Search',    color: '#b9a882', weight: 6 },
+    { label: 'Edge',      color: '#9a9a95', weight: 4 },
   ],
   team: [
-    { label: 'Tier 1',      color: '#e2703a', weight: 38 },
-    { label: 'Tier 2',      color: '#6fae7c', weight: 24 },
-    { label: 'Billing',     color: '#e8b04b', weight: 10 },
-    { label: 'Retention',   color: '#e2553a', weight: 8 },
-    { label: 'Technical',   color: '#5fb0a8', weight: 12 },
-    { label: 'Onboarding',  color: '#b9a882', weight: 5 },
-    { label: 'Back office', color: '#9a9a95', weight: 3 },
+    { label: 'Platform',  color: '#e2703a', weight: 38 },
+    { label: 'Payments',  color: '#6fae7c', weight: 24 },
+    { label: 'Identity',  color: '#e8b04b', weight: 10 },
+    { label: 'Checkout',  color: '#e2553a', weight: 8 },
+    { label: 'Data',      color: '#5fb0a8', weight: 12 },
+    { label: 'Mobile',    color: '#b9a882', weight: 5 },
+    { label: 'Internal',  color: '#9a9a95', weight: 3 },
   ],
 }
 
@@ -79,9 +79,9 @@ const ccTotal = (i: number, n: number) => {
   return trend * dip * jitter
 }
 
-const VizContactCenter = () => {
+const VizObservability = () => {
   const [range, setRange] = useState<CcRange>('30d')
-  const [group, setGroup] = useState<CcGroup>('channel')
+  const [group, setGroup] = useState<CcGroup>('service')
 
   const series = CC_SERIES[group]
   const count = CC_BARS[range]
@@ -91,8 +91,8 @@ const VizContactCenter = () => {
   return (
     <div className="cc">
       <header className="cc__head">
-        <h4 className="cc__title">Interaction Credits</h4>
-        <p className="cc__sub">Monitor contact volume over time, grouped by channel or team.</p>
+        <h4 className="cc__title">Telemetry Volume</h4>
+        <p className="cc__sub">Monitor request volume over time, grouped by service or team.</p>
       </header>
 
       <div className="cc__toolbar">
@@ -124,11 +124,11 @@ const VizContactCenter = () => {
           <div className="cc__seg cc__seg--sm" role="group" aria-label="Group by">
             <button
               type="button"
-              className={group === 'channel' ? 'is-active' : ''}
-              aria-pressed={group === 'channel'}
-              onClick={() => setGroup('channel')}
+              className={group === 'service' ? 'is-active' : ''}
+              aria-pressed={group === 'service'}
+              onClick={() => setGroup('service')}
             >
-              By channel
+              By service
             </button>
             <button
               type="button"
@@ -145,14 +145,14 @@ const VizContactCenter = () => {
           <span className="cc__select">All teams<i /></span>
         </div>
         <div className="cc__field">
-          <span className="cc__label">Channel</span>
-          <span className="cc__select">All channels<i /></span>
+          <span className="cc__label">Service</span>
+          <span className="cc__select">All services<i /></span>
         </div>
       </div>
 
       <div className="cc__chart">
         <span className="cc__chart-lbl">
-          {group === 'channel' ? 'Volume by channel' : 'Volume by team'}
+          {group === 'service' ? 'Requests by service' : 'Requests by team'}
         </span>
 
         <div className="cc__plot">
@@ -160,7 +160,7 @@ const VizContactCenter = () => {
             {[40, 30, 20, 10].map(v => <span key={v}>{v}K</span>)}
           </div>
 
-          <div className="cc__bars" role="img" aria-label="Stacked interaction volume">
+          <div className="cc__bars" role="img" aria-label="Stacked request volume">
             {[0, 1, 2, 3].map(i => <span className="cc__grid" key={i} style={{ bottom: `${(i + 1) * 20}%` }} />)}
 
             {bars.map((total, i) => (
@@ -224,26 +224,88 @@ const VizAgenticAI = () => (
   </div>
 )
 
-/* ── 3. Backend — API request flow ──────────────────────────── */
-const VizBackend = () => (
+/* ── DevSecOps & FinOps — pipeline stages + spend readout ───── */
+const VizDevSecOps = () => (
   <div className="fxv">
-    <Head>Request Flow</Head>
-    <div className="fxv-api">
+    <Head>Pipeline</Head>
+    <div className="fxv-road">
+      <span className="fxv-road__track"><i /></span>
       {[
-        ['GET', '/v1/orders', '18ms'],
-        ['POST', '/v1/orders', '24ms'],
-        ['GET', '/graphql', '31ms'],
-        ['GET', '/v1/health', '6ms'],
-      ].map(([m, p, t], i) => (
-        <div className="fxv-api__row" key={p} style={{ animationDelay: `${i * 0.12}s` }}>
-          <span className="fxv-api__m">{m}</span>
-          <span className="fxv-api__p">{p}</span>
-          <span className="fxv-api__t">{t}</span>
+        ['Build', 'Cached, parallel stages'],
+        ['Scan', 'SAST · SCA · secrets'],
+        ['Release', 'Canary with rollback'],
+      ].map(([t, s], i) => (
+        <div className="fxv-road__stop" key={t} style={{ animationDelay: `${0.2 + i * 0.22}s` }}>
+          <span className="fxv-road__dot" />
+          <span className="fxv-road__t">{t}</span>
+          <span className="fxv-road__s">{s}</span>
         </div>
       ))}
     </div>
-    <Chips items={['Node.js', 'Python', 'FastAPI']} />
-    <Stats items={[['REST', 'and GraphQL'], ['Micro', 'services'], ['High', 'traffic ready']]} />
+    <span className="fxv__cap">Cloud spend</span>
+    <div className="fxv-rows">
+      {[['Monthly run rate', '-38%'], ['Idle resources', 'reclaimed'], ['Budget alerts', 'armed']].map(([k, v]) => (
+        <div className="fxv-rows__row" key={k}><span>{k}</span><span className="fxv-rows__v">{v}</span></div>
+      ))}
+    </div>
+    <Chips items={['Terraform', 'GitHub Actions', 'Kubecost']} />
+    <Stats items={[['12m', 'Deploy time'], ['38%', 'Spend saved'], ['100%', 'Scanned']]} />
+  </div>
+)
+
+/* ── Application Modernization — monolith carved into services ─ */
+const VizModernization = () => (
+  <div className="fxv">
+    <Head>Migration Path</Head>
+    <div className="fxv-road">
+      <span className="fxv-road__track"><i /></span>
+      {[
+        ['Monolith', 'Seams mapped from call graphs'],
+        ['Strangler', 'Traffic shifted route by route'],
+        ['Services', 'Deployed independently'],
+      ].map(([t, s], i) => (
+        <div className="fxv-road__stop" key={t} style={{ animationDelay: `${0.2 + i * 0.22}s` }}>
+          <span className="fxv-road__dot" />
+          <span className="fxv-road__t">{t}</span>
+          <span className="fxv-road__s">{s}</span>
+        </div>
+      ))}
+    </div>
+    <div className="fxv-rows">
+      {[['Orders service', 'extracted'], ['Billing service', 'in progress'], ['Legacy core', 'read-only']].map(([k, v]) => (
+        <div className="fxv-rows__row" key={k}><span>{k}</span><span className="fxv-rows__v">{v}</span></div>
+      ))}
+    </div>
+    <Chips items={['Docker', 'Kubernetes', 'Kafka']} />
+    <Stats items={[['API', 'First'], ['0', 'Feature freeze'], ['4x', 'Release rate']]} />
+  </div>
+)
+
+/* ── ITSM — service desk queue clearing ─────────────────────── */
+const VizITSM = () => (
+  <div className="fxv">
+    <Head>Service Desk</Head>
+    <div className="fxv-scan">
+      {[
+        ['INC-4821', 'Access request', 'auto-resolved'],
+        ['CHG-1180', 'Standard change', 'approved'],
+        ['INC-4822', 'Password reset', 'auto-resolved'],
+        ['PRB-0312', 'Root cause found', 'closed'],
+      ].map(([id, s, state], i) => (
+        <div className="fxv-scan__row" key={id} style={{ animationDelay: `${i * 0.22}s` }}>
+          <span className="fxv-scan__tick" style={{ animationDelay: `${i * 0.22 + 0.15}s` }}>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </span>
+          <span className="fxv-scan__n">{id} · {s}</span>
+          <span className="fxv-scan__s" style={{ animationDelay: `${i * 0.22 + 0.15}s` }}>{state}</span>
+        </div>
+      ))}
+    </div>
+    <span className="fxv__cap">ITIL-aligned</span>
+    <Stats items={[['98%', 'SLA met'], ['70%', 'Auto-routed'], ['24/7', 'Coverage']]} />
   </div>
 )
 
@@ -344,112 +406,35 @@ const VizSecurity = () => (
   </div>
 )
 
-/* ── 7. Inventory — stock / forecast chart ──────────────────── */
-const VizInventory = () => (
-  <div className="fxv">
-    <Head>Stock Forecast</Head>
-    <div className="fxv-chart">
-      {[46, 58, 40, 66, 54, 74, 62, 86, 70, 92].map((h, i) => (
-        <span className="fxv-chart__col" key={i}>
-          <i style={{ height: `${h}%`, animationDelay: `${i * 0.06}s` }} />
-        </span>
-      ))}
-      <svg className="fxv-chart__trend" viewBox="0 0 200 60" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M4 44 L26 38 L48 46 L70 30 L92 36 L114 22 L136 28 L158 12 L180 18 L196 6" />
-      </svg>
-    </div>
-    <div className="fxv-rows">
-      {[['Warehouse A', 'in stock'], ['Warehouse B', 'in stock'], ['ERP sync', 'live']].map(([k, v]) => (
-        <div className="fxv-rows__row" key={k}><span>{k}</span><span className="fxv-rows__v">{v}</span></div>
-      ))}
-    </div>
-    <Stats items={[['Real', 'Time tracking'], ['AI', 'Forecasting'], ['ERP', 'Integrated']]} />
-  </div>
-)
-
-/* ── 8. Full Stack & Mobile — device with UI sliding in ─────── */
-const VizMobile = () => (
-  <div className="fxv">
-    <Head>Target Platforms</Head>
-    <div className="fxv-stage-row">
-      <div className="fxv-phone">
-        <span className="fxv-phone__notch" />
-        <span className="fxv-phone__ui">
-          {[0, 1, 2, 3].map(i => (
-            <i key={i} style={{ animationDelay: `${0.15 + i * 0.12}s` }} />
-          ))}
-        </span>
-      </div>
-      <div className="fxv-rows fxv-rows--flush">
-        {[['iOS', 'App Store'], ['Android', 'Play Store'], ['Web', 'responsive']].map(([k, v]) => (
-          <div className="fxv-rows__row" key={k}><span>{k}</span><span className="fxv-rows__v">{v}</span></div>
-        ))}
-      </div>
-    </div>
-    <Chips items={['Flutter', 'React Native', 'Swift', 'Kotlin']} />
-    <Stats items={[['UX', 'To launch'], ['Cross', 'Platform'], ['Store', 'Ready']]} />
-  </div>
-)
-
-/* ── 9. IT Consulting — roadmap revealing left → right ──────── */
-const VizConsulting = () => (
-  <div className="fxv">
-    <Head>Engagement Roadmap</Head>
-    <div className="fxv-road">
-      <span className="fxv-road__track"><i /></span>
-      {[
-        ['Advisory', 'CTO-as-a-Service'],
-        ['Roadmap', 'Digital transformation'],
-        ['Delivery', 'Talent outsourcing'],
-      ].map(([t, s], i) => (
-        <div className="fxv-road__stop" key={t} style={{ animationDelay: `${0.2 + i * 0.22}s` }}>
-          <span className="fxv-road__dot" />
-          <span className="fxv-road__t">{t}</span>
-          <span className="fxv-road__s">{s}</span>
-        </div>
-      ))}
-    </div>
-    <div className="fxv-rows">
-      {[['Strategic advisory', 'ongoing'], ['Transformation', 'in progress']].map(([k, v]) => (
-        <div className="fxv-rows__row" key={k}><span>{k}</span><span className="fxv-rows__v">{v}</span></div>
-      ))}
-    </div>
-    <Stats items={[['CTO', 'As a service'], ['Road', 'Mapped'], ['Talent', 'On demand']]} />
-  </div>
-)
-
-/* ── The nine Synerax services ──────────────────────────────── */
+/* ── The eight Synerax solutions ────────────────────────────── */
 
 type Service = { tab: string; title: string; desc: string; to: string; viz: ReactNode }
 
 const services: Service[] = [
-  { tab: 'Contact Center', title: 'Contact Center Solutions',
-    desc: 'Enterprise omnichannel platform handling 10,000+ calls/hour with AI-powered IVR, intelligent routing, and a 99.9% uptime SLA.',
-    to: '/solutions/contact-center', viz: <VizContactCenter /> },
-  { tab: 'Agentic AI', title: 'Agentic AI Solutions',
-    desc: 'Autonomous LLM agents, NLP pipelines, OpenAI, LangChain — AI that works for your business 24/7.',
-    to: '/solutions/agentic-ai', viz: <VizAgenticAI /> },
-  { tab: 'Backend', title: 'Backend Development',
-    desc: 'Scalable REST/GraphQL APIs and microservices. Node.js, Python, FastAPI for high-traffic systems.',
-    to: '/solutions/backend', viz: <VizBackend /> },
-  { tab: 'Frontend', title: 'Frontend Development',
-    desc: 'React, Next.js, Vue applications with exceptional UX. Performance-first with Core Web Vitals.',
-    to: '/solutions/frontend', viz: <VizFrontend /> },
-  { tab: 'AWS Infra', title: 'AWS Infrastructure',
-    desc: 'Enterprise AWS with 99.99% availability SLAs. Terraform IaC, Kubernetes, CI/CD pipelines.',
-    to: '/solutions/aws', viz: <VizAWS /> },
-  { tab: 'Cybersecurity', title: 'Cybersecurity',
-    desc: '24/7 SOC operations, zero-trust architecture. SOC 2 & ISO 27001 certified infrastructure.',
+  { tab: 'Observability & SRE', title: 'Observability, SRE & Production Engineering',
+    desc: 'Reliability engineering and full-stack observability. Metrics, logs, traces, SLOs and an on-call people can live with.',
+    to: '/solutions/observability-sre', viz: <VizObservability /> },
+  { tab: 'DevSecOps & FinOps', title: 'DevSecOps & FinOps',
+    desc: 'Secure automated delivery and cloud cost efficiency, together. Pipelines that scan as they ship, plus spend you can explain.',
+    to: '/solutions/devsecops-finops', viz: <VizDevSecOps /> },
+  { tab: 'Cybersecurity', title: 'Cybersecurity Solutions',
+    desc: 'Enterprise security, compliance, and threat defense. 24/7 SOC, zero-trust architecture, SOC 2 / ISO 27001 / HIPAA.',
     to: '/solutions/cybersecurity', viz: <VizSecurity /> },
-  { tab: 'Inventory', title: 'Inventory Management',
-    desc: 'Real-time stock tracking, AI demand forecasting, multi-warehouse support and ERP integrations.',
-    to: '/solutions/inventory', viz: <VizInventory /> },
-  { tab: 'Full Stack & Mobile', title: 'Full Stack & Mobile',
-    desc: 'Flutter, React Native, Swift, Kotlin. Complete app development from UX to App Store delivery.',
-    to: '/solutions/fullstack', viz: <VizMobile /> },
-  { tab: 'IT Consulting', title: 'IT Consulting & Outsourcing',
-    desc: 'CTO-as-a-Service, digital transformation roadmaps, talent outsourcing and strategic advisory.',
-    to: '/solutions/consulting', viz: <VizConsulting /> },
+  { tab: 'Agentic AI', title: 'Agentic AI Solutions',
+    desc: 'Autonomous LLM agents and AI workflows for your business. Custom pipelines, RAG, NLP and production ML systems.',
+    to: '/solutions/agentic-ai', viz: <VizAgenticAI /> },
+  { tab: 'Cloud Engineering', title: 'Cloud Engineering & Migration',
+    desc: 'Cloud architecture, migration, and optimization across AWS, Azure and GCP. Terraform, Kubernetes, 99.99% availability.',
+    to: '/solutions/cloud-engineering-migration', viz: <VizAWS /> },
+  { tab: 'Web & Enterprise Apps', title: 'Web & Enterprise Applications',
+    desc: 'Custom web platforms and enterprise-grade applications, engineered to scale. React, Next.js, Node.js, Python and PostgreSQL.',
+    to: '/solutions/web-enterprise-applications', viz: <VizFrontend /> },
+  { tab: 'App Modernization', title: 'Application Modernization',
+    desc: 'Legacy systems re-architected for the cloud era. Monolith to microservices, re-platforming and tech-debt reduction.',
+    to: '/solutions/application-modernization', viz: <VizModernization /> },
+  { tab: 'ITSM', title: 'IT Service Management (ITSM)',
+    desc: 'Streamlined IT operations and service delivery. ITIL-aligned processes, service desk, automation and SLA governance.',
+    to: '/solutions/itsm', viz: <VizITSM /> },
 ]
 
 export default function ServiceShowcase() {

@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import DataCard from '../components/DataCard'
-import { getSolution } from '../data/solutions'
+import { getSolution, retiredSolutionSlugs, solutions } from '../data/solutions'
 import { solutionMeta } from '../data/solutionMeta'
 import { useLead } from '../context/LeadContext'
 
@@ -56,7 +56,12 @@ export default function SolutionPage() {
   /* All five photo slots are DataCards now, so none of the old
      load-failure fallback state is needed. */
 
-  if (!solution) return <Navigate to="/services" replace />
+  /* Retired solutions keep working: send old URLs to their closest
+     replacement rather than dropping visitors on the listing page. */
+  if (!solution) {
+    const replacement = slug ? retiredSolutionSlugs[slug] : undefined
+    return <Navigate to={replacement ? `/solutions/${replacement}` : '/services'} replace />
+  }
 
   const accent = meta?.accentColor ?? '#F2622E'
 
@@ -336,13 +341,17 @@ export default function SolutionPage() {
       <section className="tl-related">
         <div className="container">
           <div className="tl-related__label tl-reveal">Explore Related Solutions</div>
+          {/* Driven off the solutions list so the chips can never point at a
+              retired slug — the current page drops itself out. */}
           <div className="tl-related__chips tl-reveal">
-            {slug !== 'agentic-ai'    && <Link to="/solutions/agentic-ai"    className="tl-related__chip">🤖 Agentic AI</Link>}
-            {slug !== 'aws'           && <Link to="/solutions/aws"           className="tl-related__chip">☁️ AWS Infrastructure</Link>}
-            {slug !== 'devops'        && <Link to="/solutions/devops"        className="tl-related__chip">🔁 DevOps & CI/CD</Link>}
-            {slug !== 'cybersecurity' && <Link to="/solutions/cybersecurity" className="tl-related__chip">🛡 Cybersecurity</Link>}
-            {slug !== 'frontend'      && <Link to="/solutions/frontend"      className="tl-related__chip">💻 Frontend Dev</Link>}
-            {slug !== 'backend'       && <Link to="/solutions/backend"       className="tl-related__chip">⚙️ Backend Dev</Link>}
+            {solutions
+              .filter(s => s.slug !== slug)
+              .slice(0, 6)
+              .map(s => (
+                <Link key={s.slug} to={`/solutions/${s.slug}`} className="tl-related__chip">
+                  {s.pillars[0]?.icon} {s.name}
+                </Link>
+              ))}
           </div>
         </div>
       </section>

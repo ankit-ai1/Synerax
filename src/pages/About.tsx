@@ -76,7 +76,7 @@ export default function About() {
           </p>
           <div className="ab-hero__actions">
             <button onClick={() => openLead()} className="ht-hero__btn-primary">START A PROJECT →</button>
-            <Link to="/solutions/contact-center" className="ht-hero__btn-outline">EXPLORE SOLUTIONS</Link>
+            <Link to="/solutions/web-enterprise-applications" className="ht-hero__btn-outline">EXPLORE SOLUTIONS</Link>
           </div>
         </div>
       </section>

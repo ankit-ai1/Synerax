@@ -6,6 +6,7 @@ import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import HeroDashboard from '../components/HeroDashboard'
 import PlatformChart from '../components/PlatformChart'
+import AwsArchitecture from '../components/AwsArchitecture'
 import ServiceShowcase from '../components/ServiceShowcase'
 import Testimonials from '../components/Testimonials'
 import { CountUpText } from '../components/CountUp'
@@ -56,45 +57,6 @@ function InsightThumb({ index, shape }: { index: number; shape: 'wave' | 'bars' 
     </div>
   )
 }
-/* ─── Solution cards ─────────────────────────── */
-const homeSolCards = [
-  {
-    slug:'contact-center', title:'Contact Center Solutions',    tag:'Enterprise',  img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781091750/ChatGPT_Image_Jun_10_2026_05_12_08_PM_vouyiu.png', desc:'Enterprise-grade omnichannel platform handling 10,000+ calls/hour with AI-powered IVR, intelligent routing, and a 99.9% uptime SLA.',
-    svg: (<svg viewBox="0 0 48 48" fill="none"><path d="M8 14a4 4 0 014-4h6l3 8-4 2.5a22 22 0 009.5 9.5L29 26l8 3v6a4 4 0 01-4 4C17.2 39 9 30.8 9 20.8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/><path d="M34 14a2 2 0 110-4 2 2 0 010 4zM34 22a2 2 0 110-4 2 2 0 010 4z" fill="currentColor" opacity=".4"/></svg>),
-  },
-  {
-    slug:'frontend',       title:'Frontend Development',        tag:'Development', img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781091899/ChatGPT_Image_Jun_10_2026_05_14_32_PM_wb2ubo.png', desc:'Blazing-fast, responsive web apps with React, Next.js, and TypeScript. Performance-first with Core Web Vitals optimisation.',
-    svg: (<svg viewBox="0 0 48 48" fill="none"><rect x="4" y="8" width="40" height="28" rx="3" stroke="currentColor" strokeWidth="2.2"/><path d="M16 44h16M24 36v8" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/><path d="M13 22l6 6-6 6M22 32h10" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>),
-  },
-  {
-    slug:'backend',        title:'Backend Development',         tag:'Development', img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781092016/ChatGPT_Image_Jun_10_2026_05_16_44_PM_vpm7nm.png', desc:'Scalable REST/GraphQL APIs and microservices. Node.js, Python, FastAPI — engineered for high-traffic production systems.',
-    svg: (<svg viewBox="0 0 48 48" fill="none"><rect x="6" y="8" width="36" height="10" rx="3" stroke="currentColor" strokeWidth="2.2"/><rect x="6" y="22" width="36" height="10" rx="3" stroke="currentColor" strokeWidth="2.2"/><circle cx="13" cy="13" r="2" fill="currentColor"/><circle cx="13" cy="27" r="2" fill="currentColor"/><path d="M20 36v6M28 36v6" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>),
-  },
-  {
-    slug:'agentic-ai',     title:'Agentic AI Solutions',        tag:'AI & Cloud',  img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781092144/ChatGPT_Image_Jun_10_2026_05_18_51_PM_vt62mr.png', desc:'Autonomous LLM agents, NLP pipelines, and agentic workflows. OpenAI, LangChain, HuggingFace — AI that works 24/7.',
-    svg: (<svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="10" stroke="currentColor" strokeWidth="2.2"/><circle cx="24" cy="24" r="4" fill="currentColor" opacity=".35"/><path d="M24 4v4M24 40v4M44 24h-4M8 24H4M37.07 10.93l-2.83 2.83M13.76 34.24l-2.83 2.83M37.07 37.07l-2.83-2.83M13.76 13.76l-2.83-2.83" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>),
-  },
-  {
-    slug:'aws',            title:'AWS Infrastructure',          tag:'AI & Cloud',  img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781092334/ChatGPT_Image_Jun_10_2026_05_22_02_PM_msfgms.png', desc:'Enterprise AWS with 99.99% availability SLAs. Terraform IaC, Kubernetes, CI/CD pipelines, and cloud cost optimisation.',
-    svg: (<svg viewBox="0 0 48 48" fill="none"><path d="M24 8C15.16 8 8 15.16 8 24s7.16 16 16 16 16-7.16 16-16S32.84 8 24 8z" stroke="currentColor" strokeWidth="2.2"/><path d="M24 8c-4.5 6.5-6 13-6 16s1.5 9.5 6 16M24 8c4.5 6.5 6 13 6 16s-1.5 9.5-6 16M8 24h32" stroke="currentColor" strokeWidth="2"/><path d="M10 17h28M10 31h28" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 3"/></svg>),
-  },
-  {
-    slug:'cybersecurity',  title:'Cybersecurity',               tag:'AI & Cloud',  img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781092580/ChatGPT_Image_Jun_10_2026_05_25_49_PM_vbnagv.png', desc:'24/7 SOC operations, zero-trust architecture, and penetration testing. SOC 2 & ISO 27001 certified infrastructure.',
-    svg: (<svg viewBox="0 0 48 48" fill="none"><path d="M24 6L8 14v12c0 9.4 6.8 18.2 16 20.4C33.2 44.2 40 35.4 40 26V14L24 6z" stroke="currentColor" strokeWidth="2.2" strokeLinejoin="round"/><path d="M17 24l5 5 9-10" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/></svg>),
-  },
-  {
-    slug:'inventory',      title:'Inventory Management',        tag:'Enterprise',  img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781092765/ChatGPT_Image_Jun_10_2026_05_27_29_PM_hgknao.png', desc:'Real-time stock tracking, AI demand forecasting, multi-warehouse support, and ERP integrations.',
-    svg: (<svg viewBox="0 0 48 48" fill="none"><rect x="6" y="16" width="36" height="26" rx="3" stroke="currentColor" strokeWidth="2.2"/><path d="M16 16V12a8 8 0 0116 0v4" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/><path d="M18 28h12M18 34h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>),
-  },
-  {
-    slug:'fullstack',      title:'Full Stack & Mobile',         tag:'Development', img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781092853/ChatGPT_Image_Jun_10_2026_05_30_37_PM_gn5rei.png', desc:'Complete application development — web and mobile. Flutter, React Native, Swift, Kotlin. App Store-ready delivery in weeks.',
-    svg: (<svg viewBox="0 0 48 48" fill="none"><rect x="14" y="4" width="20" height="36" rx="4" stroke="currentColor" strokeWidth="2.2"/><rect x="18" y="8" width="12" height="20" rx="1.5" stroke="currentColor" strokeWidth="1.8"/><circle cx="24" cy="35" r="2" fill="currentColor"/><path d="M6 18l4 4-4 4M42 18l-4 4 4 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>),
-  },
-  {
-    slug:'consulting',     title:'IT Consulting & Outsourcing', tag:'Enterprise',  img:'https://res.cloudinary.com/dtg3lepr4/image/upload/v1781093112/ChatGPT_Image_Jun_10_2026_05_35_01_PM_vbjuf8.png', desc:'CTO-as-a-Service, digital transformation roadmaps, talent outsourcing, and strategic IT advisory.',
-    svg: (<svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="16" r="8" stroke="currentColor" strokeWidth="2.2"/><path d="M8 40c0-8.84 7.16-16 16-16s16 7.16 16 16" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round"/><path d="M30 28l8 4M38 28l-8 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>),
-  },
-]
 
 /* ─── Testimonials ───────────────────────────── */
 const testimonials = [
@@ -604,7 +566,141 @@ export default function Home() {
           </div>
         </div>
       </div>
+      {/* ══ 3. ONE PLATFORM — sticky copy on the left, cards scroll past ══ */}
+      <section className="iq-section iq-section--tint fx-stick">
+        <div className="iq-wrap">
+          <div className="fx-stick__inner">
 
+            {/* ── left: stays put while the right column scrolls ── */}
+            <aside className="fx-stick__left">
+              <div className="fx-lede">
+                <p className="iq-eye iq-reveal">End-to-End Expertise</p>
+                <h2 className="iq-h2 iq-reveal iq-d1">
+                  One Technology Partner,<br />
+                  <span className="iq-accent">Every Digital Solution.</span>
+                </h2>
+                <p className="iq-body iq-reveal iq-d2">
+                  From AI-powered applications and cloud infrastructure to enterprise software, DevOps, and digital transformation, Synerax delivers scalable, secure, and future-ready technology solutions under one trusted partner.
+                </p>
+              </div>
+
+              <div className="fx-stick__cta iq-hero__btns">
+                <button onClick={() => openLead()} className="iq-btn-fill">Start a Project →</button>
+                <Link to="/solutions" className="iq-btn-ring">View All Solutions</Link>
+              </div>
+            </aside>
+
+            {/* ── right: the four cards, stacked and scrolling ── */}
+            <div className="fx-stick__right">
+
+              <article className="fx-stick__step">
+                <header className="fx-stick__cap">
+                  <h3 className="fx-stick__title">Built on AWS</h3>
+                  <p className="fx-stick__desc">99.99% availability, Terraform IaC, Kubernetes</p>
+                </header>
+                <div className="fx-stick__panel">
+                  <div className="fx-pillar__viz">
+                    <span className="fx-viz__lbl">Cloud Architecture</span>
+                    <AwsArchitecture />
+                  </div>
+                </div>
+              </article>
+
+              <article className="fx-stick__step">
+                <header className="fx-stick__cap">
+                  <h3 className="fx-stick__title">Enterprise Security</h3>
+                  <p className="fx-stick__desc">SOC 2, ISO 27001, HIPAA certified infrastructure</p>
+                </header>
+                <div className="fx-stick__panel">
+                  <div className="fx-pillar__viz">
+                    <span className="fx-viz__lbl">Security &amp; Compliance</span>
+                    <span className="iq-mini-badge fx-pillar__badge">
+                      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                      Verified
+                    </span>
+                    <div className="iq-mini-feed">
+                      {[
+                        { t:'SOC 2 Type II', s:'Independently audited annually', time:'Certified' },
+                        { t:'ISO 27001', s:'Information security management', time:'Certified' },
+                        { t:'HIPAA', s:'Healthcare data compliance', time:'Compliant' },
+                      ].map(f=>(
+                        <div key={f.t} className="iq-mini-feed__item">
+                          <span className="iq-mini-feed__check">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                          </span>
+                          <div className="iq-mini-feed__text">
+                            <div className="iq-mini-feed__title">{f.t}</div>
+                            <div className="iq-mini-feed__sub">{f.s}</div>
+                          </div>
+                          <span className="iq-mini-feed__time">{f.time}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article className="fx-stick__step">
+                <header className="fx-stick__cap">
+                  <h3 className="fx-stick__title">AI-Powered</h3>
+                  <p className="fx-stick__desc">Custom LLM pipelines, autonomous agents, ML systems</p>
+                </header>
+                <div className="fx-stick__panel">
+                  <div className="fx-pillar__viz">
+                    <span className="fx-viz__lbl">Agent Pipeline</span>
+                    <div className="fx-pipe">
+                      <span className="fx-pipe__rail"><i /></span>
+                      {['Ingest','LLM pipeline','Agent','Action'].map((s,i)=>(
+                        <span className="fx-pipe__step" key={s} style={{ animationDelay: `${0.15 + i * 0.14}s` }}>
+                          <b style={{ animationDelay: `${i * 0.45}s` }} />{s}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article className="fx-stick__step">
+                <header className="fx-stick__cap">
+                  <h3 className="fx-stick__title">Full Visibility</h3>
+                  <p className="fx-stick__desc">Real-time dashboards, weekly demos, dedicated PM</p>
+                </header>
+                <div className="fx-stick__panel">
+                  <div className="fx-wide-panel">
+                    <div className="iq-hero__card-header">
+                      <span className="iq-hero__card-title">Platform Overview</span>
+                    </div>
+                    <div className="fx-wide-panel__body fx-wide-panel__body--chart">
+                      <PlatformChart />
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 4. EVERYTHING — centered tabbed service showcase ══ */}
+      <section className="iq-section iq-section--white-b">
+        <div className="iq-wrap">
+          <div className="fx-lede fx-lede--center">
+            <p className="iq-eye iq-reveal">Everything You Need</p>
+            <h2 className="iq-h2 iq-reveal iq-d1">
+              Everything your business needs,<br />
+              <span className="iq-accent">in one place.</span>
+            </h2>
+            <p className="iq-body iq-reveal iq-d2">
+              From log modeling to AI-assisted answers — we deliver the full capabilities.
+            </p>
+          </div>
+
+          <div className="iq-reveal iq-d2">
+            <ServiceShowcase />
+          </div>
+        </div>
+      </section>
 
       {/* ══ 2. PROBLEM — stats + two side-by-side comparison cards ══ */}
       <section className="iq-section fx-problem">
@@ -718,165 +814,6 @@ export default function Home() {
 
           </div>
 
-        </div>
-      </section>
-
-      {/* ══ 3. ONE PLATFORM — sticky copy on the left, cards scroll past ══ */}
-      <section className="iq-section iq-section--tint fx-stick">
-        <div className="iq-wrap">
-          <div className="fx-stick__inner">
-
-            {/* ── left: stays put while the right column scrolls ── */}
-            <aside className="fx-stick__left">
-              <div className="fx-lede">
-                <p className="iq-eye iq-reveal">End-to-End Expertise</p>
-                <h2 className="iq-h2 iq-reveal iq-d1">
-                  One Technology Partner,<br />
-                  <span className="iq-accent">Every Digital Solution.</span>
-                </h2>
-                <p className="iq-body iq-reveal iq-d2">
-                  From AI-powered applications and cloud infrastructure to enterprise software, DevOps, and digital transformation, Synerax delivers scalable, secure, and future-ready technology solutions under one trusted partner.
-                </p>
-              </div>
-
-              <div className="fx-stick__cta iq-hero__btns">
-                <button onClick={() => openLead()} className="iq-btn-fill">Start a Project →</button>
-                <Link to="/solutions" className="iq-btn-ring">View All Solutions</Link>
-              </div>
-            </aside>
-
-            {/* ── right: the four cards, stacked and scrolling ── */}
-            <div className="fx-stick__right">
-
-              <article className="fx-stick__step">
-                <header className="fx-stick__cap">
-                  <h3 className="fx-stick__title">Built on AWS</h3>
-                  <p className="fx-stick__desc">99.99% availability, Terraform IaC, Kubernetes</p>
-                </header>
-                <div className="fx-stick__panel">
-                  <div className="fx-pillar__viz">
-                    <span className="fx-viz__lbl">Cloud Architecture</span>
-                    <svg viewBox="0 0 250 146" aria-hidden="true" className="fx-arch">
-                      {/* VPC boundary */}
-                      <rect className="fx-arch__vpc" x="4" y="4" width="242" height="138" rx="8" />
-                      <text className="fx-arch__vpclbl" x="14" y="20">VPC</text>
-
-                      {/* ingress → fan-out to nodes */}
-                      <rect className="fx-arch__box" x="91" y="30" width="68" height="26" rx="5" />
-                      <text className="fx-arch__t" x="125" y="47" textAnchor="middle">Ingress</text>
-
-                      <path className="fx-arch__line"
-                            d="M125 56 L125 74 M41 74 L209 74 M41 74 L41 92 M125 74 L125 92 M209 74 L209 92" />
-                      <path className="fx-arch__flow" d="M125 56 L125 74 L41 74 L41 92" />
-                      <path className="fx-arch__flow fx-arch__flow--b" d="M125 56 L125 74 L209 74 L209 92" />
-                      <path className="fx-arch__flow fx-arch__flow--c" d="M125 56 L125 92" />
-
-                      {[11, 95, 179].map((x, i) => (
-                        <g key={x}>
-                          <rect className="fx-arch__box" x={x} y="92" width="60" height="26" rx="5" />
-                          <text className="fx-arch__t" x={x + 30} y="109" textAnchor="middle">Node</text>
-                          <circle className="fx-arch__pulse" cx={x + 30} cy="130" r="3"
-                                  style={{ animationDelay: `${i * 0.45}s` }} />
-                        </g>
-                      ))}
-                    </svg>
-                  </div>
-                </div>
-              </article>
-
-              <article className="fx-stick__step">
-                <header className="fx-stick__cap">
-                  <h3 className="fx-stick__title">Enterprise Security</h3>
-                  <p className="fx-stick__desc">SOC 2, ISO 27001, HIPAA certified infrastructure</p>
-                </header>
-                <div className="fx-stick__panel">
-                  <div className="fx-pillar__viz">
-                    <span className="fx-viz__lbl">Security &amp; Compliance</span>
-                    <span className="iq-mini-badge fx-pillar__badge">
-                      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                      Verified
-                    </span>
-                    <div className="iq-mini-feed">
-                      {[
-                        { t:'SOC 2 Type II', s:'Independently audited annually', time:'Certified' },
-                        { t:'ISO 27001', s:'Information security management', time:'Certified' },
-                        { t:'HIPAA', s:'Healthcare data compliance', time:'Compliant' },
-                      ].map(f=>(
-                        <div key={f.t} className="iq-mini-feed__item">
-                          <span className="iq-mini-feed__check">
-                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                          </span>
-                          <div className="iq-mini-feed__text">
-                            <div className="iq-mini-feed__title">{f.t}</div>
-                            <div className="iq-mini-feed__sub">{f.s}</div>
-                          </div>
-                          <span className="iq-mini-feed__time">{f.time}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article className="fx-stick__step">
-                <header className="fx-stick__cap">
-                  <h3 className="fx-stick__title">AI-Powered</h3>
-                  <p className="fx-stick__desc">Custom LLM pipelines, autonomous agents, ML systems</p>
-                </header>
-                <div className="fx-stick__panel">
-                  <div className="fx-pillar__viz">
-                    <span className="fx-viz__lbl">Agent Pipeline</span>
-                    <div className="fx-pipe">
-                      <span className="fx-pipe__rail"><i /></span>
-                      {['Ingest','LLM pipeline','Agent','Action'].map((s,i)=>(
-                        <span className="fx-pipe__step" key={s} style={{ animationDelay: `${0.15 + i * 0.14}s` }}>
-                          <b style={{ animationDelay: `${i * 0.45}s` }} />{s}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <article className="fx-stick__step">
-                <header className="fx-stick__cap">
-                  <h3 className="fx-stick__title">Full Visibility</h3>
-                  <p className="fx-stick__desc">Real-time dashboards, weekly demos, dedicated PM</p>
-                </header>
-                <div className="fx-stick__panel">
-                  <div className="fx-wide-panel">
-                    <div className="iq-hero__card-header">
-                      <span className="iq-hero__card-title">Platform Overview</span>
-                    </div>
-                    <div className="fx-wide-panel__body fx-wide-panel__body--chart">
-                      <PlatformChart />
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ══ 4. EVERYTHING — centered tabbed service showcase ══ */}
-      <section className="iq-section iq-section--white-b">
-        <div className="iq-wrap">
-          <div className="fx-lede fx-lede--center">
-            <p className="iq-eye iq-reveal">Everything You Need</p>
-            <h2 className="iq-h2 iq-reveal iq-d1">
-              Everything your business needs,<br />
-              <span className="iq-accent">in one place.</span>
-            </h2>
-            <p className="iq-body iq-reveal iq-d2">
-              From log modeling to AI-assisted answers — we deliver the full capabilities.
-            </p>
-          </div>
-
-          <div className="iq-reveal iq-d2">
-            <ServiceShowcase />
-          </div>
         </div>
       </section>
 

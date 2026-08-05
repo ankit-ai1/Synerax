@@ -331,7 +331,7 @@ export default function Contact() {
           <p>No commitment. No sales pressure. Just an honest conversation. Most clients wish they'd reached out sooner.</p>
           <div className="cta-band__actions">
             <a href="mailto:syneraxcloudtechnologies@gmail.com" className="btn btn--white">📧 Email Us Directly</a>
-            <Link to="/solutions/contact-center" className="btn btn--outline" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.4)' }}>View Solutions</Link>
+            <Link to="/solutions/web-enterprise-applications" className="btn btn--outline" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.4)' }}>View Solutions</Link>
           </div>
         </div>
       </section>

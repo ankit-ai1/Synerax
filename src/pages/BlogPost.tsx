@@ -5,12 +5,12 @@ import { useLead } from '../context/LeadContext'
 import { posts } from './Blog'
 
 const TAG_COLORS: Record<string, { bg: string; color: string }> = {
-  Product:     { bg: 'rgba(13,72,126,0.12)',  color: '#0D487E' },
-  Engineering: { bg: 'rgba(79,169,232,0.15)', color: '#5a78c8' },
-  Culture:     { bg: 'rgba(134,151,196,0.18)', color: '#6b7fb8' },
-  Industry:    { bg: 'rgba(13,72,126,0.10)',   color: '#0D487E' },
-  AI:          { bg: 'rgba(220,239,253,0.25)', color: '#0D487E' },
-  DevOps:      { bg: 'rgba(13,72,126,0.12)',   color: '#0D487E' },
+  Product:     { bg: 'rgba(242,98,46,0.12)',  color: '#F2622E' },
+  Engineering: { bg: 'rgba(242,98,46,0.15)', color: '#FF7A45' },
+  Culture:     { bg: 'rgba(178,178,184,0.16)', color: '#B2B2B8' },
+  Industry:    { bg: 'rgba(242,98,46,0.10)',   color: '#F2622E' },
+  AI:          { bg: 'rgba(242,98,46,0.12)', color: '#F2622E' },
+  DevOps:      { bg: 'rgba(242,98,46,0.12)',   color: '#F2622E' },
 }
 
 export default function BlogPost() {

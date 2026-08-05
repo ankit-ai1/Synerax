@@ -1,0 +1,358 @@
+/* ═════════════════════════════════════════════════════════════
+   PALETTE UNIFY — every page on the homepage's colour system
+   Companion to typography-unify.css. Inner pages were built
+   before the grey ramp existed, so their sections and cards
+   carry their own backgrounds, borders and accents.
+
+   Mapped onto the homepage roles:
+     section band  → --fx-01 / --fx-02 alternating
+     card surface  → --fx-03 + hairline + texture grid
+     hairline      → --border
+     accent        → --accent (used sparingly)
+   ═════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   1. SECTION BANDS
+   ───────────────────────────────────────────── */
+.ab-mission,
+.ab-mv,
+.ab-process,
+.ab-team,
+.ab-testi,
+.ab-values,
+.about-pillars,
+.about-story,
+.bl-section,
+.bl-newsletter,
+.bpost-body,
+.bpost-related,
+.car-benefits,
+.car-jobs,
+.car-process,
+.car-values,
+.car-general-apply,
+.ct-faq,
+.ct-main,
+.ind-benefits,
+.ind-challenges,
+.ind-compliance,
+.ind-specialized,
+.ind-stats,
+.pp-content,
+.srv-solutions,
+.st-section,
+.tech-section,
+.tech-categories,
+.tl-caps,
+.tl-enterprise,
+.tl-related,
+.tl-tech,
+.tl-techstack,
+.tl-usecases,
+.wp-section {
+  background: var(--fx-01) !important;
+  background-image: none !important;
+  color: var(--text) !important;
+}
+
+/* Every other band steps up one shade, the way the homepage alternates */
+.ab-mv,
+.ab-team,
+.about-story,
+.bpost-related,
+.car-jobs,
+.car-values,
+.ind-challenges,
+.ind-specialized,
+.st-section,
+.tl-enterprise,
+.tl-usecases {
+  background: var(--fx-02) !important;
+}
+
+/* ─────────────────────────────────────────────
+   2. PAGE HEROES — same treatment as the homepage hero
+   ───────────────────────────────────────────── */
+.ab-hero,
+.bl-hero,
+.bpost-hero,
+.car-hero,
+.ct-hero,
+.ind-hero,
+.pp-hero,
+.srv-hero,
+.tl-hero {
+  background:
+    radial-gradient(ellipse 62% 40% at 50% 18%, rgba(255,255,255,.045), transparent 70%),
+    var(--fx-00) !important;
+  background-image:
+    radial-gradient(ellipse 62% 40% at 50% 18%, rgba(255,255,255,.045), transparent 70%) !important;
+  background-color: var(--fx-00) !important;
+  color: var(--text) !important;
+}
+/* the old orange wash blobs go quiet */
+.ab-hero__glow,
+.ab-hero__overlay,
+.ab-hero__accent,
+.bl-hero__accent,
+.ind-hero__ghost,
+.pp-accent,
+.wp-3d-accent {
+  opacity: .35 !important;
+}
+
+/* ─────────────────────────────────────────────
+   3. CARDS — one surface, one hairline, one texture
+   ───────────────────────────────────────────── */
+.ab-mv-card,
+.ab-step,
+.ab-team-card,
+.ab-value-card,
+.bl-card,
+.bl-featured,
+.bpost-cta-box,
+.bpost-sidebar,
+.car-benefit-card,
+.car-job-card,
+.car-val-card,
+.ct-details-box,
+.ct-form-card,
+.ct-info-card,
+.ct-perk,
+.cta-band,
+.ind-benefit-item,
+.ind-challenge-item,
+.ind-cta,
+.ind-feature,
+.ind-spec-card,
+.ind-stat,
+.pp-card,
+.srv-card,
+.st-card,
+.tech-category,
+.tech-tile,
+.testi-card,
+.tl-banner,
+.tl-cap-card,
+.tl-dark-feature,
+.tl-usecase-item,
+.wp-card {
+  background:
+    linear-gradient(to right, rgba(255,255,255,.014) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.014) 1px, transparent 1px),
+    var(--fx-03) !important;
+  background-size: 56px 56px;
+  border: 1px solid var(--border) !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  color: var(--text) !important;
+  transition: border-color .22s ease, background-color .22s ease !important;
+}
+
+.ab-mv-card:hover,
+.ab-team-card:hover,
+.ab-value-card:hover,
+.bl-card:hover,
+.car-benefit-card:hover,
+.car-job-card:hover,
+.car-val-card:hover,
+.ind-feature:hover,
+.ind-spec-card:hover,
+.pp-card:hover,
+.srv-card:hover,
+.st-card:hover,
+.tech-tile:hover,
+.tl-cap-card:hover,
+.tl-usecase-item:hover,
+.wp-card:hover {
+  border-color: var(--border-strong) !important;
+  background-color: var(--fx-05) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ─────────────────────────────────────────────
+   4. CHIPS, PILLS, FILTER BUTTONS
+   ───────────────────────────────────────────── */
+.bl-filter,
+.bl-tag,
+.car-dept-btn,
+.car-skill-chip,
+.bl-card__tag-badge,
+.ct-info-row {
+  background: var(--fx-04) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 4px !important;
+  color: var(--text-dim) !important;
+  box-shadow: none !important;
+}
+.bl-filter:hover,
+.car-dept-btn:hover {
+  border-color: var(--border-strong) !important;
+  color: var(--text) !important;
+}
+.bl-filter--active,
+.bl-filter.is-active,
+.car-dept-btn.is-active,
+.car-dept-btn[aria-pressed='true'] {
+  background: var(--text) !important;
+  border-color: var(--text) !important;
+  color: var(--bg) !important;
+  -webkit-text-fill-color: var(--bg) !important;
+}
+
+/* ─────────────────────────────────────────────
+   5. BUTTONS ON INNER PAGES
+   ───────────────────────────────────────────── */
+.car-apply-btn,
+.ct-form__submit,
+.bl-newsletter__btn {
+  background: var(--text) !important;
+  border: 1px solid var(--text) !important;
+  color: var(--bg) !important;
+  -webkit-text-fill-color: var(--bg) !important;
+  border-radius: 4px !important;
+  font-family: var(--font-mono) !important;
+  font-size: .8125rem !important;
+  letter-spacing: .06em !important;
+  text-transform: uppercase !important;
+  box-shadow: none !important;
+}
+
+/* ─────────────────────────────────────────────
+   6. HAIRLINES, DIVIDERS, ACCENT MARKS
+   ───────────────────────────────────────────── */
+.ab-breadcrumb,
+.bl-breadcrumb,
+.bpost-breadcrumb,
+.ct-breadcrumb,
+.ind-breadcrumb,
+.pp-breadcrumb,
+.tl-breadcrumb,
+.bl-grid-label,
+.bl-meta-text,
+.bpost-meta-text,
+.tl-related__label {
+  color: var(--text-faint) !important;
+  font-family: var(--font-mono) !important;
+  letter-spacing: .1em !important;
+}
+
+.bl-meta-dot,
+.bpost-dot,
+.car-job-card__dot,
+.ind-benefit-check,
+.ind-challenge-check,
+.ind-spec-check,
+.ab-step__num,
+.ab-mv-card__badge,
+.tl-usecase-icon,
+.ab-value-card__icon {
+  color: var(--accent) !important;
+  -webkit-text-fill-color: var(--accent) !important;
+}
+
+.bpost-body,
+.bpost-article {
+  border-color: var(--border) !important;
+}
+
+/* ─────────────────────────────────────────────
+   7. INNER-PAGE FORM FIELDS
+   ───────────────────────────────────────────── */
+.ct-form input,
+.ct-form textarea,
+.ct-form select,
+.bl-newsletter__input {
+  background: var(--fx-01) !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  border-radius: 4px !important;
+}
+
+/* ─────────────────────────────────────────────
+   8. LIGHT THEME
+   The rules above hardcode the dark texture and the white
+   hairlines, so light mode has to swap both.
+   ───────────────────────────────────────────── */
+:root[data-theme='light'] .ab-mv-card,
+:root[data-theme='light'] .ab-step,
+:root[data-theme='light'] .ab-team-card,
+:root[data-theme='light'] .ab-value-card,
+:root[data-theme='light'] .bl-card,
+:root[data-theme='light'] .bl-featured,
+:root[data-theme='light'] .bpost-cta-box,
+:root[data-theme='light'] .bpost-sidebar,
+:root[data-theme='light'] .car-benefit-card,
+:root[data-theme='light'] .car-job-card,
+:root[data-theme='light'] .car-val-card,
+:root[data-theme='light'] .ct-details-box,
+:root[data-theme='light'] .ct-form-card,
+:root[data-theme='light'] .ct-info-card,
+:root[data-theme='light'] .ct-perk,
+:root[data-theme='light'] .cta-band,
+:root[data-theme='light'] .ind-benefit-item,
+:root[data-theme='light'] .ind-challenge-item,
+:root[data-theme='light'] .ind-cta,
+:root[data-theme='light'] .ind-feature,
+:root[data-theme='light'] .ind-spec-card,
+:root[data-theme='light'] .ind-stat,
+:root[data-theme='light'] .pp-card,
+:root[data-theme='light'] .srv-card,
+:root[data-theme='light'] .st-card,
+:root[data-theme='light'] .tech-category,
+:root[data-theme='light'] .tech-tile,
+:root[data-theme='light'] .testi-card,
+:root[data-theme='light'] .tl-banner,
+:root[data-theme='light'] .tl-cap-card,
+:root[data-theme='light'] .tl-dark-feature,
+:root[data-theme='light'] .tl-usecase-item,
+:root[data-theme='light'] .wp-card {
+  background:
+    linear-gradient(to right, rgba(18,18,26,.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(18,18,26,.035) 1px, transparent 1px),
+    var(--fx-00) !important;
+  background-size: 56px 56px;
+  box-shadow: 0 1px 2px rgba(18,18,26,.05), 0 4px 14px rgba(18,18,26,.05) !important;
+}
+
+:root[data-theme='light'] .ab-hero,
+:root[data-theme='light'] .bl-hero,
+:root[data-theme='light'] .bpost-hero,
+:root[data-theme='light'] .car-hero,
+:root[data-theme='light'] .ct-hero,
+:root[data-theme='light'] .ind-hero,
+:root[data-theme='light'] .pp-hero,
+:root[data-theme='light'] .srv-hero,
+:root[data-theme='light'] .tl-hero {
+  background-image:
+    radial-gradient(ellipse 62% 40% at 50% 18%, rgba(224,78,24,.07), transparent 70%) !important;
+  background-color: var(--fx-00) !important;
+}
+
+/* ═════════════════════════════════════════════════════════════
+   DATA CARD SLOTS — exempt from the generic card treatment
+   The broad `[class*='-card']` / `[class*='-item']` hairline rule
+   and the section-card recipe both match these photo slots, which
+   re-draws the frame the DataCard already provides.
+   ═════════════════════════════════════════════════════════════ */
+.about-story__img,
+.st-section__right,
+.ind-feature__img-col,
+.ind-compliance__img-col,
+.tl-hero__img-wrap,
+.tl-enterprise__img-wrap,
+.tl-usecases__img-wrap,
+.tl-techstack__img-wrap,
+:root[data-theme='light'] .about-story__img,
+:root[data-theme='light'] .st-section__right,
+:root[data-theme='light'] .ind-feature__img-col,
+:root[data-theme='light'] .ind-compliance__img-col,
+:root[data-theme='light'] .tl-hero__img-wrap,
+:root[data-theme='light'] .tl-enterprise__img-wrap,
+:root[data-theme='light'] .tl-usecases__img-wrap,
+:root[data-theme='light'] .tl-techstack__img-wrap {
+  background: none !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}

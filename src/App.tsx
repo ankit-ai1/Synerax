@@ -26,13 +26,30 @@ function ScrollToTop() {
 }
 
 export default function App() {
+  // Smooth scrolling is non-essential motion — turn it off when the OS asks.
+  const reduceMotion =
+    typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
   return (
-    <ReactLenis root options={{ lerp: 0.1, smoothWheel: true, wheelMultiplier: 1, anchors: true }}>
+    <ReactLenis
+      root
+      options={{
+        lerp: reduceMotion ? 1 : 0.1,
+        smoothWheel: !reduceMotion,
+        wheelMultiplier: 1,
+        anchors: true,
+      }}
+    >
       <ScrollToTop />
       <LeadModal />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
+        {/* the solutions listing lives on the Services page — without this,
+            every "/solutions" link fell through to the catch-all and bounced
+            back to the homepage */}
+        <Route path="/solutions" element={<Services />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/solutions/:slug" element={<SolutionPage />} />

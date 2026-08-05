@@ -1,0 +1,157 @@
+/* ═════════════════════════════════════════════════════════════
+   SERVICE SHOWCASE — compact stage
+   The panel was running well past one screen. Everything here
+   tightens the box so a tab fits in view, plus the per-tab
+   entrance animation.
+   ═════════════════════════════════════════════════════════════ */
+
+/* ── Stage shell ──────────────────────────────────────────── */
+.fx-stage__inner {
+  display: grid !important;
+  grid-template-columns: minmax(0, 42fr) minmax(0, 58fr) !important;
+  align-items: center !important;
+  gap: 2.25rem !important;
+  padding: 1.9rem 2rem !important;
+}
+
+.fx-stage__copy { min-width: 0; }
+
+/* The title is split into one span per word with no whitespace
+   between them, so the gap has to come from CSS. */
+.fx-stage__title {
+  font-size: clamp(1.45rem, 2.5vw, 2.1rem) !important;
+  line-height: 1.12 !important;
+  letter-spacing: -.03em !important;
+  margin: 0 0 .8rem !important;
+}
+.fx-stage__title .fx-word { margin-right: .28em; }
+.fx-stage__title .fx-word:last-child { margin-right: 0; }
+
+.fx-stage__desc {
+  font-size: .875rem !important;
+  line-height: 1.6 !important;
+  margin: 0 0 1.25rem !important;
+  max-width: 46ch;
+}
+
+/* ── Mini-UI: tighter everywhere ──────────────────────────── */
+.fx-stage__viz { min-width: 0; }
+
+.fxv {
+  padding: 1rem 1.1rem 1.1rem !important;
+  gap: .75rem !important;
+}
+.fxv__hd { margin-bottom: .2rem !important; }
+
+.fxv-metrics { gap: 1.5rem !important; }
+.fxv-metric__v { font-size: clamp(1.15rem, 2vw, 1.5rem) !important; line-height: 1.1 !important; }
+.fxv-metric__l { font-size: .5rem !important; }
+
+.fxv-contact-chart { padding: .8rem .85rem !important; }
+
+/* head and legend both lost their spacing when the flex gap went */
+.fxv-contact-chart__head {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: .75rem !important;
+  font-size: .6875rem !important;
+  margin-bottom: .6rem !important;
+}
+
+.fxv-stackbars {
+  height: 86px !important;
+  gap: 4px !important;
+  align-items: flex-end !important;
+}
+.fxv-stackbar i { transform-origin: bottom; }
+
+.fxv-contact-legend {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: .35rem 1rem !important;
+  margin-top: .65rem !important;
+}
+.fxv-contact-legend span {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: .35rem !important;
+  font-size: .5625rem !important;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.fxv-rows__row {
+  padding: .38rem 0 !important;
+  font-size: .6875rem !important;
+}
+.fxv-stats { gap: .9rem !important; }
+.fxv-stat__v { font-size: .9375rem !important; }
+.fxv-stat__l { font-size: .5rem !important; }
+.fxv-chips { gap: .35rem !important; }
+.fxv-chip { font-size: .5625rem !important; padding: .2rem .45rem !important; }
+
+/* ── Per-tab entrance ─────────────────────────────────────── */
+/* The panel is keyed on the active tab, so it remounts on every
+   switch and these run fresh each time. */
+@keyframes fxs-rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes fxs-slide {
+  from { opacity: 0; transform: translateX(20px) scale(.985); }
+  to   { opacity: 1; transform: none; }
+}
+
+.fx-stage__copy {
+  animation: fxs-rise .55s cubic-bezier(.16,1,.3,1) both;
+  animation-delay: .04s;
+}
+.fx-stage__viz {
+  animation: fxs-slide .6s cubic-bezier(.16,1,.3,1) both;
+  animation-delay: .12s;
+}
+
+/* rows and chips cascade in behind the panel */
+.fxv-rows__row { animation: fxs-rise .5s cubic-bezier(.16,1,.3,1) both; }
+.fxv-rows__row:nth-child(1) { animation-delay: .26s; }
+.fxv-rows__row:nth-child(2) { animation-delay: .32s; }
+.fxv-rows__row:nth-child(3) { animation-delay: .38s; }
+.fxv-rows__row:nth-child(4) { animation-delay: .44s; }
+
+.fxv-stat { animation: fxs-rise .5s cubic-bezier(.16,1,.3,1) both; }
+.fxv-stat:nth-child(1) { animation-delay: .28s; }
+.fxv-stat:nth-child(2) { animation-delay: .34s; }
+.fxv-stat:nth-child(3) { animation-delay: .40s; }
+
+/* ── Fit to one screen ────────────────────────────────────── */
+@media (min-width: 1025px) {
+  .fx-stage__inner { padding: 1.75rem 1.9rem !important; }
+  .fxv-stackbars { height: clamp(64px, 9vh, 90px) !important; }
+}
+
+@media (max-height: 900px) and (min-width: 1025px) {
+  .fx-stage__inner { padding: 1.4rem 1.6rem !important; gap: 1.75rem !important; }
+  .fx-stage__title { font-size: clamp(1.3rem, 2.1vw, 1.75rem) !important; }
+  .fx-stage__desc { font-size: .8125rem !important; margin-bottom: 1rem !important; }
+  .fxv { padding: .85rem .95rem .95rem !important; gap: .6rem !important; }
+  .fxv-metric__v { font-size: 1.25rem !important; }
+}
+
+@media (max-width: 1024px) {
+  .fx-stage__inner {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1.75rem !important;
+    padding: 1.4rem !important;
+  }
+  .fx-stage__desc { max-width: none; }
+  .fx-stage__viz { animation-name: fxs-rise; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-stage__copy,
+  .fx-stage__viz,
+  .fxv-rows__row,
+  .fxv-stat { animation: none !important; opacity: 1 !important; transform: none !important; }
+}

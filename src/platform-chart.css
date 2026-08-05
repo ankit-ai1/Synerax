@@ -1,0 +1,331 @@
+/* ═════════════════════════════════════════════════════════════
+   PLATFORM CHART — Full Visibility panel
+   Radar breakdown + level-over-time. Orange carries the data,
+   everything structural stays grey hairline.
+   ═════════════════════════════════════════════════════════════ */
+
+.pfc {
+  --p-line: rgba(255,255,255,.085);
+  --p-grid: rgba(255,255,255,.06);
+  --p-ink: #ededed;
+  --p-mid: rgba(255,255,255,.55);
+  --p-low: rgba(255,255,255,.34);
+  --p-orange: #ff5c29;
+
+  display: grid;
+  grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
+  min-width: 0;
+}
+
+.pfc__card {
+  padding: 1.35rem 1.5rem 1.5rem;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.pfc__card--radar { border-right: 1px solid var(--p-line); }
+
+.pfc__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.1rem;
+  min-height: 26px;
+}
+
+.pfc__title {
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  font-weight: 400;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--p-mid);
+  white-space: nowrap;
+}
+
+/* ── Range tabs ─────────────────────────────────────────── */
+.pfc__tabs {
+  display: flex;
+  align-items: center;
+  gap: .1rem;
+  flex-shrink: 0;
+}
+.pfc__tabs button {
+  position: relative;
+  appearance: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  letter-spacing: .03em;
+  color: var(--p-low);
+  padding: .3rem .5rem;
+  border-radius: 3px;
+  transition: color .18s ease, background .18s ease;
+}
+.pfc__tabs button:hover { color: var(--p-ink); background: rgba(255,255,255,.05); }
+.pfc__tabs button.is-active { color: var(--p-ink); font-weight: 500; }
+.pfc__tabs button.is-active::after {
+  content: '';
+  position: absolute;
+  left: .5rem; right: .5rem;
+  bottom: 0;
+  height: 1.5px;
+  background: var(--p-ink);
+}
+
+/* ── Radar ──────────────────────────────────────────────── */
+.pfc__radar {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  min-height: 0;
+  padding: .4rem 0;
+}
+.pfc__radar svg {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  overflow: visible;
+}
+
+.pfc__ring { fill: none; stroke: var(--p-grid); stroke-width: .5; }
+.pfc__spoke { stroke: var(--p-grid); stroke-width: .4; }
+
+.pfc__shape {
+  fill: rgba(255,92,41,.16);
+  stroke: var(--p-orange);
+  stroke-width: 1.1;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  transition: all 1.6s cubic-bezier(.4,0,.2,1);
+  /* idle breathing on the fill only — the outline stays put */
+  animation: pfc-breathe 5.5s ease-in-out infinite;
+}
+@keyframes pfc-breathe {
+  0%, 100% { fill: rgba(255,92,41,.13); }
+  50%      { fill: rgba(255,92,41,.24); }
+}
+.pfc__node {
+  fill: var(--p-orange);
+  transition: cx 1.6s cubic-bezier(.4,0,.2,1), cy 1.6s cubic-bezier(.4,0,.2,1);
+}
+
+/* Axis captions sit just outside the outer ring */
+.pfc__axis-lbl {
+  font-family: var(--font-mono);
+  font-size: 4.2px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  fill: var(--p-low);
+}
+
+/* Eight rows need tighter leading than the old four. The names are long,
+   so they wrap rather than truncate — ellipsis made every row unreadable. */
+.pfc__legend--full { gap: .5rem .9rem; }
+.pfc__legend--full li { align-items: flex-start; }
+.pfc__legend--full span {
+  font-size: .5rem;
+  letter-spacing: .06em;
+  line-height: 1.35;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+.pfc__legend--full b { font-size: .625rem; line-height: 1.35; }
+
+.pfc__legend {
+  list-style: none;
+  margin: 1.1rem 0 0;
+  padding: .9rem 0 0;
+  border-top: 1px solid var(--p-line);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .5rem .9rem;
+}
+.pfc__legend li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .5rem;
+  min-width: 0;
+}
+.pfc__legend span {
+  font-family: var(--font-mono);
+  font-size: .5625rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--p-low);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.pfc__legend b {
+  font-family: var(--font-mono);
+  font-size: .6875rem;
+  font-weight: 400;
+  color: var(--p-mid);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+/* ── Line chart ─────────────────────────────────────────── */
+.pfc__plot {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+}
+.pfc__plot svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: crosshair;
+  overflow: visible;
+}
+
+.pfc__grid { stroke: var(--p-grid); stroke-width: 1; }
+
+.pfc__ylbl,
+.pfc__xlbl {
+  font-family: var(--font-mono);
+  fill: var(--p-low);
+}
+.pfc__ylbl { font-size: 10px; }
+.pfc__xlbl { font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+
+.pfc__area { stroke: none; }
+.pfc__line {
+  fill: none;
+  stroke: var(--p-orange);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  transition: d 1.4s cubic-bezier(.4,0,.2,1);
+}
+.pfc__dot {
+  fill: var(--p-orange);
+  transition: r .2s ease, cy 1.4s cubic-bezier(.4,0,.2,1);
+}
+.pfc__cursor {
+  stroke: rgba(255,255,255,.26);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+  opacity: 0;
+  transition: opacity .2s ease, x1 .09s linear, x2 .09s linear;
+}
+.pfc__plot.is-live .pfc__cursor { opacity: 1; }
+
+/* Marker rides the line; the halo breathes so it reads as live */
+.pfc__marker {
+  fill: var(--p-orange);
+  stroke: var(--fx-03, #121214);
+  stroke-width: 1.5;
+  transition: cx .09s linear, cy .12s cubic-bezier(.3,0,.2,1);
+}
+.pfc__halo {
+  fill: rgba(255,92,41,.16);
+  transition: cx .09s linear, cy .12s cubic-bezier(.3,0,.2,1);
+  animation: pfc-halo 2.4s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@keyframes pfc-halo {
+  0%, 100% { opacity: .5; transform: scale(.72); }
+  50%      { opacity: 1;  transform: scale(1); }
+}
+
+.pfc__readout {
+  position: absolute;
+  transform: translate(-50%, calc(-100% - 16px));
+  display: flex;
+  flex-direction: column;
+  gap: .1rem;
+  padding: .45rem .65rem;
+  border: 1px solid var(--p-line);
+  border-radius: 5px;
+  background: var(--fx-05, #1a1a1c);
+  box-shadow: 0 8px 24px rgba(0,0,0,.5);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 2;
+  transition: left .09s linear, top .12s cubic-bezier(.3,0,.2,1);
+}
+.pfc__readout i {
+  font-style: normal;
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--p-low);
+  opacity: 0;
+  max-height: 0;
+  transition: opacity .2s ease, max-height .2s ease;
+}
+.pfc__plot.is-live .pfc__readout i { opacity: 1; max-height: 1rem; }
+.pfc__readout strong {
+  font-family: var(--font-body);
+  font-size: .8125rem;
+  font-weight: 500;
+  color: var(--p-ink);
+  letter-spacing: -.01em;
+}
+.pfc__readout em {
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: .5625rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--p-low);
+}
+
+/* ── Panel shell ────────────────────────────────────────────
+   The generic .fx-wide-panel__body is a two-column grid, which
+   squeezed the chart into one track. This variant is a plain
+   block so .pfc owns the full width. */
+.fx-wide-panel__body--chart {
+  display: block !important;
+  padding: 0 !important;
+  grid-template-columns: none !important;
+  gap: 0 !important;
+  min-width: 0;
+}
+
+@media (max-width: 900px) {
+  .pfc { grid-template-columns: minmax(0, 1fr); }
+  .pfc__card--radar {
+    border-right: 0;
+    border-bottom: 1px solid var(--p-line);
+  }
+  .pfc__radar svg { max-width: 250px; }
+  .pfc__card { padding: 1.1rem 1.15rem 1.25rem; }
+  .pfc__axis-lbl { font-size: 4.8px; }
+}
+
+@media (max-width: 560px) {
+  .pfc__legend { grid-template-columns: minmax(0, 1fr); }
+  /* the eight-row breakdown keeps its two columns — one column would
+     double the panel height */
+  .pfc__legend--full { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pfc__tabs button { padding: .28rem .34rem; font-size: .6875rem; }
+  .pfc__title { font-size: .625rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pfc__shape,
+  .pfc__node,
+  .pfc__line,
+  .pfc__dot,
+  .pfc__marker,
+  .pfc__halo,
+  .pfc__readout { transition: none !important; }
+  .pfc__halo,
+  .pfc__shape { animation: none !important; }
+  /* the entrance tween is skipped in JS, so the final state must stand */
+  .pfc__shape,
+  .pfc__node { opacity: 1 !important; transform: none !important; }
+}

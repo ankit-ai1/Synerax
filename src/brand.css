@@ -1,0 +1,71 @@
+/* ═════════════════════════════════════════════════════════════
+   BRAND LOCKUP — mark + wordmark
+   Used in the nav (desktop and mobile sheet) and the footer.
+   Everything inherits `currentColor`, so light mode needs no
+   filter trickery on the mark.
+   ═════════════════════════════════════════════════════════════ */
+
+.nav__logo,
+.ft-new__logo {
+  display: inline-flex !important;
+  align-items: center;
+  /* the mark carries its own internal padding, so the optical gap is
+     smaller than the metric one */
+  gap: .42rem;
+  text-decoration: none;
+  color: var(--text);
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* The mark is the brand PNG, so it keeps its own colours in both
+   themes — no filter, and none of the global logo filters apply
+   since this is not `.nav__logo-img`. */
+.brand__mark {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: block;
+  object-fit: contain;
+  filter: none !important;
+  opacity: 1 !important;
+  /* nudges the triangle's visual centre onto the wordmark's x-height */
+  margin-top: -1px;
+}
+
+.brand__word {
+  font-family: var(--font-heading);
+  font-size: 1.32rem;
+  font-weight: 550;
+  letter-spacing: -.038em;
+  line-height: 1;
+  color: currentColor;
+  -webkit-text-fill-color: currentColor;
+  white-space: nowrap;
+}
+
+/* ── Footer sits a touch larger ─────────────────────────────── */
+.ft-new__logo .brand__mark { width: 38px; height: 38px; }
+.ft-new__logo .brand__word { font-size: 1.46rem; }
+
+/* ── Colour per theme ───────────────────────────────────────── */
+.nav__logo,
+.nav__logo .brand__word,
+.ft-new__logo,
+.ft-new__logo .brand__word {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+:root[data-theme='light'] .nav__logo,
+:root[data-theme='light'] .nav__logo .brand__word,
+:root[data-theme='light'] .ft-new__logo,
+:root[data-theme='light'] .ft-new__logo .brand__word {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+@media (max-width: 768px) {
+  .brand__mark { width: 29px; height: 29px; }
+  .ft-new__logo .brand__mark { width: 31px; height: 31px; }
+  .brand__word { font-size: 1.18rem; }
+}

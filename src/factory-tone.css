@@ -1,0 +1,523 @@
+/* ═════════════════════════════════════════════════════════════
+   SYNERAX — FACTORY TONE PASS
+   Loaded LAST. Purpose:
+     1. Kill the flat pure-black page. Every section sits on its
+        own step of a neutral grey ramp, separated by hairlines.
+     2. Restrain orange to accent-only duty (indices, markers,
+        dot, chart strokes). Everything else reads white/grey.
+     3. Factory typography: tight sans headings, mono body copy,
+        mono uppercase micro-labels and buttons.
+   ═════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Neutral grey ramp — 00 is the page floor, 05 the lightest panel */
+  --fx-00: #08080a !important;
+  --fx-01: #0b0b0d !important;
+  --fx-02: #0e0e10 !important;
+  --fx-03: #121214 !important;
+  --fx-04: #151517 !important;
+  --fx-05: #1a1a1c !important;
+  --fx-06: #202023 !important;
+
+  --bg:            var(--fx-01) !important;
+  --surface:       var(--fx-03) !important;
+  --surface-2:     var(--fx-04) !important;
+  --surface-3:     var(--fx-05) !important;
+
+  --border:        rgba(255,255,255,.075) !important;
+  --border-strong: rgba(255,255,255,.13) !important;
+  --fx-hair:       rgba(255,255,255,.06);
+
+  --text:          #ffffff !important;
+  --text-dim:      rgba(255,255,255,.52) !important;
+  --text-faint:    rgba(255,255,255,.36) !important;
+
+  /* Use the families actually loaded in index.html. Helvetica Neue
+     resolves to Arial on Windows and breaks the grotesk look. */
+  --font-heading: 'Geist', 'Inter', system-ui, -apple-system, sans-serif !important;
+  --font-body:    'Geist', 'Inter', system-ui, -apple-system, sans-serif !important;
+  --font-sans:    'Geist', 'Inter', system-ui, -apple-system, sans-serif !important;
+  --font-mono:    'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace !important;
+
+  --accent:        #ff5c29 !important;
+  --accent-bright: #ff6f38 !important;
+  --accent-soft:   rgba(255,92,41,.08) !important;
+  --accent-line:   rgba(255,92,41,.30) !important;
+}
+
+/* ─────────────────────────────────────────────
+   1. PAGE FLOOR — no more #000
+   ───────────────────────────────────────────── */
+html,
+body,
+#root,
+.app-shell,
+main {
+  background: var(--fx-01) !important;
+  color: var(--text) !important;
+}
+
+/* ─────────────────────────────────────────────
+   2. SECTION RHYTHM — each band its own grey step
+   ───────────────────────────────────────────── */
+.iq-section,
+.fx-ind-section,
+.iq-techstrip,
+.ft-new {
+  background: var(--fx-01) !important;
+  background-image: none !important;
+  border-top: 1px solid var(--fx-hair);
+}
+
+.iq-hero {
+  background:
+    radial-gradient(ellipse 62% 40% at 50% 18%, rgba(255,255,255,.05), transparent 70%),
+    var(--fx-00) !important;
+  border-top: 0;
+}
+
+.fx-problem                { background: var(--fx-02) !important; }
+.iq-section--tint          { background: var(--fx-03) !important; }
+.iq-section--tint-a        { background: var(--fx-02) !important; }
+.iq-section--tint-b        { background: var(--fx-02) !important; }
+.iq-section--white-b       { background: var(--fx-04) !important; }
+.iq-section--gradient      { background: linear-gradient(180deg, var(--fx-01), var(--fx-03)) !important; }
+.iq-section--radial {
+  background:
+    radial-gradient(ellipse 55% 45% at 50% 0%, rgba(255,255,255,.035), transparent 68%),
+    var(--fx-02) !important;
+}
+.fx-ind-section            { background: var(--fx-03) !important; }
+.iq-techstrip              { background: var(--fx-00) !important; }
+.iq-cta {
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(255,255,255,.045), transparent 72%),
+    var(--fx-02) !important;
+  border-top: 1px solid var(--fx-hair);
+}
+.ft-new                    { background: var(--fx-00) !important; }
+
+/* Generic fallback so pages that only use bare .iq-section still alternate */
+main > .iq-section:nth-of-type(even) { background: var(--fx-02) !important; }
+
+/* Page heroes on inner routes sit one step below their content */
+.fx-pagehero,
+.srv-hero,
+.bl-hero,
+.car-hero,
+.abt-hero {
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 16%, rgba(255,255,255,.045), transparent 70%),
+    var(--fx-00) !important;
+}
+
+/* ─────────────────────────────────────────────
+   3. SURFACES — panels lift off their section
+   ───────────────────────────────────────────── */
+.fx-card,
+.fx-pillar,
+.fx-wide-panel,
+.fx-stage,
+.fx-analytics,
+.iq-careers-banner,
+.iq-cta__panel,
+.iq-news,
+.iq-feat,
+.iq-mini-card,
+.iq-testi,
+.iq-bigstat,
+.iq-platform-item,
+.adm-card,
+.adm-panel,
+.card {
+  background:
+    linear-gradient(to right, rgba(255,255,255,.014) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.014) 1px, transparent 1px),
+    var(--fx-03) !important;
+  background-size: 56px 56px;
+  border: 1px solid var(--border) !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+}
+
+.fx-card--good,
+.fx-stage__viz,
+.fx-platform-body,
+.fx-analytics__credits,
+.fx-live-card,
+.fx-step,
+.fx-dash--factory,
+.fx-platform-radar-card,
+.fx-platform-line-card {
+  background-color: var(--fx-04) !important;
+  border-color: var(--border) !important;
+}
+
+.nav__mega,
+.nav__mobile {
+  background: var(--fx-03) !important;
+  background-image: none !important;
+  border: 1px solid var(--border) !important;
+}
+
+/* Hover: brighten the hairline, do NOT flare orange */
+.fx-card:hover,
+.fx-pillar:hover,
+.iq-news:hover,
+.fx-stage:hover,
+.iq-feat:hover,
+.iq-mini-card:hover,
+.iq-platform-item:hover,
+.iq-bigstat:hover {
+  border-color: var(--border-strong) !important;
+  background-color: var(--fx-05) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ─────────────────────────────────────────────
+   4. TYPOGRAPHY — sans headings, mono everything small
+   ───────────────────────────────────────────── */
+.iq-hero__h1,
+.iq-h2,
+.section-title,
+.iq-cta__h2,
+.fx-stage__title,
+.fx-pillar__title,
+.fx-card__title,
+.iq-news__title,
+.fx-ind-title,
+.fx-pagehero h1,
+.srv-hero__h1,
+.bl-hero h1,
+.car-hero h1,
+h1, h2, h3 {
+  font-family: var(--font-heading) !important;
+  font-weight: 400 !important;
+  letter-spacing: -.035em !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  text-wrap: balance;
+}
+
+.fx-card__title,
+.fx-pillar__title,
+.fx-stage__title,
+.iq-news__title {
+  font-size: clamp(1.15rem, 1.5vw, 1.5rem) !important;
+  font-weight: 500 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -.028em !important;
+}
+
+/* Section headlines — Factory sits these around 40px, not 76px.
+   The hero h1 is deliberately left out; only in-page sections shrink. */
+.iq-h2,
+.section-title,
+.fx-ind-title,
+.iq-careers-banner__title {
+  font-size: clamp(1.7rem, 2.9vw, 2.6rem) !important;
+  line-height: 1.14 !important;
+  letter-spacing: -.032em !important;
+  margin-bottom: .9rem !important;
+}
+
+/* The closing CTA keeps a little more presence than a body section */
+.iq-cta__h2 {
+  font-size: clamp(2rem, 4vw, 3.4rem) !important;
+  line-height: 1.06 !important;
+  letter-spacing: -.038em !important;
+}
+
+/* Body copy is mono on Factory — grey, generous leading */
+.iq-body,
+.iq-hero__sub,
+.fx-lede,
+.fx-stage__desc,
+.fx-pillar__desc,
+.fx-card__sub,
+.fx-card__txt p,
+.iq-news__desc,
+.iq-cta__sub,
+.ft-new__tagline,
+.fx-ind-lede,
+.iq-section-hdr p {
+  font-family: var(--font-mono) !important;
+  font-size: .9375rem !important;
+  font-weight: 400 !important;
+  line-height: 1.65 !important;
+  letter-spacing: 0 !important;
+  color: rgba(255,255,255,.5) !important;
+}
+
+/* Section eyebrows read as part of the heading, so they stay white */
+.iq-eye,
+/* Micro labels — mono, uppercase, tracked out */
+.iq-eye,
+.section-tag,
+.nav__mega-eyebrow,
+.fx-dash__side-lbl,
+.fx-platform-graph__head,
+.fx-analytics__head,
+.fx-stat__lbl,
+.iq-news__tag,
+.fx-viz__lbl,
+.fx-micro,
+.fx-platform-axis,
+.fx-platform-tabs {
+  font-family: var(--font-mono) !important;
+  font-size: .6875rem !important;
+  font-weight: 400 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  color: rgba(255,255,255,.42) !important;
+}
+
+/* Platform strip — theme-factory washes these out with opacity .45 and a
+   low-contrast filter. Keep them monochrome to match the palette, but at
+   full strength so the band reads as content, not a ghost. */
+.iq-techstrip__lbl {
+  color: #fff !important;
+  opacity: 1 !important;
+}
+.fx-marquee__item {
+  filter: grayscale(1) brightness(2.4) contrast(.85) !important;
+  opacity: 1 !important;
+}
+.fx-marquee__item:hover {
+  filter: grayscale(0) brightness(1.05) contrast(1) !important;
+  opacity: 1 !important;
+}
+.fx-marquee__item span {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* Section eyebrows read as part of the heading, so they stay white.
+   Must come after the micro-label block above, which also matches them. */
+.iq-eye,
+.iq-eye--light,
+.section-tag,
+.fx-viz__lbl {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  opacity: 1 !important;
+}
+
+/* Buttons — mono uppercase, white primary / grey secondary */
+.iq-btn-fill,
+.iq-btn-fill--lg,
+.btn--primary,
+.btn--white,
+.nav__cta,
+.nav__mobile-cta-btn {
+  background: #ededed !important;
+  background-image: none !important;
+  border: 1px solid #ededed !important;
+  color: #0a0a0a !important;
+  -webkit-text-fill-color: #0a0a0a !important;
+  border-radius: 4px !important;
+  font-family: var(--font-mono) !important;
+  font-size: .8125rem !important;
+  letter-spacing: .06em !important;
+  text-transform: uppercase !important;
+  box-shadow: none !important;
+}
+.iq-btn-fill:hover,
+.btn--primary:hover,
+.nav__cta:hover {
+  background: #fff !important;
+  border-color: #fff !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.iq-btn-ring,
+.iq-btn-ring--light,
+.btn--outline,
+.btn--ghost {
+  background: var(--fx-06) !important;
+  border: 1px solid var(--fx-06) !important;
+  color: #e4e4e4 !important;
+  -webkit-text-fill-color: #e4e4e4 !important;
+  border-radius: 4px !important;
+  font-family: var(--font-mono) !important;
+  font-size: .8125rem !important;
+  letter-spacing: .06em !important;
+  text-transform: uppercase !important;
+}
+.iq-btn-ring:hover,
+.iq-btn-ring--light:hover,
+.btn--outline:hover {
+  background: #2a2a2d !important;
+  border-color: #2a2a2d !important;
+  color: #fff !important;
+}
+
+/* Nav menu — one type treatment for every item.
+   Careers/About are anchors matched by `.nav__links > li > a`; the three
+   dropdowns are <button class="nav__dropdown-trigger">. Both already get
+   the mono uppercase treatment from theme-factory.css, so only the colour
+   is set here — overriding the font here would desync the two groups. */
+.nav__links > li > a,
+.nav__links > li > button,
+.nav__dropdown-trigger,
+.nav__dropdown-trigger .dropdown-arrow,
+.nav__link,
+.nav__sol-title {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  opacity: 1 !important;
+}
+.nav__links > li > a:hover,
+.nav__links > li > a.active,
+.nav__dropdown-trigger:hover,
+.nav__dropdown.open .nav__dropdown-trigger,
+.nav__link:hover { color: #fff !important; }
+
+/* ── Theme toggle ─────────────────────────────────────────── */
+.nav__theme {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.nav__theme-track {
+  position: relative;
+  display: block;
+  width: 46px;
+  height: 24px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  transition: background .28s ease, border-color .28s ease;
+}
+.nav__theme:hover .nav__theme-track { border-color: var(--border-strong); }
+
+.nav__theme-knob {
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  margin-top: -9px;
+  border-radius: 50%;
+  background: var(--text);
+  color: var(--bg);
+  display: grid;
+  place-items: center;
+  transition: transform .32s cubic-bezier(.5,1.6,.5,1), background .28s ease;
+}
+/* aria-checked is the source of truth — no extra class to keep in sync */
+.nav__theme[aria-checked='true'] .nav__theme-knob { transform: translateX(22px); }
+
+.nav__theme-ico {
+  position: absolute;
+  transition: opacity .22s ease, transform .32s cubic-bezier(.5,1.6,.5,1);
+}
+.nav__theme-ico--sun { opacity: 0; transform: rotate(-90deg) scale(.6); }
+.nav__theme-ico--moon { opacity: 1; transform: none; }
+.nav__theme[aria-checked='true'] .nav__theme-ico--sun { opacity: 1; transform: none; }
+.nav__theme[aria-checked='true'] .nav__theme-ico--moon { opacity: 0; transform: rotate(90deg) scale(.6); }
+
+@media (prefers-reduced-motion: reduce) {
+  .nav__theme-knob,
+  .nav__theme-ico { transition: none !important; }
+}
+
+/* ─────────────────────────────────────────────
+   5. ORANGE RESTRAINT
+   Orange survives only on: index numerals, the eyebrow dot,
+   list markers, checkmarks and chart strokes. Everything that
+   used to burn orange now reads white or grey.
+   ───────────────────────────────────────────── */
+
+/* — keeps orange — */
+.fx-card__idx,
+.fx-stat__idx,
+.fx-pillar__num,
+.fx-step__idx,
+.fx-ind-marker,
+.fx-card__check,
+.iq-eye::before,
+.iq-eye--light::before {
+  color: var(--accent) !important;
+  -webkit-text-fill-color: var(--accent) !important;
+}
+
+.iq-eye::before,
+.iq-eye--light::before {
+  background: var(--accent) !important;
+}
+
+/* — loses orange — */
+.fx-stat__num,
+.fx-live-card__top b,
+.fx-dash__live,
+.fx-card__badge,
+.iq-news__link,
+.fx-live-card__delta--warn,
+.fx-step__delta--warn,
+.fxv-contact-chart__head b,
+.fxv-rows__v,
+.fxv-metric__v,
+.iq-accent,
+.iq-em,
+.iq-cta__em,
+.fx-problem .iq-accent,
+.fx-problem .fx-stat__num,
+.fx-problem .fx-stat__num *,
+.fx-platform-tabs .is-active,
+.fx-analytics__head .is-active {
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+}
+
+.fx-live-card__delta--good,
+.fx-step__delta--good {
+  color: #8fb877 !important;
+  -webkit-text-fill-color: #8fb877 !important;
+}
+
+/* No orange glow on focus rings, selections stay subtle */
+::selection { background: rgba(255,255,255,.16) !important; color: #fff !important; }
+:focus-visible {
+  outline: 1px solid rgba(255,255,255,.45) !important;
+  outline-offset: 3px;
+}
+
+/* Kill leftover orange shadows / gradient washes */
+.iq-btn-fill:hover,
+.iq-feat:hover,
+.iq-mini-card:hover,
+.iq-compare__col:hover,
+.iq-intel-slide:hover {
+  box-shadow: none !important;
+  border-color: var(--border-strong) !important;
+}
+
+/* Scrollbar in the same grey family */
+* { scrollbar-color: #2a2a2d var(--fx-01) !important; }
+::-webkit-scrollbar-track { background: var(--fx-01) !important; }
+::-webkit-scrollbar-thumb { background: #2a2a2d !important; }
+::-webkit-scrollbar-thumb:hover { background: #37373b !important; }
+
+/* ─────────────────────────────────────────────
+   6. HAIRLINE DETAIL
+   ───────────────────────────────────────────── */
+/* NB: `.fx-line` is the per-line clipping mask on the hero heading, not a
+   divider — giving it a background paints a box behind the h1. */
+.iq-divider,
+hr {
+  background: var(--fx-hair) !important;
+  border-color: var(--fx-hair) !important;
+}
+.fx-line { background: none !important; }
+
+.iq-section-hdr {
+  border-bottom: 0 !important;
+}

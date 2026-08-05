@@ -1,0 +1,491 @@
+/* ═════════════════════════════════════════════════════════════
+   SYNERAX — Factory layout archetypes (composition pass)
+   Loaded AFTER theme-factory.css. Layout/composition + the
+   motion that belongs to it. Reuses the existing tokens and
+   Geist / Geist Mono — no new colours or fonts.
+   ═════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   0. GLOBAL RHYTHM + ALIGNMENT
+   ───────────────────────────────────────────── */
+
+/* Generous factory-scale vertical rhythm */
+.iq-section,
+.iq-section--white, .iq-section--white-a, .iq-section--white-b,
+.iq-section--tint, .iq-section--tint-a, .iq-section--tint-b,
+.iq-section--gradient, .iq-section--radial {
+  padding: 8rem 0 !important;
+}
+
+/* Eyebrows + headings are LEFT aligned by default.
+   Only the services showcase and the final CTA centre. */
+.fx-lede { max-width: 780px; margin-bottom: 4rem; text-align: left; }
+.fx-lede .iq-eye { justify-content: flex-start; }
+.fx-lede .iq-body { margin-bottom: 0; }
+
+.fx-lede--center { max-width: 720px; margin-left: auto; margin-right: auto; text-align: center; }
+.fx-lede--center .iq-eye { justify-content: center; }
+.fx-lede--center .iq-body { margin-left: auto; margin-right: auto; }
+
+/* ─────────────────────────────────────────────
+   1. HERO — asymmetric 55/45 split
+   ───────────────────────────────────────────── */
+.fx-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 4rem;
+  align-items: center;
+}
+.fx-hero-copy { text-align: left !important; max-width: 640px; margin: 0 !important; }
+.fx-hero-copy .iq-hero__h1 { margin-bottom: 1.5rem !important; }
+.fx-hero-copy .iq-hero__sub { margin: 0 0 2.25rem !important; max-width: 560px; }
+.fx-hero-copy .iq-hero__btns { justify-content: flex-start !important; }
+
+/* Dashboard now lives in the right column, not full-bleed */
+.fx-hero-visual { min-width: 0; }
+.fx-hero-visual .fx-dash {
+  max-width: 100%;
+  margin: 0;
+  box-shadow: 0 30px 90px rgba(0,0,0,.55), 0 0 0 1px rgba(242,98,46,.06);
+}
+/* keep the shrunken dashboard legible in a narrower column */
+.fx-hero-visual .fx-dash__body { grid-template-columns: 150px 1fr; }
+.fx-hero-visual .fx-dash__main { padding: 1rem; gap: .85rem; }
+.fx-hero-visual .fx-kpis { gap: .5rem; }
+.fx-hero-visual .fx-kpi { padding: .65rem .7rem; }
+.fx-hero-visual .fx-kpi__val { font-size: clamp(.95rem, 1.5vw, 1.2rem); }
+.fx-hero-visual .fx-bars { height: 96px; }
+.fx-hero-visual .fx-log__row { font-size: .75rem; padding: .42rem .2rem; }
+
+/* Directional reveals: copy from the left, dashboard from the right.
+   Bars/counters inside the dashboard then run on their own delay. */
+
+/* ─────────────────────────────────────────────
+   2. ONE TECHNOLOGY PARTNER — 3 bordered panels + wide panel
+   ───────────────────────────────────────────── */
+.fx-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+.fx-pillar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color .2s ease, transform .2s ease, background .2s ease;
+}
+.fx-pillar:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  background: var(--surface-2);
+}
+.fx-pillar__num {
+  font-family: var(--font-mono);
+  font-size: .6875rem;
+  letter-spacing: .12em;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 1.1rem;
+}
+.fx-pillar__title {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: .45rem;
+}
+.fx-pillar__desc {
+  font-size: .9063rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+.fx-pillar__viz {
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+  position: relative;
+}
+.fx-pillar__badge { position: absolute; top: 1.25rem; right: 0; }
+
+/* 01 — mini architecture diagram: styled by class in visuals-factory.css
+   (element selectors here would out-specify the .fx-arch__* classes) */
+
+/* 02 — compliance feed sits directly in the panel */
+.fx-pillar__viz .fx-viz__lbl { display: block; margin-bottom: .35rem; }
+.fx-pillar__viz .iq-mini-feed { margin-top: .5rem; }
+
+/* 03 — pipeline diagram */
+.fx-pipe { display: flex; flex-direction: column; gap: .5rem; }
+.fx-pipe__step {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-family: var(--font-mono);
+  font-size: .6875rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: .5rem .65rem;
+  background: var(--bg);
+  animation: fx-fade-up .5s cubic-bezier(.16,1,.3,1) backwards;
+}
+.fx-pipe__step b { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+@keyframes fx-fade-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.fx-pillars__caption {
+  margin-top: 1.5rem;
+  font-size: .9375rem;
+  color: var(--text-dim);
+  text-align: left;
+}
+.fx-pillars__caption strong { color: var(--text); font-weight: 500; }
+
+/* Wide platform chart panel spanning the full row */
+.fx-wide-panel {
+  margin-top: 2.5rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.fx-wide-panel__body {
+  padding: 1.75rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: center;
+}
+.fx-wide-panel__body .iq-mini-chart { height: 140px; }
+
+/* ─────────────────────────────────────────────
+   3. SERVICES — centred tabbed showcase
+   ───────────────────────────────────────────── */
+.fx-showcase { margin-top: 1rem; }
+
+.fx-tabs {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 2.5rem;
+}
+.fx-tabs::-webkit-scrollbar { display: none; }
+.fx-tabs__track {
+  position: relative;
+  display: flex;
+  gap: .35rem;
+  justify-content: center;
+  min-width: max-content;
+  margin: 0 auto;
+  padding-bottom: .85rem;
+}
+.fx-tab {
+  appearance: none;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: .6875rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding: .5rem .85rem;
+  border-radius: var(--radius-sm);
+  transition: color .18s ease, background .18s ease;
+}
+.fx-tab:hover { color: var(--text-dim); background: var(--surface); }
+.fx-tab.is-active { color: var(--accent); }
+.fx-tab:focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 2px; }
+
+/* the underline that slides between tabs */
+.fx-tabs__ink {
+  position: absolute;
+  bottom: 0;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: left .32s cubic-bezier(.16,1,.3,1), width .32s cubic-bezier(.16,1,.3,1);
+  pointer-events: none;
+}
+
+/* the framed stage */
+.fx-stage {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+}
+.fx-stage::before {
+  /* subtle top gradient stage light */
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 160px;
+  background: linear-gradient(180deg, rgba(242,98,46,.07) 0%, transparent 100%);
+  pointer-events: none;
+}
+.fx-stage:focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 3px; }
+.fx-stage__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 3rem;
+  padding: 2.75rem;
+  align-items: center;
+  text-align: left;
+  animation: fx-stage-in .38s cubic-bezier(.16,1,.3,1);
+}
+@keyframes fx-stage-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.fx-stage__title {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: .75rem;
+}
+.fx-stage__desc {
+  font-size: 1rem;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+.fx-stage__viz {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1.25rem;
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+}
+
+/* mini-UI primitives inside the stage */
+.fx-viz__lbl {
+  font-family: var(--font-mono);
+  font-size: .625rem;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.fx-metric-row { display: flex; gap: 2rem; flex-wrap: wrap; }
+.fx-metric__v {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+.fx-metric__l {
+  font-family: var(--font-mono);
+  font-size: .625rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.fx-rows { display: flex; flex-direction: column; }
+.fx-rows__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .55rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: .8125rem;
+  color: var(--text-dim);
+}
+.fx-rows__row:last-child { border-bottom: 0; }
+.fx-rows__v {
+  font-family: var(--font-mono);
+  font-size: .625rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.fx-chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; }
+.fx-chip {
+  font-family: var(--font-mono);
+  font-size: .625rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: .25rem .6rem;
+}
+.fx-viz-bars { display: flex; align-items: flex-end; gap: 5px; height: 72px; }
+.fx-viz-bars span {
+  flex: 1;
+  background: var(--accent);
+  border-radius: 2px 2px 0 0;
+  transform-origin: bottom;
+  animation: fx-bar-in .6s cubic-bezier(.16,1,.3,1) backwards;
+}
+.fx-viz-bars span:nth-child(even) { background: rgba(242,98,46,.35); }
+.fx-meter__top {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: .625rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: .3rem;
+}
+.fx-meter__v { color: var(--accent); }
+.fx-meter__track { height: 4px; background: var(--surface-2); border-radius: 2px; overflow: hidden; }
+.fx-meter__track i { display: block; height: 100%; background: var(--accent); border-radius: 2px; animation: fx-meter-in .7s cubic-bezier(.16,1,.3,1); }
+@keyframes fx-meter-in { from { width: 0 !important; } }
+.fx-flow { display: flex; align-items: center; flex-wrap: wrap; gap: .4rem; }
+.fx-flow__node {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-family: var(--font-mono);
+  font-size: .625rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: .4rem .6rem;
+}
+.fx-flow__arrow {
+  width: 14px; height: 1px; background: var(--border); position: relative; margin-left: .3rem;
+}
+.fx-flow__arrow::after {
+  content: ''; position: absolute; right: 0; top: -2px;
+  border-left: 4px solid var(--accent); border-top: 2.5px solid transparent; border-bottom: 2.5px solid transparent;
+}
+.fx-chat { display: flex; flex-direction: column; gap: .6rem; }
+.fx-device {
+  width: 68px; height: 112px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 6px;
+  margin: .25rem 0;
+}
+.fx-device__screen { display: flex; flex-direction: column; gap: 5px; height: 100%; }
+.fx-device__screen i { display: block; height: 6px; border-radius: 2px; background: var(--surface-2); }
+.fx-device__screen i:first-child { background: rgba(242,98,46,.45); width: 70%; }
+
+/* ─────────────────────────────────────────────
+   4. INTELLIGENCE — dense hairline micro-grid
+   ───────────────────────────────────────────── */
+.fx-micro {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+}
+.fx-micro__item {
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 1.35rem;
+  transition: background .2s ease, opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1);
+}
+.fx-micro__item:hover { background: var(--surface); }
+.fx-micro__lbl {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: .6875rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: .6rem;
+}
+.fx-micro__item:hover .fx-micro__lbl { color: var(--accent); }
+.fx-micro__desc { font-size: .875rem; color: var(--text-dim); line-height: 1.6; margin: 0; }
+
+/* ─────────────────────────────────────────────
+   5. INSIGHTS — news card row
+   ───────────────────────────────────────────── */
+.iq-news .fx-thumb { transition: transform .45s cubic-bezier(.16,1,.3,1); }
+.iq-news:hover .fx-thumb { transform: scale(1.04); }
+.iq-news { overflow: hidden; }
+
+/* ─────────────────────────────────────────────
+   6. TESTIMONIALS — dim card row
+   ───────────────────────────────────────────── */
+.fx-testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+.fx-testi { margin: 0; display: flex; flex-direction: column; }
+.fx-testi .iq-testi__quote { margin: 0 0 1.5rem; }
+.fx-testi .iq-testi__author { margin-top: auto; display: flex; align-items: center; gap: .75rem; }
+.fx-testi .iq-testi__av {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; flex-shrink: 0;
+}
+.fx-testi .iq-testi__name,
+.fx-testi .iq-testi__role { display: block; }
+
+/* (Industries section is now dark — see polish-factory.css) */
+
+/* ─────────────────────────────────────────────
+   8. REDUCED MOTION — every new animation is opt-out
+   ───────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .fx-in-left, .fx-in-right { transform: none !important; }
+  .fx-tabs__ink { transition: none !important; }
+  .fx-stage__inner,
+  .fx-pipe__step,
+  .fx-viz-bars span,
+  .fx-meter__track i { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .fx-micro__item,
+  .fx-pillar,
+  .fx-ind-link,
+  .iq-news .fx-thumb { transition: none !important; }
+  .fx-pillar:hover,
+  .iq-news:hover .fx-thumb { transform: none !important; }
+  .fx-ind-link:hover { padding-left: .25rem; }
+}
+
+/* ─────────────────────────────────────────────
+   9. RESPONSIVE
+   ───────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .fx-hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .fx-hero-copy { max-width: 100%; }
+  .fx-hero-visual .fx-dash__body { grid-template-columns: 1fr; }
+  .fx-hero-visual .fx-dash__side { display: none; }
+  .fx-pillars { grid-template-columns: 1fr; }
+  .fx-light__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .fx-micro { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fx-testi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 860px) {
+  .iq-section,
+  .iq-section--white, .iq-section--white-a, .iq-section--white-b,
+  .iq-section--tint, .iq-section--tint-a, .iq-section--tint-b,
+  .iq-section--gradient, .iq-section--radial { padding: 4.5rem 0 !important; }
+  .fx-light { padding: 4.5rem 0; }
+  .fx-lede { margin-bottom: 2.5rem; }
+  .fx-stage__inner { grid-template-columns: 1fr; gap: 1.75rem; padding: 1.5rem; }
+  .fx-wide-panel__body { grid-template-columns: 1fr; gap: 1.75rem; padding: 1.25rem; }
+  .fx-tabs__track { justify-content: flex-start; padding-left: .25rem; padding-right: .25rem; }
+}
+
+@media (max-width: 600px) {
+  .fx-micro { grid-template-columns: 1fr; }
+  .fx-testi-grid { grid-template-columns: 1fr; }
+  .fx-stage__viz { min-height: 0; }
+  .fx-ind-link { flex-direction: column; gap: .3rem; }
+  .fx-ind-row__note { text-align: left; }
+  .fx-metric-row { gap: 1.25rem; }
+}

@@ -1,0 +1,123 @@
+/* ═════════════════════════════════════════════════════════════
+   END-TO-END EXPERTISE — sticky copy, scrolling cards
+   Left column pins itself with position:sticky while the four
+   cards scroll past on the right. No GSAP pin, so the scroll is
+   never trapped and the next section takes over naturally.
+   ═════════════════════════════════════════════════════════════ */
+
+/* `overflow: hidden` on an ancestor turns it into a scrollport and kills
+   position:sticky. `clip` contains overflow the same way without that
+   side effect — required for the sticky column below to work at all. */
+html, body { overflow-x: clip !important; }
+.fx-stick { overflow: clip !important; }
+
+.fx-stick {
+  --s-line: rgba(255,255,255,.085);
+  --s-ink: #ffffff;
+  --s-mid: rgba(255,255,255,.52);
+  --s-low: rgba(255,255,255,.34);
+  --s-orange: #ff5c29;
+
+  padding-top: 7rem !important;
+  padding-bottom: 7rem !important;
+}
+
+.fx-stick__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 38fr) minmax(0, 62fr);
+  column-gap: 5rem;
+  align-items: start;
+}
+
+/* ── Left: stays put for the length of the card stack ─────── */
+.fx-stick__left {
+  position: sticky;
+  top: clamp(96px, 12vh, 148px);
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  min-width: 0;
+}
+.fx-stick__left .fx-lede { margin: 0; }
+.fx-stick__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin: 0;
+}
+
+/* ── Right: the four cards ────────────────────────────────── */
+.fx-stick__right {
+  display: flex;
+  flex-direction: column;
+  gap: 5.5rem;
+  min-width: 0;
+}
+
+.fx-stick__step { min-width: 0; }
+
+.fx-stick__cap {
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  margin-bottom: 1.35rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--s-line);
+}
+.fx-stick__title {
+  margin: 0 !important;
+  font-family: var(--font-heading) !important;
+  font-size: clamp(1.35rem, 2.1vw, 1.85rem) !important;
+  font-weight: 500 !important;
+  letter-spacing: -.028em !important;
+  line-height: 1.15 !important;
+  color: var(--s-ink) !important;
+  -webkit-text-fill-color: var(--s-ink) !important;
+}
+.fx-stick__desc {
+  margin: 0 !important;
+  font-family: var(--font-mono) !important;
+  font-size: .875rem !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0 !important;
+  color: var(--s-mid) !important;
+}
+
+.fx-stick__panel { min-width: 0; }
+.fx-stick__panel > .fx-pillar__viz {
+  position: relative;
+  background: var(--fx-03, #121214);
+  border: 1px solid var(--s-line);
+  border-radius: 6px;
+  padding: 1.75rem;
+  margin: 0;
+}
+.fx-stick__panel .fx-wide-panel { margin: 0 !important; }
+
+/* ── Narrow: single column, nothing sticky ────────────────── */
+@media (max-width: 1024px) {
+  .fx-stick__inner {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 3.5rem;
+  }
+  .fx-stick__left {
+    position: static;
+    top: auto;
+  }
+  .fx-stick__right { gap: 3.75rem; }
+  .fx-stick {
+    padding-top: 4.5rem !important;
+    padding-bottom: 4.5rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .fx-stick__panel > .fx-pillar__viz { padding: 1.1rem; }
+  .fx-stick__cta .iq-btn-fill,
+  .fx-stick__cta .iq-btn-ring { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-stick__step { opacity: 1 !important; transform: none !important; }
+}

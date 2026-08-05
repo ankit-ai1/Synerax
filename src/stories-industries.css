@@ -1,0 +1,305 @@
+/* ═════════════════════════════════════════════════════════════
+   CLIENT STORIES + INDUSTRIES
+   Neither had layout CSS — the slider markup (.fx-slider*) had
+   none at all, so the carousel rendered as a plain stack, and
+   the industry rows had only colour rules. This builds both.
+   ═════════════════════════════════════════════════════════════ */
+
+/* ═══ CLIENT STORIES — carousel ════════════════════════════ */
+.fx-slider {
+  --sl-line: rgba(255,255,255,.085);
+  --sl-ink: #ffffff;
+  --sl-mid: rgba(255,255,255,.55);
+  --sl-low: rgba(255,255,255,.34);
+  --sl-orange: #ff5c29;
+  --sl-gap: 1.1rem;
+
+  position: relative;
+  margin-top: 2.75rem;
+  min-width: 0;
+}
+
+/* Padding (cancelled by the negative margin) gives the hover lift and the
+   drop shadow room to breathe without the clip cutting them off. */
+.fx-slider__viewport {
+  overflow: hidden;
+  margin: -8px -4px -30px;
+  padding: 8px 4px 30px;
+}
+
+.fx-slider__track {
+  display: flex;
+  gap: var(--sl-gap);
+  align-items: stretch;
+  will-change: transform;
+}
+
+/* --per is set inline by the component (3 / 2 / 1) */
+.fx-slide {
+  flex: 0 0 calc((100% - (var(--per) - 1) * var(--sl-gap)) / var(--per));
+  min-width: 0;
+}
+
+/* Every card is the same height — `align-items: stretch` on the track does
+   the work, so the figure must not carry a height of its own. */
+.fx-slider .iq-testi {
+  position: relative;
+  margin: 0;
+  height: auto;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  padding: 2.1rem 1.9rem 1.75rem;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 90% 60% at 0% 0%, rgba(255,92,41,.055), transparent 62%),
+    linear-gradient(165deg, var(--fx-04, #151517) 0%, var(--fx-02, #0e0e10) 78%) !important;
+  border: 1px solid var(--sl-line) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,.05) inset, 0 18px 40px rgba(0,0,0,.34) !important;
+  transition: border-color .3s ease, transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease;
+}
+
+/* hairline that catches the light along the top edge */
+.fx-slider .iq-testi::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.16) 22%, rgba(255,255,255,.16) 78%, transparent);
+  pointer-events: none;
+}
+
+.fx-slider .iq-testi:hover {
+  border-color: rgba(255,92,41,.3) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 1px 0 rgba(255,255,255,.07) inset, 0 24px 52px rgba(0,0,0,.46) !important;
+}
+
+.fx-slide__mark {
+  font-family: var(--font-heading);
+  font-size: 3.4rem;
+  line-height: .62;
+  color: var(--sl-orange);
+  opacity: .38;
+  display: block;
+  margin-bottom: 1.1rem;
+  transition: opacity .3s ease;
+}
+.fx-slider .iq-testi:hover .fx-slide__mark { opacity: .7; }
+
+.fx-slider .iq-testi__quote {
+  margin: 0 0 1.5rem !important;
+  font-family: var(--font-body) !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+  letter-spacing: -.008em !important;
+  color: var(--sl-ink) !important;
+  quotes: none;
+}
+
+.fx-slider .iq-testi__author {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid var(--sl-line);
+}
+.fx-slider .iq-testi__av {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: rgba(255,92,41,.12);
+  border: 1px solid rgba(255,92,41,.28);
+  color: var(--sl-orange);
+  font-family: var(--font-mono);
+  font-size: .8125rem;
+}
+.fx-slider .iq-testi__name {
+  display: block;
+  font-size: .875rem;
+  font-weight: 500;
+  color: var(--sl-ink);
+  letter-spacing: -.01em;
+}
+.fx-slider .iq-testi__role {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: .625rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--sl-low);
+  margin-top: .15rem;
+}
+
+/* ── Footer controls:  ‹ ——————————— ›  ──────────────────── */
+.fx-slider__foot {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .85rem;
+  margin: 2rem auto 0;
+  max-width: 260px;
+}
+
+.fx-slider__arrow {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--sl-line);
+  border-radius: 6px;
+  background: var(--fx-03, #121214);
+  color: var(--sl-mid);
+  cursor: pointer;
+  transition: border-color .22s ease, color .22s ease, background .22s ease, transform .22s ease;
+}
+.fx-slider__arrow:hover {
+  border-color: rgba(255,92,41,.4);
+  color: var(--sl-ink);
+  background: var(--fx-05, #1a1a1c);
+  transform: translateY(-1px);
+}
+.fx-slider__arrow:active { transform: translateY(0); }
+
+/* the rail between the arrows — one segment per slide position */
+.fx-slider__rail {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+.fx-slider__seg {
+  flex: 1 1 0;
+  height: 2px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 2px;
+  background: rgba(255,255,255,.12);
+  cursor: pointer;
+  transition: background .3s ease, box-shadow .3s ease;
+}
+.fx-slider__seg:hover { background: rgba(255,255,255,.26); }
+.fx-slider__seg.is-active {
+  background: var(--sl-orange);
+  box-shadow: 0 0 10px rgba(255,92,41,.45);
+}
+
+@media (max-width: 700px) {
+  .fx-slider { margin-top: 2rem; }
+  .fx-slider__foot { gap: .7rem; margin-top: 1.5rem; max-width: 200px; }
+  .fx-slider .iq-testi { padding: 1.6rem 1.35rem 1.4rem; }
+}
+
+/* ═══ INDUSTRIES — lede left, list right ═══════════════════ */
+.fx-ind-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 40fr) minmax(0, 60fr);
+  column-gap: 5rem;
+  align-items: start;
+}
+
+.fx-ind-lede { margin: 0; min-width: 0; }
+
+.fx-ind-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid rgba(255,255,255,.085);
+  min-width: 0;
+}
+
+.fx-ind-row {
+  border-bottom: 1px solid rgba(255,255,255,.085);
+  min-width: 0;
+}
+
+.fx-ind-link {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.05rem .35rem;
+  text-decoration: none;
+  transition: padding-left .28s cubic-bezier(.16,1,.3,1), background .25s ease;
+}
+.fx-ind-link:hover {
+  padding-left: 1rem;
+  background: rgba(255,255,255,.025);
+}
+
+.fx-ind-marker {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.22) !important;
+  flex-shrink: 0;
+  transition: background .25s ease, box-shadow .25s ease;
+}
+.fx-ind-link:hover .fx-ind-marker {
+  background: var(--accent, #ff5c29) !important;
+  box-shadow: 0 0 0 4px rgba(255,92,41,.12);
+}
+
+.fx-ind-row__name {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-weight: 400;
+  letter-spacing: -.02em;
+  color: rgba(255,255,255,.72);
+  transition: color .25s ease;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fx-ind-link:hover .fx-ind-row__name { color: #ededed; }
+
+.fx-ind-row__note {
+  font-family: var(--font-mono);
+  font-size: .625rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.32);
+  text-align: right;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color .25s ease;
+}
+.fx-ind-link:hover .fx-ind-row__note { color: rgba(255,255,255,.5); }
+
+@media (max-width: 1024px) {
+  .fx-ind-grid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 2.75rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .fx-ind-link {
+    grid-template-columns: auto minmax(0, 1fr);
+    row-gap: .3rem;
+    padding: .9rem .25rem;
+  }
+  .fx-ind-row__name { white-space: normal; }
+  .fx-ind-row__note {
+    grid-column: 2;
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-slider__track { transition: none !important; }
+  .fx-ind-link,
+  .fx-ind-marker,
+  .fx-slider__dot { transition: none !important; }
+  .fx-ind-link:hover { padding-left: .35rem; }
+}

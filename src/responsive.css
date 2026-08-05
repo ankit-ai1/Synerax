@@ -1,0 +1,583 @@
+/* ═════════════════════════════════════════════════════════════
+   RESPONSIVE — whole site, both themes
+   Loaded last. Every rule lives inside a media query, so nothing
+   here can alter the desktop layout (homepage included).
+
+   Colours are all token-driven, so light mode follows the same
+   rules automatically; only a couple of spots need a theme fork.
+
+   Breakpoints
+     1024  tablet   — two-column layouts collapse
+      768  phone    — dense grids go single column
+      560  small    — type and padding step down
+      400  compact  — last-resort tightening
+   ═════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   0. NEVER SCROLL SIDEWAYS
+   ───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  html, body { overflow-x: clip; max-width: 100%; }
+  img, svg, video, canvas, table { max-width: 100%; }
+  pre, code { overflow-x: auto; }
+}
+
+/* ─────────────────────────────────────────────
+   1. TABLET — two-column layouts collapse
+   ───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .container,
+  .iq-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
+
+  .about-story__grid,
+  .st-section__grid,
+  .st-section__inner,
+  .ind-feature__inner,
+  .ind-compliance__inner,
+  .tl-hero__inner,
+  .tl-enterprise__inner,
+  .tl-usecases__inner,
+  .tl-techstack__inner,
+  .ct-main__grid,
+  .bpost-body__inner,
+  .wp-layout,
+  .h5-hero__inner,
+  .h5-split,
+  .iq-split {
+    grid-template-columns: minmax(0, 1fr) !important;
+    row-gap: 2.5rem;
+  }
+
+  /* the visual always follows its copy on a narrow screen */
+  .about-story__img,
+  .ind-feature__img-col,
+  .tl-hero__right,
+  .tl-enterprise__img-col,
+  .tl-usecases__img-col,
+  .tl-techstack__img-col { order: 2; }
+  .about-story__text,
+  .ind-feature__text,
+  .tl-hero__left,
+  .tl-enterprise__text-col,
+  .tl-usecases__text-col,
+  .tl-techstack__text-col { order: 1; }
+
+  .ab-mv__grid,
+  .ab-process__grid,
+  .ab-team-grid,
+  .ab-values-grid,
+  .bl-grid,
+  .bpost-related__grid,
+  .car-benefits__grid,
+  .car-values__grid,
+  .ind-benefits__grid,
+  .ind-challenges__grid,
+  .ind-specialized__grid,
+  .srv-grid,
+  .st-grid,
+  .tech-tiles,
+  .tl-caps__grid,
+  .wp-grid,
+  .iq-feat-grid,
+  .iq-news-grid,
+  .h5-features,
+  .h5-news-grid,
+  .h5-sol-grid,
+  .services__grid,
+  .solutions__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .ind-stats__grid,
+  .tl-hero__stats,
+  .iq-hero__metrics,
+  .h5-stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+
+/* ─────────────────────────────────────────────
+   2. PHONE — everything to one column
+   ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .container,
+  .iq-wrap { padding-left: 1rem; padding-right: 1rem; }
+
+  section,
+  .iq-section { padding-top: 3.25rem !important; padding-bottom: 3.25rem !important; }
+
+  .ab-mv__grid,
+  .ab-process__grid,
+  .ab-team-grid,
+  .ab-values-grid,
+  .bl-grid,
+  .bpost-related__grid,
+  .car-benefits__grid,
+  .car-process__steps,
+  .car-values__grid,
+  .ind-benefits__grid,
+  .ind-challenges__grid,
+  .ind-specialized__grid,
+  .srv-grid,
+  .st-grid,
+  .tech-categories,
+  .tech-tiles,
+  .tl-caps__grid,
+  .wp-grid,
+  .wp-grid--orbit,
+  .iq-feat-grid,
+  .iq-feat-hero-row,
+  .iq-news-grid,
+  .iq-problem-grid,
+  .iq-compare,
+  .h5-features,
+  .h5-news-grid,
+  .h5-sol-grid,
+  .services__grid,
+  .solutions__grid,
+  .contact-info-cards,
+  .contact-main,
+  .ct-form__row,
+  .form-row,
+  .feature-strip,
+  .process__steps,
+  .news__grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  /* two-up is still fine for compact numeric tiles */
+  .ind-stats__grid,
+  .tl-hero__stats,
+  .iq-hero__metrics,
+  .h5-stat-grid { gap: .75rem !important; }
+
+  /* CTA button rows stack full width */
+  .iq-cta__btns,
+  .iq-hero__btns,
+  .ab-hero__actions,
+  .ind-hero__actions,
+  .tl-hero__actions,
+  .h5-cta__btns,
+  .pp-cta__btn {
+    grid-template-columns: minmax(0, 1fr) !important;
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    gap: .65rem;
+  }
+  .iq-cta__btns > *,
+  .iq-hero__btns > *,
+  .ab-hero__actions > *,
+  .ind-hero__actions > *,
+  .tl-hero__actions > *,
+  .h5-cta__btns > * {
+    width: 100% !important;
+    min-width: 0 !important;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Footer */
+  .ft-new__top,
+  .ft-new__cols,
+  .footer__cols { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 1.75rem !important; }
+  .ft-new__bottom-links { flex-wrap: wrap; gap: .75rem 1.25rem; }
+}
+
+/* ─────────────────────────────────────────────
+   3. HOMEPAGE VISUALS — fit the phone, keep the design
+   ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  /* Hero dashboard: drop the rail, let the deck breathe */
+  .fx-hero-visual .fx-dash {
+    max-height: none !important;
+    margin-top: 2.5rem;
+  }
+  .fx-hero-visual .fx-dash__main { overflow: visible !important; }
+  .fx-dash__body { grid-template-columns: minmax(0, 1fr) !important; }
+  .fx-dash__side { display: none !important; }
+  .fxd-grid { grid-template-columns: minmax(0, 1fr) !important; }
+  .fxd-strip { grid-template-columns: minmax(0, 1fr) !important; }
+  .fxd-strip__stages {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px solid var(--d-line);
+  }
+  .fxd-stage { border-bottom: 1px solid var(--d-line); }
+  .fxd-radar { flex-direction: row; align-items: center; gap: .9rem; flex-wrap: wrap; }
+  .fxd-radar__dish { margin: 0; }
+
+  /* Sticky section releases — it is a plain stack on mobile */
+  .fx-stick__inner { grid-template-columns: minmax(0, 1fr) !important; row-gap: 2.75rem; }
+  .fx-stick__left { position: static !important; }
+
+  /* Platform chart */
+  .pfc { grid-template-columns: minmax(0, 1fr) !important; }
+  .pfc__card--radar { border-right: 0 !important; border-bottom: 1px solid var(--p-line); }
+}
+
+@media (max-width: 620px) {
+  .fx-tabs__track { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .fx-tabs__track::-webkit-scrollbar { display: none; }
+  .fx-tab { flex-shrink: 0; }
+}
+
+/* ─────────────────────────────────────────────
+   4. DATA CARDS on small screens
+   ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .dcard { padding: .9rem 1rem 1rem; }
+  .dcard__radar { grid-template-columns: minmax(0, 1fr) !important; gap: .9rem; }
+  .dcard__radar svg { max-width: 240px; margin: 0 auto; }
+  .dcard__axes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dcard__yaxis,
+  .dcard__bars { height: 118px !important; }
+  .dcard__console-log { display: none; }
+  .dcard--orbit .dcard__orbit { min-height: 260px; }
+  .dcard__orbit-node { width: 72px; height: 72px; font-size: .375rem; padding: .3rem; }
+  .dcard--orbit .dcard__orbit-core { max-width: 80px; font-size: .4375rem; }
+}
+
+@media (max-width: 420px) {
+  .dcard--orbit .dcard__orbit { min-height: 224px; }
+  .dcard__orbit-node { width: 60px; height: 60px; }
+  .dcard__orbit-idx { display: none; }
+  .dcard__legend { gap: .3rem .6rem; }
+}
+
+/* ─────────────────────────────────────────────
+   5. CONTACT CONSOLE + SLIDER + INDUSTRIES
+   ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .cc__toolbar,
+  .cc__filters { gap: .5rem .6rem; }
+  .cc__seg { flex-wrap: wrap; }
+  .cc__seg button { flex: 1 1 auto; }
+
+  .fx-slider__foot { max-width: 190px; }
+
+  .fx-ind-grid { grid-template-columns: minmax(0, 1fr) !important; row-gap: 2.25rem; }
+}
+
+/* ─────────────────────────────────────────────
+   6. TYPE + SPACING step-down
+   ───────────────────────────────────────────── */
+@media (max-width: 560px) {
+  .iq-hero__h1,
+  .ab-hero__h1,
+  .bl-hero__h1,
+  .bpost-hero__h1,
+  .car-hero__h1,
+  .ct-hero__h1,
+  .ind-hero__h1,
+  .pp-hero__h1,
+  .srv-hero__h1,
+  .tl-hero__h1 {
+    font-size: clamp(1.85rem, 8.5vw, 2.6rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -.035em !important;
+  }
+
+  .iq-h2,
+  .section-title,
+  .iq-cta__h2,
+  .ab-mv__title,
+  .ab-process__title,
+  .car-benefits__h2,
+  .car-jobs__h2,
+  .car-process__h2,
+  .car-values__h2,
+  .ct-faq__h2,
+  .ct-left__h2,
+  .ind-benefits__title,
+  .ind-challenges__title,
+  .ind-compliance__title,
+  .ind-cta__title,
+  .ind-specialized__title,
+  .st-section__title,
+  .tl-enterprise__title {
+    font-size: clamp(1.4rem, 6.5vw, 1.9rem) !important;
+    line-height: 1.16 !important;
+  }
+
+  .iq-body,
+  .fx-lede,
+  .fx-stick__desc,
+  .ab-hero__sub,
+  .bl-hero__sub,
+  .car-hero__sub,
+  .ct-hero__sub,
+  .ind-hero__desc,
+  .pp-hero__sub,
+  .tl-hero__desc { font-size: .875rem !important; line-height: 1.6 !important; }
+
+  .dcard__caption { font-size: .5625rem !important; }
+}
+
+/* ─────────────────────────────────────────────
+   7. TOUCH TARGETS + hover-only affordances
+   ───────────────────────────────────────────── */
+@media (hover: none) {
+  /* hover states can't be dismissed on touch — don't dim siblings */
+  .cc__bars:hover .cc__bar,
+  .dcard__bars:hover .dcard__bar { opacity: 1 !important; }
+
+  /* the orbit keeps turning; there is no pointer to hold it */
+  .dcard__orbit.is-held .dcard__orbit-ring,
+  .dcard__orbit.is-held .dcard__orbit-spinback,
+  .dcard__orbit.is-held .dcard__orbit-spin { animation-play-state: running; }
+}
+
+@media (max-width: 768px) {
+  .nav__theme,
+  .nav__hamburger,
+  .fx-slider__arrow,
+  .pfc__tabs button,
+  .cc__seg button,
+  .bl-filter,
+  .car-dept-btn { min-height: 40px; }
+
+  a, button { -webkit-tap-highlight-color: rgba(255,92,41,.18); }
+}
+
+/* ─────────────────────────────────────────────
+   8. LIGHT-THEME FORKS
+   Almost everything above is token-driven, so light mode inherits
+   it. These two need the ink versions of the hairlines.
+   ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  :root[data-theme='light'] .fxd-strip__stages { border-top-color: rgba(18,18,26,.14); }
+  :root[data-theme='light'] .fxd-stage { border-bottom-color: rgba(18,18,26,.14); }
+}
+@media (hover: none) {
+  :root[data-theme='light'] a,
+  :root[data-theme='light'] button { -webkit-tap-highlight-color: rgba(224,78,24,.16); }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   9. HOMEPAGE HERO + PROBLEM SECTION
+   `layout-factory.css` already collapses `.fx-hero-grid` at
+   1100px, but `polish-factory.css` re-declares the two-column
+   track later in the cascade with no media query — a plain rule
+   in a later file beats an earlier rule inside a media query, so
+   that breakpoint never applied. `.fx-statrow` (3 cols) and
+   `.fx-cmp` (2 cols) had no mobile rules at all.
+   ═════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1000px) {
+  /* ── Hero ─────────────────────────────────────────────────── */
+  .fx-hero-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 2.75rem !important;
+    align-items: start !important;
+  }
+  .fx-hero-copy {
+    max-width: 100% !important;
+    text-align: left !important;
+  }
+  .fx-hero-copy .iq-hero__sub { max-width: 100% !important; }
+  .fx-hero-visual { width: 100%; min-width: 0; }
+
+  .iq-hero {
+    padding: 84px 0 3rem !important;
+    min-height: 0 !important;
+  }
+  .iq-hero__glow { opacity: .5 !important; }
+
+  /* ── Problem: stats stack, dividers move to the bottom edge ─ */
+  .fx-statrow {
+    grid-template-columns: minmax(0, 1fr) !important;
+    margin-bottom: 3rem !important;
+  }
+  .fx-stat {
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--border);
+    padding: 1.6rem 0 !important;
+  }
+  .fx-stat:last-child { border-bottom: 0; }
+
+  /* ── Problem: comparison cards stack ──────────────────────── */
+  .fx-cmp {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1rem !important;
+  }
+  /* the comet travels the gap between two side-by-side cards —
+     there is no such gap once they are stacked */
+  .fx-beam { display: none !important; }
+}
+
+@media (max-width: 640px) {
+  .iq-hero { padding: 76px 0 2.5rem !important; }
+
+  .fx-hero-copy .iq-hero__h1 { margin-bottom: 1.1rem !important; }
+  .fx-hero-copy .iq-hero__sub { margin-bottom: 1.6rem !important; }
+
+  .fx-stat { padding: 1.35rem 0 !important; }
+  .fx-stat__sub { font-size: .8125rem; }
+  .fx-stat__meter { max-width: 160px; }
+
+  .fx-card { padding: 1.25rem 1.1rem !important; }
+  .fx-card__item { gap: .5rem; }
+  .fx-card__idx { display: none; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   10. HERO DASHBOARD — the specificity fight
+   `hero-dash.css` and `polish-factory.css` both target the deck
+   as `.fx-hero-visual .fx-dash…` (0,2,0) and some with
+   !important. The single-class rules in section 3 above never
+   won, so the body kept its 158px sidebar track and the deck
+   kept its viewport cap — which is what squeezed everything into
+   a narrow column. These selectors match that weight and beat it.
+   ═════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1000px) {
+  .iq-hero .fx-hero-grid,
+  .iq-hero__inner .fx-hero-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .iq-hero .fx-hero-visual,
+  .fx-hero-grid .fx-hero-visual {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+  }
+
+  .fx-hero-visual .fx-dash,
+  .iq-hero .fx-hero-visual .fx-dash {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    height: auto !important;
+    margin: 2rem 0 0 !important;
+  }
+
+  /* the sidebar track has to go, not just the sidebar */
+  .fx-hero-visual .fx-dash__body,
+  .iq-hero .fx-hero-visual .fx-dash__body {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .fx-hero-visual .fx-dash__side,
+  .iq-hero .fx-hero-visual .fx-dash__side { display: none !important; }
+
+  .fx-hero-visual .fx-dash__main,
+  .iq-hero .fx-hero-visual .fx-dash__main {
+    overflow: visible !important;
+    min-height: 0 !important;
+    padding: .7rem !important;
+  }
+
+  /* the scanline sweep is sized for the desktop deck */
+  .fx-dash::after { display: none !important; }
+}
+
+/* ─────────────────────────────────────────────
+   Phone: the pipeline strip is too dense to read at this width.
+   Keep the four chart cards — they carry the same story.
+   ───────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .fx-hero-visual .fxd-strip { display: none !important; }
+  .fx-hero-visual .fxd-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: .5rem !important;
+  }
+  .fx-hero-visual .fxd-plot__area,
+  .fx-hero-visual .fxd-plot__yaxis { height: 58px !important; }
+  .fx-hero-visual .fxd-card__val { font-size: 1.25rem !important; }
+  .fx-hero-visual .fx-dash__chip { display: none !important; }
+}
+
+@media (max-width: 460px) {
+  /* two cards is enough of a preview on a small phone */
+  .fx-hero-visual .fxd-grid > .fxd-card:nth-child(n + 3) { display: none !important; }
+  .fx-hero-visual .fxd-log { display: none !important; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   11. HERO DECK — fit the whole card on screen
+   Four stacked chart cards make the deck taller than the phone,
+   so it always looked cut off. Two cards tell the same story and
+   let the panel be read in one go.
+   ═════════════════════════════════════════════════════════════ */
+
+@media (max-width: 700px) {
+  /* no stray space where the pipeline strip used to be */
+  .fx-hero-visual .fx-dash__main {
+    gap: .5rem !important;
+    padding: .55rem !important;
+  }
+  .fx-hero-visual .fxd-strip { display: none !important; }
+
+  /* two cards, and they carry the live numbers + trend */
+  .fx-hero-visual .fxd-grid > .fxd-card:nth-child(n + 3) { display: none !important; }
+  .fx-hero-visual .fxd-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: .5rem !important;
+  }
+
+  .fx-hero-visual .fxd-card { padding: .55rem .65rem .5rem !important; }
+  .fx-hero-visual .fxd-plot__area,
+  .fx-hero-visual .fxd-plot__yaxis { height: 52px !important; }
+  .fx-hero-visual .fxd-card__val { font-size: 1.3rem !important; }
+
+  /* the deck must never be taller than the copy it sits under */
+  .fx-hero-visual .fx-dash,
+  .iq-hero .fx-hero-visual .fx-dash {
+    margin-top: 1.75rem !important;
+  }
+}
+
+@media (max-width: 460px) {
+  .fx-hero-visual .fxd-log { display: none !important; }
+  .fx-hero-visual .fxd-card__foot { display: none !important; }
+  .fx-hero-visual .fxd-plot__area,
+  .fx-hero-visual .fxd-plot__yaxis { height: 46px !important; }
+  .fx-hero-visual .fx-dash__range { display: none !important; }
+}
+
+/* The hero clips its own overflow; with the deck now sized to its
+   content there is nothing to clip, but make it explicit so a tall
+   deck can never be cut mid-card. */
+@media (max-width: 1000px) {
+  .iq-hero { overflow: visible !important; }
+  .iq-hero .fx-hero-visual .fx-dash { overflow: hidden !important; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   12. HERO DECK — deterministic mobile composition
+   Hiding blocks one class at a time kept leaving an empty band
+   in the deck. Rather than chase which child it is, allow-list
+   what may render on a phone: inside the body, only the main
+   column; inside main, only the chart grid.
+   ═════════════════════════════════════════════════════════════ */
+
+@media (max-width: 700px) {
+  .fx-hero-visual .fx-dash__body > *:not(.fx-dash__main) { display: none !important; }
+  .fx-hero-visual .fx-dash__main > *:not(.fxd-grid) { display: none !important; }
+
+  .fx-hero-visual .fx-dash__body {
+    display: block !important;
+    grid-template-columns: none !important;
+  }
+  .fx-hero-visual .fx-dash__main {
+    display: block !important;
+    padding: .5rem !important;
+    min-height: 0 !important;
+  }
+  .fx-hero-visual .fxd-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: .5rem !important;
+  }
+}
+
+/* One card on a small phone — the deck then clears the fold whole. */
+@media (max-width: 520px) {
+  .fx-hero-visual .fxd-grid > .fxd-card:nth-child(n + 2) { display: none !important; }
+  .fx-hero-visual .fxd-card { padding: .7rem .8rem .65rem !important; }
+  .fx-hero-visual .fxd-plot__area,
+  .fx-hero-visual .fxd-plot__yaxis { height: 64px !important; }
+  .fx-hero-visual .fxd-card__val { font-size: 1.5rem !important; }
+  .fx-hero-visual .fxd-card__foot { display: flex !important; }
+}

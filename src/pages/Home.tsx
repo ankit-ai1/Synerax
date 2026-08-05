@@ -1,8 +1,61 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useLenis } from 'lenis/react'
+import { useGsap, gsap, ScrollTrigger, revealFrom, prefersReduced } from '../lib/motion'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import HeroDashboard from '../components/HeroDashboard'
+import PlatformChart from '../components/PlatformChart'
+import ServiceShowcase from '../components/ServiceShowcase'
+import Testimonials from '../components/Testimonials'
+import { CountUpText } from '../components/CountUp'
+import { industries } from '../data/industryMeta'
 import { useLead } from '../context/LeadContext'
+
+/* ─── Platforms (marquee) ────────────────────── */
+const platforms = [
+  { name:'React',      src:'https://cdn.simpleicons.org/react/61DAFB' },
+  { name:'Node.js',    src:'https://cdn.simpleicons.org/nodedotjs/339933' },
+  { name:'AWS',        src:'https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=128' },
+  { name:'OpenAI',     src:'https://www.google.com/s2/favicons?domain=openai.com&sz=128' },
+  { name:'Kubernetes', src:'https://cdn.simpleicons.org/kubernetes/326CE5' },
+  { name:'Python',     src:'https://cdn.simpleicons.org/python/3776AB' },
+  { name:'TypeScript', src:'https://cdn.simpleicons.org/typescript/3178C6' },
+  { name:'Docker',     src:'https://cdn.simpleicons.org/docker/2496ED' },
+  { name:'FastAPI',    src:'https://cdn.simpleicons.org/fastapi/009688' },
+  { name:'LangChain',  src:'https://cdn.simpleicons.org/langchain/1C3C3C' },
+]
+
+/* Code-built dark thumbnail — no stock photography */
+function InsightThumb({ index, shape }: { index: number; shape: 'wave' | 'bars' | 'net' }) {
+  return (
+    <div className="fx-thumb">
+      <span className="fx-thumb__idx">{String(index).padStart(2, '0')}</span>
+      <svg viewBox="0 0 300 180" preserveAspectRatio="none" aria-hidden="true">
+        {shape === 'wave' && (
+          <>
+            <path d="M0 132 C40 96 62 150 100 112 C138 74 160 128 200 92 C238 58 264 100 300 68"
+                  fill="none" stroke="#F2622E" strokeWidth="2" />
+            <path d="M0 132 C40 96 62 150 100 112 C138 74 160 128 200 92 C238 58 264 100 300 68 L300 180 L0 180 Z"
+                  fill="rgba(242,98,46,.12)" />
+          </>
+        )}
+        {shape === 'bars' && [30, 62, 44, 88, 70, 108, 84, 126].map((h, i) => (
+          <rect key={i} x={18 + i * 35} y={160 - h} width="18" height={h} rx="2"
+                fill={i % 2 ? 'rgba(242,98,46,.35)' : '#F2622E'} />
+        ))}
+        {shape === 'net' && (
+          <>
+            <path d="M40 130 L100 70 L160 110 L220 50 L268 88" fill="none" stroke="rgba(242,98,46,.5)" strokeWidth="1.5" />
+            {[[40,130],[100,70],[160,110],[220,50],[268,88]].map(([cx, cy], i) => (
+              <circle key={i} cx={cx} cy={cy} r={i === 3 ? 7 : 5} fill="#F2622E" />
+            ))}
+          </>
+        )}
+      </svg>
+    </div>
+  )
+}
 /* ─── Solution cards ─────────────────────────── */
 const homeSolCards = [
   {
@@ -54,28 +107,28 @@ const testimonials = [
 
 const whyCards = [
   {
-    accent: '#1A56DB', iconBg: '#EBF2FF', metric: '200+', tag: 'TEAM',
+    accent: '#F2622E', iconBg: '#1C1C1F', metric: '200+', tag: 'TEAM',
     title: 'Senior-Only Execution',
     desc: 'Every project is led by a senior engineer. No juniors-as-proxies — you work directly with the people building your product.',
     img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80',
     icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>),
   },
   {
-    accent: '#7C3AED', iconBg: '#F3EEFF', metric: '6–8 Wks', tag: 'DELIVERY',
+    accent: '#7C3AED', iconBg: '#1C1C1F', metric: '6–8 Wks', tag: 'DELIVERY',
     title: 'Rapid MVP Delivery',
     desc: 'From zero to production-ready in 6–8 weeks. Tested, documented, and deployed — speed without cutting corners.',
     img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
     icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>),
   },
   {
-    accent: '#0891B2', iconBg: '#E0F7FA', metric: 'SOC 2', tag: 'SECURITY',
+    accent: '#0891B2', iconBg: '#1C1C1F', metric: 'SOC 2', tag: 'SECURITY',
     title: 'Built-In Security',
     desc: 'SOC 2, ISO 27001, HIPAA, and PCI-DSS compliance baked into every layer. Security is never an afterthought.',
     img: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80',
     icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>),
   },
   {
-    accent: '#D97706', iconBg: '#FFF8E1', metric: '100%', tag: 'TRANSPARENCY',
+    accent: '#D97706', iconBg: '#1C1C1F', metric: '100%', tag: 'TRANSPARENCY',
     title: 'Full Transparency',
     desc: 'Weekly demos, real-time dashboards, and a dedicated PM. You\'re always in the loop — never left wondering.',
     img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80',
@@ -102,14 +155,11 @@ const intelItems = [
 
 export default function Home() {
   const { openLead } = useLead()
-  const [testiIdx, setTestiIdx] = useState(0)
 
-  useEffect(() => {
-    const t = setInterval(() => setTestiIdx(i => (i + 1) % testimonials.length), 5000)
-    return () => clearInterval(t)
-  }, [])
+  // Keep ScrollTrigger in step with Lenis' smooth scrolling
+  useLenis(() => ScrollTrigger.update())
 
-  // Scroll reveal
+  // `.iq-visible` still gates the CSS idle loops inside the mini-visuals
   useEffect(() => {
     const els = document.querySelectorAll('.iq-reveal')
     const obs = new IntersectionObserver(entries => {
@@ -124,365 +174,736 @@ export default function Home() {
     return () => obs.disconnect()
   }, [])
 
+  const scope = useGsap(() => {
+    const q = (s: string) => gsap.utils.toArray<HTMLElement>(s)
+    const has = (s: string) => document.querySelector(s)
+
+    /* ── HERO — orchestrated load timeline ── */
+    const hero = gsap.timeline({ defaults: { duration: 0.85 } })
+    hero
+      .from('.fx-line > span', { yPercent: 110, opacity: 0, stagger: 0.12 })
+      .from('.iq-hero__sub', { y: 24, opacity: 0, duration: 0.7 }, '-=0.45')
+      // animate the row as one unit — staggering the children makes the two
+      // CTAs drift out of alignment while the entrance is still running
+      .from('.iq-hero__btns', { y: 18, opacity: 0, duration: 0.6 }, '-=0.4')
+      .from('.fx-hero-visual', { xPercent: 8, opacity: 0, duration: 0.9 }, '-=0.75')
+      .from('.fx-hero-visual .fx-bars__col i', {
+        scaleY: 0, transformOrigin: 'bottom', stagger: 0.035, duration: 0.6,
+      }, '-=0.35')
+      .from('.fx-hero-visual .fx-kpi__spark span', {
+        scaleY: 0, transformOrigin: 'bottom', stagger: 0.025, duration: 0.5,
+      }, '-=0.45')
+
+    /* ── Generic section reveals ── */
+    q('.fx-lede').forEach(el =>
+      revealFrom(el.children, el, { y: 22, stagger: 0.09 }))
+
+    /* ── PROBLEM — stats, then pair-by-pair reveal (no pin) ──
+       Everything below is gsap.from(): the markup's resting state IS the final
+       state, so a failed trigger can never leave content stuck invisible. */
+    const statrow = document.querySelector<HTMLElement>('.fx-statrow')
+    if (statrow) {
+      const stats = gsap.utils.toArray<HTMLElement>('.fx-stat', statrow)
+
+      gsap.timeline({
+        scrollTrigger: { trigger: statrow, start: 'top 84%', toggleActions: 'play none none none' },
+      })
+        .fromTo(stats,
+          { y: 30, opacity: 0, filter: 'blur(6px)' },
+          { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.7, stagger: 0.12,
+            ease: 'power3.out', clearProps: 'opacity,transform,filter' })
+        .fromTo(statrow.querySelectorAll('.fx-stat__idx'),
+          { opacity: 0, x: -8 },
+          { opacity: 1, x: 0, duration: 0.45, stagger: 0.12, clearProps: 'opacity,transform' },
+          '-=0.55')
+        // the gauge ticks light up left → right under each number
+        .fromTo(statrow.querySelectorAll('.fx-stat__meter i'),
+          { scaleY: 0, opacity: 0 },
+          { scaleY: 1, opacity: 1, duration: 0.3, ease: 'power2.out',
+            stagger: { each: 0.018 }, clearProps: 'opacity,transform' },
+          '-=0.45')
+
+      // a highlight sweeps across the three stats, over and over
+      const runStats = gsap.timeline({ repeat: -1, repeatDelay: 2.4, delay: 2.2 })
+      stats.forEach((stat, i) => {
+        runStats.to(stat, {
+          onStart: () => stat.classList.add('is-lit'),
+          onComplete: () => stat.classList.remove('is-lit'),
+          duration: 0.75,
+        }, i * 0.4)
+      })
+
+      stats.forEach(stat => {
+        if (stat.dataset.fxSpot) return
+        stat.dataset.fxSpot = '1'
+        stat.addEventListener('pointermove', (e) => {
+          const r = stat.getBoundingClientRect()
+          stat.style.setProperty('--mx', ((e as PointerEvent).clientX - r.left) + 'px')
+          stat.style.setProperty('--my', ((e as PointerEvent).clientY - r.top) + 'px')
+        })
+      })
+    }
+
+    /* ── COMPARISON CARDS ──
+       Cards stay perfectly straight: the entrance uses y / scale / blur only.
+       No x (a horizontal translate on a full-width grid item widens the
+       document and clips the cards) and no rotation (it read as crooked).
+       Everything lands on the resting state, so a failed trigger still leaves
+       the finished cards on screen. */
+    const cmp = document.querySelector<HTMLElement>('.fx-cmp')
+    if (cmp) {
+      const cards = gsap.utils.toArray<HTMLElement>('.fx-card', cmp)
+
+      const tl = gsap.timeline({
+        defaults: { ease: 'power3.out' },
+        scrollTrigger: { trigger: cmp, start: 'top 80%', toggleActions: 'play none none none' },
+      })
+
+      cards.forEach((card, ci) => {
+        const at = ci * 0.14
+
+        tl.from(card, {
+          y: 46, scale: 0.97, opacity: 0, filter: 'blur(8px)',
+          duration: 0.8, transformOrigin: 'center bottom',
+          // hand the transform back to CSS so the :hover lift keeps working
+          clearProps: 'transform,filter',
+        }, at)
+          // the hairline across the top of the card draws in
+          .from(card.querySelector('.fx-card__accent'), {
+            scaleX: 0, transformOrigin: 'left center', duration: 0.7,
+          }, at + 0.18)
+          .from(card.querySelector('.fx-card__chip'), {
+            scale: 0.4, opacity: 0, duration: 0.55, ease: 'back.out(2.8)',
+          }, at + 0.24)
+          .from(card.querySelector('.fx-card__title'), {
+            y: 16, opacity: 0, filter: 'blur(5px)', duration: 0.55,
+          }, at + 0.28)
+          // rows rise one after another
+          .from(card.querySelectorAll('.fx-card__item'), {
+            y: 20, opacity: 0, filter: 'blur(4px)',
+            duration: 0.55, stagger: 0.07,
+          }, at + 0.34)
+          // each line wipes open left → right
+          .from(card.querySelectorAll('.fx-card__txt'), {
+            clipPath: 'inset(0 100% 0 0)', duration: 0.6, stagger: 0.07, ease: 'power2.inOut',
+          }, at + 0.38)
+          .from(card.querySelectorAll('.fx-card__mark'), {
+            scale: 0.4, duration: 0.5, stagger: 0.07, ease: 'back.out(2.8)',
+          }, at + 0.4)
+          // the ✗ / ✓ strokes draw themselves
+          .fromTo(card.querySelectorAll('.fx-card__mark svg > *'),
+            { strokeDasharray: 36, strokeDashoffset: 36 },
+            { strokeDashoffset: 0, duration: 0.5, stagger: 0.07, ease: 'power2.out',
+              clearProps: 'strokeDasharray,strokeDashoffset' },
+            at + 0.46)
+          .from(card.querySelectorAll('.fx-card__idx'), {
+            opacity: 0, x: -8, duration: 0.45, stagger: 0.07,
+          }, at + 0.4)
+
+        if (card.classList.contains('fx-card--good')) {
+          tl.from(card.querySelector('.fx-card__badge'), {
+            scale: 0.6, opacity: 0, duration: 0.5, ease: 'back.out(2.4)',
+          }, at + 0.34)
+            .from(card.querySelector('.fx-card__glow'), { opacity: 0, duration: 0.8 }, at + 0.2)
+            // the border traces itself around the winning card
+            .fromTo(card.querySelector('.fx-card__outline rect'),
+              { strokeDasharray: '0 100', strokeDashoffset: 0 },
+              { strokeDasharray: '100 100', duration: 1.5, ease: 'power2.inOut' },
+              at + 0.3)
+            // a single light sheen sweeps the winning card once it has landed
+            .fromTo(card.querySelector('.fx-card__sheen'),
+              { xPercent: -130, opacity: 0 },
+              { xPercent: 130, opacity: 1, duration: 1.5, ease: 'power2.inOut' },
+              at + 1)
+            .to(card.querySelector('.fx-card__sheen'), { opacity: 0, duration: 0.3 }, '>-0.3')
+        }
+
+        /* ── cursor spotlight: light follows the pointer, card stays flat ── */
+        if (!card.dataset.fxSpot) {
+          card.dataset.fxSpot = '1'
+          card.addEventListener('pointermove', (e) => {
+            const r = card.getBoundingClientRect()
+            card.style.setProperty('--mx', ((e as PointerEvent).clientX - r.left) + 'px')
+            card.style.setProperty('--my', ((e as PointerEvent).clientY - r.top) + 'px')
+          })
+        }
+      })
+
+      /* ── the Synerax list keeps running itself, row by row, on a loop ──
+         Each pass also sends a beam across the gap from the matching problem
+         row to its fix, and dims that problem row as it is 'solved'. */
+      const good = cmp.querySelector<HTMLElement>('.fx-card--good')
+      const bad = cmp.querySelector<HTMLElement>('.fx-card--bad')
+      if (good) {
+        const rows = gsap.utils.toArray<HTMLElement>('.fx-card__item', good)
+        const badRows = bad ? gsap.utils.toArray<HTMLElement>('.fx-card__item', bad) : []
+        const beam = cmp.querySelector<HTMLElement>('.fx-beam')
+
+        const run = gsap.timeline({ repeat: -1, repeatDelay: 2.6, delay: 2.4 })
+
+        rows.forEach((row, i) => {
+          const at = i * 0.34
+
+          run.to(row, {
+            onStart: () => row.classList.add('is-active'),
+            onComplete: () => row.classList.remove('is-active'),
+            duration: 0.62,
+          }, at)
+            .fromTo(row.querySelector('.fx-card__mark'),
+              { boxShadow: '0 0 0 0 rgba(242,98,46,.45)' },
+              { boxShadow: '0 0 0 9px rgba(242,98,46,0)', duration: 0.85, ease: 'power2.out',
+                clearProps: 'boxShadow' },
+              at)
+
+          // the matching problem row reacts as its fix lights up
+          const src = badRows[i]
+          if (src) {
+            run.to(src, {
+              onStart: () => src.classList.add('is-solved'),
+              onComplete: () => src.classList.remove('is-solved'),
+              duration: 0.62,
+            }, at)
+          }
+
+          // …and a beam carries it across the gap
+          if (beam && src) {
+            run.add(() => {
+              const c0 = cmp.getBoundingClientRect()
+              const a = src.getBoundingClientRect()
+              const b = row.getBoundingClientRect()
+              gsap.killTweensOf(beam)
+              gsap.set(beam, {
+                x: a.right - c0.left - 4,
+                y: a.top - c0.top + a.height / 2 - 2,
+                opacity: 0,
+              })
+              gsap.timeline()
+                .to(beam, { opacity: 1, duration: 0.14 }, 0)
+                .to(beam, {
+                  x: b.left - c0.left + 4,
+                  y: b.top - c0.top + b.height / 2 - 2,
+                  duration: 0.6, ease: 'power2.inOut',
+                }, 0)
+                .to(beam, { opacity: 0, duration: 0.2 }, 0.5)
+            }, at)
+          }
+        })
+
+        // glow breathes, and drifts a little as you scroll
+        const glow = good.querySelector('.fx-card__glow')
+        if (glow) {
+          gsap.to(glow, {
+            opacity: 0.95, scale: 1.07, duration: 3.6,
+            repeat: -1, yoyo: true, ease: 'sine.inOut', delay: 1.8,
+          })
+          gsap.to(glow, {
+            yPercent: 14, ease: 'none',
+            scrollTrigger: { trigger: cmp, start: 'top bottom', end: 'bottom top', scrub: 1 },
+          })
+        }
+
+        // a soft scan line keeps travelling down the list
+        const scan = good.querySelector('.fx-card__scan')
+        if (scan) {
+          gsap.fromTo(scan,
+            { yPercent: -30, opacity: 0 },
+            {
+              yPercent: 520, opacity: 1, duration: 4.6, ease: 'none',
+              repeat: -1, repeatDelay: 2.4, delay: 2.2,
+            })
+        }
+      }
+    }
+
+    /* ── ONE TECHNOLOGY PARTNER — sticky copy, cards scroll past ──
+       The left column is CSS position:sticky, so no pin and no scroll trap.
+       All JS does here is fade each card up as it enters. */
+    const stick = document.querySelector<HTMLElement>('.fx-stick')
+    if (stick) {
+      const steps = gsap.utils.toArray<HTMLElement>('.fx-stick__step', stick)
+
+      steps.forEach((step) => {
+        gsap.fromTo(step,
+          { opacity: 0, y: 42 },
+          {
+            opacity: 1, y: 0,
+            duration: 0.8,
+            ease: 'power3.out',
+            scrollTrigger: {
+              trigger: step,
+              start: 'top 84%',
+              once: true,
+            },
+          })
+      })
+    }
+
+
+    /* ── INTELLIGENCE — dense grid ── */
+    const micro = document.querySelector<HTMLElement>('.fx-micro')
+    if (micro) {
+      const tiles = gsap.utils.toArray<HTMLElement>('.fx-micro__item', micro)
+
+      // tiles deal in, then their corner brackets snap on
+      gsap.timeline({
+        scrollTrigger: { trigger: micro, start: 'top 84%', toggleActions: 'play none none none' },
+      })
+        .fromTo(tiles,
+          { y: 26, opacity: 0, filter: 'blur(6px)' },
+          { y: 0, opacity: 1, filter: 'blur(0px)', duration: 0.6, stagger: 0.055,
+            ease: 'power3.out', clearProps: 'opacity,transform,filter' })
+        .fromTo(micro.querySelectorAll('.fx-micro__corners i'),
+          { scale: 0, opacity: 0 },
+          { scale: 1, opacity: 1, duration: 0.35, stagger: 0.012, ease: 'back.out(3)',
+            clearProps: 'opacity,transform' },
+          '-=0.45')
+        .fromTo(micro.querySelectorAll('.fx-micro__idx'),
+          { opacity: 0, x: -6 },
+          { opacity: 1, x: 0, duration: 0.4, stagger: 0.055, clearProps: 'opacity,transform' },
+          '-=0.5')
+
+      // a highlight keeps travelling through the grid, tile by tile
+      const scanTiles = gsap.timeline({ repeat: -1, repeatDelay: 1.8, delay: 2 })
+      tiles.forEach((tile, i) => {
+        scanTiles.to(tile, {
+          onStart: () => tile.classList.add('is-lit'),
+          onComplete: () => tile.classList.remove('is-lit'),
+          duration: 0.5,
+        }, i * 0.22)
+      })
+
+      // pointer spotlight on each tile
+      tiles.forEach(tile => {
+        if (tile.dataset.fxSpot) return
+        tile.dataset.fxSpot = '1'
+        tile.addEventListener('pointermove', (e) => {
+          const r = tile.getBoundingClientRect()
+          tile.style.setProperty('--mx', ((e as PointerEvent).clientX - r.left) + 'px')
+          tile.style.setProperty('--my', ((e as PointerEvent).clientY - r.top) + 'px')
+        })
+      })
+    }
+
+    /* ── INSIGHTS ── */
+    if (has('.iq-news-grid')) {
+      const grid = document.querySelector<HTMLElement>('.iq-news-grid')!
+      revealFrom(q('.iq-news'), grid, { y: 28, stagger: 0.1 })
+      gsap.from(grid.querySelectorAll('.fx-thumb svg'), {
+        opacity: 0, duration: 0.9, stagger: 0.12,
+        scrollTrigger: { trigger: grid, start: 'top 78%', once: true },
+      })
+    }
+
+    /* ── INDUSTRIES ── */
+    if (has('.fx-ind-list')) {
+      revealFrom(q('.fx-ind-row'), document.querySelector('.fx-ind-list')!, { y: 16, stagger: 0.07 })
+    }
+
+    /* ── CAREERS — copy from the left, image parallax ── */
+    const careers = document.querySelector<HTMLElement>('.iq-careers-banner')
+    if (careers) {
+      gsap.from(careers.querySelectorAll('.iq-careers-banner__text > *'), {
+        x: -34, opacity: 0, stagger: 0.1, duration: 0.75,
+        scrollTrigger: { trigger: careers, start: 'top 80%', once: true },
+      })
+      const img = careers.querySelector('.fx-parallax img')
+      if (img) {
+        gsap.fromTo(img,
+          { yPercent: -7, scale: 1.16 },
+          {
+            yPercent: 7, scale: 1.16, ease: 'none',
+            scrollTrigger: { trigger: careers, start: 'top bottom', end: 'bottom top', scrub: 1 },
+          })
+      }
+    }
+
+    /* ── FINAL CTA ── */
+    const cta = document.querySelector<HTMLElement>('.iq-cta__panel')
+    if (cta) {
+      gsap.from(cta.children, {
+        y: 26, opacity: 0, scale: 0.97, transformOrigin: 'center',
+        stagger: 0.09, duration: 0.8,
+        scrollTrigger: { trigger: cta, start: 'top 82%', once: true },
+      })
+    }
+
+    /* ── PLATFORM LOGOS — seamless marquee (one group + its trailing gap) ── */
+    const track = document.querySelector<HTMLElement>('.fx-marquee__track')
+    const group = document.querySelector<HTMLElement>('.fx-marquee__group')
+    if (track && group) {
+      const loop = gsap.to(track, {
+        x: () => -group.offsetWidth,
+        duration: 34,
+        ease: 'none',
+        repeat: -1,
+        modifiers: { x: gsap.utils.unitize(x => parseFloat(x) % group.offsetWidth) },
+      })
+      const strip = document.querySelector('.iq-techstrip')
+      strip?.addEventListener('mouseenter', () => loop.pause())
+      strip?.addEventListener('mouseleave', () => loop.resume())
+    }
+  }, [])
+
   return (
-    <>
+    <div ref={scope as React.RefObject<HTMLDivElement>}>
       <Nav />
 
-      {/* ══ 1. HERO — Centered text, wide mockup below ══ */}
+      {/* ══ 1. HERO — asymmetric split: copy left, dashboard right ══ */}
       <section className="iq-hero">
         <div className="iq-hero__glow" />
         <div className="iq-wrap iq-hero__inner">
+          <div className="fx-hero-grid">
 
-          {/* Centered text */}
-          <div className="iq-hero__text">
-            <h1 className="iq-hero__h1 iq-reveal iq-d1">
-              From Code to Cloud.<br />
-              We Deliver What <em className="iq-em">Others Promise.</em>
-            </h1>
-            <p className="iq-hero__sub iq-reveal iq-d2">
-              Enterprise contact centers, AI systems, cloud architecture, and full-stack
-              applications — all engineered for scale, built to last, and delivered on time.
-            </p>
-            <div className="iq-hero__btns iq-reveal iq-d3">
-              <button onClick={() => openLead()} className="iq-btn-fill">
-                Get a Free Consultation
-              </button>
-              <Link to="/solutions" className="iq-btn-ring">
-                Explore Solutions
-              </Link>
+            {/* Left column — left-aligned copy, lines stagger in on load */}
+            <div className="iq-hero__text fx-hero-copy">
+              <h1 className="iq-hero__h1">
+                <span className="fx-line"><span>From Code to Cloud.</span></span>
+                <span className="fx-line"><span>We Deliver What <em className="iq-em">Others Promise.</em></span></span>
+              </h1>
+              <p className="iq-hero__sub fx-load fx-load--3">
+                Enterprise contact centers, AI systems, cloud architecture, and full-stack
+                applications — all engineered for scale, built to last, and delivered on time.
+              </p>
+              <div className="iq-hero__btns fx-load fx-load--4">
+                <button onClick={() => openLead()} className="iq-btn-fill">
+                  Get a Free Consultation
+                </button>
+                <Link to="/solutions" className="iq-btn-ring">
+                  Explore Solutions
+                </Link>
+              </div>
             </div>
+
+            {/* Right column — dashboard mockup, built in code */}
+            <div className="fx-hero-visual">
+              <HeroDashboard />
+            </div>
+
           </div>
         </div>
 
-        {/* Tech strip */}
-        <div className="iq-techstrip iq-reveal iq-d3">
-          <div className="iq-wrap">
-            <p className="iq-techstrip__lbl">Built on world-class platforms</p>
-            <div className="iq-techstrip__pills">
-              {[
-                { name:'React',      src:'https://cdn.simpleicons.org/react/61DAFB' },
-                { name:'Node.js',    src:'https://cdn.simpleicons.org/nodedotjs/339933' },
-                { name:'AWS',        src:'https://www.google.com/s2/favicons?domain=aws.amazon.com&sz=128' },
-                { name:'OpenAI',     src:'https://www.google.com/s2/favicons?domain=openai.com&sz=128' },
-                { name:'Kubernetes', src:'https://cdn.simpleicons.org/kubernetes/326CE5' },
-                { name:'Python',     src:'https://cdn.simpleicons.org/python/3776AB' },
-                { name:'TypeScript', src:'https://cdn.simpleicons.org/typescript/3178C6' },
-                { name:'Docker',     src:'https://cdn.simpleicons.org/docker/2496ED' },
-                { name:'FastAPI',    src:'https://cdn.simpleicons.org/fastapi/009688' },
-                { name:'LangChain',  src:'https://cdn.simpleicons.org/langchain/1C3C3C' },
-              ].map(t=>(
-                <span key={t.name} className="iq-techstrip__pill" title={t.name}>
-                  <img src={t.src} alt={t.name} className="iq-techstrip__logo" loading="lazy" />
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
       </section>
 
-      {/* ══ 2. PROBLEM — big stats + comparison ══ */}
-      <section className="iq-section iq-section--white-a">
-        <div className="iq-wrap">
-          <div className="iq-problem-grid">
-            <div className="iq-problem-left">
-              <p className="iq-eye iq-reveal">The Problem</p>
-              <h2 className="iq-h2 iq-reveal iq-d1" style={{maxWidth:'480px'}}>
-                Most tech vendors overpromise<br />
-                and <span className="iq-accent">underdeliver!!!</span>
-              </h2>
-              <p className="iq-body iq-reveal iq-d2" style={{maxWidth:'440px'}}>
-                You've dealt with junior developers, missed deadlines, and bloated invoices.
-                Synerax is built differently — senior-only execution, radical transparency.
-              </p>
-            </div>
+      {/* ══ 1b. PLATFORM LOGOS — own band, so the hero is exactly one viewport ══ */}
+      <div className="iq-techstrip iq-reveal iq-d3">
+        <p className="iq-techstrip__lbl">Built on world-class platforms</p>
+        <div className="fx-marquee">
+          <div className="fx-marquee__track">
+            {/* two identical groups; each carries a trailing gap so a
+                -50% translate lands exactly on the seam */}
+            {[0, 1].map(copy => (
+              <div className="fx-marquee__group" key={copy} aria-hidden={copy === 1}>
+                {platforms.map(t => (
+                  <span key={t.name} className="fx-marquee__item" title={t.name}>
+                    <img src={t.src} alt="" aria-hidden="true" loading="lazy" />
+                    <span>{t.name}</span>
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
-            <div className="iq-problem-right iq-reveal iq-d3">
-              {[
-                { num:'5+',    lbl:'Projects Delivered', sub:'Across enterprise and mid-market clients globally' },
-                { num:'99.8%', lbl:'Client Satisfaction', sub:'We don\'t just deliver projects — we build partnerships' },
-                { num:'60%',   lbl:'Faster Delivery', sub:'vs traditional agencies through our senior-only model' },
-              ].map(s=>(
-                <div key={s.lbl} className="iq-bigstat">
-                  <div className="iq-bigstat__num">{s.num}</div>
-                  <div className="iq-bigstat__lbl">{s.lbl}</div>
-                  <div className="iq-bigstat__sub">{s.sub}</div>
-                </div>
-              ))}
-            </div>
+
+      {/* ══ 2. PROBLEM — stats + two side-by-side comparison cards ══ */}
+      <section className="iq-section fx-problem">
+        <div className="iq-wrap">
+
+          <div className="fx-lede">
+            <p className="iq-eye">The Problem</p>
+            <h2 className="iq-h2">
+              Most tech vendors overpromise<br />
+              and <span className="iq-accent">underdeliver!!!</span>
+            </h2>
+            <p className="iq-body">
+              You've dealt with junior developers, missed deadlines, and bloated invoices.
+              Synerax is built differently — senior-only execution, radical transparency.
+            </p>
           </div>
 
-          {/* Comparison table */}
-          <div className="iq-compare" style={{marginTop:'3rem'}}>
-            <div className="iq-compare__vs"><span /></div>
-            <div className="iq-compare__col iq-compare__col--bad iq-reveal iq-d3">
-              <div className="iq-compare__head">
-                <span className="iq-compare__head-icon iq-compare__head-icon--bad">
+          {/* Three large count-up stats, evenly spread */}
+          <div className="fx-statrow">
+            {[
+              { num:'5+',    lbl:'Projects Delivered', sub:'Across enterprise and mid-market clients globally' },
+              { num:'99.8%', lbl:'Client Satisfaction', sub:'We don\'t just deliver projects — we build partnerships' },
+              { num:'60%',   lbl:'Faster Delivery', sub:'vs traditional agencies through our senior-only model' },
+            ].map((s,i)=>(
+              <div key={s.lbl} className="fx-stat">
+                <span className="fx-stat__spot" aria-hidden="true" />
+                <span className="fx-stat__idx" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                <div className="fx-stat__num"><CountUpText value={s.num} /></div>
+                <span className="fx-stat__meter" aria-hidden="true">
+                  {Array.from({ length: 18 }).map((_, k) => <i key={k} />)}
+                </span>
+                <div className="fx-stat__lbl">{s.lbl}</div>
+                <div className="fx-stat__sub">{s.sub}</div>
+              </div>
+            ))}
+          </div>
+
+          <div className="fx-cmp">
+            <span className="fx-beam" aria-hidden="true"><i /></span>
+
+            {/* LEFT — the old way */}
+            <article className="fx-card fx-card--bad">
+              <span className="fx-card__spot" aria-hidden="true" />
+              <span className="fx-card__accent" aria-hidden="true" />
+
+              <header className="fx-card__hd">
+                <span className="fx-card__chip fx-card__chip--bad">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
                 </span>
-                Most dev shops
-              </div>
-              {['Code shipped by whoever\'s free, not who\'s best fit','Estimate balloons once the sprint starts','You chase updates instead of getting them','Your ticket gets passed between three teams','Same boilerplate stack regardless of what you need'].map((i,idx)=>(
-                <div key={i} className={`iq-compare__row iq-reveal iq-d${Math.min(idx+1,4)}`}>
-                  <span className="iq-compare__row-icon iq-compare__row-icon--bad">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
-                  </span>
-                  {i}
-                </div>
-              ))}
-            </div>
-            <div className="iq-compare__col iq-compare__col--good iq-reveal iq-d3">
-              <span className="iq-compare__ribbon">Recommended</span>
-              <div className="iq-compare__head">
-                <span className="iq-compare__head-icon iq-compare__head-icon--good">
+                <h3 className="fx-card__title">Most dev shops</h3>
+              </header>
+
+              <ul className="fx-card__list">
+                {[
+                  'Code shipped by whoever\'s free, not who\'s best fit',
+                  'Estimate balloons once the sprint starts',
+                  'You chase updates instead of getting them',
+                  'Your ticket gets passed between three teams',
+                  'Same boilerplate stack regardless of what you need',
+                ].map((t,i)=>(
+                  <li className="fx-card__item" key={t}>
+                    <span className="fx-card__rail" aria-hidden="true" />
+                    <span className="fx-card__idx" aria-hidden="true">{String(i+1).padStart(2,'0')}</span>
+                    <span className="fx-card__mark fx-card__mark--bad">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                    </span>
+                    <span className="fx-card__txt">{t}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+
+            {/* RIGHT — the Synerax way */}
+            <article className="fx-card fx-card--good">
+              <span className="fx-card__glow" aria-hidden="true" />
+              <span className="fx-card__spot" aria-hidden="true" />
+              <span className="fx-card__sheen" aria-hidden="true" />
+              <span className="fx-card__scan" aria-hidden="true" />
+              <span className="fx-card__accent" aria-hidden="true" />
+              <svg className="fx-card__outline" aria-hidden="true" preserveAspectRatio="none">
+                <rect x="1" y="1" rx="13" pathLength={100} vectorEffect="non-scaling-stroke" />
+              </svg>
+
+              <header className="fx-card__hd">
+                <span className="fx-card__chip fx-card__chip--good">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                 </span>
-                Synerax
-              </div>
-              {['Same senior engineer from kickoff to launch','Fixed quote in writing, no surprise invoices','Weekly demo, not a status email you have to chase','One PM owns your project start to finish','Stack chosen for your product, not our comfort zone'].map((i,idx)=>(
-                <div key={i} className={`iq-compare__row iq-reveal iq-d${Math.min(idx+1,4)}`}>
-                  <span className="iq-compare__row-icon iq-compare__row-icon--good">
-                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                  </span>
-                  {i}
-                </div>
-              ))}
-            </div>
+                <h3 className="fx-card__title">Synerax</h3>
+                <span className="fx-card__badge">Recommended</span>
+              </header>
+
+              <ul className="fx-card__list">
+                {[
+                  'Same senior engineer from kickoff to launch',
+                  'Fixed quote in writing, no surprise invoices',
+                  'Weekly demo, not a status email you have to chase',
+                  'One PM owns your project start to finish',
+                  'Stack chosen for your product, not our comfort zone',
+                ].map((t,i)=>(
+                  <li className="fx-card__item" key={t}>
+                    <span className="fx-card__rail" aria-hidden="true" />
+                    <span className="fx-card__idx" aria-hidden="true">{String(i+1).padStart(2,'0')}</span>
+                    <span className="fx-card__mark fx-card__mark--good">
+                      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </span>
+                    <span className="fx-card__txt">{t}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+
           </div>
+
         </div>
       </section>
 
-      {/* ══ 3. ONE PLATFORM — split, rounded container ══ */}
-      <section className="iq-section iq-section--tint">
+      {/* ══ 3. ONE PLATFORM — sticky copy on the left, cards scroll past ══ */}
+      <section className="iq-section iq-section--tint fx-stick">
         <div className="iq-wrap">
-        <div className="iq-boxed iq-split">
-          <div className="iq-split__text">
-            <p className="iq-eye iq-reveal">End-to-End Expertise</p>
-            <h2 className="iq-h2 iq-reveal iq-d1">
-              One Technology Partner,<br />
-              <span className="iq-accent">Every Digital Solution.</span>
-            </h2>
-            <p className="iq-body iq-reveal iq-d2">
-              From AI-powered applications and cloud infrastructure to enterprise software, DevOps, and digital transformation, Synerax delivers scalable, secure, and future-ready technology solutions under one trusted partner.
-            </p>
-            <div className="iq-platform-list iq-reveal iq-d3">
-              {[
-                { icon:'🏗️', t:'Built on AWS', d:'99.99% availability, Terraform IaC, Kubernetes' },
-                { icon:'🔒', t:'Enterprise Security', d:'SOC 2, ISO 27001, HIPAA certified infrastructure' },
-                { icon:'⚡', t:'AI-Powered', d:'Custom LLM pipelines, autonomous agents, ML systems' },
-                { icon:'📊', t:'Full Visibility', d:'Real-time dashboards, weekly demos, dedicated PM' },
-              ].map(item=>(
-                <div key={item.t} className="iq-platform-item">
-                  <span className="iq-platform-item__icon">{item.icon}</span>
-                  <div>
-                    <div className="iq-platform-item__title">{item.t}</div>
-                    <div className="iq-platform-item__desc">{item.d}</div>
+          <div className="fx-stick__inner">
+
+            {/* ── left: stays put while the right column scrolls ── */}
+            <aside className="fx-stick__left">
+              <div className="fx-lede">
+                <p className="iq-eye iq-reveal">End-to-End Expertise</p>
+                <h2 className="iq-h2 iq-reveal iq-d1">
+                  One Technology Partner,<br />
+                  <span className="iq-accent">Every Digital Solution.</span>
+                </h2>
+                <p className="iq-body iq-reveal iq-d2">
+                  From AI-powered applications and cloud infrastructure to enterprise software, DevOps, and digital transformation, Synerax delivers scalable, secure, and future-ready technology solutions under one trusted partner.
+                </p>
+              </div>
+
+              <div className="fx-stick__cta iq-hero__btns">
+                <button onClick={() => openLead()} className="iq-btn-fill">Start a Project →</button>
+                <Link to="/solutions" className="iq-btn-ring">View All Solutions</Link>
+              </div>
+            </aside>
+
+            {/* ── right: the four cards, stacked and scrolling ── */}
+            <div className="fx-stick__right">
+
+              <article className="fx-stick__step">
+                <header className="fx-stick__cap">
+                  <h3 className="fx-stick__title">Built on AWS</h3>
+                  <p className="fx-stick__desc">99.99% availability, Terraform IaC, Kubernetes</p>
+                </header>
+                <div className="fx-stick__panel">
+                  <div className="fx-pillar__viz">
+                    <span className="fx-viz__lbl">Cloud Architecture</span>
+                    <svg viewBox="0 0 250 146" aria-hidden="true" className="fx-arch">
+                      {/* VPC boundary */}
+                      <rect className="fx-arch__vpc" x="4" y="4" width="242" height="138" rx="8" />
+                      <text className="fx-arch__vpclbl" x="14" y="20">VPC</text>
+
+                      {/* ingress → fan-out to nodes */}
+                      <rect className="fx-arch__box" x="91" y="30" width="68" height="26" rx="5" />
+                      <text className="fx-arch__t" x="125" y="47" textAnchor="middle">Ingress</text>
+
+                      <path className="fx-arch__line"
+                            d="M125 56 L125 74 M41 74 L209 74 M41 74 L41 92 M125 74 L125 92 M209 74 L209 92" />
+                      <path className="fx-arch__flow" d="M125 56 L125 74 L41 74 L41 92" />
+                      <path className="fx-arch__flow fx-arch__flow--b" d="M125 56 L125 74 L209 74 L209 92" />
+                      <path className="fx-arch__flow fx-arch__flow--c" d="M125 56 L125 92" />
+
+                      {[11, 95, 179].map((x, i) => (
+                        <g key={x}>
+                          <rect className="fx-arch__box" x={x} y="92" width="60" height="26" rx="5" />
+                          <text className="fx-arch__t" x={x + 30} y="109" textAnchor="middle">Node</text>
+                          <circle className="fx-arch__pulse" cx={x + 30} cy="130" r="3"
+                                  style={{ animationDelay: `${i * 0.45}s` }} />
+                        </g>
+                      ))}
+                    </svg>
                   </div>
                 </div>
-              ))}
-            </div>
-            <div className="iq-hero__btns iq-reveal iq-d4" style={{marginTop:'2rem', justifyContent:'flex-start'}}>
-              <button onClick={() => openLead()} className="iq-btn-fill">Start a Project →</button>
-              <Link to="/solutions" className="iq-btn-ring">View All Solutions</Link>
-            </div>
-          </div>
-          <div className="iq-split__img iq-reveal iq-d2">
-            <div className="iq-mini-stack">
-              <div className="iq-mini-card">
-                <div className="iq-hero__card-header">
-                  <span className="iq-hero__card-title">Platform Overview</span>
-                </div>
-                <div className="iq-mini-card__body">
-                  <div className="iq-mini-chart">
-                    {[38,55,44,62,50,70,58,80].map((h,i)=>(
-                      <span key={i} style={{height:`${h}%`}} />
-                    ))}
-                  </div>
-                  <div className="iq-mini-donut-row">
-                    <div className="iq-mini-donut" />
-                    <div className="iq-mini-legend">
+              </article>
+
+              <article className="fx-stick__step">
+                <header className="fx-stick__cap">
+                  <h3 className="fx-stick__title">Enterprise Security</h3>
+                  <p className="fx-stick__desc">SOC 2, ISO 27001, HIPAA certified infrastructure</p>
+                </header>
+                <div className="fx-stick__panel">
+                  <div className="fx-pillar__viz">
+                    <span className="fx-viz__lbl">Security &amp; Compliance</span>
+                    <span className="iq-mini-badge fx-pillar__badge">
+                      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                      Verified
+                    </span>
+                    <div className="iq-mini-feed">
                       {[
-                        {c:'#0D487E', t:'Cloud & DevOps'},
-                        {c:'#4FA9E8', t:'AI & Automation'},
-                        {c:'#DCEFFD', t:'Development'},
-                      ].map(l=>(
-                        <span key={l.t} className="iq-mini-legend__item">
-                          <span className="iq-mini-legend__dot" style={{background:l.c}} />{l.t}
+                        { t:'SOC 2 Type II', s:'Independently audited annually', time:'Certified' },
+                        { t:'ISO 27001', s:'Information security management', time:'Certified' },
+                        { t:'HIPAA', s:'Healthcare data compliance', time:'Compliant' },
+                      ].map(f=>(
+                        <div key={f.t} className="iq-mini-feed__item">
+                          <span className="iq-mini-feed__check">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                          </span>
+                          <div className="iq-mini-feed__text">
+                            <div className="iq-mini-feed__title">{f.t}</div>
+                            <div className="iq-mini-feed__sub">{f.s}</div>
+                          </div>
+                          <span className="iq-mini-feed__time">{f.time}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article className="fx-stick__step">
+                <header className="fx-stick__cap">
+                  <h3 className="fx-stick__title">AI-Powered</h3>
+                  <p className="fx-stick__desc">Custom LLM pipelines, autonomous agents, ML systems</p>
+                </header>
+                <div className="fx-stick__panel">
+                  <div className="fx-pillar__viz">
+                    <span className="fx-viz__lbl">Agent Pipeline</span>
+                    <div className="fx-pipe">
+                      <span className="fx-pipe__rail"><i /></span>
+                      {['Ingest','LLM pipeline','Agent','Action'].map((s,i)=>(
+                        <span className="fx-pipe__step" key={s} style={{ animationDelay: `${0.15 + i * 0.14}s` }}>
+                          <b style={{ animationDelay: `${i * 0.45}s` }} />{s}
                         </span>
                       ))}
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="iq-mini-card iq-mini-card--sm">
-                <div className="iq-hero__card-header">
-                  <span className="iq-hero__card-title">Security &amp; Compliance</span>
-                  <span className="iq-mini-badge">
-                    <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                    Verified
-                  </span>
-                </div>
-                <div className="iq-mini-card__body iq-mini-card__body--sm">
-                  <div className="iq-mini-feed">
-                    {[
-                      { t:'SOC 2 Type II', s:'Independently audited annually', time:'Certified' },
-                      { t:'ISO 27001', s:'Information security management', time:'Certified' },
-                      { t:'HIPAA', s:'Healthcare data compliance', time:'Compliant' },
-                    ].map(f=>(
-                      <div key={f.t} className="iq-mini-feed__item">
-                        <span className="iq-mini-feed__check">
-                          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                        </span>
-                        <div className="iq-mini-feed__text">
-                          <div className="iq-mini-feed__title">{f.t}</div>
-                          <div className="iq-mini-feed__sub">{f.s}</div>
-                        </div>
-                        <span className="iq-mini-feed__time">{f.time}</span>
-                      </div>
-                    ))}
+              </article>
+
+              <article className="fx-stick__step">
+                <header className="fx-stick__cap">
+                  <h3 className="fx-stick__title">Full Visibility</h3>
+                  <p className="fx-stick__desc">Real-time dashboards, weekly demos, dedicated PM</p>
+                </header>
+                <div className="fx-stick__panel">
+                  <div className="fx-wide-panel">
+                    <div className="iq-hero__card-header">
+                      <span className="iq-hero__card-title">Platform Overview</span>
+                    </div>
+                    <div className="fx-wide-panel__body fx-wide-panel__body--chart">
+                      <PlatformChart />
+                    </div>
                   </div>
                 </div>
-              </div>
+              </article>
+
             </div>
           </div>
         </div>
-        </div>
       </section>
 
-      {/* ══ 4. EVERYTHING — featured row + card grid ══ */}
+      {/* ══ 4. EVERYTHING — centered tabbed service showcase ══ */}
       <section className="iq-section iq-section--white-b">
         <div className="iq-wrap">
-          <p className="iq-eye iq-reveal">Everything You Need</p>
-          <h2 className="iq-h2 iq-reveal iq-d1">
-            Everything your business needs,<br />
-            <span className="iq-accent">in one place.</span>
-          </h2>
-          <p className="iq-body iq-reveal iq-d2" style={{marginBottom:'3rem'}}>
-            From log modeling to AI-assisted answers — we deliver the full capabilities.
-          </p>
-
-          {/* Featured row */}
-          <div className="iq-feat-hero-row">
-            <div className="iq-feat-hero iq-reveal iq-d2">
-              <div className="iq-feat-hero__content">
-                <div className="iq-feat-hero__icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 5a2 2 0 012-2h3l1.5 4-2 1.25a10 10 0 004.25 4.25L14 10.5l4 1.5v3a2 2 0 01-2 2C8.16 17 3 11.84 3 5.5"/></svg>
-                </div>
-                <h4 className="iq-feat-hero__title">Contact Center Solutions</h4>
-                <p className="iq-feat-hero__desc">
-                  Enterprise omnichannel platform handling 10,000+ calls/hour with
-                  AI-powered IVR, intelligent routing, and a 99.9% uptime SLA.
-                </p>
-                <Link to="/solutions/contact-center" className="iq-feat__link">Learn more →</Link>
-              </div>
-              <div className="iq-feat-hero__visual">
-                <span className="iq-feat-hero__visual-lbl">Live Metrics</span>
-                <div className="iq-feat-hero__stat">
-                  <span className="iq-feat-hero__stat-num">10K+</span>
-                  <span className="iq-feat-hero__stat-lbl">Calls / hour</span>
-                </div>
-                <div className="iq-feat-hero__stat">
-                  <span className="iq-feat-hero__stat-num">99.9%</span>
-                  <span className="iq-feat-hero__stat-lbl">Uptime SLA</span>
-                </div>
-                <div className="iq-mini-chart iq-mini-chart--sm">
-                  {[45,65,50,75,60].map((h,i)=>(<span key={i} style={{height:`${h}%`}} />))}
-                </div>
-              </div>
-            </div>
-
-            <div className="iq-feat-hero iq-reveal iq-d3">
-              <div className="iq-feat-hero__content">
-                <div className="iq-feat-hero__icon">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4" fill="currentColor" opacity=".35"/><path d="M12 2v4M12 18v4M22 12h-4M6 12H2"/></svg>
-                </div>
-                <h4 className="iq-feat-hero__title">Agentic AI Solutions</h4>
-                <p className="iq-feat-hero__desc">
-                  Autonomous LLM agents, NLP pipelines, OpenAI, LangChain —
-                  AI that works for your business 24/7.
-                </p>
-                <Link to="/solutions/agentic-ai" className="iq-feat__link">Learn more →</Link>
-              </div>
-              <div className="iq-feat-hero__chat">
-                <span className="iq-feat-hero__chat-lbl">AI Assistant</span>
-                <div className="iq-chat-bubble iq-chat-bubble--user">How's our uptime this month?</div>
-                <div className="iq-chat-bubble iq-chat-bubble--ai">
-                  <span className="iq-chat-bubble__spark">✦</span>
-                  99.9% uptime, zero incidents. Response time down 18% vs last month.
-                </div>
-              </div>
-            </div>
+          <div className="fx-lede fx-lede--center">
+            <p className="iq-eye iq-reveal">Everything You Need</p>
+            <h2 className="iq-h2 iq-reveal iq-d1">
+              Everything your business needs,<br />
+              <span className="iq-accent">in one place.</span>
+            </h2>
+            <p className="iq-body iq-reveal iq-d2">
+              From log modeling to AI-assisted answers — we deliver the full capabilities.
+            </p>
           </div>
 
-          <div className="iq-feat-grid">
-            {[
-              { icon:(<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><circle cx="7.5" cy="7" r=".6" fill="currentColor"/><circle cx="7.5" cy="17" r=".6" fill="currentColor"/></svg>), t:'Backend Development',         d:'Scalable REST/GraphQL APIs and microservices. Node.js, Python, FastAPI for high-traffic systems.' },
-              { icon:(<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>), t:'Frontend Development',        d:'React, Next.js, Vue applications with exceptional UX. Performance-first with Core Web Vitals.' },
-              { icon:(<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M18 10h-1.26A8 8 0 109 20h9a5 5 0 000-10z"/></svg>), t:'AWS Infrastructure',          d:'Enterprise AWS with 99.99% availability SLAs. Terraform IaC, Kubernetes, CI/CD pipelines.' },
-              { icon:(<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><polyline points="9 12 11 14 15 10"/></svg>), t:'Cybersecurity',               d:'24/7 SOC operations, zero-trust architecture. SOC 2 & ISO 27001 certified infrastructure.' },
-              { icon:(<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>), t:'Inventory Management',        d:'Real-time stock tracking, AI demand forecasting, multi-warehouse support and ERP integrations.' },
-              { icon:(<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg>), t:'Full Stack & Mobile',          d:'Flutter, React Native, Swift, Kotlin. Complete app development from UX to App Store delivery.' },
-              { icon:(<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>), t:'IT Consulting & Outsourcing', d:'CTO-as-a-Service, digital transformation roadmaps, talent outsourcing and strategic advisory.' },
-            ].map((f,i)=>(
-              <div
-                key={f.t}
-                className={`iq-feat iq-reveal iq-d${(i%3)+1}`}
-                onMouseMove={(e)=>{
-                  const el = e.currentTarget;
-                  const r = el.getBoundingClientRect();
-                  const px = e.clientX - r.left;
-                  const py = e.clientY - r.top;
-                  el.style.setProperty('--mx', `${px}px`);
-                  el.style.setProperty('--my', `${py}px`);
-                  const cx = px / r.width - 0.5;
-                  const cy = py / r.height - 0.5;
-                  el.style.setProperty('--ry', `${cx * 12}deg`);
-                  el.style.setProperty('--rx', `${cy * -12}deg`);
-                }}
-                onMouseLeave={(e)=>{
-                  const el = e.currentTarget;
-                  el.style.setProperty('--rx', '0deg');
-                  el.style.setProperty('--ry', '0deg');
-                }}
-              >
-                <div className="iq-feat__icon-ring">
-                  <div className="iq-feat__icon">{f.icon}</div>
-                </div>
-                <h4 className="iq-feat__title">{f.t}</h4>
-                <p className="iq-feat__desc">{f.d}</p>
-                <Link to="/solutions" className="iq-feat__link">
-                  <span>Learn more</span>
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
-                </Link>
-              </div>
-            ))}
+          <div className="iq-reveal iq-d2">
+            <ServiceShowcase />
           </div>
         </div>
       </section>
 
-      {/* ══ 5. INTELLIGENCE — continuous marquee ══ */}
+      {/* ══ 5. INTELLIGENCE — dense hairline micro-grid ══ */}
       <section className="iq-section iq-section--gradient">
         <div className="iq-wrap">
-          <p className="iq-eye iq-reveal">AI-Powered</p>
-          <h2 className="iq-h2 iq-reveal iq-d1" style={{marginBottom:'0.75rem'}}>
-            Intelligence beyond <span className="iq-accent">development.</span>
-          </h2>
-          <p className="iq-body iq-reveal iq-d2" style={{maxWidth:'560px', marginBottom:'3rem'}}>
-            From custom LLM pipelines to autonomous agents — we bring cutting-edge
-            AI capabilities to your business workflows.
-          </p>
+          <div className="fx-lede">
+            <p className="iq-eye iq-reveal">AI-Powered</p>
+            <h2 className="iq-h2 iq-reveal iq-d1" style={{marginBottom:'0.75rem'}}>
+              Intelligence beyond <span className="iq-accent">development.</span>
+            </h2>
+            <p className="iq-body iq-reveal iq-d2" style={{maxWidth:'560px'}}>
+              From custom LLM pipelines to autonomous agents — we bring cutting-edge
+              AI capabilities to your business workflows.
+            </p>
+          </div>
 
-          <div className="iq-intel-marquee iq-reveal iq-d3">
-            <div className="iq-intel-track">
-              {[...intelItems, ...intelItems].map((item, i) => (
-                <div className="iq-intel-slide" key={i}>
-                  <div className="iq-intel-slide__icon">
-                    <span>{item.icon}</span>
-                  </div>
-                  <h3 className="iq-intel-slide__title">{item.t}</h3>
-                  <p className="iq-intel-slide__desc">{item.d}</p>
-                </div>
-              ))}
-            </div>
+          <div className="fx-micro">
+            {intelItems.map((item, i) => (
+              <div className="fx-micro__item" key={item.t}>
+                <span className="fx-micro__spot" aria-hidden="true" />
+                <span className="fx-micro__corners" aria-hidden="true"><i /><i /><i /><i /></span>
+                <span className="fx-micro__idx" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                <span className="fx-micro__lbl">{item.t}</span>
+                <p className="fx-micro__desc">{item.d}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -500,7 +921,7 @@ export default function Home() {
           <div className="iq-news-grid">
             {newsItems.map((item,i)=>(
               <Link to="/blog" key={item.seed} className={`iq-news iq-reveal iq-d${i+1}`}>
-                <img src={`https://picsum.photos/seed/${item.seed}/600/340`} alt={item.tag} className="iq-news__img" />
+                <InsightThumb index={i+1} shape={(['wave','bars','net'] as const)[i]} />
                 <div className="iq-news__body">
                   <span className="iq-news__tag">{item.tag} · {item.read}</span>
                   <h4 className="iq-news__title">{item.title}</h4>
@@ -513,57 +934,48 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══ 8. TESTIMONIAL ══ */}
-      <section className="iq-section iq-section--radial" style={{textAlign:'center'}}>
+      {/* ══ 8. TESTIMONIALS — left eyebrow + dim card row ══ */}
+      <section className="iq-section iq-section--radial">
         <div className="iq-wrap">
-          <p className="iq-eye iq-reveal" style={{textAlign:'center'}}>Client Stories</p>
-          <h2 className="iq-h2 iq-reveal iq-d1" style={{textAlign:'center', marginBottom:'2.5rem'}}>
-            What our clients <span className="iq-accent">say.</span>
-          </h2>
-          <div className="iq-testi-row iq-reveal iq-d2">
-            <div className="iq-testi-track">
-              {[0, 1].map(off => {
-                const t = testimonials[(testiIdx + off) % testimonials.length]
-                return (
-                  <div className="iq-testi" key={off}>
-                    <p className="iq-testi__quote">"{t.quote}"</p>
-                    <div className="iq-testi__author">
-                      <div className="iq-testi__av">{t.name[0]}</div>
-                      <div style={{textAlign:'left'}}>
-                        <div className="iq-testi__name">{t.name}</div>
-                        <div className="iq-testi__role">{t.role}</div>
-                      </div>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
+          <div className="fx-lede">
+            <p className="iq-eye iq-reveal">Client Stories</p>
+            <h2 className="iq-h2 iq-reveal iq-d1">
+              What our clients <span className="iq-accent">say.</span>
+            </h2>
           </div>
-          <div className="iq-testi-nav">
-            <button
-              className="iq-testi-nav__arrow"
-              onClick={() => setTestiIdx(i => (i - 1 + testimonials.length) % testimonials.length)}
-              aria-label="Previous"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
-            <div className="iq-testi-segments">
-              {testimonials.map((_,i)=>(
-                <button
-                  key={i}
-                  className={`iq-testi-segment${testiIdx===i?' active':''}`}
-                  onClick={()=>setTestiIdx(i)}
-                  aria-label={`Go to testimonial ${i+1}`}
-                />
-              ))}
+
+          <Testimonials items={testimonials} />
+        </div>
+      </section>
+
+      {/* ══ 8.25 INDUSTRIES — dark split: lede left, industry list right ══ */}
+      <section className="iq-section fx-ind-section">
+        <div className="iq-wrap">
+          <div className="fx-ind-grid">
+
+            <div className="fx-lede fx-ind-lede">
+              <p className="iq-eye iq-reveal">Industries</p>
+              <h2 className="iq-h2 iq-reveal iq-d1">
+                Built for the industries<br />
+                that move <span className="iq-accent">fastest.</span>
+              </h2>
+              <p className="iq-body iq-reveal iq-d2">
+                Sectors we serve — each with its own compliance, scale, and uptime demands.
+              </p>
             </div>
-            <button
-              className="iq-testi-nav__arrow"
-              onClick={() => setTestiIdx(i => (i + 1) % testimonials.length)}
-              aria-label="Next"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
+
+            <ul className="fx-ind-list">
+              {industries.map((ind, i) => (
+                <li className="fx-ind-row iq-reveal" key={ind.slug} style={{ transitionDelay: `${i * 0.07}s` }}>
+                  <Link to={`/industries/${ind.slug}`} className="fx-ind-link">
+                    <span className="fx-ind-marker" aria-hidden="true" />
+                    <span className="fx-ind-row__name">{ind.name}</span>
+                    <span className="fx-ind-row__note">{ind.tag}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
           </div>
         </div>
       </section>
@@ -584,7 +996,7 @@ export default function Home() {
                 Explore Careers →
               </Link>
             </div>
-            <div className="iq-careers-banner__media">
+            <div className="iq-careers-banner__media fx-parallax">
               <img
                 src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=1200&q=80"
                 alt="Careers at Synerax"
@@ -598,7 +1010,7 @@ export default function Home() {
       {/* ══ 9. CTA — rounded floating panel ══ */}
       <section className="iq-cta">
         <div className="iq-wrap">
-          <div className="iq-cta__panel iq-reveal" style={{textAlign:'center'}}>
+          <div className="iq-cta__panel fx-lede--center iq-reveal" style={{textAlign:'center'}}>
             <p className="iq-eye iq-eye--light">Ready to Build the Future</p>
             <h2 className="iq-cta__h2">
               Technology That<br />
@@ -621,6 +1033,6 @@ export default function Home() {
       </section>
 
       <Footer />
-    </>
+    </div>
   )
 }

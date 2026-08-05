@@ -1,7 +1,8 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import DataCard from '../components/DataCard'
 import { getSolution } from '../data/solutions'
 import { solutionMeta } from '../data/solutionMeta'
 import { useLead } from '../context/LeadContext'
@@ -52,16 +53,12 @@ export default function SolutionPage() {
   const { openLead } = useLead()
   useReveal()
 
-  const [heroImgErr, setHeroImgErr] = useState(false)
-  const [bannerImgErr, setBannerImgErr] = useState(false)
-  const [entImgErr, setEntImgErr] = useState(false)
-  const [ucImgErr, setUcImgErr] = useState(false)
-  const [dfImgErr, setDfImgErr] = useState(false)
-  const [tsImgErr, setTsImgErr] = useState(false)
+  /* All five photo slots are DataCards now, so none of the old
+     load-failure fallback state is needed. */
 
   if (!solution) return <Navigate to="/services" replace />
 
-  const accent = meta?.accentColor ?? '#0D487E'
+  const accent = meta?.accentColor ?? '#F2622E'
 
   return (
     <>
@@ -70,7 +67,7 @@ export default function SolutionPage() {
       {/* ═══════════════════════════════════════
           1. HERO — dark navy, white text
       ═══════════════════════════════════════ */}
-      <section className="tl-hero" style={{ background: 'linear-gradient(135deg, #0D487E 0%, #0D487E 50%, #2a3870 100%)' }}>
+      <section className="tl-hero fx-pagehero">
         {/* Breadcrumb */}
         <div className="container">
           <nav className="tl-breadcrumb">
@@ -90,7 +87,7 @@ export default function SolutionPage() {
             </div>
             <h1 className="tl-hero__h1">
               {solution.headline}{' '}
-              <span style={{ color: '#4FA9E8' }}>{solution.headlineBlue}</span>
+              <span style={{ color: 'var(--accent)' }}>{solution.headlineBlue}</span>
             </h1>
             <p className="tl-hero__desc">{solution.heroDesc}</p>
             <div className="tl-hero__trust">
@@ -104,22 +101,14 @@ export default function SolutionPage() {
             </div>
           </div>
 
-          {/* RIGHT — Hero Image */}
+          {/* RIGHT — live delivery console */}
           <div className="tl-hero__right">
             <div className="tl-hero__img-wrap">
-              {meta && !heroImgErr ? (
-                <img
-                  src={meta.heroImage}
-                  alt={solution.name}
-                  className="tl-hero__img"
-                  onError={() => setHeroImgErr(true)}
-                />
-              ) : (
-                <div className="tl-hero__img-ph">
-                  <span style={{ fontSize: '5rem' }}>{solution.pillars[0]?.icon}</span>
-                  <div style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 600, marginTop: '1rem', textAlign: 'center' }}>{solution.name}</div>
-                </div>
-              )}
+              <DataCard
+                variant="console"
+                title={`${solution.name} — delivery`}
+                labels={solution.capabilities.map(c => c.title.toLowerCase())}
+              />
             </div>
           </div>
         </div>
@@ -181,18 +170,12 @@ export default function SolutionPage() {
             {/* LEFT — Image */}
             <div className="tl-enterprise__img-col tl-reveal">
               <div className="tl-enterprise__img-wrap">
-                {!entImgErr ? (
-                  <img
-                    src={meta.enterpriseImage}
-                    alt="Enterprise"
-                    className="tl-enterprise__img"
-                    onError={() => setEntImgErr(true)}
-                  />
-                ) : (
-                  <div className="tl-enterprise__img-ph" style={{ background: `${accent}15` }}>
-                    <span style={{ fontSize: '4rem' }}>{solution.pillars[1]?.icon}</span>
-                  </div>
-                )}
+                <DataCard
+                  variant="checklist"
+                  title={`${solution.name} — what ships`}
+                  rows={solution.pillars.map(p => [p.title, p.desc] as [string, string])}
+                  caption={meta.technologies.slice(0, 4).join(' · ')}
+                />
                 {/* Floating accent badge */}
                 <div className="tl-enterprise__badge" style={{ background: accent }}>
                   <div className="tl-enterprise__badge-num">{solution.stats[0].value}{solution.stats[0].isText ? '' : solution.stats[0].suffix}</div>
@@ -260,18 +243,12 @@ export default function SolutionPage() {
             {/* RIGHT — Image */}
             <div className="tl-usecases__img-col tl-reveal">
               <div className="tl-usecases__img-wrap">
-                {!ucImgErr ? (
-                  <img
-                    src={meta.useCaseImage}
-                    alt="Use Cases"
-                    className="tl-usecases__img"
-                    onError={() => setUcImgErr(true)}
-                  />
-                ) : (
-                  <div className="tl-usecases__img-ph" style={{ background: `${accent}10` }}>
-                    <span style={{ fontSize: '4rem' }}>{solution.pillars[2]?.icon}</span>
-                  </div>
-                )}
+                <DataCard
+                  variant="orbit"
+                  title={`${solution.name} — where it runs`}
+                  labels={meta.useCases.map(u => u.title)}
+                  caption="Hover a use case — each one feeds the same shared context."
+                />
                 <div className="tl-usecases__img-deco" style={{ borderColor: `${accent}30` }} />
               </div>
             </div>
@@ -284,19 +261,15 @@ export default function SolutionPage() {
       ═══════════════════════════════════════ */}
       {meta && (
         <div className="tl-dark-feature">
-          {!dfImgErr ? (
-            <img
-              src={meta.darkFeatureImage}
-              alt="Feature"
-              className="tl-dark-feature__img"
-              onError={() => setDfImgErr(true)}
-            />
-          ) : (
-            <div className="tl-dark-feature__ph">
-              <span style={{ fontSize: '4rem' }}>{solution.pillars[3]?.icon}</span>
-            </div>
-          )}
-          <div className="tl-dark-feature__overlay" style={{ background: 'linear-gradient(90deg, rgba(13,72,126,0.88) 0%, rgba(13,72,126,0.45) 60%, transparent 100%)' }}>
+          <DataCard
+            variant="stacked"
+            title={`${solution.name} — workload split`}
+            labels={solution.pillars.map(p => p.title)}
+            unit={solution.stats[0]?.suffix?.includes('%') ? '%' : 'K'}
+            max={48}
+            className="tl-dark-feature__chart"
+          />
+          <div className="tl-dark-feature__overlay" style={{ background: 'linear-gradient(90deg, rgba(242,98,46,0.88) 0%, rgba(242,98,46,0.45) 60%, transparent 100%)' }}>
             <div className="container">
               <div className="tl-dark-feature__text">
                 <h3 className="tl-dark-feature__headline">
@@ -323,18 +296,14 @@ export default function SolutionPage() {
             {/* LEFT — Image */}
             <div className="tl-techstack__img-col tl-reveal">
               <div className="tl-techstack__img-wrap">
-                {!tsImgErr ? (
-                  <img
-                    src={meta.techStackImage}
-                    alt="Tech Stack"
-                    className="tl-techstack__img"
-                    onError={() => setTsImgErr(true)}
-                  />
-                ) : (
-                  <div className="tl-techstack__img-ph" style={{ background: `${accent}12` }}>
-                    <span style={{ fontSize: '4rem' }}>⚙️</span>
-                  </div>
-                )}
+                <DataCard
+                  variant="area"
+                  title={`${solution.name} — throughput`}
+                  labels={['Q1', 'Q2', 'Q3', 'Now']}
+                  unit="K rps"
+                  max={26}
+                  caption={`Measured across ${meta.technologies.length} tools in the delivered stack.`}
+                />
               </div>
             </div>
 

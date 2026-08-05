@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import DataCard from '../components/DataCard'
 import { useLead } from '../context/LeadContext'
 
 /* ─── Testimonials ─────────────────────────────────── */
@@ -15,10 +16,10 @@ const testimonials = [
 
 /* ─── Values cards ─────────────────────────────────── */
 const values = [
-  { accent: '#0D487E', iconBg: 'rgba(13,72,126,0.1)', icon: '⭐', title: 'Excellence', desc: 'We hold ourselves to the highest technical and service standards in everything we deliver. Good enough is never good enough.' },
-  { accent: '#0D487E', iconBg: 'rgba(13,72,126,0.1)', icon: '🤝', title: 'Partnership', desc: "We're deeply invested in your success beyond the project. Your wins are our wins — we think long-term, not transactional." },
-  { accent: '#0D487E', iconBg: 'rgba(13,72,126,0.1)', icon: '🔍', title: 'Integrity', desc: 'Honest timelines, transparent pricing, and clear communication — always. We tell you what you need to hear, even when it\'s hard.' },
-  { accent: '#0D487E', iconBg: 'rgba(13,72,126,0.1)', icon: '💡', title: 'Innovation', desc: 'We stay ahead of the curve so you don\'t have to. AI, cloud, and emerging tech are not buzzwords — they\'re our daily toolkit.' },
+  { accent: '#F2622E', iconBg: 'rgba(242,98,46,0.1)', icon: '⭐', title: 'Excellence', desc: 'We hold ourselves to the highest technical and service standards in everything we deliver. Good enough is never good enough.' },
+  { accent: '#F2622E', iconBg: 'rgba(242,98,46,0.1)', icon: '🤝', title: 'Partnership', desc: "We're deeply invested in your success beyond the project. Your wins are our wins — we think long-term, not transactional." },
+  { accent: '#F2622E', iconBg: 'rgba(242,98,46,0.1)', icon: '🔍', title: 'Integrity', desc: 'Honest timelines, transparent pricing, and clear communication — always. We tell you what you need to hear, even when it\'s hard.' },
+  { accent: '#F2622E', iconBg: 'rgba(242,98,46,0.1)', icon: '💡', title: 'Innovation', desc: 'We stay ahead of the curve so you don\'t have to. AI, cloud, and emerging tech are not buzzwords — they\'re our daily toolkit.' },
 ]
 
 /* ─── Stat cards (reuse st-card style) ────────────── */
@@ -86,10 +87,13 @@ export default function About() {
       <section className="about-story">
         <div className="container about-story__grid">
           <div className="about-story__img">
-            <img
-              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80"
-              alt="Synerax Team"
-              onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
+            <DataCard
+              variant="area"
+              title="Projects delivered"
+              labels={['2021', '2022', '2023', 'Now']}
+              unit=" / qtr"
+              max={34}
+              caption="Client engagements shipped per quarter since founding."
             />
           </div>
           <div className="about-story__text">
@@ -201,11 +205,13 @@ export default function About() {
             </div>
           </div>
           <div className="st-section__right">
-            <img
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=700&q=80"
-              alt="Synerax team"
-              className="st-section__img"
-              onError={e => { (e.currentTarget as HTMLImageElement).style.display = 'none' }}
+            <DataCard
+              variant="stacked"
+              title="Engagement mix"
+              labels={['Cloud', 'AI', 'Development', 'Security', 'Support']}
+              unit="K hrs"
+              max={12}
+              caption="Delivery hours by practice, trailing twelve months."
             />
           </div>
         </div>

@@ -130,55 +130,55 @@ const techCategories = [
   {
     title: 'Frontend',
     tiles: [
-      { logo: '⚛', bg: '#E3F2FD', color: '#0288D1', name: 'React', fontSize: '1.6rem' },
-      { logo: 'Next', bg: '#F3F4F6', color: '#000', name: 'Next.js', fontWeight: 900, fontSize: '0.85rem' },
-      { logo: 'V', bg: '#E8F5E9', color: '#42B883', name: 'Vue.js', fontWeight: 900 },
-      { logo: 'TS', bg: '#E3F2FD', color: '#3178C6', name: 'TypeScript', fontWeight: 900, fontSize: '0.8rem' },
+      { logo: '⚛', bg: '#1C1C1F', color: '#0288D1', name: 'React', fontSize: '1.6rem' },
+      { logo: 'Next', bg: '#1C1C1F', color: '#000', name: 'Next.js', fontWeight: 900, fontSize: '0.85rem' },
+      { logo: 'V', bg: '#1C1C1F', color: '#42B883', name: 'Vue.js', fontWeight: 900 },
+      { logo: 'TS', bg: '#1C1C1F', color: '#3178C6', name: 'TypeScript', fontWeight: 900, fontSize: '0.8rem' },
     ],
   },
   {
     title: 'Backend',
     tiles: [
-      { logo: 'N', bg: '#E8F5E9', color: '#3C873A', name: 'Node.js', fontWeight: 900 },
-      { logo: '🐍', bg: '#E3F2FD', color: '#306998', name: 'Python', fontSize: '1.6rem' },
-      { logo: 'FA', bg: '#E8F5E9', color: '#009688', name: 'FastAPI', fontWeight: 900 },
-      { logo: 'GQL', bg: '#FCE4EC', color: '#E53935', name: 'GraphQL', fontWeight: 900 },
+      { logo: 'N', bg: '#1C1C1F', color: '#3C873A', name: 'Node.js', fontWeight: 900 },
+      { logo: '🐍', bg: '#1C1C1F', color: '#306998', name: 'Python', fontSize: '1.6rem' },
+      { logo: 'FA', bg: '#1C1C1F', color: '#009688', name: 'FastAPI', fontWeight: 900 },
+      { logo: 'GQL', bg: '#1C1C1F', color: '#E53935', name: 'GraphQL', fontWeight: 900 },
     ],
   },
   {
     title: 'Mobile',
     tiles: [
-      { logo: 'Fl', bg: '#E3F2FD', color: '#0288D1', name: 'Flutter', fontWeight: 900 },
-      { logo: '⚛', bg: '#E3F2FD', color: '#0288D1', name: 'React Native', fontSize: '1.5rem' },
-      { logo: 'S', bg: '#FFF3E0', color: '#F4511E', name: 'Swift', fontWeight: 900 },
-      { logo: 'K', bg: '#EDE7F6', color: '#7C4DFF', name: 'Kotlin', fontWeight: 900 },
+      { logo: 'Fl', bg: '#1C1C1F', color: '#0288D1', name: 'Flutter', fontWeight: 900 },
+      { logo: '⚛', bg: '#1C1C1F', color: '#0288D1', name: 'React Native', fontSize: '1.5rem' },
+      { logo: 'S', bg: '#1C1C1F', color: '#F4511E', name: 'Swift', fontWeight: 900 },
+      { logo: 'K', bg: '#1C1C1F', color: '#7C4DFF', name: 'Kotlin', fontWeight: 900 },
     ],
   },
   {
     title: 'AI / ML',
     tiles: [
-      { logo: 'GPT', bg: '#F3F4F6', color: '#000', name: 'OpenAI', fontWeight: 900, fontSize: '0.8rem' },
-      { logo: 'LC', bg: '#E8F5E9', color: '#1A6B3C', name: 'LangChain', fontWeight: 900 },
-      { logo: 'TF', bg: '#FFF3E0', color: '#FF6F00', name: 'TensorFlow', fontWeight: 900 },
-      { logo: '🤗', bg: '#FFF8E1', color: '#FFC107', name: 'HuggingFace', fontSize: '1.5rem' },
+      { logo: 'GPT', bg: '#1C1C1F', color: '#000', name: 'OpenAI', fontWeight: 900, fontSize: '0.8rem' },
+      { logo: 'LC', bg: '#1C1C1F', color: '#1A6B3C', name: 'LangChain', fontWeight: 900 },
+      { logo: 'TF', bg: '#1C1C1F', color: '#FF6F00', name: 'TensorFlow', fontWeight: 900 },
+      { logo: '🤗', bg: '#1C1C1F', color: '#FFC107', name: 'HuggingFace', fontSize: '1.5rem' },
     ],
   },
   {
     title: 'Cloud & DevOps',
     tiles: [
-      { logo: 'AWS', bg: '#FFF3E0', color: '#FF9900', name: 'AWS', fontWeight: 900, fontSize: '0.75rem' },
-      { logo: '🐳', bg: '#E3F2FD', color: '#1976D2', name: 'Docker', fontSize: '1.5rem' },
-      { logo: '⎈', bg: '#E3F2FD', color: '#326CE5', name: 'Kubernetes', fontSize: '1.4rem' },
-      { logo: 'T', bg: '#EDE7F6', color: '#7B42BC', name: 'Terraform', fontWeight: 900 },
+      { logo: 'AWS', bg: '#1C1C1F', color: '#FF9900', name: 'AWS', fontWeight: 900, fontSize: '0.75rem' },
+      { logo: '🐳', bg: '#1C1C1F', color: '#1976D2', name: 'Docker', fontSize: '1.5rem' },
+      { logo: '⎈', bg: '#1C1C1F', color: '#326CE5', name: 'Kubernetes', fontSize: '1.4rem' },
+      { logo: 'T', bg: '#1C1C1F', color: '#7B42BC', name: 'Terraform', fontWeight: 900 },
     ],
   },
   {
     title: 'Database',
     tiles: [
-      { logo: 'PG', bg: '#E3F2FD', color: '#336791', name: 'PostgreSQL', fontWeight: 900 },
-      { logo: 'M', bg: '#E8F5E9', color: '#47A248', name: 'MongoDB', fontWeight: 900 },
-      { logo: 'R', bg: '#FCE4EC', color: '#D32F2F', name: 'Redis', fontWeight: 900 },
-      { logo: 'My', bg: '#E3F2FD', color: '#00758F', name: 'MySQL', fontWeight: 900 },
+      { logo: 'PG', bg: '#1C1C1F', color: '#336791', name: 'PostgreSQL', fontWeight: 900 },
+      { logo: 'M', bg: '#1C1C1F', color: '#47A248', name: 'MongoDB', fontWeight: 900 },
+      { logo: 'R', bg: '#1C1C1F', color: '#D32F2F', name: 'Redis', fontWeight: 900 },
+      { logo: 'My', bg: '#1C1C1F', color: '#00758F', name: 'MySQL', fontWeight: 900 },
     ],
   },
 ]
@@ -307,7 +307,7 @@ export default function Services() {
         <div className="container">
           <div className="cta-band__tag">Have a Project in Mind?</div>
           <h2>
-            Get a Proposal<br />in <span style={{ color: '#4FA9E8' }}>24 Hours</span>
+            Get a Proposal<br />in <span style={{ color: '#FF7A45' }}>24 Hours</span>
           </h2>
           <p>No commitment required. Just an honest conversation about your goals and how we can help.</p>
           <div className="cta-band__actions">

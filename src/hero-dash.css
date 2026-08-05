@@ -1,0 +1,652 @@
+/* ═════════════════════════════════════════════════════════════
+   HERO DASHBOARD — dense, instrument-panel layout
+   Hairline grid, mono numerals, restrained orange. Loaded after
+   factory-tone.css so it inherits the grey ramp tokens.
+   ═════════════════════════════════════════════════════════════ */
+
+.fx-dash--factory {
+  --d-line: rgba(255,255,255,.09);
+  --d-line-soft: rgba(255,255,255,.055);
+  --d-ink: #ededed;
+  --d-mid: rgba(255,255,255,.55);
+  --d-low: rgba(255,255,255,.34);
+  --d-good: #7fae63;
+  --d-warn: #ff5c29;
+
+  background:
+    linear-gradient(to right, rgba(255,255,255,.012) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.012) 1px, transparent 1px),
+    var(--fx-02, #0e0e10) !important;
+  background-size: 34px 34px;
+  border: 1px solid var(--d-line) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Title bar ───────────────────────────────────────────── */
+.fx-dash__bar {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  padding: .55rem .8rem;
+  border-bottom: 1px solid var(--d-line);
+  background: var(--fx-01, #0b0b0d);
+}
+.fx-dash__dots { display: flex; gap: .32rem; }
+.fx-dash__dots i { width: 8px; height: 8px; border-radius: 50%; display: block; background: #3a3a3d; }
+.fx-dash__dots i:nth-child(1) { background: #d05b47; }
+.fx-dash__dots i:nth-child(2) { background: #c9a44a; }
+.fx-dash__dots i:nth-child(3) { background: #6f9d5c; }
+
+.fx-dash__chip {
+  font-family: var(--font-mono);
+  font-size: .5625rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--d-mid);
+  border: 1px solid var(--d-line);
+  border-radius: 3px;
+  padding: .22rem .5rem;
+  margin-right: auto;      /* sits at the left of the main column */
+  white-space: nowrap;
+}
+
+.fx-dash__live {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-family: var(--font-mono);
+  font-size: .5625rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--d-mid) !important;
+  -webkit-text-fill-color: var(--d-mid) !important;
+  flex-shrink: 0;
+}
+.fx-dash__live i {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--d-warn);
+  animation: fxd-pulse 2s ease-in-out infinite;
+}
+@keyframes fxd-pulse { 0%,100% { opacity: 1; } 50% { opacity: .25; } }
+
+.fx-dash__range {
+  font-family: var(--font-mono);
+  font-size: .5625rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--d-mid);
+  border: 1px solid var(--d-line);
+  border-radius: 3px;
+  padding: .22rem .45rem;
+}
+.fx-dash__range::after { content: ' ⌄'; color: var(--d-low); }
+
+/* ── Shell ───────────────────────────────────────────────── */
+.fx-dash__body {
+  display: grid;
+  grid-template-columns: minmax(0, 158px) minmax(0, 1fr);
+}
+.fx-dash__side {
+  border-right: 1px solid var(--d-line);
+  padding: .7rem .55rem;
+  display: flex;
+  flex-direction: column;
+  gap: .18rem;
+  background: var(--fx-01, #0b0b0d);
+}
+.fx-dash__back {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  font-size: .6875rem;
+  color: var(--d-low);
+  padding: .3rem .45rem .75rem;
+}
+.fx-dash__back svg { flex-shrink: 0; opacity: .8; }
+
+.fx-dash__nav {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  font-size: .6875rem;
+  color: var(--d-mid);
+  padding: .42rem .5rem;
+  border-radius: 5px;
+}
+.fx-dash__nav svg { flex-shrink: 0; opacity: .75; }
+.fx-dash__nav.is-active {
+  background: rgba(255,255,255,.07);
+  border: 1px solid var(--d-line);
+  color: var(--d-ink);
+}
+.fx-dash__nav.is-active svg { opacity: 1; }
+
+.fx-dash__main {
+  padding: .6rem;
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  min-width: 0;
+}
+
+/* ═══ PIPELINE STRIP ═══════════════════════════════════════ */
+/* `.fx-dash__main` is a height-capped flex column (polish-factory.css keeps
+   the dashboard inside the fold). Without `flex-shrink: 0` these three
+   blocks get squashed proportionally on short viewports — the strip, which
+   clips its own overflow, collapses to a hairline. Let them keep their
+   natural height and let the capped container crop at the bottom instead. */
+.fxd-strip,
+.fxd-grid,
+.fxd-log { flex-shrink: 0; }
+
+.fxd-strip {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr) 78px;
+  border: 1px solid var(--d-line);
+  border-radius: 5px;
+  background: var(--fx-03, #121214);
+  overflow: hidden;
+}
+
+.fxd-strip__stages {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  border-left: 1px solid var(--d-line);
+  border-right: 1px solid var(--d-line);
+  min-width: 0;
+}
+
+/* ── Radar bookends ─────────────────────────────────────── */
+.fxd-radar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .3rem;
+  padding: .6rem .55rem;
+  min-width: 0;
+}
+.fxd-radar__lbl,
+.fxd-radar__unit,
+.fxd-radar__foot {
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  letter-spacing: .11em;
+  text-transform: uppercase;
+  color: var(--d-low);
+  white-space: nowrap;
+}
+.fxd-radar__lbl { color: var(--d-mid); }
+
+.fxd-radar__dish {
+  position: relative;
+  width: 42px;
+  height: 42px;
+  margin: .25rem auto .3rem;
+  flex-shrink: 0;
+}
+.fxd-radar__dish i,
+.fxd-radar__dish b,
+.fxd-radar__dish u {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  display: block;
+}
+.fxd-radar__dish i { border: 1px solid var(--d-line); }
+.fxd-radar__dish i:nth-child(1) { width: 100%; height: 100%; }
+.fxd-radar__dish i:nth-child(2) { width: 66%; height: 66%; }
+.fxd-radar__dish i:nth-child(3) { width: 34%; height: 34%; }
+.fxd-radar__dish b {
+  width: 30%; height: 30%;
+  background: var(--d-warn);
+  filter: blur(3px);
+  opacity: .85;
+  animation: fxd-breathe 3.2s ease-in-out infinite;
+}
+/* Radar sweep: a hard orange needle with a soft wedge trailing behind it.
+   The wedge is transparent at 0deg and brightest at 88deg, so its leading
+   edge lands exactly where the needle sits (conic 90deg = 3 o'clock, which
+   is where an un-rotated needle points). */
+.fxd-radar__dish u {
+  width: 100%; height: 100%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(255,92,41,.05) 40deg,
+    rgba(255,92,41,.26) 88deg,
+    transparent 90deg
+  );
+  animation: fxd-sweep 3.6s linear infinite;
+}
+.fxd-radar__dish u::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 1.5px;
+  transform: translateY(-50%);
+  transform-origin: left center;
+  background: linear-gradient(90deg, rgba(255,92,41,0), var(--d-warn) 88%);
+  border-radius: 1px;
+}
+/* the blip at the needle tip */
+.fxd-radar__dish u::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  width: 3px;
+  height: 3px;
+  margin: -1.5px 0 0 -3px;
+  border-radius: 50%;
+  background: var(--d-warn);
+  box-shadow: 0 0 5px rgba(255,92,41,.9);
+}
+@keyframes fxd-breathe { 0%,100% { transform: translate(-50%,-50%) scale(1); } 50% { transform: translate(-50%,-50%) scale(1.35); } }
+@keyframes fxd-sweep { to { transform: translate(-50%,-50%) rotate(360deg); } }
+
+.fxd-radar__val {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -.03em;
+  color: var(--d-ink);
+}
+.fxd-radar__foot {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  margin-top: .35rem;
+  font-size: .4375rem;
+}
+.fxd-radar__foot i { width: 4px; height: 4px; border-radius: 50%; background: var(--d-good); flex-shrink: 0; }
+.fxd-radar--warn .fxd-radar__foot i { background: var(--d-warn); }
+
+/* ── Stage columns ──────────────────────────────────────── */
+.fxd-stage {
+  position: relative;
+  padding: .45rem .4rem .25rem;
+  border-right: 1px solid var(--d-line);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.fxd-stage:last-child { border-right: 0; }
+
+.fxd-stage__idx {
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  line-height: 1;
+  color: var(--d-warn) !important;
+  -webkit-text-fill-color: var(--d-warn) !important;
+  margin-bottom: .3rem;
+}
+.fxd-stage__name {
+  font-family: var(--font-mono) !important;
+  font-size: .625rem !important;
+  font-weight: 400 !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase;
+  color: var(--d-ink) !important;
+  -webkit-text-fill-color: var(--d-ink) !important;
+  margin: 0 0 .12rem !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* nowrap alone let this spill into the neighbouring column — it has to
+   clip as well */
+.fxd-stage__autos {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  color: var(--d-low);
+  margin-bottom: .5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.fxd-stage__rows { margin: 0; display: flex; flex-direction: column; gap: .26rem; }
+.fxd-stage__row { margin: 0; min-width: 0; }
+.fxd-stage__row dt {
+  font-family: var(--font-mono);
+  font-size: .4375rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--d-low);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fxd-stage__row dd {
+  margin: .1rem 0 0;
+  font-family: var(--font-mono);
+  font-size: .5625rem;
+  color: var(--d-mid);
+  white-space: nowrap;
+}
+
+/* ── Sparklines ─────────────────────────────────────────── */
+.fxd-spark {
+  width: 100%;
+  height: 16px;
+  margin-top: auto;
+  padding-top: .35rem;
+  overflow: visible;
+}
+.fxd-spark path,
+.fxd-line path {
+  fill: none;
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: d 1.2s cubic-bezier(.4,0,.2,1);
+}
+.fxd-spark--good path, .fxd-line--good path { stroke: var(--d-good); }
+.fxd-spark--warn path, .fxd-line--warn path { stroke: var(--d-warn); }
+
+/* ═══ CHART GRID ═══════════════════════════════════════════ */
+.fxd-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .55rem;
+  min-width: 0;
+}
+
+.fxd-card {
+  position: relative;
+  border: 1px solid var(--d-line);
+  border-radius: 5px;
+  background: var(--fx-03, #121214);
+  padding: .45rem .55rem .4rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+/* Corner ticks — the instrument-panel detail */
+.fxd-card::before,
+.fxd-card::after {
+  content: '';
+  position: absolute;
+  width: 7px; height: 7px;
+  border: 1px solid rgba(255,255,255,.22);
+  pointer-events: none;
+}
+.fxd-card::before { top: 5px; left: 5px; border-right: 0; border-bottom: 0; }
+.fxd-card::after { bottom: 5px; right: 5px; border-left: 0; border-top: 0; }
+
+.fxd-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  margin-bottom: .45rem;
+}
+.fxd-card__title {
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--d-mid);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fxd-card__tag {
+  font-family: var(--font-mono);
+  font-size: .4375rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--d-low);
+  border: 1px solid var(--d-line);
+  border-radius: 2px;
+  padding: .16rem .34rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.fxd-card__val {
+  font-family: var(--font-mono);
+  font-size: clamp(1.05rem, 1.6vw, 1.45rem);
+  line-height: 1;
+  letter-spacing: -.035em;
+  color: var(--d-ink);
+}
+.fxd-card__val small {
+  font-size: .5rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--d-low);
+  margin-left: .15rem;
+}
+
+.fxd-card__delta {
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  margin-top: .3rem;
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  letter-spacing: .06em;
+}
+.fxd-card__delta i { font-style: normal; font-size: .5rem; }
+.fxd-card__delta em { font-style: normal; color: var(--d-low); letter-spacing: 0; }
+.fxd-card__delta--good,
+.fxd-card__delta--good i { color: var(--d-good) !important; -webkit-text-fill-color: var(--d-good) !important; }
+.fxd-card__delta--warn,
+.fxd-card__delta--warn i { color: var(--d-warn) !important; -webkit-text-fill-color: var(--d-warn) !important; }
+
+/* ── Plot with axes ─────────────────────────────────────── */
+.fxd-plot {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: .3rem;
+  margin-top: .5rem;
+  min-width: 0;
+}
+.fxd-plot__yaxis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 44px;
+}
+.fxd-plot__yaxis span {
+  font-family: var(--font-mono);
+  font-size: .375rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--d-low);
+  line-height: 1;
+}
+
+.fxd-plot__area {
+  position: relative;
+  height: 44px;
+  min-width: 0;
+  cursor: crosshair;
+}
+.fxd-plot__band {
+  position: absolute;
+  inset: 8% 0 auto 0;
+  height: 26%;
+  display: block;
+  border-radius: 1px;
+}
+.fxd-plot__band--good { background: rgba(127,174,99,.13); }
+.fxd-plot__band--warn { background: rgba(255,92,41,.11); }
+.fxd-plot__mid {
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  height: 1px;
+  display: block;
+  background: repeating-linear-gradient(to right, var(--d-line-soft) 0 3px, transparent 3px 7px);
+}
+.fxd-line {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.fxd-plot__cursor {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 1px;
+  background: rgba(255,255,255,.28);
+  transform: translateX(-.5px);
+  pointer-events: none;
+}
+.fxd-plot__tip {
+  position: absolute;
+  top: -2px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .16rem .34rem;
+  border: 1px solid var(--d-line);
+  border-radius: 3px;
+  background: var(--fx-05, #1a1a1c);
+  font-family: var(--font-mono);
+  font-size: .4375rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--d-low);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 2;
+}
+.fxd-plot__tip strong { color: var(--d-ink); font-weight: 400; }
+
+.fxd-plot__xaxis {
+  display: flex;
+  justify-content: space-between;
+  margin: .3rem 0 0 calc(22px + .3rem);
+  padding-top: .3rem;
+  border-top: 1px solid var(--d-line-soft);
+}
+.fxd-plot__xaxis span {
+  font-family: var(--font-mono);
+  font-size: .375rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--d-low);
+}
+
+.fxd-card__foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  margin-top: .45rem;
+  padding-top: .4rem;
+  border-top: 1px solid var(--d-line-soft);
+}
+.fxd-card__foot span {
+  display: inline-flex;
+  align-items: center;
+  gap: .28rem;
+  font-family: var(--font-mono);
+  font-size: .4375rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--d-low);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fxd-card__foot i { width: 4px; height: 4px; border-radius: 50%; background: var(--d-good); flex-shrink: 0; }
+
+/* ── Ticker ─────────────────────────────────────────────── */
+.fxd-log {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .5rem;
+  padding: .45rem .55rem;
+  border: 1px solid var(--d-line);
+  border-radius: 5px;
+  background: var(--fx-03, #121214);
+}
+.fxd-log__dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--d-good);
+  animation: fxd-pulse 2.4s ease-in-out infinite;
+}
+.fxd-log__txt {
+  font-family: var(--font-mono);
+  font-size: .5625rem;
+  color: var(--d-mid);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.fxd-log__meta {
+  font-family: var(--font-mono);
+  font-size: .4375rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--d-low);
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 1180px) {
+  .fxd-strip { grid-template-columns: 78px minmax(0, 1fr) 78px; }
+  .fxd-radar__dish { width: 50px; height: 50px; }
+  .fxd-radar__val { font-size: 1.2rem; }
+}
+
+@media (max-width: 1024px) {
+  .fx-dash__body { grid-template-columns: 1fr; }
+  .fx-dash__side { display: none; }
+  .fxd-strip { grid-template-columns: 1fr; }
+  .fxd-strip__stages {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px solid var(--d-line);
+    border-bottom: 1px solid var(--d-line);
+  }
+  .fxd-stage:nth-child(3n) { border-right: 0; }
+  .fxd-stage:nth-child(-n+3) { border-bottom: 1px solid var(--d-line); }
+  .fxd-radar { flex-direction: row; align-items: center; gap: .7rem; flex-wrap: wrap; }
+  .fxd-radar__dish { margin: 0; }
+}
+
+@media (max-width: 720px) {
+  .fxd-grid { grid-template-columns: minmax(0, 1fr); }
+  .fxd-strip__stages { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fxd-stage:nth-child(3n) { border-right: 1px solid var(--d-line); }
+  .fxd-stage:nth-child(2n) { border-right: 0; }
+  .fx-dash__chip { display: none; }
+}
+
+/* ── Overrides for the hero shell set in polish-factory.css ─── */
+.fx-hero-visual .fx-dash {
+  box-shadow: 0 40px 120px rgba(0,0,0,.62), 0 0 0 1px rgba(255,255,255,.04) !important;
+}
+.fx-hero-visual .fx-dash__main { padding: .8rem !important; gap: .8rem !important; }
+.fx-hero-visual .fx-dash__body { grid-template-columns: minmax(0, 158px) minmax(0, 1fr) !important; }
+
+/* The idle scanline loses its orange cast — a plain light sheen instead */
+.fx-dash::after {
+  background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,.028) 50%, transparent 100%) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-dash::after { animation: none !important; opacity: 0 !important; }
+  .fxd-radar__dish u,
+  .fxd-radar__dish b,
+  .fx-dash__live i,
+  .fxd-log__dot { animation: none !important; }
+  .fxd-spark path, .fxd-line path { transition: none !important; }
+}

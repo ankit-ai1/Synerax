@@ -1,0 +1,953 @@
+/* ═════════════════════════════════════════════════════════════
+   DATA CARD — live chart panels that replaced the stock photos
+   on the inner pages. Same surface language as the homepage.
+   ═════════════════════════════════════════════════════════════ */
+
+.dcard {
+  --dc-line: rgba(255,255,255,.09);
+  --dc-soft: rgba(255,255,255,.055);
+  --dc-ink: #f0f0f0;
+  --dc-mid: rgba(255,255,255,.58);
+  --dc-low: rgba(255,255,255,.36);
+  --dc-accent: #ff5c29;
+  --dc-good: #7fae63;
+
+  position: relative;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 1.1rem 1.2rem 1.2rem;
+  border: 1px solid var(--dc-line);
+  border-radius: 8px;
+  background:
+    linear-gradient(to right, rgba(255,255,255,.014) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,255,255,.014) 1px, transparent 1px),
+    var(--fx-03, #121214);
+  background-size: 48px 48px;
+  overflow: hidden;
+  font-variant-numeric: tabular-nums;
+}
+
+.dcard__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: 1rem;
+}
+.dcard__title {
+  font-family: var(--font-mono);
+  font-size: .625rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--dc-mid);
+}
+.dcard__live {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--dc-low);
+  flex-shrink: 0;
+}
+.dcard__live i {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--dc-accent);
+  animation: dc-pulse 2s ease-in-out infinite;
+}
+@keyframes dc-pulse { 0%,100% { opacity: 1 } 50% { opacity: .25 } }
+
+.dcard__body { flex: 1; min-height: 0; min-width: 0; }
+
+.dcard__caption {
+  margin: 1rem 0 0 !important;
+  padding-top: .8rem;
+  border-top: 1px solid var(--dc-soft);
+  font-family: var(--font-mono) !important;
+  font-size: .625rem !important;
+  line-height: 1.5 !important;
+  letter-spacing: 0 !important;
+  color: var(--dc-low) !important;
+}
+
+/* ── Radar ──────────────────────────────────────────────────── */
+.dcard__radar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 150px);
+  align-items: center;
+  gap: 1.1rem;
+}
+.dcard__radar svg { width: 100%; height: auto; overflow: visible; }
+.dcard__ring { fill: none; stroke: var(--dc-soft); stroke-width: .5; }
+.dcard__spoke { stroke: var(--dc-soft); stroke-width: .4; }
+.dcard__shape {
+  fill: rgba(255,92,41,.15);
+  stroke: var(--dc-accent);
+  stroke-width: 1.1;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  transition: all 1.8s cubic-bezier(.4,0,.2,1);
+}
+.dcard__node {
+  fill: var(--dc-accent);
+  transition: cx 1.8s cubic-bezier(.4,0,.2,1), cy 1.8s cubic-bezier(.4,0,.2,1);
+}
+
+.dcard__axes { list-style: none; margin: 0; padding: 0; display: grid; gap: .4rem; }
+.dcard__axes li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .5rem;
+  min-width: 0;
+}
+.dcard__axes span {
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--dc-low);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dcard__axes b {
+  font-family: var(--font-mono);
+  font-size: .625rem;
+  font-weight: 400;
+  color: var(--dc-mid);
+  flex-shrink: 0;
+}
+
+/* ── Stacked ────────────────────────────────────────────────── */
+.dcard__plot {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: .5rem;
+}
+.dcard__yaxis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 150px;
+}
+.dcard__yaxis span {
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  color: var(--dc-low);
+  text-align: right;
+  line-height: 1;
+}
+.dcard__bars {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 3px;
+  height: 150px;
+  min-width: 0;
+}
+.dcard__grid {
+  position: absolute;
+  left: 0; right: 0;
+  height: 1px;
+  background: var(--dc-soft);
+}
+.dcard__bar {
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column-reverse;
+  border-radius: 1.5px;
+  overflow: hidden;
+  transition: height 1.6s cubic-bezier(.4,0,.2,1);
+}
+.dcard__bar i { display: block; width: 100%; flex-shrink: 0; }
+
+.dcard__legend {
+  list-style: none;
+  margin: .9rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem .85rem;
+}
+.dcard__legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-family: var(--font-body);
+  font-size: .625rem;
+  color: var(--dc-mid);
+  white-space: nowrap;
+}
+.dcard__legend i { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+/* ── Area ───────────────────────────────────────────────────── */
+.dcard__area svg { width: 100%; height: auto; display: block; overflow: visible; }
+.dcard__grid-l { stroke: var(--dc-soft); stroke-width: 1; }
+.dcard__area-fill { stroke: none; transition: d 1.8s cubic-bezier(.4,0,.2,1); }
+.dcard__area-line {
+  fill: none;
+  stroke: var(--dc-accent);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  transition: d 1.8s cubic-bezier(.4,0,.2,1);
+}
+.dcard__area-dot {
+  fill: var(--dc-accent);
+  transition: cy 1.8s cubic-bezier(.4,0,.2,1);
+}
+.dcard__xaxis {
+  display: flex;
+  justify-content: space-between;
+  margin-top: .5rem;
+  padding-top: .45rem;
+  border-top: 1px solid var(--dc-soft);
+}
+.dcard__xaxis span {
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--dc-low);
+}
+
+/* ── Orbit ──────────────────────────────────────────────────── */
+.dcard__orbit {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / .82;
+  min-height: 230px;
+}
+.dcard__orbit-core {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: .5625rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  line-height: 1.5;
+  color: var(--dc-low);
+}
+.dcard__orbit-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  border: 1px solid var(--dc-line);
+  background: var(--fx-01, #0b0b0d);
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--dc-mid);
+  text-align: center;
+  padding: .2rem;
+  transition: border-color .5s ease, color .5s ease, box-shadow .5s ease;
+}
+.dcard__orbit-node.is-on {
+  border-color: var(--dc-accent);
+  color: var(--dc-ink);
+  box-shadow: 0 0 0 4px rgba(255,92,41,.1);
+}
+
+/* ── Console ────────────────────────────────────────────────── */
+.dcard__console { display: flex; flex-direction: column; gap: .8rem; }
+.dcard__console-bar {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  padding-bottom: .7rem;
+  border-bottom: 1px solid var(--dc-soft);
+}
+.dcard__console-dots { display: flex; gap: .3rem; }
+.dcard__console-dots i { width: 7px; height: 7px; border-radius: 50%; display: block; }
+.dcard__console-dots i:nth-child(1) { background: #d05b47; }
+.dcard__console-dots i:nth-child(2) { background: #c9a44a; }
+.dcard__console-dots i:nth-child(3) { background: #6f9d5c; }
+.dcard__console-path {
+  font-family: var(--font-mono);
+  font-size: .5625rem;
+  color: var(--dc-low);
+}
+
+.dcard__console-run {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: .7rem;
+}
+.dcard__console-state {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--dc-accent);
+}
+.dcard__console-state i {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--dc-accent);
+  animation: dc-pulse 1.6s ease-in-out infinite;
+}
+.dcard__console-track {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255,255,255,.08);
+  overflow: hidden;
+}
+.dcard__console-track i {
+  display: block;
+  height: 100%;
+  background: var(--dc-accent);
+  transition: width 1.2s cubic-bezier(.4,0,.2,1);
+}
+.dcard__console-count {
+  font-family: var(--font-mono);
+  font-size: .5625rem;
+  color: var(--dc-mid);
+}
+
+.dcard__console-steps,
+.dcard__console-log { list-style: none; margin: 0; padding: 0; }
+.dcard__console-steps li {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  padding: .2rem .3rem;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: .5625rem;
+  color: var(--dc-low);
+  transition: background .4s ease, color .4s ease;
+}
+.dcard__console-steps li b { color: var(--dc-low); font-weight: 400; width: .8em; }
+.dcard__console-steps li.is-done { color: var(--dc-mid); }
+.dcard__console-steps li.is-done b { color: var(--dc-good); }
+.dcard__console-steps li.is-active {
+  background: rgba(255,255,255,.06);
+  color: var(--dc-ink);
+}
+.dcard__console-steps li.is-active b { color: var(--dc-accent); }
+
+.dcard__console-log {
+  padding-top: .7rem;
+  border-top: 1px solid var(--dc-soft);
+  display: grid;
+  gap: .25rem;
+}
+.dcard__console-log li {
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  color: var(--dc-low);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dcard__console-log em { font-style: normal; color: var(--dc-mid); }
+.dcard__console-log span { color: var(--dc-accent); }
+
+/* ── Checklist ──────────────────────────────────────────────── */
+.dcard__check { list-style: none; margin: 0; padding: 0; }
+.dcard__check li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .85rem 0;
+  border-bottom: 1px solid var(--dc-soft);
+}
+.dcard__check li:last-child { border-bottom: 0; }
+.dcard__check strong {
+  display: block;
+  font-family: var(--font-body);
+  font-size: .9375rem;
+  font-weight: 500;
+  color: var(--dc-ink);
+  letter-spacing: -.012em;
+}
+.dcard__check span {
+  display: block;
+  margin-top: .15rem;
+  font-family: var(--font-mono);
+  font-size: .625rem;
+  color: var(--dc-low);
+}
+.dcard__check b {
+  font-size: .95rem;
+  color: var(--dc-accent);
+  opacity: 0;
+  transform: scale(.5);
+  transition: opacity .45s ease, transform .45s cubic-bezier(.5,1.6,.5,1);
+}
+.dcard__check li.is-on b { opacity: 1; transform: none; }
+
+/* ── Narrow ─────────────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .dcard { padding: .9rem 1rem 1rem; }
+  .dcard__radar { grid-template-columns: minmax(0, 1fr); }
+  .dcard__yaxis, .dcard__bars { height: 120px; }
+  .dcard__orbit { min-height: 200px; }
+  .dcard__orbit-node { width: 52px; height: 52px; font-size: .4375rem; }
+}
+
+/* ── Light theme ────────────────────────────────────────────── */
+:root[data-theme='light'] .dcard {
+  --dc-line: rgba(18,18,26,.14);
+  --dc-soft: rgba(18,18,26,.09);
+  --dc-ink: #101015;
+  --dc-mid: #52525c;
+  --dc-low: #78787f;
+  --dc-accent: #e04e18;
+  --dc-good: #3f7a2c;
+
+  background:
+    linear-gradient(to right, rgba(18,18,26,.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(18,18,26,.035) 1px, transparent 1px),
+    var(--fx-00, #fff);
+  background-size: 48px 48px;
+  box-shadow: 0 1px 2px rgba(18,18,26,.05), 0 4px 14px rgba(18,18,26,.05);
+}
+:root[data-theme='light'] .dcard__shape { fill: rgba(224,78,24,.13); }
+:root[data-theme='light'] .dcard__orbit-node { background: var(--fx-01, #f4f4f1); }
+:root[data-theme='light'] .dcard__console-track { background: rgba(18,18,26,.1); }
+:root[data-theme='light'] .dcard__console-steps li.is-active { background: rgba(18,18,26,.06); }
+
+@media (prefers-reduced-motion: reduce) {
+  .dcard__shape,
+  .dcard__node,
+  .dcard__area-line,
+  .dcard__area-fill,
+  .dcard__area-dot,
+  .dcard__bar { transition: none !important; }
+  .dcard__live i,
+  .dcard__console-state i { animation: none !important; }
+}
+
+/* ── Slot fits: the containers were sized for photos ────────── */
+.about-story__img,
+.st-section__right,
+.ind-feature__img-col,
+.ind-compliance__img-col,
+.tl-hero__img-wrap,
+.tl-enterprise__img-wrap,
+.tl-usecases__img-wrap,
+.tl-techstack__img-wrap {
+  background: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+  aspect-ratio: auto !important;
+  overflow: visible !important;
+}
+.about-story__img .dcard,
+.st-section__right .dcard,
+.ind-feature__img-col .dcard,
+.ind-compliance__img-col .dcard,
+.tl-hero__img-wrap .dcard,
+.tl-enterprise__img-wrap .dcard,
+.tl-usecases__img-wrap .dcard,
+.tl-techstack__img-wrap .dcard { width: 100%; }
+
+/* The dark feature band was a full-bleed photo with an overlay */
+.tl-dark-feature {
+  display: grid;
+  place-items: center;
+  padding: 3.5rem 1.5rem;
+  min-height: 0 !important;
+  height: auto !important;
+}
+.tl-dark-feature__chart {
+  width: min(100%, 940px);
+}
+.tl-dark-feature__overlay {
+  position: static !important;
+  background: none !important;
+  max-width: 940px;
+  margin: 1.75rem auto 0;
+}
+
+/* ═════════════════════════════════════════════════════════════
+   HOVER READOUTS + ENTRANCE MOTION
+   ═════════════════════════════════════════════════════════════ */
+
+/* Shared floating readout, used by radar / area / stacked */
+.dcard__tip {
+  position: absolute;
+  transform: translate(-50%, calc(-100% - 12px));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .1rem;
+  padding: .4rem .55rem;
+  border: 1px solid var(--dc-line);
+  border-radius: 5px;
+  background: var(--fx-05, #1a1a1c);
+  box-shadow: 0 8px 22px rgba(0,0,0,.5);
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 3;
+  transition: left .12s linear, top .18s cubic-bezier(.3,0,.2,1);
+}
+.dcard__tip strong {
+  font-family: var(--font-mono);
+  font-size: .8125rem;
+  font-weight: 400;
+  color: var(--dc-ink);
+}
+.dcard__tip em,
+.dcard__tip u {
+  font-style: normal;
+  text-decoration: none;
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--dc-low);
+}
+.dcard__tip--bar { transform: translate(-50%, -100%); top: -4px; }
+
+/* ── Radar interaction ──────────────────────────────────────── */
+.dcard__radar-plot { position: relative; min-width: 0; }
+.dcard__node { cursor: pointer; transition: r .2s ease, cx 1.4s cubic-bezier(.4,0,.2,1), cy 1.4s cubic-bezier(.4,0,.2,1); }
+.dcard__node.is-on { filter: drop-shadow(0 0 5px rgba(255,92,41,.9)); }
+.dcard__axes li { cursor: default; transition: color .2s ease; }
+.dcard__axes li.is-on span { color: var(--dc-ink); }
+.dcard__axes li.is-on b { color: var(--dc-accent); }
+
+/* ── Area interaction ───────────────────────────────────────── */
+.dcard__area-plot { position: relative; cursor: crosshair; }
+.dcard__cursor {
+  stroke: rgba(255,255,255,.3);
+  stroke-width: 1;
+  stroke-dasharray: 3 4;
+}
+.dcard__area-dot { transition: cx .12s linear, cy .18s cubic-bezier(.3,0,.2,1); }
+
+/* ── Bars: grow in, then dim the rest on hover ──────────────── */
+.dcard__bar {
+  cursor: pointer;
+  transform-origin: bottom;
+  animation: dc-grow .6s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes dc-grow {
+  from { transform: scaleY(0); opacity: 0 }
+  to   { transform: scaleY(1); opacity: 1 }
+}
+.dcard__bars:hover .dcard__bar { opacity: .42; }
+.dcard__bars .dcard__bar.is-on { opacity: 1; }
+.dcard__bar i { transition: height 1.4s cubic-bezier(.4,0,.2,1); }
+
+/* ── Orbit core swaps to the hovered stage ──────────────────── */
+.dcard__orbit-node { cursor: pointer; }
+.dcard__orbit-core b {
+  font-weight: 400;
+  color: var(--dc-accent);
+}
+
+/* ── Light theme ────────────────────────────────────────────── */
+:root[data-theme='light'] .dcard__tip {
+  background: var(--fx-00, #fff);
+  box-shadow: 0 8px 22px rgba(18,18,26,.14);
+}
+:root[data-theme='light'] .dcard__cursor { stroke: rgba(18,18,26,.3); }
+
+@media (prefers-reduced-motion: reduce) {
+  .dcard__bar { animation: none !important; }
+  .dcard__tip,
+  .dcard__area-dot,
+  .dcard__bar i { transition: none !important; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   REAL CONTENT FITS
+   Labels now come from the solution/industry data rather than
+   short placeholders, so nodes and rows have to take longer
+   strings without clipping.
+   ═════════════════════════════════════════════════════════════ */
+
+.dcard__orbit { min-height: 300px; }
+.dcard__orbit-node {
+  width: 92px;
+  height: 92px;
+  padding: .45rem;
+  font-size: .4375rem;
+  line-height: 1.35;
+  letter-spacing: .06em;
+  hyphens: auto;
+  overflow-wrap: anywhere;
+}
+.dcard__orbit-core { font-size: .5rem; max-width: 92px; }
+
+/* Checklist rows carry a real sentence as the detail line */
+.dcard__check li { align-items: flex-start; padding: .8rem 0; }
+.dcard__check strong { font-size: .875rem; line-height: 1.3; }
+.dcard__check span { line-height: 1.45; }
+.dcard__check b { margin-top: .15rem; flex-shrink: 0; }
+
+/* Radar axis names are specialisation titles now — let them wrap */
+.dcard__axes li { align-items: flex-start; }
+.dcard__axes span {
+  white-space: normal;
+  line-height: 1.35;
+  overflow: visible;
+}
+
+/* Console steps are capability titles */
+.dcard__console-steps li { align-items: flex-start; line-height: 1.35; }
+.dcard__console-steps li b { flex-shrink: 0; }
+
+/* Legend entries are pillar titles */
+.dcard__legend li { white-space: normal; }
+
+@media (max-width: 720px) {
+  .dcard__orbit { min-height: 260px; }
+  .dcard__orbit-node { width: 74px; height: 74px; font-size: .375rem; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   ORBIT — full rebuild
+   Layers, from back to front:
+     1. radial glow + three counter-rotating dashed halos
+     2. spoke layer whose dashes flow inward toward the core
+     3. the node ring, rotating; labels counter-rotate upright
+     4. the core, with a pip that breathes
+   Every layer shares --orb-dur so the spokes stay locked to the
+   nodes, and every layer pauses together on hover.
+   ═════════════════════════════════════════════════════════════ */
+
+.dcard--orbit .dcard__orbit {
+  --orb-dur: 54s;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / .94;
+  min-height: 320px;
+  isolation: isolate;
+}
+
+/* ── 1. web ─────────────────────────────────────────────────── */
+.dcard__orbit-web {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+.dcard__orbit-glow {
+  transform-origin: 50% 50%;
+  animation: dc-orb-breathe 7s ease-in-out infinite;
+}
+@keyframes dc-orb-breathe {
+  0%, 100% { transform: scale(.86); opacity: .75 }
+  50%      { transform: scale(1.12); opacity: 1 }
+}
+
+.dcard__orbit-halo {
+  fill: none;
+  stroke: var(--dc-line);
+  stroke-width: .4;
+  transform-origin: 50% 50%;
+}
+.dcard__orbit-halo--a {
+  stroke-dasharray: 1.4 3.6;
+  animation: dc-orb-cw calc(var(--orb-dur) * 1.5) linear infinite;
+}
+.dcard__orbit-halo--b {
+  stroke-dasharray: .8 5;
+  opacity: .8;
+  animation: dc-orb-ccw calc(var(--orb-dur) * 1.1) linear infinite;
+}
+.dcard__orbit-halo--c {
+  stroke-dasharray: 2.5 3;
+  opacity: .55;
+  animation: dc-orb-cw calc(var(--orb-dur) * .8) linear infinite;
+}
+@keyframes dc-orb-cw  { to { transform: rotate(360deg) } }
+@keyframes dc-orb-ccw { to { transform: rotate(-360deg) } }
+
+/* ── 2. spokes: dashes travel toward the core ───────────────── */
+.dcard__orbit-spin {
+  transform-origin: 50% 50%;
+  animation: dc-orb-cw var(--orb-dur) linear infinite;
+}
+.dcard__orbit-spoke {
+  stroke: var(--dc-line);
+  stroke-width: .35;
+  stroke-dasharray: 1.2 2.6;
+  animation: dc-orb-flow 2.6s linear infinite;
+  transition: stroke .45s ease, stroke-width .45s ease;
+}
+.dcard__orbit-spoke.is-on {
+  stroke: var(--dc-accent);
+  stroke-width: .7;
+  filter: drop-shadow(0 0 1.5px rgba(255,92,41,.8));
+}
+@keyframes dc-orb-flow { to { stroke-dashoffset: 15.2 } }
+
+/* ── 3. node ring ───────────────────────────────────────────── */
+.dcard__orbit-ring {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  transform-origin: 50% 50%;
+  animation: dc-orb-cw var(--orb-dur) linear infinite;
+}
+.dcard__orbit-slot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: block;
+  cursor: pointer;
+}
+/* cancels the ring's rotation so the label never turns upside down */
+.dcard__orbit-node {
+  position: relative;
+  display: grid;
+  place-content: center;
+  gap: .18rem;
+  width: 96px;
+  height: 96px;
+  padding: .5rem;
+  border-radius: 50%;
+  border: 1px solid var(--dc-line);
+  background:
+    radial-gradient(circle at 50% 35%, rgba(255,255,255,.05), transparent 70%),
+    var(--fx-01, #0b0b0d);
+  font-family: var(--font-mono);
+  font-size: .4375rem;
+  line-height: 1.4;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--dc-mid);
+  text-align: center;
+  overflow-wrap: anywhere;
+  animation: dc-orb-ccw var(--orb-dur) linear infinite;
+  transition: border-color .45s ease, color .45s ease, transform .45s cubic-bezier(.3,1.4,.4,1), box-shadow .45s ease;
+}
+.dcard__orbit-idx {
+  display: block;
+  font-weight: 400;
+  font-size: .4375rem;
+  letter-spacing: .14em;
+  color: var(--dc-low);
+  transition: color .45s ease;
+}
+
+.dcard__orbit-node.is-on {
+  border-color: var(--dc-accent);
+  color: var(--dc-ink);
+  transform: scale(1.13);
+  box-shadow:
+    0 0 0 1px rgba(255,92,41,.35),
+    0 0 26px rgba(255,92,41,.28),
+    inset 0 0 18px rgba(255,92,41,.09);
+}
+.dcard__orbit-node.is-on .dcard__orbit-idx { color: var(--dc-accent); }
+
+/* ripple pushed out by the active node */
+.dcard__orbit-node.is-on::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  border: 1px solid var(--dc-accent);
+  animation: dc-orb-ripple 2.2s cubic-bezier(.2,.6,.3,1) infinite;
+  pointer-events: none;
+}
+@keyframes dc-orb-ripple {
+  0%   { transform: scale(1);    opacity: .7 }
+  70%  { transform: scale(1.55); opacity: 0 }
+  100% { transform: scale(1.55); opacity: 0 }
+}
+
+/* ── 4. core ────────────────────────────────────────────────── */
+.dcard--orbit .dcard__orbit-core {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: .4rem;
+  max-width: 108px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  line-height: 1.5;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--dc-low);
+  pointer-events: none;
+  transition: color .4s ease;
+}
+.dcard--orbit .dcard__orbit-core b {
+  font-weight: 400;
+  color: var(--dc-accent);
+}
+.dcard__orbit-pip {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--dc-accent);
+  box-shadow: 0 0 0 5px rgba(255,92,41,.12), 0 0 14px rgba(255,92,41,.5);
+  animation: dc-orb-pip 2.6s ease-in-out infinite;
+}
+@keyframes dc-orb-pip {
+  0%, 100% { transform: scale(.8); opacity: .75 }
+  50%      { transform: scale(1.25); opacity: 1 }
+}
+
+/* ── hover freezes the whole mechanism ──────────────────────── */
+.dcard__orbit.is-held .dcard__orbit-ring,
+.dcard__orbit.is-held .dcard__orbit-node,
+.dcard__orbit.is-held .dcard__orbit-spin,
+.dcard__orbit.is-held .dcard__orbit-halo {
+  animation-play-state: paused;
+}
+
+/* ── light theme ────────────────────────────────────────────── */
+:root[data-theme='light'] .dcard__orbit-node {
+  background:
+    radial-gradient(circle at 50% 35%, rgba(18,18,26,.03), transparent 70%),
+    var(--fx-00, #fff);
+}
+:root[data-theme='light'] .dcard__orbit-node.is-on {
+  box-shadow:
+    0 0 0 1px rgba(224,78,24,.3),
+    0 8px 24px rgba(224,78,24,.18),
+    inset 0 0 18px rgba(224,78,24,.06);
+}
+
+@media (max-width: 720px) {
+  .dcard--orbit .dcard__orbit { min-height: 272px; }
+  .dcard__orbit-node { width: 76px; height: 76px; font-size: .375rem; padding: .35rem; }
+  .dcard--orbit .dcard__orbit-core { max-width: 84px; font-size: .4375rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dcard__orbit-ring,
+  .dcard__orbit-node,
+  .dcard__orbit-spin,
+  .dcard__orbit-halo,
+  .dcard__orbit-glow,
+  .dcard__orbit-spoke,
+  .dcard__orbit-pip { animation: none !important; }
+  .dcard__orbit-node.is-on::after { animation: none !important; opacity: 0 !important; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   ORBIT — upright labels
+   Two bugs made the text render upside down:
+
+   1. An earlier `.dcard__orbit-node` rule still applied
+      `transform: translate(-50%,-50%)`. The counter-rotation
+      keyframe only declared `to`, so the implicit `from` was that
+      translate — mismatched transform lists, so the browser fell
+      back to matrix interpolation and the node both drifted and
+      rotated wrongly instead of cleanly cancelling the ring.
+
+   2. `.is-on { transform: scale(...) }` fought the same property.
+
+   Fixed by giving the counter-rotation its own element, writing
+   both keyframe ends explicitly, and clearing the stale transform.
+   ═════════════════════════════════════════════════════════════ */
+
+@keyframes dc-orb-cw  { from { transform: rotate(0deg) }  to { transform: rotate(360deg) } }
+@keyframes dc-orb-ccw { from { transform: rotate(0deg) }  to { transform: rotate(-360deg) } }
+
+.dcard__orbit-slot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: block;
+  cursor: pointer;
+}
+
+.dcard__orbit-spinback {
+  display: block;
+  transform-origin: 50% 50%;
+  animation: dc-orb-ccw var(--orb-dur) linear infinite;
+}
+
+.dcard--orbit .dcard__orbit-node {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;          /* clears the stale translate */
+  animation: none;          /* rotation now belongs to the wrapper */
+}
+.dcard--orbit .dcard__orbit-node.is-on { transform: scale(1.13); }
+
+.dcard__orbit.is-held .dcard__orbit-spinback { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  .dcard__orbit-spinback { animation: none !important; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   PHOTO-FRAME CHROME
+   The slots that used to hold images carry their own frame:
+   a border, a rounded corner, a drop shadow, and in one case a
+   deliberately offset decorative panel. With a DataCard inside
+   that chrome reads as a second card sitting behind the first —
+   very visible in light mode. Strip it; the card is its own frame.
+   ═════════════════════════════════════════════════════════════ */
+
+.about-story__img,
+.st-section__right,
+.ind-feature__img-col,
+.ind-compliance__img-col,
+.tl-hero__img-wrap,
+.tl-enterprise__img-wrap,
+.tl-usecases__img-wrap,
+.tl-techstack__img-wrap {
+  background: none !important;
+  background-image: none !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  padding: 0 !important;
+}
+
+/* the decorative offset panels / frame pseudo-elements */
+.tl-usecases__img-deco,
+.about-story__img::before,
+.about-story__img::after,
+.st-section__right::before,
+.st-section__right::after,
+.tl-hero__img-wrap::before,
+.tl-hero__img-wrap::after,
+.tl-enterprise__img-wrap::before,
+.tl-enterprise__img-wrap::after,
+.tl-usecases__img-wrap::before,
+.tl-usecases__img-wrap::after,
+.tl-techstack__img-wrap::before,
+.tl-techstack__img-wrap::after,
+.ind-feature__img-col::before,
+.ind-feature__img-col::after,
+.ind-compliance__img-col::before,
+.ind-compliance__img-col::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* The enterprise stat badge is a real element — keep it, but let it
+   sit against the card rather than the removed frame. */
+.tl-enterprise__img-wrap { position: relative; }
+.tl-enterprise__badge { z-index: 2; }

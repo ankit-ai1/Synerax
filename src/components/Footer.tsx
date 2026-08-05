@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 
+import Logo from './Logo'
 export default function Footer() {
   return (
     <footer className="ft-new">
@@ -11,11 +12,7 @@ export default function Footer() {
           {/* Left — Logo + tagline + social */}
           <div className="ft-new__brand">
             <Link to="/" className="ft-new__logo">
-              <img
-                src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1783839642/Gemini_Generated_Image_wrba0fwrba0fwrba-removebg-preview_fujvtu.png"
-                alt="Synerax"
-                className="ft-new__logo-img"
-              />
+              <Logo />
             </Link>
             <p className="ft-new__tagline">
               From Code to Cloud.<br />
@@ -51,15 +48,14 @@ export default function Footer() {
 
             <div className="ft-new__col">
               <h5 className="ft-new__heading">Solutions</h5>
-              <Link to="/solutions/contact-center">Contact Center</Link>
-              <Link to="/solutions/frontend">Frontend Development</Link>
-              <Link to="/solutions/backend">Backend Development</Link>
-              <Link to="/solutions/fullstack">Full Stack & Mobile</Link>
-              <Link to="/solutions/agentic-ai">Agentic AI</Link>
-              <Link to="/solutions/aws">AWS Infrastructure</Link>
-              <Link to="/solutions/cybersecurity">Cybersecurity</Link>
-              <Link to="/solutions/inventory">Inventory Management</Link>
-              <Link to="/solutions/consulting">IT Consulting</Link>
+              <Link to="/solutions/web-enterprise-applications">Web &amp; Enterprise Applications</Link>
+              <Link to="/solutions/devsecops-finops">DevSecOps &amp; FinOps</Link>
+              <Link to="/solutions/cybersecurity">Cybersecurity Solutions</Link>
+              <Link to="/solutions/agentic-ai">Agentic AI Solutions</Link>
+              <Link to="/solutions/cloud-engineering-migration">Cloud Engineering &amp; Migration</Link>
+              <Link to="/solutions/observability-sre">Observability, SRE &amp; Production Engineering</Link>
+              <Link to="/solutions/application-modernization">Application Modernization</Link>
+              <Link to="/solutions/itsm">IT Service Management (ITSM)</Link>
             </div>
 
             <div className="ft-new__col">

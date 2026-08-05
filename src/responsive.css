@@ -1,0 +1,1053 @@
+/* ═════════════════════════════════════════════════════════════
+   RESPONSIVE — whole site, both themes
+   Loaded last. Every rule lives inside a media query, so nothing
+   here can alter the desktop layout (homepage included).
+
+   Colours are all token-driven, so light mode follows the same
+   rules automatically; only a couple of spots need a theme fork.
+
+   Breakpoints
+     1024  tablet   — two-column layouts collapse
+      768  phone    — dense grids go single column
+      560  small    — type and padding step down
+      400  compact  — last-resort tightening
+   ═════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   0. NEVER SCROLL SIDEWAYS
+   ───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  html, body { overflow-x: clip; max-width: 100%; }
+  img, svg, video, canvas, table { max-width: 100%; }
+  pre, code { overflow-x: auto; }
+}
+
+/* ─────────────────────────────────────────────
+   1. TABLET — two-column layouts collapse
+   ───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .container,
+  .iq-wrap { padding-left: 1.25rem; padding-right: 1.25rem; }
+
+  .about-story__grid,
+  .st-section__grid,
+  .st-section__inner,
+  .ind-feature__inner,
+  .ind-compliance__inner,
+  .tl-hero__inner,
+  .tl-enterprise__inner,
+  .tl-usecases__inner,
+  .tl-techstack__inner,
+  .ct-main__grid,
+  .bpost-body__inner,
+  .wp-layout,
+  .h5-hero__inner,
+  .h5-split,
+  .iq-split {
+    grid-template-columns: minmax(0, 1fr) !important;
+    row-gap: 2.5rem;
+  }
+
+  /* the visual always follows its copy on a narrow screen */
+  .about-story__img,
+  .ind-feature__img-col,
+  .tl-hero__right,
+  .tl-enterprise__img-col,
+  .tl-usecases__img-col,
+  .tl-techstack__img-col { order: 2; }
+  .about-story__text,
+  .ind-feature__text,
+  .tl-hero__left,
+  .tl-enterprise__text-col,
+  .tl-usecases__text-col,
+  .tl-techstack__text-col { order: 1; }
+
+  .ab-mv__grid,
+  .ab-process__grid,
+  .ab-team-grid,
+  .ab-values-grid,
+  .bl-grid,
+  .bpost-related__grid,
+  .car-benefits__grid,
+  .car-values__grid,
+  .ind-benefits__grid,
+  .ind-challenges__grid,
+  .ind-specialized__grid,
+  .srv-grid,
+  .st-grid,
+  .tech-tiles,
+  .tl-caps__grid,
+  .wp-grid,
+  .iq-feat-grid,
+  .iq-news-grid,
+  .h5-features,
+  .h5-news-grid,
+  .h5-sol-grid,
+  .services__grid,
+  .solutions__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .ind-stats__grid,
+  .tl-hero__stats,
+  .iq-hero__metrics,
+  .h5-stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+
+/* ─────────────────────────────────────────────
+   2. PHONE — everything to one column
+   ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .container,
+  .iq-wrap { padding-left: 1rem; padding-right: 1rem; }
+
+  section,
+  .iq-section { padding-top: 3.25rem !important; padding-bottom: 3.25rem !important; }
+
+  .ab-mv__grid,
+  .ab-process__grid,
+  .ab-team-grid,
+  .ab-values-grid,
+  .bl-grid,
+  .bpost-related__grid,
+  .car-benefits__grid,
+  .car-process__steps,
+  .car-values__grid,
+  .ind-benefits__grid,
+  .ind-challenges__grid,
+  .ind-specialized__grid,
+  .srv-grid,
+  .st-grid,
+  .tech-categories,
+  .tech-tiles,
+  .tl-caps__grid,
+  .wp-grid,
+  .wp-grid--orbit,
+  .iq-feat-grid,
+  .iq-feat-hero-row,
+  .iq-news-grid,
+  .iq-problem-grid,
+  .iq-compare,
+  .h5-features,
+  .h5-news-grid,
+  .h5-sol-grid,
+  .services__grid,
+  .solutions__grid,
+  .contact-info-cards,
+  .contact-main,
+  .ct-form__row,
+  .form-row,
+  .feature-strip,
+  .process__steps,
+  .news__grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  /* two-up is still fine for compact numeric tiles */
+  .ind-stats__grid,
+  .tl-hero__stats,
+  .iq-hero__metrics,
+  .h5-stat-grid { gap: .75rem !important; }
+
+  /* CTA button rows stack full width */
+  .iq-cta__btns,
+  .iq-hero__btns,
+  .ab-hero__actions,
+  .ind-hero__actions,
+  .tl-hero__actions,
+  .h5-cta__btns,
+  .pp-cta__btn {
+    grid-template-columns: minmax(0, 1fr) !important;
+    display: flex !important;
+    flex-direction: column;
+    align-items: stretch;
+    gap: .65rem;
+  }
+  .iq-cta__btns > *,
+  .iq-hero__btns > *,
+  .ab-hero__actions > *,
+  .ind-hero__actions > *,
+  .tl-hero__actions > *,
+  .h5-cta__btns > * {
+    width: 100% !important;
+    min-width: 0 !important;
+    justify-content: center;
+    text-align: center;
+  }
+
+  /* Footer */
+  .ft-new__top,
+  .ft-new__cols,
+  .footer__cols { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 1.75rem !important; }
+  .ft-new__bottom-links { flex-wrap: wrap; gap: .75rem 1.25rem; }
+}
+
+/* ─────────────────────────────────────────────
+   3. HOMEPAGE VISUALS — fit the phone, keep the design
+   ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  /* Hero dashboard: drop the rail, let the deck breathe */
+  .fx-hero-visual .fx-dash {
+    max-height: none !important;
+    margin-top: 2.5rem;
+  }
+  .fx-hero-visual .fx-dash__main { overflow: visible !important; }
+  .fx-dash__body { grid-template-columns: minmax(0, 1fr) !important; }
+  .fx-dash__side { display: none !important; }
+  .fxd-grid { grid-template-columns: minmax(0, 1fr) !important; }
+  .fxd-strip { grid-template-columns: minmax(0, 1fr) !important; }
+  .fxd-strip__stages {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px solid var(--d-line);
+  }
+  .fxd-stage { border-bottom: 1px solid var(--d-line); }
+  .fxd-radar { flex-direction: row; align-items: center; gap: .9rem; flex-wrap: wrap; }
+  .fxd-radar__dish { margin: 0; }
+
+  /* Sticky section releases — it is a plain stack on mobile */
+  .fx-stick__inner { grid-template-columns: minmax(0, 1fr) !important; row-gap: 2.75rem; }
+  .fx-stick__left { position: static !important; }
+
+  /* Platform chart */
+  .pfc { grid-template-columns: minmax(0, 1fr) !important; }
+  .pfc__card--radar { border-right: 0 !important; border-bottom: 1px solid var(--p-line); }
+}
+
+@media (max-width: 620px) {
+  .fx-tabs__track { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .fx-tabs__track::-webkit-scrollbar { display: none; }
+  .fx-tab { flex-shrink: 0; }
+}
+
+/* ─────────────────────────────────────────────
+   4. DATA CARDS on small screens
+   ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .dcard { padding: .9rem 1rem 1rem; }
+  .dcard__radar { grid-template-columns: minmax(0, 1fr) !important; gap: .9rem; }
+  .dcard__radar svg { max-width: 240px; margin: 0 auto; }
+  .dcard__axes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dcard__yaxis,
+  .dcard__bars { height: 118px !important; }
+  .dcard__console-log { display: none; }
+  .dcard--orbit .dcard__orbit { min-height: 260px; }
+  .dcard__orbit-node { width: 72px; height: 72px; font-size: .375rem; padding: .3rem; }
+  .dcard--orbit .dcard__orbit-core { max-width: 80px; font-size: .4375rem; }
+}
+
+@media (max-width: 420px) {
+  .dcard--orbit .dcard__orbit { min-height: 224px; }
+  .dcard__orbit-node { width: 60px; height: 60px; }
+  .dcard__orbit-idx { display: none; }
+  .dcard__legend { gap: .3rem .6rem; }
+}
+
+/* ─────────────────────────────────────────────
+   5. CONTACT CONSOLE + SLIDER + INDUSTRIES
+   ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .cc__toolbar,
+  .cc__filters { gap: .5rem .6rem; }
+  .cc__seg { flex-wrap: wrap; }
+  .cc__seg button { flex: 1 1 auto; }
+
+  .fx-slider__foot { max-width: 190px; }
+
+  .fx-ind-grid { grid-template-columns: minmax(0, 1fr) !important; row-gap: 2.25rem; }
+}
+
+/* ─────────────────────────────────────────────
+   6. TYPE + SPACING step-down
+   ───────────────────────────────────────────── */
+@media (max-width: 560px) {
+  .iq-hero__h1,
+  .ab-hero__h1,
+  .bl-hero__h1,
+  .bpost-hero__h1,
+  .car-hero__h1,
+  .ct-hero__h1,
+  .ind-hero__h1,
+  .pp-hero__h1,
+  .srv-hero__h1,
+  .tl-hero__h1 {
+    font-size: clamp(1.85rem, 8.5vw, 2.6rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -.035em !important;
+  }
+
+  .iq-h2,
+  .section-title,
+  .iq-cta__h2,
+  .ab-mv__title,
+  .ab-process__title,
+  .car-benefits__h2,
+  .car-jobs__h2,
+  .car-process__h2,
+  .car-values__h2,
+  .ct-faq__h2,
+  .ct-left__h2,
+  .ind-benefits__title,
+  .ind-challenges__title,
+  .ind-compliance__title,
+  .ind-cta__title,
+  .ind-specialized__title,
+  .st-section__title,
+  .tl-enterprise__title {
+    font-size: clamp(1.4rem, 6.5vw, 1.9rem) !important;
+    line-height: 1.16 !important;
+  }
+
+  .iq-body,
+  .fx-lede,
+  .fx-stick__desc,
+  .ab-hero__sub,
+  .bl-hero__sub,
+  .car-hero__sub,
+  .ct-hero__sub,
+  .ind-hero__desc,
+  .pp-hero__sub,
+  .tl-hero__desc { font-size: .875rem !important; line-height: 1.6 !important; }
+
+  .dcard__caption { font-size: .5625rem !important; }
+}
+
+/* ─────────────────────────────────────────────
+   7. TOUCH TARGETS + hover-only affordances
+   ───────────────────────────────────────────── */
+@media (hover: none) {
+  /* hover states can't be dismissed on touch — don't dim siblings */
+  .cc__bars:hover .cc__bar,
+  .dcard__bars:hover .dcard__bar { opacity: 1 !important; }
+
+  /* the orbit keeps turning; there is no pointer to hold it */
+  .dcard__orbit.is-held .dcard__orbit-ring,
+  .dcard__orbit.is-held .dcard__orbit-spinback,
+  .dcard__orbit.is-held .dcard__orbit-spin { animation-play-state: running; }
+}
+
+@media (max-width: 768px) {
+  .nav__theme,
+  .nav__hamburger,
+  .fx-slider__arrow,
+  .pfc__tabs button,
+  .cc__seg button,
+  .bl-filter,
+  .car-dept-btn { min-height: 40px; }
+
+  a, button { -webkit-tap-highlight-color: rgba(255,92,41,.18); }
+}
+
+/* ─────────────────────────────────────────────
+   8. LIGHT-THEME FORKS
+   Almost everything above is token-driven, so light mode inherits
+   it. These two need the ink versions of the hairlines.
+   ───────────────────────────────────────────── */
+@media (max-width: 900px) {
+  :root[data-theme='light'] .fxd-strip__stages { border-top-color: rgba(18,18,26,.14); }
+  :root[data-theme='light'] .fxd-stage { border-bottom-color: rgba(18,18,26,.14); }
+}
+@media (hover: none) {
+  :root[data-theme='light'] a,
+  :root[data-theme='light'] button { -webkit-tap-highlight-color: rgba(224,78,24,.16); }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   9. HOMEPAGE HERO + PROBLEM SECTION
+   `layout-factory.css` already collapses `.fx-hero-grid` at
+   1100px, but `polish-factory.css` re-declares the two-column
+   track later in the cascade with no media query — a plain rule
+   in a later file beats an earlier rule inside a media query, so
+   that breakpoint never applied. `.fx-statrow` (3 cols) and
+   `.fx-cmp` (2 cols) had no mobile rules at all.
+   ═════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1000px) {
+  /* ── Hero ─────────────────────────────────────────────────── */
+  .fx-hero-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 2.75rem !important;
+    align-items: start !important;
+  }
+  .fx-hero-copy {
+    max-width: 100% !important;
+    text-align: left !important;
+  }
+  .fx-hero-copy .iq-hero__sub { max-width: 100% !important; }
+  .fx-hero-visual { width: 100%; min-width: 0; }
+
+  .iq-hero {
+    padding: 84px 0 3rem !important;
+    min-height: 0 !important;
+  }
+  .iq-hero__glow { opacity: .5 !important; }
+
+  /* ── Problem: stats stack, dividers move to the bottom edge ─ */
+  .fx-statrow {
+    grid-template-columns: minmax(0, 1fr) !important;
+    margin-bottom: 3rem !important;
+  }
+  .fx-stat {
+    border-right: 0 !important;
+    border-bottom: 1px solid var(--border);
+    padding: 1.6rem 0 !important;
+  }
+  .fx-stat:last-child { border-bottom: 0; }
+
+  /* ── Problem: comparison cards stack ──────────────────────── */
+  .fx-cmp {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1rem !important;
+  }
+  /* the comet travels the gap between two side-by-side cards —
+     there is no such gap once they are stacked */
+  .fx-beam { display: none !important; }
+}
+
+@media (max-width: 640px) {
+  .iq-hero { padding: 76px 0 2.5rem !important; }
+
+  .fx-hero-copy .iq-hero__h1 { margin-bottom: 1.1rem !important; }
+  .fx-hero-copy .iq-hero__sub { margin-bottom: 1.6rem !important; }
+
+  .fx-stat { padding: 1.35rem 0 !important; }
+  .fx-stat__sub { font-size: .8125rem; }
+  .fx-stat__meter { max-width: 160px; }
+
+  .fx-card { padding: 1.25rem 1.1rem !important; }
+  .fx-card__item { gap: .5rem; }
+  .fx-card__idx { display: none; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   10. HERO DASHBOARD — the specificity fight
+   `hero-dash.css` and `polish-factory.css` both target the deck
+   as `.fx-hero-visual .fx-dash…` (0,2,0) and some with
+   !important. The single-class rules in section 3 above never
+   won, so the body kept its 158px sidebar track and the deck
+   kept its viewport cap — which is what squeezed everything into
+   a narrow column. These selectors match that weight and beat it.
+   ═════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1000px) {
+  .iq-hero .fx-hero-grid,
+  .iq-hero__inner .fx-hero-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .iq-hero .fx-hero-visual,
+  .fx-hero-grid .fx-hero-visual {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+  }
+
+  .fx-hero-visual .fx-dash,
+  .iq-hero .fx-hero-visual .fx-dash {
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    height: auto !important;
+    margin: 2rem 0 0 !important;
+  }
+
+  /* the sidebar track has to go, not just the sidebar */
+  .fx-hero-visual .fx-dash__body,
+  .iq-hero .fx-hero-visual .fx-dash__body {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+  .fx-hero-visual .fx-dash__side,
+  .iq-hero .fx-hero-visual .fx-dash__side { display: none !important; }
+
+  .fx-hero-visual .fx-dash__main,
+  .iq-hero .fx-hero-visual .fx-dash__main {
+    overflow: visible !important;
+    min-height: 0 !important;
+    padding: .7rem !important;
+  }
+
+  /* the scanline sweep is sized for the desktop deck */
+  .fx-dash::after { display: none !important; }
+}
+
+/* ─────────────────────────────────────────────
+   Phone: the pipeline strip is too dense to read at this width.
+   Keep the four chart cards — they carry the same story.
+   ───────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .fx-hero-visual .fxd-strip { display: none !important; }
+  .fx-hero-visual .fxd-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: .5rem !important;
+  }
+  .fx-hero-visual .fxd-plot__area,
+  .fx-hero-visual .fxd-plot__yaxis { height: 58px !important; }
+  .fx-hero-visual .fxd-card__val { font-size: 1.25rem !important; }
+  .fx-hero-visual .fx-dash__chip { display: none !important; }
+}
+
+@media (max-width: 460px) {
+  /* two cards is enough of a preview on a small phone */
+  .fx-hero-visual .fxd-grid > .fxd-card:nth-child(n + 3) { display: none !important; }
+  .fx-hero-visual .fxd-log { display: none !important; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   11. HERO DECK — fit the whole card on screen
+   Four stacked chart cards make the deck taller than the phone,
+   so it always looked cut off. Two cards tell the same story and
+   let the panel be read in one go.
+   ═════════════════════════════════════════════════════════════ */
+
+@media (max-width: 700px) {
+  /* no stray space where the pipeline strip used to be */
+  .fx-hero-visual .fx-dash__main {
+    gap: .5rem !important;
+    padding: .55rem !important;
+  }
+  .fx-hero-visual .fxd-strip { display: none !important; }
+
+  /* two cards, and they carry the live numbers + trend */
+  .fx-hero-visual .fxd-grid > .fxd-card:nth-child(n + 3) { display: none !important; }
+  .fx-hero-visual .fxd-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: .5rem !important;
+  }
+
+  .fx-hero-visual .fxd-card { padding: .55rem .65rem .5rem !important; }
+  .fx-hero-visual .fxd-plot__area,
+  .fx-hero-visual .fxd-plot__yaxis { height: 52px !important; }
+  .fx-hero-visual .fxd-card__val { font-size: 1.3rem !important; }
+
+  /* the deck must never be taller than the copy it sits under */
+  .fx-hero-visual .fx-dash,
+  .iq-hero .fx-hero-visual .fx-dash {
+    margin-top: 1.75rem !important;
+  }
+}
+
+@media (max-width: 460px) {
+  .fx-hero-visual .fxd-log { display: none !important; }
+  .fx-hero-visual .fxd-card__foot { display: none !important; }
+  .fx-hero-visual .fxd-plot__area,
+  .fx-hero-visual .fxd-plot__yaxis { height: 46px !important; }
+  .fx-hero-visual .fx-dash__range { display: none !important; }
+}
+
+/* The hero clips its own overflow; with the deck now sized to its
+   content there is nothing to clip, but make it explicit so a tall
+   deck can never be cut mid-card. */
+@media (max-width: 1000px) {
+  .iq-hero { overflow: visible !important; }
+  .iq-hero .fx-hero-visual .fx-dash { overflow: hidden !important; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   12. HERO DECK — deterministic mobile composition
+   Hiding blocks one class at a time kept leaving an empty band
+   in the deck. Rather than chase which child it is, allow-list
+   what may render on a phone: inside the body, only the main
+   column; inside main, only the chart grid.
+   ═════════════════════════════════════════════════════════════ */
+
+@media (max-width: 700px) {
+  .fx-hero-visual .fx-dash__body > *:not(.fx-dash__main) { display: none !important; }
+  .fx-hero-visual .fx-dash__main > *:not(.fxd-grid) { display: none !important; }
+
+  .fx-hero-visual .fx-dash__body {
+    display: block !important;
+    grid-template-columns: none !important;
+  }
+  .fx-hero-visual .fx-dash__main {
+    display: block !important;
+    padding: .5rem !important;
+    min-height: 0 !important;
+  }
+  .fx-hero-visual .fxd-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: .5rem !important;
+  }
+}
+
+/* One card on a small phone — the deck then clears the fold whole. */
+@media (max-width: 520px) {
+  .fx-hero-visual .fxd-grid > .fxd-card:nth-child(n + 2) { display: none !important; }
+  .fx-hero-visual .fxd-card { padding: .7rem .8rem .65rem !important; }
+  .fx-hero-visual .fxd-plot__area,
+  .fx-hero-visual .fxd-plot__yaxis { height: 64px !important; }
+  .fx-hero-visual .fxd-card__val { font-size: 1.5rem !important; }
+  .fx-hero-visual .fxd-card__foot { display: flex !important; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   13. HERO HEADLINE — clear the fixed nav, stop the mask clipping
+   Two things were cutting the h1 on a phone:
+
+   1. `.nav` is `position: fixed`, so the hero has to reserve its
+      height as padding. 76px against a ~65px bar left almost no
+      clearance and the first line sat under the bar.
+
+   2. Each headline line is wrapped in `.fx-line`, a reveal mask
+      with `overflow: hidden`. It is sized for one line; once the
+      copy wraps to two on a narrow screen the mask crops the
+      overflow. The mask is a desktop flourish — drop it here and
+      let the text wrap freely.
+   ═════════════════════════════════════════════════════════════ */
+
+@media (max-width: 1000px) {
+  .iq-hero { padding-top: 104px !important; }
+
+  .fx-line {
+    overflow: visible !important;
+    display: block;
+  }
+  .fx-line > span { display: block; }
+
+  .iq-hero__h1 {
+    overflow: visible !important;
+    text-wrap: pretty;
+    hyphens: none;
+  }
+
+  /* in-page anchors should not land under the bar either */
+  [id] { scroll-margin-top: 88px; }
+}
+
+@media (max-width: 640px) {
+  .iq-hero { padding-top: 96px !important; padding-bottom: 2.5rem !important; }
+  .iq-hero__h1 { line-height: 1.14 !important; }
+}
+
+@media (max-width: 420px) {
+  .iq-hero { padding-top: 88px !important; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   14. HERO HEADLINE — force the lines visible on mobile
+   The load timeline runs `.from('.fx-line > span', { yPercent:
+   110, opacity: 0 })`. `.from()` stamps that start state inline
+   straight away, so until the tween finishes the lines sit
+   translated down and fully transparent. On a phone the h1 wraps
+   to three visual lines and the earlier ones were never being
+   restored, leaving only the last line on screen.
+
+   A CSS `!important` declaration outranks an inline style that
+   has no `!important` — which is what GSAP writes — so this
+   pins the lines visible regardless of the tween's state. The
+   masked line-reveal is a desktop flourish; the hero still fades
+   in as part of the section reveal.
+   ═════════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  .iq-hero__h1 .fx-line,
+  .iq-hero__h1 .fx-line > span {
+    transform: none !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    filter: none !important;
+    overflow: visible !important;
+  }
+
+  .iq-hero__h1 {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  /* clear the fixed bar with room to spare — it is ~72px here */
+  .iq-hero,
+  section.iq-hero {
+    padding-top: 116px !important;
+    padding-bottom: 2.5rem !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .iq-hero,
+  section.iq-hero { padding-top: 108px !important; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   15. HERO — release the one-viewport cap  ← the actual bug
+   `polish-factory.css` pins the hero to exactly one screen:
+
+     min-height: 100svh;  max-height: 100svh;
+     display: flex;  align-items: center;  overflow: hidden;
+
+   On a 667px-tall phone the content (padding + a three-line h1 +
+   the sub + two stacked CTAs + the dashboard) is far taller than
+   the box. `align-items: center` then centres that overflow, so
+   it spills off the TOP as well as the bottom, and `overflow:
+   hidden` clips it — which is why only the last headline line
+   survived.
+
+   It also explains why every padding increase made things worse:
+   more height inside a capped box means more of it pushed off
+   the top. The cap has to go, not the padding.
+   ═════════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  .iq-hero,
+  section.iq-hero {
+    min-height: 0 !important;
+    max-height: none !important;
+    height: auto !important;
+    display: block !important;
+    align-items: stretch !important;
+    overflow: visible !important;
+    padding-top: 96px !important;
+    padding-bottom: 3rem !important;
+  }
+
+  .iq-hero__inner { width: 100% !important; }
+}
+
+@media (max-width: 420px) {
+  .iq-hero,
+  section.iq-hero { padding-top: 88px !important; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   16. HERO DECK — scale the whole thing down, don't rebuild it
+   Earlier passes reflowed the dashboard for phones: sidebar off,
+   pipeline strip off, down to one card. factory.ai does the
+   opposite — it keeps the full desktop composition and shrinks
+   it, so the deck reads as a complete product shot.
+
+   `zoom` is used rather than `transform: scale()` because zoom
+   affects layout, so the deck's box shrinks with it and no
+   height has to be compensated for. The scale steps are fixed
+   per breakpoint: `scale()` cannot take a ratio of two lengths,
+   so a fluid calc() is not available here.
+
+   These selectors carry `.iq-hero` for the extra weight needed
+   to undo the hiding rules in sections 3, 11 and 12.
+   ═════════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  /* ── put the full deck back ─────────────────────────────── */
+  .iq-hero .fx-hero-visual .fxd-strip,
+  .iq-hero .fx-hero-visual .fxd-log,
+  .iq-hero .fx-hero-visual .fx-dash__side,
+  .iq-hero .fx-hero-visual .fx-dash__chip,
+  .iq-hero .fx-hero-visual .fx-dash__range,
+  .iq-hero .fx-hero-visual .fxd-card__foot { display: revert !important; }
+
+  .iq-hero .fx-hero-visual .fx-dash__body > *,
+  .iq-hero .fx-hero-visual .fx-dash__main > * { display: revert !important; }
+
+  .iq-hero .fx-hero-visual .fxd-grid > .fxd-card { display: flex !important; }
+
+  .iq-hero .fx-hero-visual .fx-dash__body {
+    display: grid !important;
+    grid-template-columns: minmax(0, 158px) minmax(0, 1fr) !important;
+  }
+  .iq-hero .fx-hero-visual .fx-dash__main {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: .6rem !important;
+    gap: .55rem !important;
+    overflow: hidden !important;
+  }
+  .iq-hero .fx-hero-visual .fxd-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: .55rem !important;
+  }
+  .iq-hero .fx-hero-visual .fxd-strip {
+    grid-template-columns: 78px minmax(0, 1fr) 78px !important;
+  }
+  .iq-hero .fx-hero-visual .fxd-strip__stages {
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+    border-left: 1px solid var(--d-line) !important;
+    border-right: 1px solid var(--d-line) !important;
+    border-top: 0 !important;
+  }
+  .iq-hero .fx-hero-visual .fxd-stage { border-bottom: 0 !important; }
+  .iq-hero .fx-hero-visual .fxd-radar { flex-direction: column !important; align-items: flex-start !important; }
+  .iq-hero .fx-hero-visual .fxd-radar__dish { margin: .25rem auto .3rem !important; }
+  .iq-hero .fx-hero-visual .fxd-plot__area,
+  .iq-hero .fx-hero-visual .fxd-plot__yaxis { height: 44px !important; }
+  .iq-hero .fx-hero-visual .fxd-card__val { font-size: clamp(1.05rem, 1.6vw, 1.45rem) !important; }
+
+  /* ── then shrink the finished deck to fit ───────────────── */
+  .iq-hero .fx-hero-visual {
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+  .iq-hero .fx-hero-visual .fx-dash {
+    width: 880px !important;
+    max-width: none !important;
+    max-height: none !important;
+    height: auto !important;
+    margin: 2rem 0 0 !important;
+    zoom: .80;
+  }
+}
+
+@media (max-width: 768px) { .iq-hero .fx-hero-visual .fx-dash { zoom: .68; } }
+@media (max-width: 620px) { .iq-hero .fx-hero-visual .fx-dash { zoom: .56; } }
+@media (max-width: 500px) { .iq-hero .fx-hero-visual .fx-dash { zoom: .46; } }
+@media (max-width: 400px) { .iq-hero .fx-hero-visual .fx-dash { zoom: .38; } }
+
+/* ═════════════════════════════════════════════════════════════
+   17. HERO DECK — scale with transform, and close the top gap
+   `zoom` did not take effect, so the deck kept its 880px box and
+   overflowed instead of shrinking. Switching to
+   `transform: scale()` is reliable, but transforms do not affect
+   layout — the element still reserves its unscaled height — so
+   the wrapper gets an explicit height per step to match.
+
+   Composition is forced back to the desktop arrangement first
+   (radar | six stages | radar, then a 2×2 chart grid) so the
+   shrunken deck reads exactly like the desktop card.
+   ═════════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  /* ── desktop composition, no reflow ─────────────────────── */
+  .iq-hero .fx-hero-visual .fx-dash__body {
+    display: grid !important;
+    grid-template-columns: 158px minmax(0, 1fr) !important;
+  }
+  .iq-hero .fx-hero-visual .fx-dash__side { display: flex !important; }
+  .iq-hero .fx-hero-visual .fxd-strip {
+    display: grid !important;
+    grid-template-columns: 78px minmax(0, 1fr) 78px !important;
+  }
+  .iq-hero .fx-hero-visual .fxd-strip__stages {
+    display: grid !important;
+    grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  }
+  .iq-hero .fx-hero-visual .fxd-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .iq-hero .fx-hero-visual .fxd-plot__area,
+  .iq-hero .fx-hero-visual .fxd-plot__yaxis { height: 44px !important; }
+
+  /* ── shrink it ──────────────────────────────────────────── */
+  .iq-hero .fx-hero-visual {
+    width: 100% !important;
+    overflow: hidden !important;
+    margin-top: 1.75rem;
+  }
+  .iq-hero .fx-hero-visual .fx-dash {
+    width: 880px !important;
+    max-width: none !important;
+    max-height: none !important;
+    height: auto !important;
+    margin: 0 !important;
+    zoom: normal;
+    transform-origin: top left;
+  }
+
+  /* ── close the gap above the headline ───────────────────── */
+  .iq-hero,
+  section.iq-hero { padding-top: 78px !important; }
+  .iq-hero__inner {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+    min-height: 0 !important;
+    justify-content: flex-start !important;
+  }
+  .fx-hero-grid { gap: 0 !important; }
+  .iq-hero__h1 { margin-top: 0 !important; padding-top: 0 !important; }
+}
+
+/* transform does not shrink the box, so the wrapper is given the
+   scaled height at each step (880 × ratio ≈ deck height × ratio) */
+@media (max-width: 900px) {
+  .iq-hero .fx-hero-visual .fx-dash { transform: scale(.80); }
+  .iq-hero .fx-hero-visual { height: 496px; }
+}
+@media (max-width: 768px) {
+  .iq-hero .fx-hero-visual .fx-dash { transform: scale(.66); }
+  .iq-hero .fx-hero-visual { height: 410px; }
+}
+@media (max-width: 620px) {
+  .iq-hero .fx-hero-visual .fx-dash { transform: scale(.54); }
+  .iq-hero .fx-hero-visual { height: 336px; }
+}
+@media (max-width: 500px) {
+  .iq-hero .fx-hero-visual .fx-dash { transform: scale(.44); }
+  .iq-hero .fx-hero-visual { height: 274px; }
+}
+@media (max-width: 400px) {
+  .iq-hero .fx-hero-visual .fx-dash { transform: scale(.37); }
+  .iq-hero .fx-hero-visual { height: 232px; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   18. HERO DECK — deterministic crop + scale
+   Section 17 guessed the wrapper height at each step, so it
+   never matched the scaled deck: too short and the lower chart
+   row was cut, too tall and a dead band appeared underneath.
+
+   Fixing the deck's own height removes the guesswork. The deck
+   is laid out at a fixed 880 × 640 and crops itself there —
+   which is what the desktop card does too, it ends part-way
+   through the lower row. The wrapper height is then simply
+   640 × the scale, expressed through one --s variable so the
+   two can never drift apart again.
+   ═════════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  .iq-hero .fx-hero-visual {
+    --s: .80;
+    width: 100% !important;
+    height: calc(640px * var(--s)) !important;
+    overflow: hidden !important;
+    margin-top: 0 !important;
+  }
+  .iq-hero .fx-hero-visual .fx-dash {
+    width: 880px !important;
+    height: 640px !important;
+    max-width: none !important;
+    max-height: none !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    transform: scale(var(--s)) !important;
+    transform-origin: top left;
+  }
+
+  /* breathing room between the CTAs and the card */
+  .fx-hero-grid { gap: 2.25rem !important; }
+}
+
+@media (max-width: 768px) { .iq-hero .fx-hero-visual { --s: .66; } }
+@media (max-width: 620px) { .iq-hero .fx-hero-visual { --s: .54; } }
+@media (max-width: 500px) { .iq-hero .fx-hero-visual { --s: .45; } }
+@media (max-width: 400px) { .iq-hero .fx-hero-visual { --s: .38; } }
+
+/* nothing below the deck should inherit the hero's leftover space */
+@media (max-width: 900px) {
+  .iq-hero,
+  section.iq-hero { padding-bottom: 2.25rem !important; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   19. HERO DECK — lay it out wide, then shrink
+   At an 880px design width the six stage columns are too tight:
+   the names clip to "CODE G…", and the radar captions
+   ("SIGNALS / 7DAY", "12 KPIS MONITORED") run under the next
+   column. Laying the deck out at 1180px — the width it was
+   designed for — gives every label its room, and the smaller
+   scale factor brings it back to the phone.
+
+   Deck is 1180 × 660 and crops itself there, so the wrapper is
+   660 × --s and the two stay locked together.
+   ═════════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  .iq-hero .fx-hero-visual {
+    --s: .73;
+    height: calc(660px * var(--s)) !important;
+  }
+  .iq-hero .fx-hero-visual .fx-dash {
+    width: 1180px !important;
+    height: 660px !important;
+  }
+
+  /* the radar bookends get real width so their captions fit */
+  .iq-hero .fx-hero-visual .fxd-strip {
+    grid-template-columns: 116px minmax(0, 1fr) 116px !important;
+  }
+  .iq-hero .fx-hero-visual .fxd-radar { overflow: hidden !important; }
+  .iq-hero .fx-hero-visual .fxd-radar__unit,
+  .iq-hero .fx-hero-visual .fxd-radar__foot,
+  .iq-hero .fx-hero-visual .fxd-radar__lbl {
+    overflow: hidden !important;
+    text-overflow: clip !important;
+    max-width: 100% !important;
+  }
+
+  /* full-height plots again — there is room at this design width */
+  .iq-hero .fx-hero-visual .fxd-plot__area,
+  .iq-hero .fx-hero-visual .fxd-plot__yaxis { height: 56px !important; }
+}
+
+@media (max-width: 768px) { .iq-hero .fx-hero-visual { --s: .62; } }
+@media (max-width: 620px) { .iq-hero .fx-hero-visual { --s: .50; } }
+@media (max-width: 500px) { .iq-hero .fx-hero-visual { --s: .40; } }
+@media (max-width: 400px) { .iq-hero .fx-hero-visual { --s: .29; } }
+
+/* ═════════════════════════════════════════════════════════════
+   20. HERO DECK — finer scale steps, and the gap below
+   Two faults left:
+
+   1. The scale steps were 100px apart. Inside a step the deck
+      kept the larger factor, so at ~460px it was laid out at
+      1180 × .40 = 472px inside a ~428px column and hung off the
+      right edge. `scale()` cannot take a ratio of two lengths,
+      so the fix is finer steps: s ≈ (viewport − 32) / 1180 at
+      each one, which keeps the deck just inside its column.
+
+   2. The dead band under the card was not the deck at all —
+      `.iq-techstrip` carries `margin-top: 7rem` (112px), tuned
+      for desktop.
+   ═════════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) { .iq-hero .fx-hero-visual { --s: .72; } }
+@media (max-width: 860px) { .iq-hero .fx-hero-visual { --s: .69; } }
+@media (max-width: 820px) { .iq-hero .fx-hero-visual { --s: .65; } }
+@media (max-width: 780px) { .iq-hero .fx-hero-visual { --s: .62; } }
+@media (max-width: 740px) { .iq-hero .fx-hero-visual { --s: .58; } }
+@media (max-width: 700px) { .iq-hero .fx-hero-visual { --s: .55; } }
+@media (max-width: 660px) { .iq-hero .fx-hero-visual { --s: .52; } }
+@media (max-width: 620px) { .iq-hero .fx-hero-visual { --s: .48; } }
+@media (max-width: 580px) { .iq-hero .fx-hero-visual { --s: .45; } }
+@media (max-width: 540px) { .iq-hero .fx-hero-visual { --s: .42; } }
+@media (max-width: 500px) { .iq-hero .fx-hero-visual { --s: .38; } }
+@media (max-width: 460px) { .iq-hero .fx-hero-visual { --s: .35; } }
+@media (max-width: 430px) { .iq-hero .fx-hero-visual { --s: .32; } }
+@media (max-width: 400px) { .iq-hero .fx-hero-visual { --s: .30; } }
+@media (max-width: 375px) { .iq-hero .fx-hero-visual { --s: .27; } }
+@media (max-width: 345px) { .iq-hero .fx-hero-visual { --s: .25; } }
+
+/* ── close the band between the hero and the next section ──── */
+@media (max-width: 900px) {
+  .iq-techstrip {
+    margin-top: 2.5rem !important;
+    padding: 2rem 0 !important;
+  }
+  .iq-hero,
+  section.iq-hero { padding-bottom: 1.5rem !important; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   21. HERO DECK — leave headroom in the scale
+   The step values were computed as (viewport − 32) / 1180, i.e.
+   exactly the inner width of the column. That left zero slack,
+   so the deck's own 1px border and its shadow tipped it over the
+   edge and the wrapper's overflow clipped the DEPLOY column.
+
+   Recomputed as (viewport − 44) / 1180 and rounded down, so the
+   card always lands a little inside its column and shows the
+   same crop the desktop card does — full width, lower row cut.
+   ═════════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) { .iq-hero .fx-hero-visual { --s: .70; } }
+@media (max-width: 860px) { .iq-hero .fx-hero-visual { --s: .67; } }
+@media (max-width: 820px) { .iq-hero .fx-hero-visual { --s: .63; } }
+@media (max-width: 780px) { .iq-hero .fx-hero-visual { --s: .60; } }
+@media (max-width: 740px) { .iq-hero .fx-hero-visual { --s: .56; } }
+@media (max-width: 700px) { .iq-hero .fx-hero-visual { --s: .53; } }
+@media (max-width: 660px) { .iq-hero .fx-hero-visual { --s: .50; } }
+@media (max-width: 620px) { .iq-hero .fx-hero-visual { --s: .46; } }
+@media (max-width: 580px) { .iq-hero .fx-hero-visual { --s: .43; } }
+@media (max-width: 540px) { .iq-hero .fx-hero-visual { --s: .40; } }
+@media (max-width: 500px) { .iq-hero .fx-hero-visual { --s: .36; } }
+@media (max-width: 460px) { .iq-hero .fx-hero-visual { --s: .33; } }
+@media (max-width: 430px) { .iq-hero .fx-hero-visual { --s: .31; } }
+@media (max-width: 400px) { .iq-hero .fx-hero-visual { --s: .28; } }
+@media (max-width: 375px) { .iq-hero .fx-hero-visual { --s: .26; } }
+@media (max-width: 345px) { .iq-hero .fx-hero-visual { --s: .24; } }
+
+/* the deck's own chrome must not add to its 1180px footprint */
+@media (max-width: 900px) {
+  .iq-hero .fx-hero-visual .fx-dash {
+    box-sizing: border-box !important;
+    box-shadow: none !important;
+  }
+}

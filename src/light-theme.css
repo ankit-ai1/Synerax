@@ -1,0 +1,854 @@
+/* ═════════════════════════════════════════════════════════════
+   LIGHT THEME
+   Loaded last. Everything is scoped to :root[data-theme="light"],
+   so the dark stack above is untouched when the toggle is off.
+
+   Two passes:
+     1. Re-point every design token (global + per-component).
+     2. Undo the values earlier files hardcoded — the #fff text,
+        the rgba(255,255,255,…) hairlines, the inverted buttons.
+   ═════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   1. TOKENS
+   ───────────────────────────────────────────── */
+:root[data-theme='light'] {
+  /* In light mode the relationship inverts: the page is the tinted
+     surface and cards sit on top of it in white. Steps are spaced far
+     enough apart to actually read — the first pass had them all within
+     3% of each other, which is what made the whole thing look washed. */
+  --fx-00: #ffffff !important;   /* cards, heroes — the raised surface */
+  --fx-01: #f4f4f1 !important;   /* page floor */
+  --fx-02: #eaeae5 !important;   /* alternate band */
+  --fx-03: #ffffff !important;   /* card surface */
+  --fx-04: #f1f1ed !important;   /* sunk wells, chips */
+  --fx-05: #e6e6e0 !important;   /* hover */
+  --fx-06: #dcdcd5 !important;
+
+  --bg:            var(--fx-01) !important;
+  --surface:       var(--fx-03) !important;
+  --surface-2:     var(--fx-04) !important;
+  --surface-3:     var(--fx-05) !important;
+
+  --border:        rgba(18,18,26,.14) !important;
+  --border-strong: rgba(18,18,26,.28) !important;
+  --fx-hair:       rgba(18,18,26,.11);
+
+  /* Solid inks, not alpha. Low-alpha text over a light page is exactly
+     what reads as "faded"; these hit proper contrast ratios. */
+  --text:          #101015 !important;
+  --text-dim:      #52525c !important;
+  --text-faint:    #78787f !important;
+
+  /* A touch deeper than the dark-mode orange so it holds contrast on white */
+  --accent:        #e04e18 !important;
+  --accent-bright: #f2622e !important;
+  --accent-soft:   rgba(224,78,24,.10) !important;
+  --accent-line:   rgba(224,78,24,.32) !important;
+
+  --primary:       #e04e18 !important;
+
+  color-scheme: light;
+}
+
+/* Per-component palettes declared on their own roots */
+:root[data-theme='light'] .fx-dash--factory {
+  --d-line: rgba(18,18,26,.14);
+  --d-line-soft: rgba(18,18,26,.09);
+  --d-ink: #101015;
+  --d-mid: #52525c;
+  --d-low: #78787f;
+  --d-good: #3f7a2c;
+  --d-warn: #d24d17;
+}
+:root[data-theme='light'] .pfc {
+  --p-line: rgba(18,18,26,.14);
+  --p-grid: rgba(18,18,26,.12);
+  --p-ink: #101015;
+  --p-mid: #52525c;
+  --p-low: #78787f;
+  --p-orange: #e04e18;
+}
+:root[data-theme='light'] .fx-stick {
+  --s-line: rgba(18,18,26,.14);
+  --s-ink: #101015;
+  --s-mid: #52525c;
+  --s-low: #78787f;
+  --s-orange: #e04e18;
+}
+:root[data-theme='light'] .fx-slider {
+  --sl-line: rgba(18,18,26,.14);
+  --sl-ink: #101015;
+  --sl-mid: #52525c;
+  --sl-low: #78787f;
+  --sl-orange: #e04e18;
+}
+:root[data-theme='light'] .cc {
+  --c-line: rgba(18,18,26,.14);
+  --c-ink: #101015;
+  --c-mid: #52525c;
+  --c-low: #78787f;
+}
+
+/* ─────────────────────────────────────────────
+   2. PAGE + SECTION SURFACES
+   ───────────────────────────────────────────── */
+/* `html` is itself :root — it has to be selected directly, not as a
+   descendant, or the rule never matches. */
+:root[data-theme='light'],
+:root[data-theme='light'] body,
+:root[data-theme='light'] #root,
+:root[data-theme='light'] .app-shell,
+:root[data-theme='light'] main {
+  background: var(--fx-01) !important;
+  color: var(--text) !important;
+}
+
+:root[data-theme='light'] .iq-hero {
+  background:
+    radial-gradient(ellipse 62% 40% at 50% 18%, rgba(224,78,24,.07), transparent 70%),
+    var(--fx-00) !important;
+}
+:root[data-theme='light'] .iq-cta {
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(224,78,24,.06), transparent 72%),
+    var(--fx-02) !important;
+}
+:root[data-theme='light'] .iq-section--radial {
+  background:
+    radial-gradient(ellipse 55% 45% at 50% 0%, rgba(20,20,26,.03), transparent 68%),
+    var(--fx-02) !important;
+}
+:root[data-theme='light'] .iq-section--gradient {
+  background: linear-gradient(180deg, var(--fx-01), var(--fx-03)) !important;
+}
+:root[data-theme='light'] .fx-pagehero,
+:root[data-theme='light'] .srv-hero,
+:root[data-theme='light'] .bl-hero,
+:root[data-theme='light'] .car-hero,
+:root[data-theme='light'] .abt-hero {
+  background:
+    radial-gradient(ellipse 60% 40% at 50% 16%, rgba(224,78,24,.06), transparent 70%),
+    var(--fx-00) !important;
+}
+
+/* Card texture grid flips from white lines to ink lines */
+:root[data-theme='light'] .fx-card,
+:root[data-theme='light'] .fx-pillar,
+:root[data-theme='light'] .fx-wide-panel,
+:root[data-theme='light'] .fx-stage,
+:root[data-theme='light'] .fx-analytics,
+:root[data-theme='light'] .iq-careers-banner,
+:root[data-theme='light'] .iq-cta__panel,
+:root[data-theme='light'] .iq-news,
+:root[data-theme='light'] .iq-feat,
+:root[data-theme='light'] .iq-mini-card,
+:root[data-theme='light'] .iq-testi,
+:root[data-theme='light'] .iq-bigstat,
+:root[data-theme='light'] .iq-platform-item,
+:root[data-theme='light'] .adm-card,
+:root[data-theme='light'] .adm-panel,
+:root[data-theme='light'] .card {
+  background:
+    linear-gradient(to right, rgba(18,18,26,.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(18,18,26,.035) 1px, transparent 1px),
+    var(--fx-00) !important;
+  background-size: 56px 56px;
+  border-color: var(--border) !important;
+  /* white cards on a tinted page need a real shadow to separate */
+  box-shadow: 0 1px 2px rgba(18,18,26,.05), 0 4px 14px rgba(18,18,26,.05) !important;
+}
+:root[data-theme='light'] .fx-card:hover,
+:root[data-theme='light'] .fx-pillar:hover,
+:root[data-theme='light'] .iq-news:hover,
+:root[data-theme='light'] .fx-stage:hover,
+:root[data-theme='light'] .iq-feat:hover,
+:root[data-theme='light'] .iq-mini-card:hover,
+:root[data-theme='light'] .iq-platform-item:hover,
+:root[data-theme='light'] .iq-bigstat:hover {
+  background-color: var(--fx-00) !important;
+  border-color: var(--border-strong) !important;
+  box-shadow: 0 2px 4px rgba(18,18,26,.06), 0 10px 28px rgba(18,18,26,.09) !important;
+}
+
+:root[data-theme='light'] .nav__mega,
+:root[data-theme='light'] .nav__mobile {
+  background: var(--fx-00) !important;
+  border-color: var(--border) !important;
+  box-shadow: 0 20px 50px rgba(20,20,26,.14) !important;
+}
+
+/* ─────────────────────────────────────────────
+   3. TYPE — undo the hardcoded #fff
+   ───────────────────────────────────────────── */
+:root[data-theme='light'] h1,
+:root[data-theme='light'] h2,
+:root[data-theme='light'] h3,
+:root[data-theme='light'] .iq-hero__h1,
+:root[data-theme='light'] .iq-h2,
+:root[data-theme='light'] .section-title,
+:root[data-theme='light'] .iq-cta__h2,
+:root[data-theme='light'] .iq-cta__em,
+:root[data-theme='light'] .fx-stage__title,
+:root[data-theme='light'] .fx-pillar__title,
+:root[data-theme='light'] .fx-card__title,
+:root[data-theme='light'] .iq-news__title,
+:root[data-theme='light'] .fx-ind-title,
+:root[data-theme='light'] .fx-stick__title,
+:root[data-theme='light'] .iq-careers-banner__title,
+:root[data-theme='light'] .fx-pagehero h1,
+:root[data-theme='light'] .srv-hero__h1,
+:root[data-theme='light'] .bl-hero h1,
+:root[data-theme='light'] .car-hero h1 {
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+}
+
+:root[data-theme='light'] .iq-eye,
+:root[data-theme='light'] .iq-eye--light,
+:root[data-theme='light'] .section-tag,
+:root[data-theme='light'] .fx-viz__lbl,
+:root[data-theme='light'] .iq-techstrip__lbl {
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+}
+
+:root[data-theme='light'] .iq-body,
+:root[data-theme='light'] .iq-hero__sub,
+:root[data-theme='light'] .fx-lede,
+:root[data-theme='light'] .fx-stage__desc,
+:root[data-theme='light'] .fx-pillar__desc,
+:root[data-theme='light'] .fx-card__sub,
+:root[data-theme='light'] .fx-card__txt p,
+:root[data-theme='light'] .iq-news__desc,
+:root[data-theme='light'] .iq-cta__sub,
+:root[data-theme='light'] .ft-new__tagline,
+:root[data-theme='light'] .fx-ind-lede,
+:root[data-theme='light'] .fx-stick__desc,
+:root[data-theme='light'] .iq-section-hdr p,
+:root[data-theme='light'] p {
+  color: var(--text-dim) !important;
+}
+
+:root[data-theme='light'] .fx-dash__side-lbl,
+:root[data-theme='light'] .fx-stat__lbl,
+:root[data-theme='light'] .iq-news__tag,
+:root[data-theme='light'] .fx-micro,
+:root[data-theme='light'] .nav__mega-eyebrow,
+:root[data-theme='light'] .fx-platform-graph__head,
+:root[data-theme='light'] .fx-analytics__head,
+:root[data-theme='light'] .fx-platform-axis,
+:root[data-theme='light'] .fx-platform-tabs,
+:root[data-theme='light'] .fx-stick__desc,
+:root[data-theme='light'] .iq-mini-feed__sub,
+:root[data-theme='light'] .fx-ind-row__note {
+  color: var(--text-faint) !important;
+  -webkit-text-fill-color: var(--text-faint) !important;
+}
+
+:root[data-theme='light'] ::selection {
+  background: rgba(224,78,24,.22) !important;
+  color: #16161a !important;
+}
+:root[data-theme='light'] :focus-visible {
+  outline-color: var(--accent) !important;
+}
+
+/* ─────────────────────────────────────────────
+   4. NAV
+   ───────────────────────────────────────────── */
+:root[data-theme='light'] .nav,
+:root[data-theme='light'] .nav.scrolled {
+  background: rgba(255,255,255,.86) !important;
+  backdrop-filter: saturate(1.4) blur(14px);
+  border-bottom: 1px solid var(--border) !important;
+}
+/* the logo is a white PNG — it needs re-darkening, not inverting */
+:root[data-theme='light'] .nav__logo-img {
+  filter: brightness(0) !important;
+  opacity: .92 !important;
+}
+:root[data-theme='light'] .nav__links > li > a,
+:root[data-theme='light'] .nav__links > li > button,
+:root[data-theme='light'] .nav__dropdown-trigger,
+:root[data-theme='light'] .nav__dropdown-trigger .dropdown-arrow,
+:root[data-theme='light'] .nav__link,
+:root[data-theme='light'] .nav__sol-title {
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+}
+:root[data-theme='light'] .nav__links > li > a:hover,
+:root[data-theme='light'] .nav__links > li > a.active,
+:root[data-theme='light'] .nav__dropdown-trigger:hover,
+:root[data-theme='light'] .nav__dropdown.open .nav__dropdown-trigger {
+  color: var(--accent) !important;
+}
+:root[data-theme='light'] .nav__contact-btn {
+  color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  background: transparent !important;
+}
+:root[data-theme='light'] .nav__contact-btn:hover {
+  background: var(--accent) !important;
+  color: #fff !important;
+}
+:root[data-theme='light'] .nav__hamburger span,
+:root[data-theme='light'] .nav__mobile-close,
+:root[data-theme='light'] .nav__icon-btn { color: var(--text) !important; }
+:root[data-theme='light'] .nav__hamburger span { background: var(--text) !important; }
+
+/* ─────────────────────────────────────────────
+   5. BUTTONS
+   ───────────────────────────────────────────── */
+:root[data-theme='light'] .iq-btn-fill,
+:root[data-theme='light'] .iq-btn-fill--lg,
+:root[data-theme='light'] .btn--primary,
+:root[data-theme='light'] .btn--white,
+:root[data-theme='light'] .nav__cta,
+:root[data-theme='light'] .nav__mobile-cta-btn {
+  background: #16161a !important;
+  border-color: #16161a !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+:root[data-theme='light'] .iq-btn-fill:hover,
+:root[data-theme='light'] .btn--primary:hover,
+:root[data-theme='light'] .nav__cta:hover {
+  background: #000 !important;
+  border-color: #000 !important;
+}
+:root[data-theme='light'] .iq-btn-ring,
+:root[data-theme='light'] .iq-btn-ring--light,
+:root[data-theme='light'] .btn--outline,
+:root[data-theme='light'] .btn--ghost {
+  background: var(--fx-00) !important;
+  border-color: var(--border-strong) !important;
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+}
+:root[data-theme='light'] .iq-btn-ring:hover,
+:root[data-theme='light'] .iq-btn-ring--light:hover,
+:root[data-theme='light'] .btn--outline:hover {
+  background: var(--fx-04) !important;
+  border-color: var(--text) !important;
+  color: var(--text) !important;
+}
+
+/* ─────────────────────────────────────────────
+   6. HERO DASHBOARD + CHARTS
+   ───────────────────────────────────────────── */
+:root[data-theme='light'] .fx-dash--factory {
+  background:
+    linear-gradient(to right, rgba(20,20,26,.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20,20,26,.02) 1px, transparent 1px),
+    var(--fx-00) !important;
+  background-size: 34px 34px;
+  border-color: var(--d-line) !important;
+}
+:root[data-theme='light'] .fx-dash__bar,
+:root[data-theme='light'] .fx-dash__side { background: var(--fx-02) !important; }
+:root[data-theme='light'] .fxd-strip,
+:root[data-theme='light'] .fxd-card,
+:root[data-theme='light'] .fxd-log { background: var(--fx-01) !important; }
+:root[data-theme='light'] .fxd-card::before,
+:root[data-theme='light'] .fxd-card::after { border-color: rgba(20,20,26,.24) !important; }
+:root[data-theme='light'] .fxd-plot__tip { background: var(--fx-00) !important; }
+:root[data-theme='light'] .fx-dash__nav.is-active { background: rgba(20,20,26,.06) !important; }
+:root[data-theme='light'] .fxd-plot__cursor { background: rgba(20,20,26,.3) !important; }
+:root[data-theme='light'] .fxd-marker,
+:root[data-theme='light'] .pfc__marker { stroke: var(--fx-00) !important; }
+:root[data-theme='light'] .pfc__cursor { stroke: rgba(20,20,26,.3) !important; }
+:root[data-theme='light'] .pfc__readout {
+  background: var(--fx-00) !important;
+  box-shadow: 0 8px 24px rgba(20,20,26,.14) !important;
+}
+:root[data-theme='light'] .pfc__shape { fill: rgba(224,78,24,.14) !important; }
+:root[data-theme='light'] .pfc__tabs button.is-active::after { background: var(--text) !important; }
+:root[data-theme='light'] .pfc__tabs button:hover { background: rgba(20,20,26,.05) !important; }
+
+/* the dashboard's idle sheen was a white wash */
+:root[data-theme='light'] .fx-dash::after {
+  background: linear-gradient(180deg, transparent 0%, rgba(20,20,26,.03) 50%, transparent 100%) !important;
+}
+
+/* ─────────────────────────────────────────────
+   7. TESTIMONIALS + INDUSTRIES
+   ───────────────────────────────────────────── */
+:root[data-theme='light'] .fx-slider .iq-testi {
+  background:
+    radial-gradient(ellipse 90% 60% at 0% 0%, rgba(224,78,24,.05), transparent 62%),
+    linear-gradient(165deg, var(--fx-00) 0%, var(--fx-02) 78%) !important;
+  border-color: var(--sl-line) !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 10px 26px rgba(20,20,26,.07) !important;
+}
+:root[data-theme='light'] .fx-slider .iq-testi::before {
+  background: linear-gradient(90deg, transparent, rgba(20,20,26,.1) 22%, rgba(20,20,26,.1) 78%, transparent);
+}
+:root[data-theme='light'] .fx-slider .iq-testi:hover {
+  border-color: rgba(224,78,24,.35) !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 34px rgba(20,20,26,.11) !important;
+}
+:root[data-theme='light'] .fx-slider .iq-testi__av {
+  background: rgba(224,78,24,.1);
+  border-color: rgba(224,78,24,.3);
+}
+:root[data-theme='light'] .fx-slider__arrow { background: var(--fx-00); }
+:root[data-theme='light'] .fx-slider__arrow:hover { background: var(--fx-03); }
+:root[data-theme='light'] .fx-slider__seg { background: rgba(20,20,26,.14); }
+:root[data-theme='light'] .fx-slider__seg:hover { background: rgba(20,20,26,.3); }
+
+:root[data-theme='light'] .fx-ind-list,
+:root[data-theme='light'] .fx-ind-row { border-color: var(--border); }
+:root[data-theme='light'] .fx-ind-link:hover { background: rgba(20,20,26,.03); }
+:root[data-theme='light'] .fx-ind-marker { background: rgba(20,20,26,.24) !important; }
+:root[data-theme='light'] .fx-ind-row__name { color: var(--text-dim); }
+:root[data-theme='light'] .fx-ind-link:hover .fx-ind-row__name { color: var(--text); }
+:root[data-theme='light'] .fx-ind-row__note { color: var(--text-faint); }
+
+/* ─────────────────────────────────────────────
+   8. PLATFORM STRIP + FOOTER + MISC
+   ───────────────────────────────────────────── */
+:root[data-theme='light'] .fx-marquee__item {
+  filter: grayscale(1) brightness(.28) contrast(1.35) !important;
+  opacity: 1 !important;
+}
+:root[data-theme='light'] .fx-marquee__item:hover {
+  filter: grayscale(0) brightness(1) contrast(1) !important;
+  opacity: 1 !important;
+}
+:root[data-theme='light'] .fx-marquee__item span {
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+}
+
+:root[data-theme='light'] .ft-new,
+:root[data-theme='light'] .iq-techstrip { background: var(--fx-02) !important; }
+:root[data-theme='light'] .ft-new a { color: var(--text-dim) !important; }
+:root[data-theme='light'] .ft-new a:hover { color: var(--text) !important; }
+:root[data-theme='light'] .ft-new__logo-img { filter: brightness(0) !important; }
+
+:root[data-theme='light'] input,
+:root[data-theme='light'] textarea,
+:root[data-theme='light'] select {
+  background: var(--fx-00) !important;
+  border-color: var(--border) !important;
+  color: var(--text) !important;
+}
+:root[data-theme='light'] input::placeholder,
+:root[data-theme='light'] textarea::placeholder { color: var(--text-faint) !important; }
+
+:root[data-theme='light'] * { scrollbar-color: rgba(20,20,26,.28) var(--fx-01) !important; }
+:root[data-theme='light'] ::-webkit-scrollbar-track { background: var(--fx-01) !important; }
+:root[data-theme='light'] ::-webkit-scrollbar-thumb { background: rgba(20,20,26,.24) !important; }
+:root[data-theme='light'] ::-webkit-scrollbar-thumb:hover { background: rgba(20,20,26,.38) !important; }
+
+/* ─────────────────────────────────────────────
+   9. SWITCH TRANSITION
+   ───────────────────────────────────────────── */
+html, body {
+  transition: background-color .3s ease, color .3s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  html, body { transition: none !important; }
+}
+
+/* ═════════════════════════════════════════════════════════════
+   10. BROAD DE-FADE
+   The original stylesheets set colour with rgba(255,255,255,α)
+   in ~40 places and border-colour in many more. Enumerating each
+   one is unmaintainable, so light mode re-asserts the ink at the
+   element level and lets the exclusions protect the few things
+   that are meant to stay coloured or sit on a dark fill.
+   ═════════════════════════════════════════════════════════════ */
+
+/* NB: the accent exclusions are exact class names on purpose. A substring
+   match on 'em' also catches every `*-item`, which would leave those
+   elements faded — the exact bug this pass exists to fix. */
+:root[data-theme='light'] :is(p, li, dd, dt, blockquote, figcaption, small, label, address, td, th, summary):not(.iq-accent, .iq-em, .iq-cta__em, [class*='accent'], [class*='btn'], [class*='badge']) {
+  color: var(--text-dim) !important;
+  -webkit-text-fill-color: var(--text-dim) !important;
+}
+
+:root[data-theme='light'] :is(h1, h2, h3, h4, h5, h6, strong, b):not(.iq-accent, .iq-em, [class*='accent'], [class*='btn']) {
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+}
+
+/* Pull-quotes are ink, not secondary copy — the blockquote rule above
+   would otherwise dim them. */
+:root[data-theme='light'] .fx-slider .iq-testi__quote,
+:root[data-theme='light'] .iq-testi__quote {
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+}
+
+/* Links inherit unless they are a filled control */
+:root[data-theme='light'] a:not([class*='btn']):not([class*='cta']):not(.nav__contact-btn):not([class*='apply']) {
+  color: inherit;
+}
+
+/* Anything that keeps its accent colour */
+:root[data-theme='light'] :is(.iq-accent, .iq-em, .iq-btn-text, [class*='__accent'], [class*='-accent']) {
+  color: var(--accent) !important;
+  -webkit-text-fill-color: var(--accent) !important;
+}
+
+/* ── Hairlines ─────────────────────────────────────────────── */
+:root[data-theme='light'] [class*='-card'],
+:root[data-theme='light'] [class*='-box'],
+:root[data-theme='light'] [class*='-item'],
+:root[data-theme='light'] [class*='-panel'],
+:root[data-theme='light'] [class*='-tile'],
+:root[data-theme='light'] [class*='-chip'],
+:root[data-theme='light'] [class*='-badge'],
+:root[data-theme='light'] [class*='-row'],
+:root[data-theme='light'] [class*='-well'],
+:root[data-theme='light'] [class*='-field'],
+:root[data-theme='light'] [class*='-divider'],
+:root[data-theme='light'] [class*='-sep'],
+:root[data-theme='light'] hr {
+  border-color: var(--border) !important;
+}
+
+/* ── Fills that were dark-on-dark ──────────────────────────── */
+:root[data-theme='light'] :is(
+  .ab-team-card__avatar,
+  .ab-value-card__icon,
+  .ab-mv-card__badge,
+  .ab-step__num,
+  .bl-card__img-wrap,
+  .bpost-share__btn,
+  .car-skill-chip,
+  .ct-perk,
+  .ct-info-row,
+  .ind-stat,
+  .tech-tile,
+  .tl-usecase-icon,
+  .testi-nav,
+  .iq-mini-feed__item,
+  .iq-mini-badge
+) {
+  background-color: var(--fx-04) !important;
+  color: var(--text) !important;
+}
+
+/* ── Sub-labels that should sit one step back, not vanish ──── */
+:root[data-theme='light'] :is(
+  .ab-team-card__role,
+  .bl-card__meta,
+  .bl-featured__meta,
+  .bpost-meta-text,
+  .bl-meta-text,
+  .car-job-card__meta,
+  .ct-info-card__sub,
+  .iq-mini-feed__sub,
+  .iq-mini-feed__time,
+  .testi-card__role,
+  .tl-related__label,
+  .wp-sub
+) {
+  color: var(--text-faint) !important;
+  -webkit-text-fill-color: var(--text-faint) !important;
+}
+
+/* ── Overlays and scrims built for a dark page ─────────────── */
+:root[data-theme='light'] :is(
+  .bl-featured__img-overlay,
+  .ab-hero__overlay,
+  .bpost-cover::after
+) {
+  background: linear-gradient(180deg, transparent, rgba(18,18,26,.35)) !important;
+}
+
+/* ── Dark-on-dark blocks that must invert wholesale ────────── */
+:root[data-theme='light'] :is(.tl-dark-feature, .cta-band, .ind-cta, .iq-careers-banner) {
+  background-color: var(--fx-02) !important;
+  color: var(--text) !important;
+}
+:root[data-theme='light'] :is(.tl-dark-feature, .cta-band, .ind-cta, .iq-careers-banner) :is(h1,h2,h3,p,span,li) {
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+}
+
+/* ── Controls keep white text on their dark fill ───────────── */
+:root[data-theme='light'] :is(.iq-btn-fill, .btn--primary, .nav__cta, .car-apply-btn, .ct-form__submit, .bl-newsletter__btn, .bl-filter--active, .nav__mobile-cta-btn),
+:root[data-theme='light'] :is(.iq-btn-fill, .btn--primary, .car-apply-btn, .ct-form__submit) :is(span, b, strong) {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+:root[data-theme='light'] .nav__contact-btn:hover {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* ═════════════════════════════════════════════════════════════
+   11. ACCENT HEADINGS (light only)
+   The hero sets its emphasis in orange; light mode extends that
+   to every section heading site-wide. Across the pages the
+   pattern is consistent — the emphasised words are wrapped in a
+   <span> (sometimes a page-specific *__accent class), so one
+   rule reaches all of them.
+
+   Scoped to h1/h2 and the section-title classes: card titles are
+   h3/h4 and stay ink. Dark mode is untouched — this whole block
+   lives under [data-theme='light'].
+   ═════════════════════════════════════════════════════════════ */
+:root[data-theme='light'] :is(h1, h2, .iq-h2, .section-title, .iq-cta__h2) :is(span, em, i) {
+  color: var(--accent) !important;
+  -webkit-text-fill-color: var(--accent) !important;
+  font-style: normal !important;
+}
+
+/* `.fx-line` (hero line masks) and `.fx-word` (per-word reveal spans) wrap
+   whole lines rather than the emphasis, so orange-ing them would flood the
+   entire heading. Hand those back to the heading colour. */
+:root[data-theme='light'] .fx-line,
+:root[data-theme='light'] .fx-line > span,
+:root[data-theme='light'] .fx-word,
+:root[data-theme='light'] .fx-word > span,
+:root[data-theme='light'] :is(h1, h2) :is(span, em)[class*='btn'],
+:root[data-theme='light'] :is(h1, h2) :is(span, em)[class*='badge'] {
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+}
+
+/* Re-assert the real accent marks last so they survive the reset above —
+   this is what keeps the hero's own emphasis orange. */
+:root[data-theme='light'] .iq-accent,
+:root[data-theme='light'] .iq-em,
+:root[data-theme='light'] .iq-cta__em,
+:root[data-theme='light'] [class$='__accent'],
+:root[data-theme='light'] .pp-accent,
+:root[data-theme='light'] .fx-line .iq-em,
+:root[data-theme='light'] .fx-line .iq-accent {
+  color: var(--accent) !important;
+  -webkit-text-fill-color: var(--accent) !important;
+  font-style: normal !important;
+}
+
+/* ═════════════════════════════════════════════════════════════
+   12. INK RE-ASSERT — must be the last word
+   Section 10's broad de-fade matches by element, and the section
+   eyebrows are `<p class="iq-eye">`, so they were being pulled
+   down to --text-dim after section 3 had already set them to ink.
+   Nav items sit in `<li>`, which the same rule dims.
+
+   This block runs last so the two things a reader scans first —
+   the menu and the section label — are full black.
+   ═════════════════════════════════════════════════════════════ */
+
+:root[data-theme='light'] .nav__links > li > a,
+:root[data-theme='light'] .nav__links > li > button,
+:root[data-theme='light'] .nav__links li,
+:root[data-theme='light'] .nav__dropdown-trigger,
+:root[data-theme='light'] .nav__dropdown-trigger .dropdown-arrow,
+:root[data-theme='light'] .nav__link,
+:root[data-theme='light'] .nav__sol-title,
+:root[data-theme='light'] .nav__mobile-acc,
+:root[data-theme='light'] .nav__mobile-sublink {
+  color: #0b0b0f !important;
+  -webkit-text-fill-color: #0b0b0f !important;
+  opacity: 1 !important;
+}
+:root[data-theme='light'] .nav__links > li > a:hover,
+:root[data-theme='light'] .nav__links > li > a.active,
+:root[data-theme='light'] .nav__dropdown-trigger:hover,
+:root[data-theme='light'] .nav__dropdown.open .nav__dropdown-trigger {
+  color: var(--accent) !important;
+  -webkit-text-fill-color: var(--accent) !important;
+}
+
+/* Every section eyebrow / kicker, whatever element it happens to be */
+:root[data-theme='light'] .iq-eye,
+:root[data-theme='light'] .iq-eye--light,
+:root[data-theme='light'] .section-tag,
+:root[data-theme='light'] .ab-section-tag,
+:root[data-theme='light'] .fx-viz__lbl,
+:root[data-theme='light'] .iq-techstrip__lbl,
+:root[data-theme='light'] .ab-hero__tag,
+:root[data-theme='light'] .bl-hero__label,
+:root[data-theme='light'] .car-hero__label,
+:root[data-theme='light'] .ct-hero__tag,
+:root[data-theme='light'] .ct-left__tag,
+:root[data-theme='light'] .cta-band__tag,
+:root[data-theme='light'] .tl-hero__tag,
+:root[data-theme='light'] .tl-related__label,
+:root[data-theme='light'] .st-card__label,
+:root[data-theme='light'] .ct-details-box__label,
+:root[data-theme='light'] .ct-info-card__label,
+:root[data-theme='light'] .bpost-sidebar__label,
+:root[data-theme='light'] .ind-hero__chip {
+  color: #0b0b0f !important;
+  -webkit-text-fill-color: #0b0b0f !important;
+  opacity: 1 !important;
+}
+
+/* Headings stay ink too — `h1..h6` are not in the de-fade list, but
+   a heading wrapped in a <p>-like element would be. */
+:root[data-theme='light'] .iq-h2,
+:root[data-theme='light'] .iq-hero__h1,
+:root[data-theme='light'] .section-title,
+:root[data-theme='light'] .fx-stick__title,
+:root[data-theme='light'] .iq-careers-banner__title {
+  color: #0b0b0f !important;
+  -webkit-text-fill-color: #0b0b0f !important;
+}
+
+/* ═════════════════════════════════════════════════════════════
+   13. INK — specificity-proof
+   Section 12 still lost. The de-fade selector in section 10 is
+   `:root[data-theme] :is(p, li, …):not(.iq-accent, …)`, and
+   `:not()` inherits the specificity of its most specific
+   argument — a class — so it scores (0,3,1). Section 12's
+   `:root[data-theme] .iq-eye` is only (0,3,0), and with both
+   sides !important the higher score wins.
+
+   Doubling the class (`.iq-eye.iq-eye`) lifts these to (0,4,0)
+   without changing what they match. Weight goes up too: 11px
+   mono at 400 reads washed on white even when it is pure black.
+   ═════════════════════════════════════════════════════════════ */
+
+:root[data-theme='light'] .iq-eye.iq-eye,
+:root[data-theme='light'] .iq-eye--light.iq-eye--light,
+:root[data-theme='light'] .section-tag.section-tag,
+:root[data-theme='light'] .ab-section-tag.ab-section-tag,
+:root[data-theme='light'] .fx-viz__lbl.fx-viz__lbl,
+:root[data-theme='light'] .iq-techstrip__lbl.iq-techstrip__lbl,
+:root[data-theme='light'] .ab-hero__tag.ab-hero__tag,
+:root[data-theme='light'] .bl-hero__label.bl-hero__label,
+:root[data-theme='light'] .car-hero__label.car-hero__label,
+:root[data-theme='light'] .ct-hero__tag.ct-hero__tag,
+:root[data-theme='light'] .ct-left__tag.ct-left__tag,
+:root[data-theme='light'] .cta-band__tag.cta-band__tag,
+:root[data-theme='light'] .tl-hero__tag.tl-hero__tag,
+:root[data-theme='light'] .tl-related__label.tl-related__label,
+:root[data-theme='light'] .st-card__label.st-card__label,
+:root[data-theme='light'] .ct-details-box__label.ct-details-box__label,
+:root[data-theme='light'] .ct-info-card__label.ct-info-card__label,
+:root[data-theme='light'] .bpost-sidebar__label.bpost-sidebar__label,
+:root[data-theme='light'] .ind-hero__chip.ind-hero__chip,
+:root[data-theme='light'] .bl-grid-label.bl-grid-label {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
+}
+
+/* Nav resolves to ink already, but 11px mono at weight 400 still
+   reads light — give it the same treatment. */
+:root[data-theme='light'] .nav__links > li > a,
+:root[data-theme='light'] .nav__links > li > button,
+:root[data-theme='light'] .nav__dropdown-trigger,
+:root[data-theme='light'] .nav__dropdown-trigger .dropdown-arrow,
+:root[data-theme='light'] .nav__link {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
+}
+
+/* Section headings to true black as well */
+:root[data-theme='light'] .iq-h2.iq-h2,
+:root[data-theme='light'] .section-title.section-title,
+:root[data-theme='light'] .iq-hero__h1.iq-hero__h1,
+:root[data-theme='light'] .fx-stick__title.fx-stick__title,
+:root[data-theme='light'] h1, :root[data-theme='light'] h2,
+:root[data-theme='light'] h3, :root[data-theme='light'] h4 {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+/* ═════════════════════════════════════════════════════════════
+   14. PROBLEM SECTION STATS
+   Two light-mode faults:
+
+   1. The gauge under each number is painted with `var(--border)`,
+      which is rgba(18,18,26,.14) here — invisible against the
+      section. The keyframes reference the same variable, so
+      redefining it locally on the meter fixes the static bars,
+      the entrance and the scan animation in one go.
+
+   2. `.is-lit` stacks an orange spotlight behind the number and a
+      26px glow on the text. Tuned for a dark page, on white the
+      glow blooms over the digits and the number reads as blank.
+   ═════════════════════════════════════════════════════════════ */
+
+/* ── 1. the gauge ───────────────────────────────────────────── */
+:root[data-theme='light'] .fx-stat__meter {
+  /* the keyframes read --border, so scoping it here recolours
+     the resting state and the scan together */
+  --border: rgba(18,18,26,.30);
+}
+:root[data-theme='light'] .fx-stat__meter i {
+  background: rgba(18,18,26,.30);
+}
+:root[data-theme='light'] .fx-stat__meter i:nth-child(-n + 7) {
+  background: var(--accent);
+}
+
+/* ── 2. the number stays ink in every state ─────────────────── */
+:root[data-theme='light'] .fx-stat__num,
+:root[data-theme='light'] .fx-stat__num *,
+:root[data-theme='light'] .fx-stat:hover .fx-stat__num,
+:root[data-theme='light'] .fx-stat:hover .fx-stat__num *,
+:root[data-theme='light'] .fx-stat.is-lit .fx-stat__num,
+:root[data-theme='light'] .fx-stat.is-lit .fx-stat__num * {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  /* neutralise any gradient-clipped text treatment */
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  text-shadow: none !important;
+}
+
+/* a restrained warm tint instead of the dark-mode bloom */
+:root[data-theme='light'] .fx-stat.is-lit .fx-stat__num {
+  text-shadow: 0 0 18px rgba(224,78,24,.18) !important;
+}
+
+/* ── 3. the spotlight, sized for a dark page ────────────────── */
+:root[data-theme='light'] .fx-stat__spot,
+:root[data-theme='light'] .fx-stat:hover .fx-stat__spot,
+:root[data-theme='light'] .fx-stat.is-lit .fx-stat__spot {
+  background: radial-gradient(320px circle at 20% 0%, rgba(224,78,24,.07), transparent 70%) !important;
+}
+:root[data-theme='light'] .fx-stat:hover,
+:root[data-theme='light'] .fx-stat.is-lit {
+  background: rgba(224,78,24,.045) !important;
+}
+
+/* index numeral and dividers */
+:root[data-theme='light'] .fx-stat__idx { color: var(--text-faint) !important; }
+:root[data-theme='light'] .fx-stat:hover .fx-stat__idx,
+:root[data-theme='light'] .fx-stat.is-lit .fx-stat__idx { color: var(--accent) !important; }
+:root[data-theme='light'] .fx-stat { border-right-color: var(--border) !important; }
+:root[data-theme='light'] .fx-statrow {
+  border-top-color: var(--border) !important;
+  border-bottom-color: var(--border) !important;
+}
+
+/* ═════════════════════════════════════════════════════════════
+   15. STAT GAUGE — visible bars that still scan
+   `!important` on the bar background would have fixed the
+   contrast but killed the scan: a CSS animation cannot override
+   an !important author declaration. So the resting colour wins on
+   specificity alone, and the scan gets its own light keyframes
+   with literal colours rather than the near-invisible --border.
+   ═════════════════════════════════════════════════════════════ */
+
+@keyframes fx-stat-scan-light {
+  0%, 100% { background: rgba(18,18,26,.26); }
+  30%      { background: #e04e18; }
+}
+
+:root[data-theme='light'] .fx-stat__meter i {
+  background: rgba(18,18,26,.26);
+}
+:root[data-theme='light'] .fx-stat__meter i:nth-child(-n + 7) {
+  background: #e04e18;
+}
+:root[data-theme='light'] .fx-stat:hover .fx-stat__meter i,
+:root[data-theme='light'] .fx-stat.is-lit .fx-stat__meter i {
+  animation-name: fx-stat-scan-light;
+}

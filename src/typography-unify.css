@@ -1,0 +1,339 @@
+/* ═════════════════════════════════════════════════════════════
+   TYPOGRAPHY UNIFY — every page on the homepage's type system
+   Loaded after factory-tone.css, which owns the homepage rules.
+   Inner pages each grew their own heading/body classes (ab-*,
+   bl-*, car-*, ct-*, ind-*, tl-*, pp-*, st-*, wp-*, bpost-*),
+   so they never picked those rules up. This maps them all onto
+   the same four roles:
+
+     1. Page hero H1   — display sans, very tight
+     2. Section title  — sans, ~40px ceiling
+     3. Card title     — sans 500, small
+     4. Eyebrow / body — mono uppercase label, mono grey copy
+   ═════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   1. PAGE HERO H1
+   ───────────────────────────────────────────── */
+.ab-hero__h1,
+.bl-hero__h1,
+.bpost-hero__h1,
+.car-hero__h1,
+.ct-hero__h1,
+.ind-hero__h1,
+.pp-hero__h1,
+.srv-hero__h1,
+.tl-hero__h1,
+.fx-pagehero h1 {
+  font-family: var(--font-heading) !important;
+  font-weight: 400 !important;
+  font-size: clamp(2.1rem, 4.4vw, 3.9rem) !important;
+  line-height: 1.04 !important;
+  letter-spacing: -.042em !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  text-transform: none !important;
+  text-wrap: balance;
+}
+
+/* ─────────────────────────────────────────────
+   2. SECTION TITLES
+   ───────────────────────────────────────────── */
+.ab-mv__title,
+.ab-process__title,
+.bl-newsletter__h2,
+.bpost-related__title,
+.car-benefits__h2,
+.car-jobs__h2,
+.car-process__h2,
+.car-values__h2,
+.ct-faq__h2,
+.ct-left__h2,
+.ind-benefits__title,
+.ind-challenges__title,
+.ind-compliance__title,
+.ind-cta__title,
+.ind-specialized__title,
+.st-section__title,
+.tech-category__title,
+.tl-enterprise__title {
+  font-family: var(--font-heading) !important;
+  font-weight: 400 !important;
+  font-size: clamp(1.7rem, 2.9vw, 2.6rem) !important;
+  line-height: 1.14 !important;
+  letter-spacing: -.032em !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  text-transform: none !important;
+  text-wrap: balance;
+}
+
+/* ─────────────────────────────────────────────
+   3. CARD TITLES
+   ───────────────────────────────────────────── */
+.ab-mv-card__title,
+.ab-step__title,
+.bl-card__title,
+.bl-featured__title,
+.car-benefit-card__title,
+.car-job-card__title,
+.car-val-card__title,
+.ind-feature__title,
+.ind-spec-card__title,
+.pp-card__title,
+.tl-cap-card__title,
+.wp-card__title,
+.tech-tile__name,
+.testi-card__name {
+  font-family: var(--font-heading) !important;
+  font-weight: 500 !important;
+  font-size: clamp(1.05rem, 1.4vw, 1.35rem) !important;
+  line-height: 1.18 !important;
+  letter-spacing: -.026em !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  text-transform: none !important;
+}
+
+/* ─────────────────────────────────────────────
+   4. EYEBROWS / MICRO LABELS — mono uppercase
+   ───────────────────────────────────────────── */
+.ab-hero__tag,
+.bl-hero__label,
+.bpost-sidebar__label,
+.car-hero__label,
+.ct-details-box__label,
+.ct-hero__tag,
+.ct-info-card__label,
+.ct-left__tag,
+.cta-band__tag,
+.st-card__label,
+.tl-hero__tag,
+.tl-related__label,
+.bl-card__tag-badge {
+  font-family: var(--font-mono) !important;
+  font-size: .6875rem !important;
+  font-weight: 400 !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  opacity: 1 !important;
+}
+
+/* ─────────────────────────────────────────────
+   5. BODY COPY — mono grey, matching the homepage
+   ───────────────────────────────────────────── */
+.ab-hero__sub,
+.ab-mv__sub,
+.ab-mv-card__desc,
+.ab-process__sub,
+.ab-step__desc,
+.about-story__text,
+.bl-card__desc,
+.bl-card__body,
+.bl-featured__desc,
+.bl-featured__body,
+.bl-hero__sub,
+.bl-newsletter__sub,
+.bpost-cta-box__text,
+.bpost-hero__desc,
+.bpost-sidebar__text,
+.car-benefit-card__desc,
+.car-benefits__sub,
+.car-general-apply__text,
+.car-hero__sub,
+.car-process__sub,
+.car-val-card__desc,
+.ct-faq__sub,
+.ct-hero__sub,
+.ct-info-card__body,
+.ct-info-card__sub,
+.ct-left__desc,
+.ind-challenges__desc,
+.ind-compliance__desc,
+.ind-compliance__text,
+.ind-cta__desc,
+.ind-feature__desc,
+.ind-feature__text,
+.ind-hero__desc,
+.pp-card__body,
+.pp-cta__tagline,
+.pp-hero__sub,
+.st-card__desc,
+.st-card__body,
+.st-section__sub,
+.tl-cap-card__desc,
+.tl-dark-feature__sub,
+.tl-dark-feature__text,
+.tl-enterprise__desc,
+.tl-enterprise__text,
+.tl-hero__desc,
+.tl-techstack__text,
+.tl-usecases__text,
+.wp-card__desc,
+.testi-card__role {
+  font-family: var(--font-mono) !important;
+  font-size: .9375rem !important;
+  font-weight: 400 !important;
+  line-height: 1.65 !important;
+  letter-spacing: 0 !important;
+  color: rgba(255,255,255,.5) !important;
+  -webkit-text-fill-color: rgba(255,255,255,.5) !important;
+}
+
+/* Roles and captions sit a step smaller than body copy */
+.testi-card__role,
+.ct-info-card__sub,
+.bpost-sidebar__text {
+  font-size: .6875rem !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  color: rgba(255,255,255,.38) !important;
+  -webkit-text-fill-color: rgba(255,255,255,.38) !important;
+}
+
+/* ─────────────────────────────────────────────
+   6. LINKS — same mono affordance as the homepage
+   ───────────────────────────────────────────── */
+.srv-card__link,
+.tl-cap-card__link,
+.iq-news__link {
+  font-family: var(--font-mono) !important;
+  font-size: .6875rem !important;
+  letter-spacing: .1em !important;
+  text-transform: uppercase !important;
+}
+
+/* ─────────────────────────────────────────────
+   7. LIGHT THEME
+   The rules above hardcode #fff so they beat the per-page
+   values; light mode has to hand the colours back.
+   ───────────────────────────────────────────── */
+:root[data-theme='light'] .ab-hero__h1,
+:root[data-theme='light'] .bl-hero__h1,
+:root[data-theme='light'] .bpost-hero__h1,
+:root[data-theme='light'] .car-hero__h1,
+:root[data-theme='light'] .ct-hero__h1,
+:root[data-theme='light'] .ind-hero__h1,
+:root[data-theme='light'] .pp-hero__h1,
+:root[data-theme='light'] .srv-hero__h1,
+:root[data-theme='light'] .tl-hero__h1,
+:root[data-theme='light'] .ab-mv__title,
+:root[data-theme='light'] .ab-process__title,
+:root[data-theme='light'] .bl-newsletter__h2,
+:root[data-theme='light'] .bpost-related__title,
+:root[data-theme='light'] .car-benefits__h2,
+:root[data-theme='light'] .car-jobs__h2,
+:root[data-theme='light'] .car-process__h2,
+:root[data-theme='light'] .car-values__h2,
+:root[data-theme='light'] .ct-faq__h2,
+:root[data-theme='light'] .ct-left__h2,
+:root[data-theme='light'] .ind-benefits__title,
+:root[data-theme='light'] .ind-challenges__title,
+:root[data-theme='light'] .ind-compliance__title,
+:root[data-theme='light'] .ind-cta__title,
+:root[data-theme='light'] .ind-specialized__title,
+:root[data-theme='light'] .st-section__title,
+:root[data-theme='light'] .tech-category__title,
+:root[data-theme='light'] .tl-enterprise__title,
+:root[data-theme='light'] .ab-mv-card__title,
+:root[data-theme='light'] .ab-step__title,
+:root[data-theme='light'] .bl-card__title,
+:root[data-theme='light'] .bl-featured__title,
+:root[data-theme='light'] .car-benefit-card__title,
+:root[data-theme='light'] .car-job-card__title,
+:root[data-theme='light'] .car-val-card__title,
+:root[data-theme='light'] .ind-feature__title,
+:root[data-theme='light'] .ind-spec-card__title,
+:root[data-theme='light'] .pp-card__title,
+:root[data-theme='light'] .tl-cap-card__title,
+:root[data-theme='light'] .wp-card__title,
+:root[data-theme='light'] .tech-tile__name,
+:root[data-theme='light'] .testi-card__name,
+:root[data-theme='light'] .ab-hero__tag,
+:root[data-theme='light'] .bl-hero__label,
+:root[data-theme='light'] .bpost-sidebar__label,
+:root[data-theme='light'] .car-hero__label,
+:root[data-theme='light'] .ct-details-box__label,
+:root[data-theme='light'] .ct-hero__tag,
+:root[data-theme='light'] .ct-info-card__label,
+:root[data-theme='light'] .ct-left__tag,
+:root[data-theme='light'] .cta-band__tag,
+:root[data-theme='light'] .st-card__label,
+:root[data-theme='light'] .tl-hero__tag,
+:root[data-theme='light'] .tl-related__label,
+:root[data-theme='light'] .bl-card__tag-badge {
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+}
+
+:root[data-theme='light'] .ab-hero__sub,
+:root[data-theme='light'] .ab-mv__sub,
+:root[data-theme='light'] .ab-mv-card__desc,
+:root[data-theme='light'] .ab-process__sub,
+:root[data-theme='light'] .ab-step__desc,
+:root[data-theme='light'] .about-story__text,
+:root[data-theme='light'] .bl-card__desc,
+:root[data-theme='light'] .bl-card__body,
+:root[data-theme='light'] .bl-featured__desc,
+:root[data-theme='light'] .bl-featured__body,
+:root[data-theme='light'] .bl-hero__sub,
+:root[data-theme='light'] .bl-newsletter__sub,
+:root[data-theme='light'] .bpost-cta-box__text,
+:root[data-theme='light'] .bpost-hero__desc,
+:root[data-theme='light'] .car-benefit-card__desc,
+:root[data-theme='light'] .car-benefits__sub,
+:root[data-theme='light'] .car-general-apply__text,
+:root[data-theme='light'] .car-hero__sub,
+:root[data-theme='light'] .car-process__sub,
+:root[data-theme='light'] .car-val-card__desc,
+:root[data-theme='light'] .ct-faq__sub,
+:root[data-theme='light'] .ct-hero__sub,
+:root[data-theme='light'] .ct-info-card__body,
+:root[data-theme='light'] .ct-left__desc,
+:root[data-theme='light'] .ind-challenges__desc,
+:root[data-theme='light'] .ind-compliance__desc,
+:root[data-theme='light'] .ind-compliance__text,
+:root[data-theme='light'] .ind-cta__desc,
+:root[data-theme='light'] .ind-feature__desc,
+:root[data-theme='light'] .ind-feature__text,
+:root[data-theme='light'] .ind-hero__desc,
+:root[data-theme='light'] .pp-card__body,
+:root[data-theme='light'] .pp-cta__tagline,
+:root[data-theme='light'] .pp-hero__sub,
+:root[data-theme='light'] .st-card__desc,
+:root[data-theme='light'] .st-card__body,
+:root[data-theme='light'] .st-section__sub,
+:root[data-theme='light'] .tl-cap-card__desc,
+:root[data-theme='light'] .tl-dark-feature__sub,
+:root[data-theme='light'] .tl-dark-feature__text,
+:root[data-theme='light'] .tl-enterprise__desc,
+:root[data-theme='light'] .tl-enterprise__text,
+:root[data-theme='light'] .tl-hero__desc,
+:root[data-theme='light'] .tl-techstack__text,
+:root[data-theme='light'] .tl-usecases__text,
+:root[data-theme='light'] .wp-card__desc {
+  color: var(--text-dim) !important;
+  -webkit-text-fill-color: var(--text-dim) !important;
+}
+
+:root[data-theme='light'] .testi-card__role,
+:root[data-theme='light'] .ct-info-card__sub,
+:root[data-theme='light'] .bpost-sidebar__text {
+  color: var(--text-faint) !important;
+  -webkit-text-fill-color: var(--text-faint) !important;
+}
+
+/* ─────────────────────────────────────────────
+   8. NARROW
+   ───────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .ab-hero__sub,
+  .bl-hero__sub,
+  .car-hero__sub,
+  .ct-hero__sub,
+  .ind-hero__desc,
+  .pp-hero__sub,
+  .tl-hero__desc { font-size: .875rem !important; }
+}

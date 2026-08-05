@@ -625,3 +625,230 @@ html, body {
   -webkit-text-fill-color: var(--accent) !important;
   font-style: normal !important;
 }
+
+/* ═════════════════════════════════════════════════════════════
+   12. INK RE-ASSERT — must be the last word
+   Section 10's broad de-fade matches by element, and the section
+   eyebrows are `<p class="iq-eye">`, so they were being pulled
+   down to --text-dim after section 3 had already set them to ink.
+   Nav items sit in `<li>`, which the same rule dims.
+
+   This block runs last so the two things a reader scans first —
+   the menu and the section label — are full black.
+   ═════════════════════════════════════════════════════════════ */
+
+:root[data-theme='light'] .nav__links > li > a,
+:root[data-theme='light'] .nav__links > li > button,
+:root[data-theme='light'] .nav__links li,
+:root[data-theme='light'] .nav__dropdown-trigger,
+:root[data-theme='light'] .nav__dropdown-trigger .dropdown-arrow,
+:root[data-theme='light'] .nav__link,
+:root[data-theme='light'] .nav__sol-title,
+:root[data-theme='light'] .nav__mobile-acc,
+:root[data-theme='light'] .nav__mobile-sublink {
+  color: #0b0b0f !important;
+  -webkit-text-fill-color: #0b0b0f !important;
+  opacity: 1 !important;
+}
+:root[data-theme='light'] .nav__links > li > a:hover,
+:root[data-theme='light'] .nav__links > li > a.active,
+:root[data-theme='light'] .nav__dropdown-trigger:hover,
+:root[data-theme='light'] .nav__dropdown.open .nav__dropdown-trigger {
+  color: var(--accent) !important;
+  -webkit-text-fill-color: var(--accent) !important;
+}
+
+/* Every section eyebrow / kicker, whatever element it happens to be */
+:root[data-theme='light'] .iq-eye,
+:root[data-theme='light'] .iq-eye--light,
+:root[data-theme='light'] .section-tag,
+:root[data-theme='light'] .ab-section-tag,
+:root[data-theme='light'] .fx-viz__lbl,
+:root[data-theme='light'] .iq-techstrip__lbl,
+:root[data-theme='light'] .ab-hero__tag,
+:root[data-theme='light'] .bl-hero__label,
+:root[data-theme='light'] .car-hero__label,
+:root[data-theme='light'] .ct-hero__tag,
+:root[data-theme='light'] .ct-left__tag,
+:root[data-theme='light'] .cta-band__tag,
+:root[data-theme='light'] .tl-hero__tag,
+:root[data-theme='light'] .tl-related__label,
+:root[data-theme='light'] .st-card__label,
+:root[data-theme='light'] .ct-details-box__label,
+:root[data-theme='light'] .ct-info-card__label,
+:root[data-theme='light'] .bpost-sidebar__label,
+:root[data-theme='light'] .ind-hero__chip {
+  color: #0b0b0f !important;
+  -webkit-text-fill-color: #0b0b0f !important;
+  opacity: 1 !important;
+}
+
+/* Headings stay ink too — `h1..h6` are not in the de-fade list, but
+   a heading wrapped in a <p>-like element would be. */
+:root[data-theme='light'] .iq-h2,
+:root[data-theme='light'] .iq-hero__h1,
+:root[data-theme='light'] .section-title,
+:root[data-theme='light'] .fx-stick__title,
+:root[data-theme='light'] .iq-careers-banner__title {
+  color: #0b0b0f !important;
+  -webkit-text-fill-color: #0b0b0f !important;
+}
+
+/* ═════════════════════════════════════════════════════════════
+   13. INK — specificity-proof
+   Section 12 still lost. The de-fade selector in section 10 is
+   `:root[data-theme] :is(p, li, …):not(.iq-accent, …)`, and
+   `:not()` inherits the specificity of its most specific
+   argument — a class — so it scores (0,3,1). Section 12's
+   `:root[data-theme] .iq-eye` is only (0,3,0), and with both
+   sides !important the higher score wins.
+
+   Doubling the class (`.iq-eye.iq-eye`) lifts these to (0,4,0)
+   without changing what they match. Weight goes up too: 11px
+   mono at 400 reads washed on white even when it is pure black.
+   ═════════════════════════════════════════════════════════════ */
+
+:root[data-theme='light'] .iq-eye.iq-eye,
+:root[data-theme='light'] .iq-eye--light.iq-eye--light,
+:root[data-theme='light'] .section-tag.section-tag,
+:root[data-theme='light'] .ab-section-tag.ab-section-tag,
+:root[data-theme='light'] .fx-viz__lbl.fx-viz__lbl,
+:root[data-theme='light'] .iq-techstrip__lbl.iq-techstrip__lbl,
+:root[data-theme='light'] .ab-hero__tag.ab-hero__tag,
+:root[data-theme='light'] .bl-hero__label.bl-hero__label,
+:root[data-theme='light'] .car-hero__label.car-hero__label,
+:root[data-theme='light'] .ct-hero__tag.ct-hero__tag,
+:root[data-theme='light'] .ct-left__tag.ct-left__tag,
+:root[data-theme='light'] .cta-band__tag.cta-band__tag,
+:root[data-theme='light'] .tl-hero__tag.tl-hero__tag,
+:root[data-theme='light'] .tl-related__label.tl-related__label,
+:root[data-theme='light'] .st-card__label.st-card__label,
+:root[data-theme='light'] .ct-details-box__label.ct-details-box__label,
+:root[data-theme='light'] .ct-info-card__label.ct-info-card__label,
+:root[data-theme='light'] .bpost-sidebar__label.bpost-sidebar__label,
+:root[data-theme='light'] .ind-hero__chip.ind-hero__chip,
+:root[data-theme='light'] .bl-grid-label.bl-grid-label {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
+}
+
+/* Nav resolves to ink already, but 11px mono at weight 400 still
+   reads light — give it the same treatment. */
+:root[data-theme='light'] .nav__links > li > a,
+:root[data-theme='light'] .nav__links > li > button,
+:root[data-theme='light'] .nav__dropdown-trigger,
+:root[data-theme='light'] .nav__dropdown-trigger .dropdown-arrow,
+:root[data-theme='light'] .nav__link {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  font-weight: 500 !important;
+  opacity: 1 !important;
+}
+
+/* Section headings to true black as well */
+:root[data-theme='light'] .iq-h2.iq-h2,
+:root[data-theme='light'] .section-title.section-title,
+:root[data-theme='light'] .iq-hero__h1.iq-hero__h1,
+:root[data-theme='light'] .fx-stick__title.fx-stick__title,
+:root[data-theme='light'] h1, :root[data-theme='light'] h2,
+:root[data-theme='light'] h3, :root[data-theme='light'] h4 {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+}
+
+/* ═════════════════════════════════════════════════════════════
+   14. PROBLEM SECTION STATS
+   Two light-mode faults:
+
+   1. The gauge under each number is painted with `var(--border)`,
+      which is rgba(18,18,26,.14) here — invisible against the
+      section. The keyframes reference the same variable, so
+      redefining it locally on the meter fixes the static bars,
+      the entrance and the scan animation in one go.
+
+   2. `.is-lit` stacks an orange spotlight behind the number and a
+      26px glow on the text. Tuned for a dark page, on white the
+      glow blooms over the digits and the number reads as blank.
+   ═════════════════════════════════════════════════════════════ */
+
+/* ── 1. the gauge ───────────────────────────────────────────── */
+:root[data-theme='light'] .fx-stat__meter {
+  /* the keyframes read --border, so scoping it here recolours
+     the resting state and the scan together */
+  --border: rgba(18,18,26,.30);
+}
+:root[data-theme='light'] .fx-stat__meter i {
+  background: rgba(18,18,26,.30);
+}
+:root[data-theme='light'] .fx-stat__meter i:nth-child(-n + 7) {
+  background: var(--accent);
+}
+
+/* ── 2. the number stays ink in every state ─────────────────── */
+:root[data-theme='light'] .fx-stat__num,
+:root[data-theme='light'] .fx-stat__num *,
+:root[data-theme='light'] .fx-stat:hover .fx-stat__num,
+:root[data-theme='light'] .fx-stat:hover .fx-stat__num *,
+:root[data-theme='light'] .fx-stat.is-lit .fx-stat__num,
+:root[data-theme='light'] .fx-stat.is-lit .fx-stat__num * {
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  /* neutralise any gradient-clipped text treatment */
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+  background-clip: border-box !important;
+  text-shadow: none !important;
+}
+
+/* a restrained warm tint instead of the dark-mode bloom */
+:root[data-theme='light'] .fx-stat.is-lit .fx-stat__num {
+  text-shadow: 0 0 18px rgba(224,78,24,.18) !important;
+}
+
+/* ── 3. the spotlight, sized for a dark page ────────────────── */
+:root[data-theme='light'] .fx-stat__spot,
+:root[data-theme='light'] .fx-stat:hover .fx-stat__spot,
+:root[data-theme='light'] .fx-stat.is-lit .fx-stat__spot {
+  background: radial-gradient(320px circle at 20% 0%, rgba(224,78,24,.07), transparent 70%) !important;
+}
+:root[data-theme='light'] .fx-stat:hover,
+:root[data-theme='light'] .fx-stat.is-lit {
+  background: rgba(224,78,24,.045) !important;
+}
+
+/* index numeral and dividers */
+:root[data-theme='light'] .fx-stat__idx { color: var(--text-faint) !important; }
+:root[data-theme='light'] .fx-stat:hover .fx-stat__idx,
+:root[data-theme='light'] .fx-stat.is-lit .fx-stat__idx { color: var(--accent) !important; }
+:root[data-theme='light'] .fx-stat { border-right-color: var(--border) !important; }
+:root[data-theme='light'] .fx-statrow {
+  border-top-color: var(--border) !important;
+  border-bottom-color: var(--border) !important;
+}
+
+/* ═════════════════════════════════════════════════════════════
+   15. STAT GAUGE — visible bars that still scan
+   `!important` on the bar background would have fixed the
+   contrast but killed the scan: a CSS animation cannot override
+   an !important author declaration. So the resting colour wins on
+   specificity alone, and the scan gets its own light keyframes
+   with literal colours rather than the near-invisible --border.
+   ═════════════════════════════════════════════════════════════ */
+
+@keyframes fx-stat-scan-light {
+  0%, 100% { background: rgba(18,18,26,.26); }
+  30%      { background: #e04e18; }
+}
+
+:root[data-theme='light'] .fx-stat__meter i {
+  background: rgba(18,18,26,.26);
+}
+:root[data-theme='light'] .fx-stat__meter i:nth-child(-n + 7) {
+  background: #e04e18;
+}
+:root[data-theme='light'] .fx-stat:hover .fx-stat__meter i,
+:root[data-theme='light'] .fx-stat.is-lit .fx-stat__meter i {
+  animation-name: fx-stat-scan-light;
+}

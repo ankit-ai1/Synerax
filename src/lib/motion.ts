@@ -70,7 +70,13 @@ export function revealFrom(
 export function countUp(
   el: Element,
   to: number,
-  { decimals = 0, prefix = '', suffix = '', trigger = el, duration = 1.6, delay = 0 } = {},
+  {
+    decimals = 0, prefix = '', suffix = '', trigger = el,
+    duration = 1.6, delay = 0,
+    /* `repeat: -1` keeps the figure counting up from zero on a loop —
+       used by the stat row, which reads as static otherwise. */
+    repeat = 0, repeatDelay = 0,
+  } = {},
 ) {
   const fmt = (n: number) =>
     prefix +
@@ -85,9 +91,13 @@ export function countUp(
     v: to,
     duration,
     delay,
+    repeat,
+    repeatDelay,
     ease: 'power2.out',
-    scrollTrigger: { trigger, start: 'top 90%', once: true },
+    /* a looping tween must not be pinned to a one-shot trigger */
+    scrollTrigger: { trigger, start: 'top 90%', once: repeat === 0 },
     onUpdate() { el.textContent = fmt(obj.v) },
+    onRepeat() { obj.v = 0 },
     onComplete() { el.textContent = fmt(to) },
   })
 }

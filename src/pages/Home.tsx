@@ -632,7 +632,7 @@ export default function Home() {
               <div key={s.lbl} className="fx-stat">
                 <span className="fx-stat__spot" aria-hidden="true" />
                 <span className="fx-stat__idx" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-                <div className="fx-stat__num"><CountUpText value={s.num} /></div>
+                <div className="fx-stat__num"><CountUpText value={s.num} loop /></div>
                 <span className="fx-stat__meter" aria-hidden="true">
                   {Array.from({ length: 18 }).map((_, k) => <i key={k} />)}
                 </span>

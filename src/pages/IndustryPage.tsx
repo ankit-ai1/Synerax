@@ -1,7 +1,8 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import DataCard from '../components/DataCard'
 import { getIndustry } from '../data/industryMeta'
 
 /* ── Scroll reveal ── */
@@ -23,12 +24,10 @@ export default function IndustryPage() {
   const industry = slug ? getIndustry(slug) : undefined
   useReveal()
 
-  const [featErr,  setFeatErr]  = useState(false)
-  const [compErr,  setCompErr]  = useState(false)
 
   if (!industry) return <Navigate to="/" replace />
 
-  const ac = '#0D487E'
+  const ac = '#F2622E'
 
   return (
     <>
@@ -37,7 +36,7 @@ export default function IndustryPage() {
       {/* ═══════════════════════════════════════
           1. HERO — dark colored bg
       ═══════════════════════════════════════ */}
-      <section className="ind-hero" style={{ background: 'linear-gradient(135deg, #0D487E 0%, #0D487E 55%, #2a3870 100%)' }}>
+      <section className="ind-hero fx-pagehero">
         <div className="container">
           {/* Breadcrumb */}
           <nav className="ind-breadcrumb">
@@ -50,7 +49,7 @@ export default function IndustryPage() {
             <div className="ind-hero__chip">{industry.tag}</div>
             <h1 className="ind-hero__h1">
               {industry.heroTitle}<br />
-              <span style={{ color: '#4FA9E8' }}>{industry.heroTitleBlue}</span>
+              <span style={{ color: 'var(--accent)' }}>{industry.heroTitleBlue}</span>
             </h1>
             <p className="ind-hero__desc">{industry.heroDesc}</p>
             <div className="ind-hero__actions">
@@ -103,18 +102,12 @@ export default function IndustryPage() {
       <section className="ind-feature">
         <div className="container ind-feature__inner">
           <div className="ind-feature__img-col ind-reveal">
-            {!featErr ? (
-              <img
-                src={industry.featureImage}
-                alt={industry.featureTitle}
-                className="ind-feature__img"
-                onError={() => setFeatErr(true)}
-              />
-            ) : (
-              <div className="ind-feature__img-ph" style={{ background: `${ac}15` }}>
-                <span style={{ fontSize: '4rem' }}>🏭</span>
-              </div>
-            )}
+            <DataCard
+              variant="radar"
+              title={`${industry.name} readiness`}
+              labels={industry.specializations.map(s => s.title)}
+              caption={`Coverage across our ${industry.name.toLowerCase()} specialisations.`}
+            />
           </div>
           <div className="ind-feature__text ind-reveal">
             <h3 className="ind-feature__title">{industry.featureTitle}</h3>
@@ -161,18 +154,12 @@ export default function IndustryPage() {
             </Link>
           </div>
           <div className="ind-compliance__img-col ind-reveal">
-            {!compErr ? (
-              <img
-                src={industry.complianceImage}
-                alt={industry.complianceTitle}
-                className="ind-compliance__img"
-                onError={() => setCompErr(true)}
-              />
-            ) : (
-              <div className="ind-compliance__img-ph" style={{ background: `${ac}12` }}>
-                <span style={{ fontSize: '4rem' }}>🔒</span>
-              </div>
-            )}
+            <DataCard
+              variant="checklist"
+              title={`${industry.name} — challenges solved`}
+              rows={industry.challenges.map(c => [c, 'Addressed in every engagement'] as [string, string])}
+              caption="Verified continuously, not at renewal."
+            />
           </div>
         </div>
       </section>

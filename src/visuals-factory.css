@@ -1,0 +1,300 @@
+/* ═════════════════════════════════════════════════════════════
+   SYNERAX — contrast floor + animated mini-visual system
+   Loaded after layout-factory.css, before polish-factory.css.
+   ═════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   A. CONTRAST — descriptions never use --text-faint
+   ───────────────────────────────────────────── */
+.iq-body,
+.fx-stage__desc,
+.fx-pillar__desc,
+.fx-micro__desc,
+.iq-feat__desc,
+.iq-feat-hero__desc,
+.iq-platform-item__desc,
+.iq-careers-banner__desc,
+.iq-cta__sub,
+.iq-hero__sub {
+  color: var(--text-dim) !important;
+  font-size: clamp(.9375rem, 1vw, 1.0625rem) !important;
+  line-height: 1.7 !important;
+}
+
+/* These were descriptions wearing the label colour */
+.iq-bigstat__sub,
+.iq-mini-feed__sub,
+.fx-log__row,
+.fx-dash__nav { color: var(--text-dim) !important; }
+.iq-bigstat__sub { font-size: .9375rem !important; line-height: 1.55 !important; }
+.iq-mini-feed__sub { font-size: .8125rem !important; }
+
+/* Mono eyebrows/labels keep --text-faint */
+.iq-eye, .fx-viz__lbl, .fxv__lbl, .fx-panel__title,
+.iq-hero__card-title, .fx-kpi__lbl, .fx-dash__side-lbl {
+  color: var(--text-faint) !important;
+}
+
+/* ─────────────────────────────────────────────
+   B. MINI-VISUAL SHELL
+   ───────────────────────────────────────────── */
+.fxv { display: flex; flex-direction: column; gap: .8rem; height: 100%; }
+.fxv__hd { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.fxv__lbl {
+  font-family: var(--font-mono); font-size: .625rem; letter-spacing: .11em;
+  text-transform: uppercase; color: var(--text-faint);
+}
+.fxv__cap {
+  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--text-faint);
+}
+.fxv__live {
+  display: inline-flex; align-items: center; gap: .35rem;
+  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--accent);
+  border: 1px solid var(--accent-line); border-radius: 999px; padding: .15rem .5rem;
+}
+.fxv__live i {
+  width: 5px; height: 5px; border-radius: 50%; background: var(--accent);
+  animation: fxv-blink 1.8s ease-in-out infinite;
+}
+@keyframes fxv-blink { 0%,100% { opacity: 1 } 50% { opacity: .25 } }
+
+@keyframes fxv-in    { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+@keyframes fxv-in-l  { from { opacity: 0; transform: translateX(-10px) } to { opacity: 1; transform: none } }
+@keyframes fxv-grow  { from { transform: scaleY(0); opacity: 0 } to { transform: scaleY(1); opacity: 1 } }
+
+/* Animations stay parked until the showcase scrolls into view */
+.fx-showcase:not(.is-live) .fxv * { animation: none !important; }
+
+/* 1 — Contact Center */
+.fxv-metrics { display: flex; gap: 2rem; flex-wrap: wrap; }
+.fxv-metrics--sm { margin-top: auto; }
+.fxv-metric__v {
+  display: block; font-family: var(--font-mono); font-size: 1.6rem; font-weight: 500;
+  color: var(--accent); letter-spacing: -.02em; font-variant-numeric: tabular-nums;
+}
+.fxv-metric__l {
+  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--text-faint);
+}
+.fxv-queue { display: flex; align-items: flex-end; gap: 4px; height: 84px; margin-top: auto; }
+.fxv-queue span {
+  flex: 1; background: var(--accent); border-radius: 2px 2px 0 0; transform-origin: bottom;
+  animation: fxv-grow .6s var(--ease, cubic-bezier(.22,1,.36,1)) backwards;
+}
+.fxv-queue span:nth-child(even) { background: rgba(242,98,46,.34); }
+
+/* 2 — Agentic AI */
+.fxv-chat { display: flex; flex-direction: column; gap: .55rem; }
+.fxv-bubble {
+  border-radius: var(--radius-sm); padding: .7rem .85rem; font-size: .8125rem; line-height: 1.55;
+  animation: fxv-in .45s var(--ease, cubic-bezier(.22,1,.36,1)) backwards;
+}
+.fxv-bubble--user {
+  background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim);
+  align-self: flex-start; max-width: 88%;
+}
+.fxv-bubble--agent {
+  background: var(--accent-soft); border: 1px solid var(--accent-line); color: var(--text);
+  animation-delay: .5s;
+}
+.fxv-bubble__spark { color: var(--accent); margin-right: .3rem; }
+.fxv-caret {
+  display: inline-block; width: 2px; height: .85em; background: var(--accent);
+  vertical-align: text-bottom; margin-left: 2px; animation: fxv-caret 1s step-end infinite;
+}
+@keyframes fxv-caret { 0%,50% { opacity: 1 } 51%,100% { opacity: 0 } }
+.fxv-typing { display: flex; gap: 4px; padding-left: .3rem; animation: fxv-in .4s 1.1s backwards; }
+.fxv-typing i {
+  width: 5px; height: 5px; border-radius: 50%; background: var(--text-faint);
+  animation: fxv-type 1.3s ease-in-out infinite;
+}
+.fxv-typing i:nth-child(2) { animation-delay: .18s }
+.fxv-typing i:nth-child(3) { animation-delay: .36s }
+@keyframes fxv-type { 0%,60%,100% { opacity: .3; transform: translateY(0) } 30% { opacity: 1; transform: translateY(-3px) } }
+
+/* 3 — Backend */
+.fxv-api { display: flex; flex-direction: column; }
+.fxv-api__row {
+  display: grid; grid-template-columns: 46px 1fr auto; align-items: center; gap: .6rem;
+  padding: .55rem 0; border-bottom: 1px solid var(--border);
+  animation: fxv-in-l .45s var(--ease, cubic-bezier(.22,1,.36,1)) backwards;
+}
+.fxv-api__row:last-child { border-bottom: 0 }
+.fxv-api__m {
+  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: .08em; color: var(--accent);
+  border: 1px solid var(--accent-line); border-radius: 3px; padding: .1rem .25rem; text-align: center;
+}
+.fxv-api__p { font-family: var(--font-mono); font-size: .75rem; color: var(--text-dim); }
+.fxv-api__t { font-family: var(--font-mono); font-size: .625rem; color: var(--text-faint); }
+
+/* 4 — Frontend */
+.fxv-preview {
+  border: 1px solid var(--border); border-radius: var(--radius-sm); padding: .8rem;
+  display: flex; flex-direction: column; gap: .45rem; background: var(--surface);
+}
+.fxv-preview__bar { height: 6px; width: 40%; border-radius: 2px; background: rgba(242,98,46,.5); animation: fxv-in-l .5s backwards; }
+.fxv-preview__block { height: 30px; border-radius: 3px; background: var(--surface-2); animation: fxv-in .5s .1s backwards; }
+.fxv-preview__line { height: 5px; border-radius: 2px; background: var(--surface-2); animation: fxv-in .5s .2s backwards; }
+.fxv-preview__line--short { width: 62%; animation-delay: .3s }
+.fxv-gauges { display: flex; gap: 1.1rem; margin-top: auto; }
+.fxv-gauge { display: flex; flex-direction: column; align-items: center; gap: .3rem; }
+.fxv-gauge svg { width: 46px; height: 46px; transform: rotate(-90deg); }
+.fxv-gauge__bg { fill: none; stroke: var(--border); stroke-width: 4; }
+.fxv-gauge__fg {
+  fill: none; stroke: var(--accent); stroke-width: 4; stroke-linecap: round;
+  stroke-dashoffset: 113; animation: fxv-gauge .9s var(--ease, cubic-bezier(.22,1,.36,1)) forwards;
+}
+@keyframes fxv-gauge { to { stroke-dashoffset: var(--dash) } }
+.fxv-gauge__k {
+  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--text-faint);
+}
+
+/* 5 — AWS architecture (showcase + pillar share these) */
+.fxv-arch, .fx-arch { width: 100%; height: auto; display: block; }
+.fxv-arch__vpc, .fx-arch__vpc { fill: none; stroke: var(--border); stroke-width: 1; stroke-dasharray: 4 4; }
+.fxv-arch__box, .fx-arch__box { fill: var(--surface); stroke: var(--border); stroke-width: 1; }
+.fxv-arch__line, .fx-arch__line { fill: none; stroke: var(--border); stroke-width: 1; }
+.fxv-arch__t, .fx-arch__t {
+  fill: var(--text-dim); font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: .08em; text-transform: uppercase;
+}
+.fxv-arch__vpclbl, .fx-arch__vpclbl {
+  fill: var(--text-faint); font-family: var(--font-mono); font-size: 8px;
+  letter-spacing: .08em; text-transform: uppercase;
+}
+/* orange data flowing along the connectors */
+.fxv-arch__flow, .fx-arch__flow {
+  fill: none; stroke: var(--accent); stroke-width: 1.5; stroke-linecap: round;
+  stroke-dasharray: 10 90; stroke-dashoffset: 100;
+  animation: fxv-flow 2.6s linear infinite;
+}
+.fxv-arch__flow--b, .fx-arch__flow--b { animation-delay: .85s }
+.fx-arch__flow--c { animation-delay: 1.7s }
+@keyframes fxv-flow { to { stroke-dashoffset: -100 } }
+.fxv-arch__pulse, .fx-arch__pulse { fill: var(--accent); animation: fxv-pulse 2s ease-in-out infinite; }
+@keyframes fxv-pulse { 0%,100% { opacity: .25 } 50% { opacity: 1 } }
+
+/* pillar diagrams only run once the pillar is on screen */
+.fx-pillar .fx-arch__flow, .fx-pillar .fx-arch__pulse { animation-play-state: paused; }
+.fx-pillar.iq-visible .fx-arch__flow,
+.fx-pillar.iq-visible .fx-arch__pulse { animation-play-state: running; }
+
+/* 6 — Cybersecurity */
+.fxv-scan { display: flex; flex-direction: column; }
+.fxv-scan__row {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .6rem;
+  padding: .52rem 0; border-bottom: 1px solid var(--border); font-size: .8125rem; color: var(--text-dim);
+  animation: fxv-in-l .4s var(--ease, cubic-bezier(.22,1,.36,1)) backwards;
+}
+.fxv-scan__row:last-child { border-bottom: 0 }
+.fxv-scan__tick {
+  display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px;
+  border-radius: 4px; background: rgba(110,158,90,.16); color: var(--data-4);
+  border: 1px solid rgba(110,158,90,.4);
+  animation: fxv-tick .45s cubic-bezier(.34,1.56,.64,1) backwards;
+}
+@keyframes fxv-tick { from { transform: scale(.4); opacity: 0 } to { transform: scale(1); opacity: 1 } }
+.fxv-scan__s {
+  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--data-4); animation: fxv-in .4s backwards;
+}
+
+/* 7 — Inventory */
+.fxv-chart { position: relative; display: flex; align-items: flex-end; gap: 4px; height: 104px; }
+.fxv-chart__col { flex: 1; display: flex; align-items: flex-end; height: 100%; }
+.fxv-chart__col i {
+  display: block; width: 100%; background: rgba(242,98,46,.3); border-radius: 2px 2px 0 0;
+  transform-origin: bottom; animation: fxv-grow .6s var(--ease, cubic-bezier(.22,1,.36,1)) backwards;
+}
+.fxv-chart__trend { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.fxv-chart__trend path {
+  fill: none; stroke: var(--accent); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 260; stroke-dashoffset: 260;
+  animation: fxv-draw 1.4s .35s var(--ease, cubic-bezier(.22,1,.36,1)) forwards;
+}
+@keyframes fxv-draw { to { stroke-dashoffset: 0 } }
+.fxv-rows { display: flex; flex-direction: column; margin-top: auto; }
+.fxv-rows__row {
+  display: flex; justify-content: space-between; gap: 1rem; padding: .48rem 0;
+  border-bottom: 1px solid var(--border); font-size: .8125rem; color: var(--text-dim);
+}
+.fxv-rows__row:last-child { border-bottom: 0 }
+.fxv-rows__v {
+  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--accent);
+}
+
+/* 8 — Full Stack & Mobile */
+.fxv-stage-row { display: flex; gap: 1.5rem; align-items: center; }
+.fxv-phone {
+  position: relative; width: 82px; height: 146px; flex-shrink: 0;
+  border: 1px solid var(--border); border-radius: 12px; padding: 13px 9px 9px;
+  background: var(--surface);
+}
+.fxv-phone__notch {
+  position: absolute; top: 5px; left: 50%; transform: translateX(-50%);
+  width: 24px; height: 3px; border-radius: 2px; background: var(--border);
+}
+.fxv-phone__ui { display: flex; flex-direction: column; gap: 6px; }
+.fxv-phone__ui i {
+  display: block; height: 9px; border-radius: 2px; background: var(--surface-2);
+  animation: fxv-slide-in .5s var(--ease, cubic-bezier(.22,1,.36,1)) backwards;
+}
+.fxv-phone__ui i:first-child { background: rgba(242,98,46,.5); width: 65% }
+.fxv-phone__ui i:nth-child(3) { width: 82% }
+@keyframes fxv-slide-in { from { opacity: 0; transform: translateX(14px) } to { opacity: 1; transform: none } }
+.fxv-chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; }
+.fxv-chips--col { flex-direction: column; align-items: flex-start; margin-top: 0; }
+.fxv-chip {
+  font-family: var(--font-mono); font-size: .625rem; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--text-dim); border: 1px solid var(--border); border-radius: 999px; padding: .25rem .6rem;
+  animation: fxv-in .4s var(--ease, cubic-bezier(.22,1,.36,1)) backwards;
+}
+
+/* 9 — IT Consulting roadmap */
+.fxv-road { position: relative; display: flex; flex-direction: column; gap: 1rem; padding-left: 1.1rem; }
+.fxv-road__track { position: absolute; left: 3px; top: 6px; bottom: 6px; width: 1px; background: var(--border); }
+.fxv-road__track i {
+  position: absolute; inset: 0 auto 0 0; width: 1px; background: var(--accent);
+  transform-origin: top; animation: fxv-grow 1.2s .2s var(--ease, cubic-bezier(.22,1,.36,1)) backwards;
+}
+.fxv-road__stop { position: relative; animation: fxv-in-l .5s var(--ease, cubic-bezier(.22,1,.36,1)) backwards; }
+.fxv-road__dot {
+  position: absolute; left: -1.1rem; top: 5px; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 0 3px var(--bg);
+}
+.fxv-road__t { display: block; font-size: .875rem; font-weight: 500; color: var(--text); }
+.fxv-road__s {
+  display: block; font-family: var(--font-mono); font-size: .5625rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--text-faint); margin-top: .15rem;
+}
+
+/* ── AI pipeline rail (One Technology Partner, panel 03) ── */
+.fx-pipe { position: relative; }
+.fx-pipe__rail { position: absolute; left: 14px; top: 14px; bottom: 14px; width: 1px; background: var(--border); }
+.fx-pipe__rail i { position: absolute; inset: 0 auto 0 0; width: 1px; background: var(--accent); transform-origin: top; }
+.fx-pillar.iq-visible .fx-pipe__rail i { animation: fxv-grow 1.1s .25s var(--ease, cubic-bezier(.22,1,.36,1)) backwards; }
+.fx-pipe__step { position: relative; z-index: 1; }
+.fx-pillar.iq-visible .fx-pipe__step b { animation: fxv-node 2.4s ease-in-out infinite; }
+@keyframes fxv-node { 0%,100% { box-shadow: 0 0 0 0 rgba(242,98,46,0) } 50% { box-shadow: 0 0 0 4px rgba(242,98,46,.18) } }
+
+/* Compliance badges check in sequentially (One Technology Partner, panel 02) */
+.fx-pillar.iq-visible .iq-mini-feed__item { animation: fxv-in-l .5s var(--ease, cubic-bezier(.22,1,.36,1)) backwards; }
+.fx-pillar.iq-visible .iq-mini-feed__item:nth-child(1) { animation-delay: .15s }
+.fx-pillar.iq-visible .iq-mini-feed__item:nth-child(2) { animation-delay: .33s }
+.fx-pillar.iq-visible .iq-mini-feed__item:nth-child(3) { animation-delay: .51s }
+.fx-pillar.iq-visible .iq-mini-feed__check { animation: fxv-tick .45s cubic-bezier(.34,1.56,.64,1) backwards; }
+.fx-pillar.iq-visible .iq-mini-feed__item:nth-child(1) .iq-mini-feed__check { animation-delay: .32s }
+.fx-pillar.iq-visible .iq-mini-feed__item:nth-child(2) .iq-mini-feed__check { animation-delay: .50s }
+.fx-pillar.iq-visible .iq-mini-feed__item:nth-child(3) .iq-mini-feed__check { animation-delay: .68s }
+
+@media (max-width: 640px) {
+  .fxv-stage-row { flex-direction: column; align-items: flex-start; }
+  .fxv-chips--col { flex-direction: row; flex-wrap: wrap; }
+  .fxv-gauges { gap: .75rem; }
+  .fxv-metric__v { font-size: 1.3rem; }
+  .fxv-metrics { gap: 1.25rem; }
+}

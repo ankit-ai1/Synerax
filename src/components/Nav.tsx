@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useTheme } from '../hooks/useTheme'
+import Logo from './Logo'
 
 function ThemeToggle({ className = '' }: { className?: string }) {
   const { theme, toggle } = useTheme()
@@ -115,7 +116,7 @@ export default function Nav() {
       <div className="nav__inner">
 
         <Link to="/" className="nav__logo">
-          <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1783839642/Gemini_Generated_Image_wrba0fwrba0fwrba-removebg-preview_fujvtu.png" alt="Synerax" className="nav__logo-img" />
+          <Logo />
         </Link>
 
         <ul className="nav__links">
@@ -199,7 +200,7 @@ export default function Nav() {
       <div className={`nav__mobile${mobileOpen ? ' open' : ''}`}>
         <div className="nav__mobile-topbar">
           <Link to="/" className="nav__logo" onClick={() => setMobileOpen(false)}>
-            <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1783839642/Gemini_Generated_Image_wrba0fwrba0fwrba-removebg-preview_fujvtu.png" alt="Synerax" className="nav__logo-img" />
+            <Logo />
           </Link>
           <div className="nav__mobile-topbar-right">
             <ThemeToggle />

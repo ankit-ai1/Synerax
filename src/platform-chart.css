@@ -87,7 +87,7 @@
 }
 .pfc__radar svg {
   width: 100%;
-  max-width: 268px;
+  max-width: 300px;
   height: auto;
   overflow: visible;
 }
@@ -102,11 +102,40 @@
   stroke-linejoin: round;
   vector-effect: non-scaling-stroke;
   transition: all 1.6s cubic-bezier(.4,0,.2,1);
+  /* idle breathing on the fill only — the outline stays put */
+  animation: pfc-breathe 5.5s ease-in-out infinite;
+}
+@keyframes pfc-breathe {
+  0%, 100% { fill: rgba(255,92,41,.13); }
+  50%      { fill: rgba(255,92,41,.24); }
 }
 .pfc__node {
   fill: var(--p-orange);
   transition: cx 1.6s cubic-bezier(.4,0,.2,1), cy 1.6s cubic-bezier(.4,0,.2,1);
 }
+
+/* Axis captions sit just outside the outer ring */
+.pfc__axis-lbl {
+  font-family: var(--font-mono);
+  font-size: 4.2px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  fill: var(--p-low);
+}
+
+/* Eight rows need tighter leading than the old four. The names are long,
+   so they wrap rather than truncate — ellipsis made every row unreadable. */
+.pfc__legend--full { gap: .5rem .9rem; }
+.pfc__legend--full li { align-items: flex-start; }
+.pfc__legend--full span {
+  font-size: .5rem;
+  letter-spacing: .06em;
+  line-height: 1.35;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+}
+.pfc__legend--full b { font-size: .625rem; line-height: 1.35; }
 
 .pfc__legend {
   list-style: none;
@@ -272,12 +301,16 @@
     border-right: 0;
     border-bottom: 1px solid var(--p-line);
   }
-  .pfc__radar svg { max-width: 220px; }
+  .pfc__radar svg { max-width: 250px; }
   .pfc__card { padding: 1.1rem 1.15rem 1.25rem; }
+  .pfc__axis-lbl { font-size: 4.8px; }
 }
 
 @media (max-width: 560px) {
   .pfc__legend { grid-template-columns: minmax(0, 1fr); }
+  /* the eight-row breakdown keeps its two columns — one column would
+     double the panel height */
+  .pfc__legend--full { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .pfc__tabs button { padding: .28rem .34rem; font-size: .6875rem; }
   .pfc__title { font-size: .625rem; }
 }
@@ -290,5 +323,9 @@
   .pfc__marker,
   .pfc__halo,
   .pfc__readout { transition: none !important; }
-  .pfc__halo { animation: none !important; }
+  .pfc__halo,
+  .pfc__shape { animation: none !important; }
+  /* the entrance tween is skipped in JS, so the final state must stand */
+  .pfc__shape,
+  .pfc__node { opacity: 1 !important; transform: none !important; }
 }

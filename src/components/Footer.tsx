@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 
+import Logo from './Logo'
 export default function Footer() {
   return (
     <footer className="ft-new">
@@ -11,11 +12,7 @@ export default function Footer() {
           {/* Left — Logo + tagline + social */}
           <div className="ft-new__brand">
             <Link to="/" className="ft-new__logo">
-              <img
-                src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1783839642/Gemini_Generated_Image_wrba0fwrba0fwrba-removebg-preview_fujvtu.png"
-                alt="Synerax"
-                className="ft-new__logo-img"
-              />
+              <Logo />
             </Link>
             <p className="ft-new__tagline">
               From Code to Cloud.<br />

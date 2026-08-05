@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { gsap, prefersReduced } from '../lib/motion'
 
 /* ─────────────────────────────────────────────────────────────
    Platform Overview — the Full Visibility panel.
@@ -9,16 +10,41 @@ import { useEffect, useMemo, useState } from 'react'
 
 type Range = '7d' | '1m' | '6m' | '1y' | 'All'
 
+/* The eight solutions as radar axes. `value` is a weightage split that
+   totals 100%, so the axis scale is capped near the top of the range
+   rather than at 100 — otherwise every point would hug the centre. */
 const CATEGORIES = [
-  { label: 'Cloud & DevOps', base: 64 },
-  { label: 'AI Automation', base: 73 },
-  { label: 'Development', base: 58 },
-  { label: 'Security', base: 67 },
-  { label: 'Delivery Ops', base: 71 },
-  { label: 'Observability', base: 52 },
-  { label: 'Data & Analytics', base: 61 },
-  { label: 'Support', base: 55 },
+  { label: 'Web Apps',    full: 'Web & Enterprise Applications',            value: 17 },
+  { label: 'SRE',         full: 'Observability, SRE & Production Eng.',     value: 17 },
+  { label: 'DevSecOps',   full: 'DevSecOps & FinOps',                       value: 12 },
+  { label: 'Cloud Eng.',  full: 'Cloud Engineering & Migration',            value: 11 },
+  { label: 'Agentic AI',  full: 'Agentic AI Solutions',                     value: 11 },
+  { label: 'Security',    full: 'Cybersecurity Solutions',                  value: 11 },
+  { label: 'App Modern.', full: 'Application Modernization',                value: 11 },
+  { label: 'ITSM',        full: 'IT Service Management (ITSM)',             value: 10 },
 ]
+
+/* Top of the radar scale. Values sit at 10–17%, so 20 lets the two 17s
+   reach most of the way out and clearly stand proud of the 10s. */
+const RADAR_MAX = 20
+const RADAR_R = 40
+
+/* Legend reads highest → lowest; the axis order above stays fixed so the
+   polygon shape does not reshuffle. */
+const BREAKDOWN = [...CATEGORIES].sort((a, b) => b.value - a.value)
+
+const axisAngle = (i: number, n: number) => (Math.PI * 2 * i) / n - Math.PI / 2
+const axisPoint = (i: number, n: number, r: number) => {
+  const a = axisAngle(i, n)
+  return [50 + Math.cos(a) * r, 50 + Math.sin(a) * r] as const
+}
+const radarPoints = (items: { value: number }[]) =>
+  items
+    .map((c, i) => {
+      const [x, y] = axisPoint(i, items.length, (c.value / RADAR_MAX) * RADAR_R)
+      return `${x.toFixed(2)},${y.toFixed(2)}`
+    })
+    .join(' ')
 
 /* Each range carries its own series and its own axis captions. */
 const SERIES: Record<Range, { values: number[]; axis: string[] }> = {
@@ -67,6 +93,7 @@ export default function PlatformChart() {
      marker rides the line wherever the cursor is. */
   const [hover, setHover] = useState<number | null>(null)
   const [tick, setTick] = useState(0)
+  const radarRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
@@ -74,15 +101,60 @@ export default function PlatformChart() {
     return () => window.clearInterval(id)
   }, [])
 
-  /* Radar values breathe a little so the shape never sits dead still. */
-  const radar = useMemo(
-    () =>
-      CATEGORIES.map((c, i) => ({
-        ...c,
-        value: Math.max(28, Math.min(92, c.base + Math.round(Math.sin((tick + i * 1.7) / 2.1) * 5))),
-      })),
-    [tick],
-  )
+  /* The weightage split is fixed, so the radar is a constant. */
+  const radar = CATEGORIES
+
+  /* Entrance: the polygon scales out of the centre, the dots pop in behind
+     it, and the breakdown percentages count up. Markup already renders the
+     final state, so a JS failure just means no animation. */
+  useEffect(() => {
+    const root = radarRef.current
+    if (!root || prefersReduced()) return
+
+    const ctx = gsap.context(() => {
+      const shape = root.querySelector('.pfc__shape')
+      const nodes = root.querySelectorAll('.pfc__node')
+      const nums = root.querySelectorAll<HTMLElement>('.pfc__legend b')
+
+      const tl = gsap.timeline({
+        scrollTrigger: { trigger: root, start: 'top 85%', once: true },
+      })
+
+      if (shape) {
+        tl.from(shape, {
+          scale: 0,
+          opacity: 0,
+          duration: 0.7,
+          ease: 'power3.out',
+          transformOrigin: '50% 50%',
+          svgOrigin: '50 50',
+        })
+      }
+
+      tl.from(nodes, {
+        scale: 0,
+        opacity: 0,
+        duration: 0.45,
+        ease: 'back.out(2.2)',
+        stagger: 0.05,
+        transformOrigin: '50% 50%',
+      }, '-=0.35')
+
+      nums.forEach(el => {
+        const target = parseInt(el.dataset.value || '0', 10)
+        const obj = { v: 0 }
+        tl.to(obj, {
+          v: target,
+          duration: 0.7,
+          ease: 'power2.out',
+          onUpdate() { el.textContent = `${Math.round(obj.v)}%` },
+          onComplete() { el.textContent = `${target}%` },
+        }, '-=0.85')
+      })
+    }, root)
+
+    return () => ctx.revert()
+  }, [])
 
   const series = useMemo(() => {
     const { values, axis } = SERIES[range]
@@ -111,73 +183,81 @@ export default function PlatformChart() {
   return (
     <div className="pfc">
       {/* ── Radar ─────────────────────────────────────────── */}
-      <section className="pfc__card pfc__card--radar">
+      <section className="pfc__card pfc__card--radar" ref={radarRef}>
         <header className="pfc__head">
           <span className="pfc__title">Category breakdown</span>
         </header>
 
         <div className="pfc__radar">
-          <svg viewBox="0 0 100 100" role="img" aria-label="Capability coverage by category">
-            {[16, 28, 40].map(r => (
+          {/* The viewBox is padded well past the 100-unit radar so the axis
+              captions — which sit outside the outer ring — have somewhere to
+              live. Geometry still centres on 50,50, so nothing shifts. */}
+          <svg viewBox="-26 -10 152 120" role="img" aria-label="Delivery weightage across the eight solutions">
+            {[16, 28, RADAR_R].map(r => (
               <polygon
                 key={r}
                 className="pfc__ring"
                 points={radar
                   .map((_, i) => {
-                    const a = (Math.PI * 2 * i) / radar.length - Math.PI / 2
-                    return `${(50 + Math.cos(a) * r).toFixed(2)},${(50 + Math.sin(a) * r).toFixed(2)}`
+                    const [x, y] = axisPoint(i, radar.length, r)
+                    return `${x.toFixed(2)},${y.toFixed(2)}`
                   })
                   .join(' ')}
               />
             ))}
 
             {radar.map((_, i) => {
-              const a = (Math.PI * 2 * i) / radar.length - Math.PI / 2
+              const [x, y] = axisPoint(i, radar.length, RADAR_R)
               return (
                 <line
                   key={i}
                   className="pfc__spoke"
                   x1="50" y1="50"
-                  x2={(50 + Math.cos(a) * 40).toFixed(2)}
-                  y2={(50 + Math.sin(a) * 40).toFixed(2)}
+                  x2={x.toFixed(2)}
+                  y2={y.toFixed(2)}
                 />
               )
             })}
 
-            <polygon
-              className="pfc__shape"
-              points={radar
-                .map((c, i) => {
-                  const a = (Math.PI * 2 * i) / radar.length - Math.PI / 2
-                  const r = (c.value / 100) * 40
-                  return `${(50 + Math.cos(a) * r).toFixed(2)},${(50 + Math.sin(a) * r).toFixed(2)}`
-                })
-                .join(' ')}
-            />
+            <polygon className="pfc__shape" points={radarPoints(radar)} />
 
             {radar.map((c, i) => {
-              const a = (Math.PI * 2 * i) / radar.length - Math.PI / 2
-              const r = (c.value / 100) * 40
+              const [x, y] = axisPoint(i, radar.length, (c.value / RADAR_MAX) * RADAR_R)
               return (
                 <circle
                   key={c.label}
                   className="pfc__node"
-                  cx={(50 + Math.cos(a) * r).toFixed(2)}
-                  cy={(50 + Math.sin(a) * r).toFixed(2)}
+                  cx={x.toFixed(2)}
+                  cy={y.toFixed(2)}
                   r="1.5"
                 >
-                  <title>{`${c.label} — ${c.value}%`}</title>
+                  <title>{`${c.full} — ${c.value}%`}</title>
                 </circle>
+              )
+            })}
+
+            {radar.map((c, i) => {
+              const [x, y] = axisPoint(i, radar.length, RADAR_R + 7)
+              return (
+                <text
+                  key={`lbl-${c.label}`}
+                  className="pfc__axis-lbl"
+                  x={x.toFixed(2)}
+                  y={(y + 1).toFixed(2)}
+                  textAnchor={x > 52 ? 'start' : x < 48 ? 'end' : 'middle'}
+                >
+                  {c.label}
+                </text>
               )
             })}
           </svg>
         </div>
 
-        <ul className="pfc__legend">
-          {radar.slice(0, 4).map(c => (
-            <li key={c.label}>
-              <span>{c.label}</span>
-              <b>{c.value}%</b>
+        <ul className="pfc__legend pfc__legend--full">
+          {BREAKDOWN.map(c => (
+            <li key={c.full}>
+              <span>{c.full}</span>
+              <b data-value={c.value}>{c.value}%</b>
             </li>
           ))}
         </ul>

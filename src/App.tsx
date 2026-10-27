@@ -14,6 +14,7 @@ import TermsOfService from './pages/TermsOfService'
 import Admin from './pages/Admin'
 import Careers from './pages/Careers'
 import LeadModal from './components/LeadModal'
+import SiteLoader from './components/SiteLoader'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -41,6 +42,7 @@ export default function App() {
         anchors: true,
       }}
     >
+      <SiteLoader />
       <ScrollToTop />
       <LeadModal />
       <Routes>

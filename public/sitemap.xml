@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home -->
+  <url><loc>https://synerax.in/</loc><lastmod>2026-10-27</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+
+  <!-- Main pages -->
+  <url><loc>https://synerax.in/solutions</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://synerax.in/blog</loc><lastmod>2026-10-27</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://synerax.in/careers</loc><lastmod>2026-10-27</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://synerax.in/about</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://synerax.in/contact</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Solutions -->
+  <url><loc>https://synerax.in/solutions/web-enterprise-applications</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/solutions/devsecops-finops</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/solutions/cybersecurity</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/solutions/agentic-ai</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/solutions/cloud-engineering-migration</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/solutions/observability-sre</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/solutions/application-modernization</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/solutions/itsm</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Industries -->
+  <url><loc>https://synerax.in/industries/healthcare</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/industries/financial-services</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/industries/retail</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/industries/government</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/industries/education</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/industries/logistics</loc><lastmod>2026-10-27</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Resources: blog posts -->
+  <url><loc>https://synerax.in/blog/future-of-contact-centers-ai</loc><lastmod>2025-05-18</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/blog/scaling-aws-50-million-interactions</loc><lastmod>2025-05-10</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/blog/high-performance-team-across-time-zones</loc><lastmod>2025-05-05</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/blog/omnichannel-customer-support-2025</loc><lastmod>2025-04-28</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/blog/security-first-data-protection</loc><lastmod>2025-04-20</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/blog/next-gen-api-design</loc><lastmod>2025-04-12</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/blog/agentic-ai-enterprise-workflows</loc><lastmod>2025-04-05</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/blog/cicd-transformation-8-minute-pipelines</loc><lastmod>2025-03-28</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://synerax.in/blog/digital-transformation-healthcare</loc><lastmod>2025-03-20</lastmod><changefreq>yearly</changefreq><priority>0.6</priority></url>
+
+  <!-- Legal -->
+  <url><loc>https://synerax.in/privacy-policy</loc><lastmod>2026-10-27</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://synerax.in/terms-of-service</loc><lastmod>2026-10-27</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
+</urlset>

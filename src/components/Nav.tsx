@@ -66,6 +66,90 @@ const navResources = [
   { label: 'About Synerax',    href: '/about',   icon: '🏢' },
 ]
 
+const products = [
+  {
+    label: 'Apply Express',
+    desc:  'AI job autopilot for the US: tailored resumes and real applications.',
+    href:  'https://applyexpress.synerax.in',
+    icon:  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M11 2L4 11h5l-1 7 7-9h-5l1-7z"/></svg>,
+  },
+  {
+    label: 'Staffing',
+    desc:  'Synerax Staffing: talent and hiring solutions.',
+    href:  'https://staffing.synerax.in',
+    icon:  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="7.5" cy="6.5" r="2.8"/><path d="M2.5 17c0-2.9 2.2-5 5-5s5 2.1 5 5"/><circle cx="14.5" cy="7.5" r="2.2"/><path d="M13.5 12.2c2.3.2 4 2 4 4.3"/></svg>,
+  },
+]
+
+/* "Our Products" — opens on click, and on hover where a mouse is present.
+   Closes on outside click, Escape, and route change. */
+function ProductsMenu() {
+  const [open, setOpen] = useState(false)
+  const wrapRef  = useRef<HTMLDivElement>(null)
+  const btnRef   = useRef<HTMLButtonElement>(null)
+  const timer    = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const location = useLocation()
+
+  useEffect(() => { setOpen(false) }, [location.pathname])
+
+  useEffect(() => {
+    if (!open) return
+    const onDown = (e: MouseEvent) => {
+      if (wrapRef.current && !wrapRef.current.contains(e.target as Node)) setOpen(false)
+    }
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') { setOpen(false); btnRef.current?.focus() }
+    }
+    document.addEventListener('mousedown', onDown)
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('mousedown', onDown)
+      document.removeEventListener('keydown', onKey)
+    }
+  }, [open])
+
+  const hoverable = () => window.matchMedia('(hover: hover)').matches
+
+  return (
+    <div
+      ref={wrapRef}
+      className={`nav__products${open ? ' open' : ''}`}
+      onMouseEnter={() => { if (!hoverable()) return; if (timer.current) clearTimeout(timer.current); setOpen(true) }}
+      onMouseLeave={() => { if (!hoverable()) return; timer.current = setTimeout(() => setOpen(false), 150) }}
+    >
+      <button
+        ref={btnRef}
+        type="button"
+        className="nav__products-btn"
+        aria-haspopup="true"
+        aria-expanded={open}
+        aria-controls="nav-products-panel"
+        onClick={() => setOpen(o => !o)}
+      >
+        <svg className="nav__products-grid" width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <rect x="1" y="1" width="5.5" height="5.5" rx="1.4"/><rect x="9.5" y="1" width="5.5" height="5.5" rx="1.4"/>
+          <rect x="1" y="9.5" width="5.5" height="5.5" rx="1.4"/><rect x="9.5" y="9.5" width="5.5" height="5.5" rx="1.4"/>
+        </svg>
+        Our Products
+        <svg className="nav__products-chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
+
+      <div id="nav-products-panel" className="nav__products-panel" aria-hidden={!open}>
+        {products.map(p => (
+          <a key={p.label} href={p.href} className="nav__product-card" tabIndex={open ? 0 : -1}>
+            <span className="nav__product-icon" aria-hidden="true">{p.icon}</span>
+            <span className="nav__product-text">
+              <span className="nav__product-title">{p.label}</span>
+              <span className="nav__product-desc">{p.desc}</span>
+            </span>
+            <span className="nav__product-arrow" aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function Nav() {
   const [scrolled,   setScrolled]   = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -187,6 +271,7 @@ export default function Nav() {
         </ul>
 
         <div className="nav__cta-wrap">
+          <ProductsMenu />
           <ThemeToggle />
           <Link to="/contact" className="nav__contact-btn">Contact</Link>
           <button className={`nav__hamburger${mobileOpen ? ' open' : ''}`} onClick={() => setMobileOpen(o => !o)} aria-label="Menu">
@@ -217,6 +302,19 @@ export default function Nav() {
           </div>
         </div>
         <div className="nav__mobile-body">
+          <div className="nav__mobile-products" aria-label="Our products">
+            {products.map(p => (
+              <a key={p.label} href={p.href} className="nav__product-card">
+                <span className="nav__product-icon" aria-hidden="true">{p.icon}</span>
+                <span className="nav__product-text">
+                  <span className="nav__product-title">{p.label}</span>
+                  <span className="nav__product-desc">{p.desc}</span>
+                </span>
+                <span className="nav__product-arrow" aria-hidden="true">↗</span>
+              </a>
+            ))}
+          </div>
+
           <div className="nav__mobile-list">
 
             <div className="nav__mobile-row" style={{ ['--i' as string]: 0 }}>

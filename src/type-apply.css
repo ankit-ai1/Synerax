@@ -1,0 +1,339 @@
+/* ═════════════════════════════════════════════════════════════
+   TYPE — Apply Express type system on Synerax
+   Loaded last. Instrument Sans for everything, Newsreader italic
+   for the accent words in headings, JetBrains Mono for eyebrows.
+   Colours, layout and content are untouched — only type.
+   Selectors are prefixed with `html:root body` so they outrank the
+   !important rules spread across the earlier factory layers.
+   ═════════════════════════════════════════════════════════════ */
+
+html:root,
+html:root[data-theme] {
+  --font-heading: 'Instrument Sans', system-ui, -apple-system, sans-serif !important;
+  --font-body:    'Instrument Sans', system-ui, -apple-system, sans-serif !important;
+  --font-sans:    'Instrument Sans', system-ui, -apple-system, sans-serif !important;
+  --font:         'Instrument Sans', system-ui, -apple-system, sans-serif !important;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace !important;
+  --font-accent:  'Newsreader', Georgia, 'Times New Roman', serif;
+}
+
+/* ─────────────────────────────────────────────
+   1. BODY
+   ───────────────────────────────────────────── */
+html:root body {
+  font-family: var(--font-body) !important;
+  font-weight: 400;
+  line-height: 1.55;
+}
+
+html:root body :is(p, li, dd, blockquote, input, textarea, select) {
+  font-family: var(--font-body) !important;
+}
+
+/* ─────────────────────────────────────────────
+   2. HEADINGS h1–h3
+   ───────────────────────────────────────────── */
+html:root body :is(h1, h2, h3) {
+  font-family: var(--font-heading) !important;
+  font-weight: 600 !important;
+  letter-spacing: -.05em !important;
+  line-height: 1.0 !important;
+}
+
+/* ─────────────────────────────────────────────
+   3. ACCENT WORDS — Newsreader italic, colour unchanged
+   The light theme forces `font-style: normal` on heading spans at
+   (0,3,1), hence the [data-theme] variant.
+   ───────────────────────────────────────────── */
+html:root body :is(.iq-accent, .iq-em, .iq-cta__em, .pp-accent),
+html:root body :is(h1, h2, h3) [class$='__accent'],
+html:root[data-theme] body :is(h1, h2, h3, .iq-h2, .section-title, .iq-cta__h2) :is(.iq-accent, .iq-em, .iq-cta__em, .pp-accent, [class$='__accent']) {
+  font-family: var(--font-accent) !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+  letter-spacing: -.03em !important;
+}
+
+/* ─────────────────────────────────────────────
+   4. EYEBROWS / SECTION LABELS
+   ───────────────────────────────────────────── */
+html:root body :is(
+  .iq-eye,
+  .iq-eye--light,
+  .nav__mega-eyebrow,
+  .ab-hero__tag,
+  .bl-hero__label,
+  .bpost-sidebar__label,
+  .car-hero__label,
+  .ct-details-box__label,
+  .ct-hero__tag,
+  .ct-info-card__label,
+  .ct-left__tag,
+  .cta-band__tag,
+  .st-card__label,
+  .tl-hero__tag,
+  .tl-related__label,
+  .bl-card__tag-badge,
+  .iq-news__tag,
+  .fx-viz__lbl
+) {
+  font-family: var(--font-mono) !important;
+  font-weight: 500 !important;
+  font-size: 13px !important;
+  letter-spacing: .2em !important;
+  text-transform: uppercase !important;
+}
+
+/* ─────────────────────────────────────────────
+   5. BUTTONS & NAV LINKS — Instrument Sans 600
+   ───────────────────────────────────────────── */
+html:root body :is(button, [class*='btn'], .nav__contact-btn, .nav__mobile-cta-btn) {
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+}
+
+html:root body :is(.nav__links > li > a, .nav__dropdown-trigger, .nav__mobile-acc, .nav__mobile-link) {
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  font-size: .875rem !important;
+  letter-spacing: -.01em !important;
+  text-transform: none !important;
+}
+
+/* ─────────────────────────────────────────────
+   6. "OUR PRODUCTS" DROPDOWN (navbar, right side)
+   ───────────────────────────────────────────── */
+.nav__products {
+  position: relative;
+  display: inline-flex;
+}
+
+html:root body .nav__products-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .45rem .8rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  font-size: .8125rem !important;
+  letter-spacing: -.01em !important;
+  text-transform: none !important;
+  white-space: nowrap;
+  color: var(--text) !important;
+  -webkit-text-fill-color: currentColor !important;
+  transition: border-color .2s ease, background .2s ease;
+}
+.nav__products-btn:hover,
+.nav__products.open .nav__products-btn {
+  border-color: var(--border-strong);
+  background: rgba(127,127,127,.08);
+}
+.nav__products-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.nav__products-grid { opacity: .75; }
+.nav__products-chev { opacity: .6; transition: transform .25s ease; }
+.nav__products.open .nav__products-chev { transform: rotate(180deg); }
+
+.nav__products-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 60;
+  width: 420px;
+  max-width: calc(100vw - 32px);
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: .6rem;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 18px 48px -12px rgba(0,0,0,.35), 0 2px 6px rgba(0,0,0,.08);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity .22s ease, transform .22s cubic-bezier(.22,1,.36,1), visibility 0s linear .22s;
+}
+/* hover bridge across the 10px gap */
+.nav__products-panel::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  top: -10px;
+  height: 10px;
+}
+.nav__products.open .nav__products-panel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity .22s ease, transform .22s cubic-bezier(.22,1,.36,1), visibility 0s;
+}
+
+/* Product card — shared by the dropdown and the mobile menu */
+html:root body .nav__product-card {
+  display: flex;
+  align-items: center;
+  gap: .85rem;
+  padding: .85rem .95rem;
+  border: 1px solid rgba(0,0,0,.07);
+  border-radius: 12px;
+  background: #fafaf9;
+  text-decoration: none;
+  color: #111 !important;
+  -webkit-text-fill-color: currentColor !important;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+html:root body .nav__product-card:hover,
+html:root body .nav__product-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  background: #fff;
+  box-shadow: 0 10px 24px -12px var(--accent);
+}
+.nav__product-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.nav__product-icon {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(0,0,0,.05);
+  color: #111;
+  transition: background .2s ease, color .2s ease;
+}
+.nav__product-icon svg { width: 18px; height: 18px; }
+.nav__product-card:hover .nav__product-icon,
+.nav__product-card:focus-visible .nav__product-icon {
+  background: var(--accent);
+  color: #fff;
+}
+
+.nav__product-text {
+  display: flex;
+  flex-direction: column;
+  gap: .15rem;
+  min-width: 0;
+}
+html:root body .nav__product-title {
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  font-size: .9375rem !important;
+  letter-spacing: -.015em;
+  color: #111 !important;
+  -webkit-text-fill-color: currentColor !important;
+  transition: color .2s ease;
+}
+html:root body .nav__product-card:hover .nav__product-title { color: var(--accent) !important; }
+html:root body .nav__product-desc {
+  font-family: var(--font-body) !important;
+  font-size: .8125rem !important;
+  line-height: 1.4;
+  color: rgba(0,0,0,.58) !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+.nav__product-arrow {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: .9rem;
+  color: rgba(0,0,0,.4);
+  transition: color .2s ease, transform .2s ease;
+}
+.nav__product-card:hover .nav__product-arrow {
+  color: var(--accent);
+  transform: translate(2px, -2px);
+}
+
+/* Mobile: the button is dropped; the menu carries the cards instead */
+.nav__mobile-products {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+@media (max-width: 768px) {
+  .nav__products { display: none; }
+}
+
+/* ─────────────────────────────────────────────
+   7. FIRST-VISIT LOADER (overlay only)
+   ───────────────────────────────────────────── */
+.site-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: var(--bg, #0a0a0b);
+  transition: opacity .3s ease, visibility 0s linear .3s;
+}
+.site-loader.is-done {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.site-loader__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  animation: site-loader-in .5s cubic-bezier(.22,1,.36,1) both;
+}
+
+.site-loader__mark {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+}
+
+.site-loader__bar {
+  position: relative;
+  width: 120px;
+  height: 2px;
+  border-radius: 2px;
+  overflow: hidden;
+  background: rgba(127,127,127,.2);
+}
+.site-loader__bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  transform-origin: left;
+  animation: site-loader-bar .9s cubic-bezier(.65,0,.35,1) forwards;
+}
+
+html:root body .site-loader__word {
+  font-family: 'Instrument Sans', system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 1.125rem !important;
+  letter-spacing: -.03em !important;
+  color: var(--text) !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+@keyframes site-loader-in {
+  from { opacity: 0; transform: scale(.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes site-loader-bar {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-loader { display: none; }
+  .nav__products-panel,
+  .nav__product-card { transition: none; }
+}

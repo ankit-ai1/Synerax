@@ -22,6 +22,7 @@ import './typography-unify.css'
 import './palette-unify.css'
 import './light-theme.css'
 import './responsive.css'
+import './type-apply.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

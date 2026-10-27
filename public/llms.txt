@@ -1,0 +1,47 @@
+# Synerax
+
+> Synerax is a technology partner that delivers AI-powered applications, cloud infrastructure, enterprise software, DevOps and digital transformation as scalable, secure, future-ready solutions.
+
+## About
+
+Synerax is a team of engineers, designers and AI specialists, founded and headquartered in Noida, India. Its mission is to make enterprise-grade technology accessible to every business, regardless of size or location. What started as a small development shop has grown into a full-service digital engineering company serving clients across 20+ countries, from early-stage startups to Fortune 500 enterprises. Cross-functional teams bring expertise in software engineering, artificial intelligence, cybersecurity and cloud architecture to every engagement.
+
+## Services
+
+- [Web & Enterprise Applications](https://synerax.in/solutions/web-enterprise-applications): Custom web platforms and enterprise-grade applications, engineered to scale.
+- [DevSecOps & FinOps](https://synerax.in/solutions/devsecops-finops): Secure automated delivery pipelines, infrastructure as code and cloud cost efficiency.
+- [Cybersecurity Solutions](https://synerax.in/solutions/cybersecurity): 24/7 SOC, zero-trust architecture, penetration testing and SOC 2 / ISO 27001 / HIPAA compliance.
+- [Agentic AI Solutions](https://synerax.in/solutions/agentic-ai): Autonomous LLM agents, custom LLM pipelines and retrieval over your own data.
+- [Cloud Engineering & Migration](https://synerax.in/solutions/cloud-engineering-migration): Cloud architecture, wave-based migration and optimization on AWS, Azure and GCP.
+- [Observability, SRE & Production Engineering](https://synerax.in/solutions/observability-sre): Metrics, logs and traces, SLOs with error budgets, incident response and on-call engineering.
+- [Application Modernization](https://synerax.in/solutions/application-modernization): Legacy systems re-architected for the cloud era, without a big-bang rewrite.
+- [IT Service Management (ITSM)](https://synerax.in/solutions/itsm): ITIL-aligned processes, service desk and SLA governance.
+- [All solutions](https://synerax.in/solutions)
+
+## Industries
+
+- [Healthcare](https://synerax.in/industries/healthcare): Secure, compliant IT for healthcare and pharmaceutical operations.
+- [Financial Services](https://synerax.in/industries/financial-services): High-availability, compliant IT for banks, fintech and insurance.
+- [Retail & E-Commerce](https://synerax.in/industries/retail): E-commerce platforms, real-time inventory and AI personalisation.
+- [Government](https://synerax.in/industries/government): Citizen-centric digital services and secure public-sector infrastructure.
+- [Education & EdTech](https://synerax.in/industries/education): Scalable learning platforms and secure campus infrastructure.
+- [Logistics & Supply Chain](https://synerax.in/industries/logistics): Real-time tracking, demand forecasting, warehouse automation and carrier integrations.
+
+## Products
+
+- [Apply Express](https://applyexpress.synerax.in): AI job autopilot for the US — tailored resumes and real applications.
+- [Staffing](https://staffing.synerax.in): Synerax Staffing — talent and hiring solutions.
+
+## Resources
+
+- [Blog & Insights](https://synerax.in/blog): Articles on AI, engineering, DevOps, security and industry topics.
+- [Case Studies](https://synerax.in/blog): Case studies are published on the blog.
+
+## Company
+
+- [About](https://synerax.in/about)
+- [Careers](https://synerax.in/careers): Careers email — careers@synerax.in
+- [Contact](https://synerax.in/contact): syneraxcloudtechnologies@gmail.com · +91 9306917180 · Noida, India
+- [Privacy Policy](https://synerax.in/privacy-policy)
+- [Terms of Service](https://synerax.in/terms-of-service)
+- Full content for AI crawlers: [llms-full.txt](https://synerax.in/llms-full.txt)

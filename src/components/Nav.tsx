@@ -136,7 +136,7 @@ function ProductsMenu() {
 
       <div id="nav-products-panel" className="nav__products-panel" aria-hidden={!open}>
         {products.map(p => (
-          <a key={p.label} href={p.href} className="nav__product-card" tabIndex={open ? 0 : -1}>
+          <a key={p.label} href={p.href} target="_blank" rel="noopener noreferrer" className="nav__product-card" tabIndex={open ? 0 : -1}>
             <span className="nav__product-icon" aria-hidden="true">{p.icon}</span>
             <span className="nav__product-text">
               <span className="nav__product-title">{p.label}</span>
@@ -304,7 +304,7 @@ export default function Nav() {
         <div className="nav__mobile-body">
           <div className="nav__mobile-products" aria-label="Our products">
             {products.map(p => (
-              <a key={p.label} href={p.href} className="nav__product-card">
+              <a key={p.label} href={p.href} target="_blank" rel="noopener noreferrer" className="nav__product-card">
                 <span className="nav__product-icon" aria-hidden="true">{p.icon}</span>
                 <span className="nav__product-text">
                   <span className="nav__product-title">{p.label}</span>

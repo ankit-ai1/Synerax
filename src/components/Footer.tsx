@@ -1,7 +1,23 @@
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import Logo from './Logo'
 export default function Footer() {
+  /* Signature wordmark rises in once, the first time it scrolls into view */
+  const sigRef = useRef<HTMLDivElement>(null)
+  const [sigIn, setSigIn] = useState(false)
+
+  useEffect(() => {
+    const el = sigRef.current
+    if (!el) return
+    if (!('IntersectionObserver' in window)) { setSigIn(true); return }
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) { setSigIn(true); io.disconnect() }
+    }, { threshold: 0.25 })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
   return (
     <footer className="ft-new">
 
@@ -11,8 +27,8 @@ export default function Footer() {
 
           {/* Left — Logo + tagline + social */}
           <div className="ft-new__brand">
-            <Link to="/" className="ft-new__logo">
-              <Logo />
+            <Link to="/" className="ft-new__logo" aria-label="Synerax Cloud Technologies">
+              <Logo lockup />
             </Link>
             <p className="ft-new__tagline">
               From Code to Cloud.<br />
@@ -83,6 +99,16 @@ export default function Footer() {
             </div>
 
           </div>
+        </div>
+      </div>
+
+      {/* ── Signature wordmark (decorative) ── */}
+      <div className="ft-new__container">
+        <div ref={sigRef} className={`ft-new__signature${sigIn ? ' is-in' : ''}`} aria-hidden="true">
+          <div className="ft-new__signature-crop">
+            <span className="ft-new__signature-word">Synerax</span>
+          </div>
+          <span className="ft-new__signature-sub">Cloud Technologies</span>
         </div>
       </div>
 

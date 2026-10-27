@@ -14,7 +14,22 @@
 export const MARK_SRC =
   'https://res.cloudinary.com/dtg3lepr4/image/upload/w_160,h_160,c_fit,q_auto,f_auto,dpr_2.0/v1783885429/favicon_synerax_vuwmga.png'
 
-export default function Logo() {
+function Lockup() {
+  return (
+    <>
+      <img className="brand__mark" src={MARK_SRC} alt="" aria-hidden="true" loading="eager" decoding="async" />
+      <span className="brand__lockup">
+        <span className="brand__word">Synerax</span>
+        <span className="brand__sub">Cloud Technologies</span>
+      </span>
+    </>
+  )
+}
+
+/* `lockup` adds the "CLOUD TECHNOLOGIES" second line — the navbar uses it,
+   the footer keeps the single-line wordmark. */
+export default function Logo({ lockup = false }: { lockup?: boolean }) {
+  if (lockup) return <Lockup />
   return (
     <>
       <img className="brand__mark" src={MARK_SRC} alt="" aria-hidden="true" loading="eager" decoding="async" />

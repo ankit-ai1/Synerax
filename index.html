@@ -10,18 +10,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@1,400;1,500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
   <meta name="theme-color" content="#0A0A0B">
   <script>
-    /* Resolve the theme before first paint so a light-mode visitor never
-       sees a flash of the dark palette. Mirrors src/hooks/useTheme.ts. */
+    /* Resolve the theme before first paint so there is no flash of the
+       wrong palette. Light unless the visitor picked dark with the toggle.
+       Mirrors src/hooks/useTheme.ts. */
     (function () {
       try {
         var s = localStorage.getItem('synerax-theme');
-        var t = (s === 'light' || s === 'dark')
-          ? s
-          : (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        var t = (s === 'light' || s === 'dark') ? s : 'light';
         document.documentElement.dataset.theme = t;
         document.documentElement.style.colorScheme = t;
       } catch (e) {
-        document.documentElement.dataset.theme = 'dark';
+        document.documentElement.dataset.theme = 'light';
       }
     })();
   </script>

@@ -5,14 +5,16 @@ export type Theme = 'dark' | 'light'
 const KEY = 'synerax-theme'
 
 /* The same resolution the inline script in index.html runs before paint —
-   kept in sync so the first React render never disagrees with the DOM. */
+   kept in sync so the first React render never disagrees with the DOM.
+   Every first visit opens in light mode; dark is only ever the visitor's
+   own choice via the toggle. */
 export function resolveTheme(): Theme {
-  if (typeof window === 'undefined') return 'dark'
+  if (typeof window === 'undefined') return 'light'
   try {
     const stored = localStorage.getItem(KEY)
     if (stored === 'light' || stored === 'dark') return stored
-  } catch { /* private mode — fall through to the OS preference */ }
-  return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+  } catch { /* private mode — fall through to the default */ }
+  return 'light'
 }
 
 /* Module-level store. The toggle is mounted twice (desktop bar + mobile
@@ -20,8 +22,8 @@ export function resolveTheme(): Theme {
    one of them renders the wrong knob position. */
 let current: Theme =
   typeof document === 'undefined'
-    ? 'dark'
-    : ((document.documentElement.dataset.theme as Theme) || 'dark')
+    ? 'light'
+    : ((document.documentElement.dataset.theme as Theme) || 'light')
 
 const listeners = new Set<(t: Theme) => void>()
 
@@ -45,18 +47,6 @@ export function useTheme() {
     if (theme !== current) setTheme(current)
     return () => { listeners.delete(setTheme) }
   }, [theme])
-
-  /* Follow the OS, but only while the visitor has made no explicit choice. */
-  useEffect(() => {
-    const mq = window.matchMedia('(prefers-color-scheme: light)')
-    const onChange = (e: MediaQueryListEvent) => {
-      let chosen: string | null = null
-      try { chosen = localStorage.getItem(KEY) } catch { /* ignore */ }
-      if (!chosen) apply(e.matches ? 'light' : 'dark', false)
-    }
-    mq.addEventListener('change', onChange)
-    return () => mq.removeEventListener('change', onChange)
-  }, [])
 
   const toggle = useCallback(() => {
     apply(current === 'dark' ? 'light' : 'dark', true)

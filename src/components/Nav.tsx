@@ -69,15 +69,15 @@ const navResources = [
 const products = [
   {
     label: 'Apply Express',
-    desc:  'AI job autopilot for the US: tailored resumes and real applications.',
+    desc:  'AI job autopilot for the US.',
     href:  'https://applyexpress.synerax.in',
-    icon:  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M11 2L4 11h5l-1 7 7-9h-5l1-7z"/></svg>,
+    icon:  <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1793080644/favicon_flw5v0.ico" alt="" />,
   },
   {
     label: 'Staffing',
     desc:  'Synerax Staffing: talent and hiring solutions.',
     href:  'https://staffing.synerax.in',
-    icon:  <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="7.5" cy="6.5" r="2.8"/><path d="M2.5 17c0-2.9 2.2-5 5-5s5 2.1 5 5"/><circle cx="14.5" cy="7.5" r="2.2"/><path d="M13.5 12.2c2.3.2 4 2 4 4.3"/></svg>,
+    icon:  <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1793081628/icon_acndrs.png" alt="" />,
   },
 ]
 
@@ -199,8 +199,8 @@ export default function Nav() {
     <nav className={`nav${scrolled || isInner ? ' scrolled' : ''}`} id="nav">
       <div className="nav__inner">
 
-        <Link to="/" className="nav__logo">
-          <Logo />
+        <Link to="/" className="nav__logo" aria-label="Synerax Cloud Technologies">
+          <Logo lockup />
         </Link>
 
         <ul className="nav__links">
@@ -284,8 +284,8 @@ export default function Nav() {
       <div className={`nav__mobile-backdrop${mobileOpen ? ' open' : ''}`} onClick={() => setMobileOpen(false)} />
       <div className={`nav__mobile${mobileOpen ? ' open' : ''}`}>
         <div className="nav__mobile-topbar">
-          <Link to="/" className="nav__logo" onClick={() => setMobileOpen(false)}>
-            <Logo />
+          <Link to="/" className="nav__logo" aria-label="Synerax Cloud Technologies" onClick={() => setMobileOpen(false)}>
+            <Logo lockup />
           </Link>
           <div className="nav__mobile-topbar-right">
             <ThemeToggle />

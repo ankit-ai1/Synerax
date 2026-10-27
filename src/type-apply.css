@@ -92,12 +92,94 @@ html:root body :is(button, [class*='btn'], .nav__contact-btn, .nav__mobile-cta-b
   font-weight: 600 !important;
 }
 
-html:root body :is(.nav__links > li > a, .nav__dropdown-trigger, .nav__mobile-acc, .nav__mobile-link) {
+html:root body :is(.nav__mobile-acc, .nav__mobile-link) {
   font-family: var(--font-body) !important;
   font-weight: 600 !important;
   font-size: .875rem !important;
   letter-spacing: -.01em !important;
   text-transform: none !important;
+}
+
+/* Desktop main menu — 17px / 500 */
+html:root body :is(.nav__links > li > a, .nav__dropdown-trigger) {
+  font-family: var(--font-body) !important;
+  font-weight: 500 !important;
+  font-size: 17px !important;
+  letter-spacing: -.01em !important;
+  text-transform: none !important;
+  white-space: nowrap;
+}
+html:root body .nav__dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: .3em;
+}
+html:root body .nav__dropdown-trigger .dropdown-arrow {
+  font-size: .7em !important;
+  line-height: 1;
+}
+/* Tighten the item padding (not the gap) before the bigger labels could wrap */
+@media (min-width: 769px) and (max-width: 1200px) {
+  html:root body .nav__links > li > a,
+  html:root body .nav__dropdown-trigger { padding-left: .55rem !important; padding-right: .55rem !important; }
+}
+
+/* ─────────────────────────────────────────────
+   LOGO LOCKUP (navbar + footer) — "Synerax" over "CLOUD TECHNOLOGIES"
+   ───────────────────────────────────────────── */
+/* Mark 38px · 12px gap · two-line text block centred on the mark.
+   22 + 5 + 9 = 36px of text against a 38px mark. */
+html:root body :is(.nav__logo, .ft-new__logo):has(.brand__lockup) {
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+html:root body :is(.nav__logo, .ft-new__logo) .brand__mark {
+  width: 38px;
+  height: 38px;
+  margin: 0;
+}
+:is(.nav__logo, .ft-new__logo) .brand__lockup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 5px;
+}
+html:root body :is(.nav__logo, .ft-new__logo) .brand__lockup .brand__word,
+html:root body :is(.nav__logo, .ft-new__logo) .brand__sub {
+  display: block;
+  margin: 0;
+  padding: 0;
+  line-height: 1 !important;
+  white-space: nowrap;
+}
+html:root body :is(.nav__logo, .ft-new__logo) .brand__lockup .brand__word {
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 22px !important;
+  letter-spacing: -.035em !important;
+}
+html:root body :is(.nav__logo, .ft-new__logo) .brand__sub {
+  font-family: var(--font-body) !important;
+  font-weight: 600 !important;
+  font-size: 9px !important;
+  letter-spacing: .3em !important;
+  text-transform: uppercase;
+  color: rgba(0,0,0,.65) !important;
+  -webkit-text-fill-color: rgba(0,0,0,.65) !important;
+}
+:root[data-theme='dark'] body :is(.nav__logo, .ft-new__logo) .brand__sub {
+  color: rgba(255,255,255,.65) !important;
+  -webkit-text-fill-color: rgba(255,255,255,.65) !important;
+}
+
+@media (max-width: 768px) {
+  html:root body :is(.nav__logo, .ft-new__logo) .brand__mark { width: 32px; height: 32px; }
+  :is(.nav__logo, .ft-new__logo) .brand__lockup { gap: 4px; }
+  html:root body :is(.nav__logo, .ft-new__logo) .brand__lockup .brand__word { font-size: 18px !important; }
+  html:root body :is(.nav__logo, .ft-new__logo) .brand__sub { font-size: 7.5px !important; }
 }
 
 /* ─────────────────────────────────────────────
@@ -119,7 +201,7 @@ html:root body .nav__products-btn {
   cursor: pointer;
   font-family: var(--font-body) !important;
   font-weight: 600 !important;
-  font-size: .8125rem !important;
+  font-size: 16px !important;
   letter-spacing: -.01em !important;
   text-transform: none !important;
   white-space: nowrap;
@@ -213,6 +295,7 @@ html:root body .nav__product-card:focus-visible {
   transition: background .2s ease, color .2s ease;
 }
 .nav__product-icon svg { width: 18px; height: 18px; }
+.nav__product-icon img { width: 22px; height: 22px; object-fit: contain; }
 .nav__product-card:hover .nav__product-icon,
 .nav__product-card:focus-visible .nav__product-icon {
   background: var(--accent);
@@ -239,6 +322,9 @@ html:root body .nav__product-desc {
   font-family: var(--font-body) !important;
   font-size: .8125rem !important;
   line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: rgba(0,0,0,.58) !important;
   -webkit-text-fill-color: currentColor !important;
 }
@@ -268,72 +354,322 @@ html:root body .nav__product-desc {
 /* ─────────────────────────────────────────────
    7. FIRST-VISIT LOADER (overlay only)
    ───────────────────────────────────────────── */
+/* Timeline (3.5s): draw 0–1.0 · word 0.8–1.8 · tagline/counter 1.6–2.6 ·
+   exit 2.6–3.5. The two panels carry the background so the curtain can
+   split; the content sits above them and leaves first. */
 .site-loader {
+  --ld-orange: #ff5c29;
+  --ld-glow:   rgba(255,92,41,.10);
+  --ld-bg:     #f7f6f3;
+  --ld-ink:    #0b0b0f;
+  --ld-dim:    rgba(11,11,15,.5);
+  --ld-track:  rgba(11,11,15,.1);
   position: fixed;
   inset: 0;
   z-index: 9999;
   display: grid;
   place-items: center;
-  background: var(--bg, #0a0a0b);
-  transition: opacity .3s ease, visibility 0s linear .3s;
 }
-.site-loader.is-done {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+:root[data-theme='light'] .site-loader { --ld-bg: var(--bg, #f7f6f3); }
+:root[data-theme='dark'] .site-loader,
+:root:not([data-theme]) .site-loader {
+  --ld-glow:  rgba(255,92,41,.14);
+  --ld-bg:    var(--bg, #0a0a0b);
+  --ld-ink:   #fff;
+  --ld-dim:   rgba(255,255,255,.5);
+  --ld-track: rgba(255,255,255,.12);
+}
+
+.site-loader__panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50.5%;          /* half-pixel overlap so no seam shows */
+  background-color: var(--ld-bg);
+  background-repeat: no-repeat;
+  animation: .9s cubic-bezier(.76,0,.24,1) 2.6s forwards;
+}
+.site-loader__panel--top {
+  top: 0;
+  background-image: radial-gradient(70vmax 70vmax at 50% 100%, var(--ld-glow), transparent 55%);
+  animation-name: site-loader-up;
+}
+.site-loader__panel--bottom {
+  bottom: 0;
+  background-image: radial-gradient(70vmax 70vmax at 50% 0%, var(--ld-glow), transparent 55%);
+  animation-name: site-loader-down;
 }
 
 .site-loader__inner {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  animation: site-loader-in .5s cubic-bezier(.22,1,.36,1) both;
+  animation: site-loader-out .5s cubic-bezier(.65,0,.35,1) 2.6s forwards;
 }
 
+/* 1 — logo draw */
+.site-loader__logo {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+}
+.site-loader__outline {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.site-loader__outline rect {
+  stroke: var(--ld-orange);
+  stroke-width: 2;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation:
+    site-loader-draw .8s cubic-bezier(.65,0,.35,1) forwards,
+    site-loader-fade-stroke .3s ease .85s forwards;
+}
 .site-loader__mark {
-  width: 56px;
-  height: 56px;
+  width: 52px;
+  height: 52px;
   object-fit: contain;
+  opacity: 0;
+  transform: scale(.8);
+  animation: site-loader-fill .35s cubic-bezier(.22,1,.36,1) .65s forwards;
 }
 
+/* 2 — wordmark */
+.site-loader__word {
+  display: inline-flex;
+  line-height: 1;
+}
+.site-loader__mask {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: .08em;
+}
+html:root body .site-loader__char {
+  display: inline-block;
+  transform: translateY(100%);
+  animation: site-loader-rise .55s cubic-bezier(.22,1,.36,1) forwards;
+  animation-delay: calc(.8s + var(--i) * 60ms);
+  font-family: 'Instrument Sans', system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 2.25rem !important;
+  letter-spacing: -.05em !important;
+  color: var(--ld-ink) !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+/* 3 — tagline + counter */
+html:root body .site-loader__tagline {
+  margin: 0;
+  opacity: 0;
+  animation: site-loader-fadein .5s ease 1.6s forwards;
+  font-family: 'Instrument Sans', system-ui, sans-serif !important;
+  font-weight: 500 !important;
+  font-size: 1rem !important;
+  letter-spacing: -.02em !important;
+  color: var(--ld-dim) !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+html:root body .site-loader__tagline em {
+  font-family: 'Newsreader', Georgia, serif !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+  letter-spacing: -.03em !important;
+  color: var(--ld-orange) !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+.site-loader__meter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .45rem;
+  margin-top: .5rem;
+  opacity: 0;
+  animation: site-loader-fadein .3s ease 1.6s forwards;
+}
+html:root body .site-loader__count {
+  font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+  font-weight: 500 !important;
+  font-size: .75rem !important;
+  letter-spacing: .2em !important;
+  font-variant-numeric: tabular-nums;
+  color: var(--ld-dim) !important;
+  -webkit-text-fill-color: currentColor !important;
+}
 .site-loader__bar {
   position: relative;
-  width: 120px;
-  height: 2px;
-  border-radius: 2px;
+  width: 140px;
+  height: 1px;
   overflow: hidden;
-  background: rgba(127,127,127,.2);
+  background: var(--ld-track);
 }
 .site-loader__bar::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--accent);
+  background: var(--ld-orange);
+  transform: scaleX(0);
   transform-origin: left;
-  animation: site-loader-bar .9s cubic-bezier(.65,0,.35,1) forwards;
+  animation: site-loader-bar 1s cubic-bezier(.65,0,.35,1) 1.6s forwards;
 }
 
-html:root body .site-loader__word {
-  font-family: 'Instrument Sans', system-ui, sans-serif !important;
-  font-weight: 600 !important;
-  font-size: 1.125rem !important;
-  letter-spacing: -.03em !important;
-  color: var(--text) !important;
+/* Skip */
+html:root body .site-loader__skip {
+  position: absolute;
+  right: 1.5rem;
+  bottom: 1.25rem;
+  padding: .35rem .6rem;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+  font-weight: 500 !important;
+  font-size: .75rem !important;
+  letter-spacing: .14em !important;
+  text-transform: uppercase;
+  color: var(--ld-dim) !important;
   -webkit-text-fill-color: currentColor !important;
+  transition: color .2s ease;
+  animation: site-loader-out .3s ease 2.6s forwards;
+}
+.site-loader__skip:hover { color: var(--ld-orange) !important; }
+.site-loader__skip:focus-visible {
+  outline: 2px solid var(--ld-orange);
+  outline-offset: 2px;
 }
 
-@keyframes site-loader-in {
-  from { opacity: 0; transform: scale(.94); }
-  to   { opacity: 1; transform: scale(1); }
+@keyframes site-loader-draw        { to { stroke-dashoffset: 0; } }
+@keyframes site-loader-fade-stroke { to { opacity: 0; } }
+@keyframes site-loader-fill        { to { opacity: 1; transform: scale(1); } }
+@keyframes site-loader-rise        { to { transform: translateY(0); } }
+@keyframes site-loader-fadein      { to { opacity: 1; } }
+@keyframes site-loader-bar         { to { transform: scaleX(1); } }
+@keyframes site-loader-out {
+  to { opacity: 0; transform: scale(.9); }
 }
-@keyframes site-loader-bar {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
-}
+@keyframes site-loader-up   { to { transform: translateY(-100%); } }
+@keyframes site-loader-down { to { transform: translateY(100%); } }
 
 @media (prefers-reduced-motion: reduce) {
   .site-loader { display: none; }
   .nav__products-panel,
   .nav__product-card { transition: none; }
+}
+
+/* ─────────────────────────────────────────────
+   8. FOOTER — giant "Synerax" signature
+   The signature sits inside .ft-new__container (same edges as the link
+   columns), between the columns and the bottom bar, in normal flow so it
+   can never overlap the copyright. Only the tail of the "y" below the
+   baseline is cropped: with line-height .85 the baseline lands near .78em
+   and the descender near 1em, so a .97em-tall wrapper cuts ~8%.
+   ───────────────────────────────────────────── */
+
+/* Spacing: 16px columns → wordmark, 20px wordmark → copyright bar */
+html:root body .ft-new:has(.ft-new__signature) .ft-new__top {
+  padding-bottom: 16px !important;
+}
+.ft-new__signature {
+  /* "Syne" in an embossed tone of the footer itself → "rax" in primary
+     orange. The tone is translucent ink/white laid over whatever the
+     footer background is, so it is always ~11% darker (light) or a
+     touch lighter (dark) than that background. Dark mode is the default. */
+  --sig-tone:   rgba(255,255,255,.1);
+  --sig-orange: color-mix(in srgb, var(--accent) 65%, transparent);
+  --sig-shine:  rgba(255,255,255,.22);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  pointer-events: none;
+  user-select: none;
+}
+:root[data-theme='light'] .ft-new__signature {
+  --sig-tone:   rgba(0,0,0,.11);
+  --sig-orange: color-mix(in srgb, var(--accent) 70%, transparent);
+}
+
+/* Line 1 is cropped by its own wrapper so line 2 stays fully visible */
+.ft-new__signature-crop {
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  font-size: clamp(90px, 19.5vw, 380px);
+  height: .97em;
+}
+
+html:root body .ft-new__signature-word {
+  display: block;
+  font-family: 'Instrument Sans', system-ui, sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1em !important;
+  letter-spacing: -.065em !important;
+  line-height: .85 !important;
+  /* bottom padding stretches the box over the descender, so the clipped
+     gradient reaches the "y" tail instead of stopping at the line box */
+  padding: .02em 0 .2em;
+  white-space: nowrap;
+  /* Layer 1: a faint light band drifting across (the shimmer).
+     Layer 2: one continuous tone → orange blend, meeting around the middle. */
+  background-image:
+    linear-gradient(100deg, transparent 40%, var(--sig-shine) 50%, transparent 60%),
+    linear-gradient(90deg, var(--sig-tone) 0%, var(--sig-tone) 42%, var(--sig-orange) 58%, var(--sig-orange) 100%);
+  background-size: 250% 100%, 100% 100%;
+  background-position: 100% 0, 0 0;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .9s ease, transform .9s cubic-bezier(.22,1,.36,1);
+  animation: ft-sig-shimmer 8s ease-in-out infinite alternate;
+}
+@keyframes ft-sig-shimmer {
+  to { background-position: 0% 0, 0 0; }
+}
+
+/* Line 2 — the negative right margin cancels the trailing letter-space
+   so it centres truly under "Synerax". */
+html:root body .ft-new__signature-sub {
+  display: block;
+  margin: 4px -.32em 0 0;
+  font-family: 'Instrument Sans', system-ui, sans-serif !important;
+  font-weight: 600 !important;
+  font-size: clamp(12px, 1.4vw, 22px) !important;
+  letter-spacing: .32em !important;
+  line-height: 1 !important;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: color-mix(in srgb, var(--text) 45%, transparent) !important;
+  -webkit-text-fill-color: currentColor !important;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .9s ease .15s, transform .9s cubic-bezier(.22,1,.36,1) .15s;
+}
+
+.ft-new__signature.is-in .ft-new__signature-word,
+.ft-new__signature.is-in .ft-new__signature-sub {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .ft-new__signature-crop { font-size: 22vw; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html:root body .ft-new__signature-word,
+  html:root body .ft-new__signature-sub { opacity: 1; transform: none; transition: none; animation: none; }
 }

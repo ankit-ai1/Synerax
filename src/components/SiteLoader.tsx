@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { useLenis } from 'lenis/react'
-import { MARK_SRC } from './Logo'
+import { FAVICON_LIGHT, FAVICON_DARK, WORDMARK_INK, WORDMARK_LIGHT } from './Logo'
 
 /* First-visit loader — a ~3.5s sequence, all CSS keyframes:
-     0.0–1.0s  logo outline draws in orange, then the real mark fills in
-     0.8–1.8s  "Synerax" letters rise from a mask, 60ms apart
+     0.0–1.0s  logo outline draws in blue, then the favicon mark fills in
+     0.8–1.8s  the SYNERAX wordmark (same artwork as the navbar/footer) wipes in
      1.6–2.6s  tagline fades in, counter runs 000 → 100 over a progress line
      2.6–3.5s  logo scales down, top/bottom curtains slide away
    It is an overlay only — the routes render underneath from the first frame.
@@ -14,7 +14,6 @@ const SEEN_KEY  = 'synerax-loader-seen'
 const TOTAL_MS  = 3500
 const COUNT_AT  = 1600
 const COUNT_FOR = 1000
-const WORD      = 'Synerax'
 
 function shouldShow() {
   if (typeof window === 'undefined') return false
@@ -71,15 +70,14 @@ export default function SiteLoader() {
           <svg className="site-loader__outline" viewBox="0 0 72 72" fill="none">
             <rect x="2" y="2" width="68" height="68" rx="18" pathLength={1} />
           </svg>
-          <img className="site-loader__mark" src={MARK_SRC} alt="" decoding="async" />
+          {/* both inks render; CSS shows the one that suits the loader's theme */}
+          <img className="site-loader__mark site-loader__mark--light" src={FAVICON_LIGHT} alt="" decoding="async" />
+          <img className="site-loader__mark site-loader__mark--dark" src={FAVICON_DARK} alt="" decoding="async" />
         </div>
 
         <span className="site-loader__word">
-          {WORD.split('').map((ch, i) => (
-            <span key={i} className="site-loader__mask">
-              <span className="site-loader__char" style={{ ['--i' as string]: i }}>{ch}</span>
-            </span>
-          ))}
+          <img className="site-loader__wm site-loader__wm--ink" src={WORDMARK_INK} alt="Synerax" decoding="async" />
+          <img className="site-loader__wm site-loader__wm--light" src={WORDMARK_LIGHT} alt="" decoding="async" />
         </span>
 
         <p className="site-loader__tagline">From Code to <em>Cloud.</em></p>

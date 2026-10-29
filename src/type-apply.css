@@ -433,37 +433,41 @@ html:root body .nav__product-desc {
     site-loader-draw .8s cubic-bezier(.65,0,.35,1) forwards,
     site-loader-fade-stroke .3s ease .85s forwards;
 }
+/* the favicon artwork — light ink on the light loader, dark ink on the dark */
 .site-loader__mark {
-  width: 52px;
-  height: 52px;
+  position: absolute;
+  width: 56px;
+  height: 56px;
   object-fit: contain;
   opacity: 0;
   transform: scale(.8);
   animation: site-loader-fill .35s cubic-bezier(.22,1,.36,1) .65s forwards;
 }
+.site-loader__mark--dark { display: none; }
+:root[data-theme='dark'] .site-loader__mark--light,
+:root:not([data-theme]) .site-loader__mark--light { display: none; }
+:root[data-theme='dark'] .site-loader__mark--dark,
+:root:not([data-theme]) .site-loader__mark--dark { display: block; }
 
-/* 2 — wordmark */
+/* 2 — wordmark: the navbar/footer SYNERAX artwork, wiped in left → right */
 .site-loader__word {
   display: inline-flex;
-  line-height: 1;
+  margin-top: .35rem;
+  line-height: 0;
 }
-.site-loader__mask {
-  display: inline-block;
-  overflow: hidden;
-  padding-bottom: .08em;
+html:root body .site-loader__wm {
+  height: 30px;
+  width: auto;
+  max-width: none;
+  clip-path: inset(0 100% 0 0);
+  animation: site-loader-wipe .9s cubic-bezier(.65,0,.35,1) .8s forwards;
 }
-html:root body .site-loader__char {
-  display: inline-block;
-  transform: translateY(100%);
-  animation: site-loader-rise .55s cubic-bezier(.22,1,.36,1) forwards;
-  animation-delay: calc(.8s + var(--i) * 60ms);
-  font-family: 'Instrument Sans', system-ui, sans-serif !important;
-  font-weight: 600 !important;
-  font-size: 2.25rem !important;
-  letter-spacing: -.05em !important;
-  color: var(--ld-ink) !important;
-  -webkit-text-fill-color: currentColor !important;
-}
+.site-loader__wm--light { display: none; }
+:root[data-theme='dark'] .site-loader__wm--ink,
+:root:not([data-theme]) .site-loader__wm--ink { display: none; }
+:root[data-theme='dark'] .site-loader__wm--light,
+:root:not([data-theme]) .site-loader__wm--light { display: block; }
+@keyframes site-loader-wipe { to { clip-path: inset(0 0 0 0); } }
 
 /* 3 — tagline + counter */
 html:root body .site-loader__tagline {

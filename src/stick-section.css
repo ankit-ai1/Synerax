@@ -16,7 +16,7 @@ html, body { overflow-x: clip !important; }
   --s-ink: #ffffff;
   --s-mid: rgba(255,255,255,.52);
   --s-low: rgba(255,255,255,.34);
-  --s-orange: #ff5c29;
+  --s-orange: #1b6fe8;
 
   padding-top: 7rem !important;
   padding-bottom: 7rem !important;
@@ -87,7 +87,7 @@ html, body { overflow-x: clip !important; }
 .fx-stick__panel { min-width: 0; }
 .fx-stick__panel > .fx-pillar__viz {
   position: relative;
-  background: var(--fx-03, #121214);
+  background: var(--fx-03, #112038);
   border: 1px solid var(--s-line);
   border-radius: 6px;
   padding: 1.75rem;

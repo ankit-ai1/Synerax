@@ -1,0 +1,207 @@
+/* ═════════════════════════════════════════════════════════════
+   CLIENT STORIES — premium card finish (Testimonials.tsx)
+   Layout untouched: same slider, same three-up deck. This layer
+   only restyles the card surface and adds motion details.
+   ═════════════════════════════════════════════════════════════ */
+
+@property --tp-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* ── card surface ── */
+html:root body .fx-slider .iq-testi.fx-slide {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border: 1px solid #e3ecfb !important;
+  border-radius: 22px !important;
+  background:
+    radial-gradient(ellipse 70% 45% at 100% 0%, rgba(27,111,232,.07), transparent 70%),
+    linear-gradient(180deg, #ffffff 0%, #fbfdff 100%) !important;
+  box-shadow:
+    0 1px 2px rgba(10,22,40,.04),
+    0 18px 40px -28px rgba(10,22,40,.25) !important;
+  transition:
+    transform .5s cubic-bezier(.22,1,.36,1),
+    box-shadow .5s ease,
+    border-color .4s ease !important;
+}
+/* accent line along the top edge */
+html:root body .fx-slider .iq-testi.fx-slide::before {
+  content: '' !important;
+  position: absolute;
+  top: 0; left: 28px; right: 28px;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+  background: linear-gradient(90deg, transparent, #1b6fe8, #4d94ff, transparent);
+  opacity: .55;
+  transform: none;
+  transition: opacity .4s ease, left .5s ease, right .5s ease;
+}
+html:root body .fx-slider .iq-testi.fx-slide:hover {
+  transform: translateY(-6px);
+  border-color: rgba(27,111,232,.3) !important;
+  box-shadow:
+    0 1px 2px rgba(10,22,40,.04),
+    0 30px 60px -30px rgba(27,111,232,.45) !important;
+}
+html:root body .fx-slider .iq-testi.fx-slide:hover::before { opacity: 1; left: 0; right: 0; }
+
+/* travelling light around the border on hover */
+.tp-ring {
+  position: absolute;
+  inset: -1px;
+  z-index: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from var(--tp-angle), transparent 0 70%, #4d94ff 82%, #1b6fe8 90%, transparent 98%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0;
+  transition: opacity .4s ease;
+  pointer-events: none;
+}
+.fx-slide:hover .tp-ring { opacity: 1; animation: tp-spin 3.5s linear infinite; }
+@keyframes tp-spin { to { --tp-angle: 360deg; } }
+
+/* cursor spotlight */
+.tp-spot {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), rgba(27,111,232,.08), transparent 65%);
+  opacity: 0;
+  transition: opacity .35s ease;
+  pointer-events: none;
+}
+.fx-slide:hover .tp-spot { opacity: 1; }
+
+/* oversized faint quote mark in the corner */
+.tp-watermark {
+  position: absolute;
+  top: -34px; right: 18px;
+  z-index: 0;
+  font-family: var(--font-accent), Georgia, serif;
+  font-size: 13rem;
+  line-height: 1;
+  color: rgba(27,111,232,.06);
+  transition: transform .6s cubic-bezier(.22,1,.36,1), color .4s ease;
+  pointer-events: none;
+}
+.fx-slide:hover .tp-watermark { transform: translate(-6px, 6px) rotate(-6deg); color: rgba(27,111,232,.1); }
+
+/* everything readable sits above the decoration */
+html:root body .fx-slider .iq-testi.fx-slide > :not(.tp-ring):not(.tp-spot):not(.tp-watermark) {
+  position: relative;
+  z-index: 1;
+}
+
+/* the small quote mark becomes a gradient chip */
+html:root body .fx-slider .fx-slide__mark {
+  display: grid !important;
+  place-items: center;
+  width: 42px; height: 42px;
+  padding-top: 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #4d94ff, #1b6fe8 60%, #1459c7);
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-size: 2.6rem !important;
+  line-height: 1 !important;
+  opacity: 1 !important;
+  box-shadow: 0 10px 20px -10px rgba(27,111,232,.7);
+  transition: transform .45s cubic-bezier(.3,1.5,.5,1);
+}
+html:root body .fx-slider .iq-testi:hover .fx-slide__mark { opacity: 1 !important; transform: rotate(-8deg) scale(1.06); }
+
+/* quote reads in ink, not grey */
+html:root body .fx-slider .iq-testi .iq-testi__quote {
+  color: #0a1628 !important;
+  -webkit-text-fill-color: #0a1628 !important;
+}
+
+/* ── author: gradient avatar with a verified tick ── */
+html:root body .fx-slider .iq-testi .iq-testi__av {
+  position: relative;
+  display: grid !important;
+  place-items: center;
+  width: 46px !important; height: 46px !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: linear-gradient(135deg, #4d94ff, #1459c7) !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-family: var(--font-heading) !important;
+  font-size: 1.0625rem !important;
+  font-weight: 700 !important;
+  box-shadow: 0 0 0 4px rgba(27,111,232,.1), 0 8px 18px -8px rgba(27,111,232,.7);
+}
+.tp-verified {
+  position: absolute;
+  right: -3px; bottom: -3px;
+  display: grid;
+  place-items: center;
+  width: 18px; height: 18px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #14b8a6;
+  color: #fff;
+}
+.tp-verified svg { width: 10px; height: 10px; }
+html:root body .fx-slider .iq-testi .iq-testi__name {
+  color: #0a1628 !important;
+  -webkit-text-fill-color: #0a1628 !important;
+  font-weight: 650 !important;
+}
+html:root body .fx-slider .iq-testi .iq-testi__role {
+  color: #1b6fe8 !important;
+  -webkit-text-fill-color: #1b6fe8 !important;
+}
+
+/* ── controls: the active dash fills like a timer (5s auto-advance) ── */
+html:root body .fx-slider .fx-slider__seg {
+  position: relative;
+  overflow: hidden;
+}
+html:root body .fx-slider .fx-slider__seg.is-active {
+  background: rgba(27,111,232,.18) !important;
+}
+html:root body .fx-slider .fx-slider__seg.is-active::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #1b6fe8;
+  transform-origin: left center;
+  animation: tp-fill 5s linear forwards;
+}
+.fx-slider:hover .fx-slider__seg.is-active::after,
+.fx-slider:focus-within .fx-slider__seg.is-active::after { animation-play-state: paused; }
+@keyframes tp-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+html:root body .fx-slider .fx-slider__arrow {
+  border-radius: 50% !important;
+  transition: background .25s ease, color .25s ease, border-color .25s ease, transform .25s ease;
+}
+html:root body .fx-slider .fx-slider__arrow:hover {
+  background: #1b6fe8 !important;
+  border-color: #1b6fe8 !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+
+/* ── dark theme ── */
+:root[data-theme='dark'] body .fx-slider .iq-testi.fx-slide {
+  border-color: rgba(160,180,204,.16) !important;
+  background: radial-gradient(ellipse 70% 45% at 100% 0%, rgba(27,111,232,.18), transparent 70%), #0d1b30 !important;
+}
+:root[data-theme='dark'] body .fx-slider .iq-testi .iq-testi__quote,
+:root[data-theme='dark'] body .fx-slider .iq-testi .iq-testi__name { color: #fff !important; -webkit-text-fill-color: #fff !important; }
+:root[data-theme='dark'] .tp-verified { border-color: #0d1b30; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fx-slide:hover .tp-ring { animation: none; }
+  html:root body .fx-slider .fx-slider__seg.is-active::after { animation: none; transform: none; }
+}

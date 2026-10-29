@@ -1,7 +1,25 @@
+# Crawler rules for synerax.in
+
 User-agent: *
 Allow: /
 Disallow: /admin
-Disallow: /api/
-Disallow: /private/
+
+# AI assistants and answer engines are welcome to read the site.
+# A plain-text company overview for them lives at /llms.txt (full detail: /llms-full.txt).
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin
 
 Sitemap: https://synerax.in/sitemap.xml

@@ -1,0 +1,309 @@
+/* ═════════════════════════════════════════════════════════════
+   NAV MEGA MENU — Solutions / Industries / Resources (Nav.tsx)
+   A wide rounded panel centred under the navbar: a two-column
+   grid of items (icon tile, title, one-line description) and a
+   navy feature card on the right. The open trigger becomes a
+   soft pill and its chevron turns.
+   ═════════════════════════════════════════════════════════════ */
+
+/* position the panels against the whole bar, not the trigger,
+   so every menu centres on the page */
+html:root body .nav__inner { position: relative; }
+html:root body .nav__dropdown.nm-dd { position: static; }
+
+/* ─────────────────────────────────────────────
+   1. TRIGGER — pill when open
+   ───────────────────────────────────────────── */
+html:root body .nav .nm-trigger {
+  height: 40px !important;
+  padding: 0 14px 0 16px !important;
+  gap: 6px !important;
+  border-radius: 999px !important;
+  transition: background .25s ease, color .25s ease !important;
+}
+html:root body .nav .nm-trigger::after { display: none !important; }
+html:root body .nav .nm-dd:hover > .nm-trigger,
+html:root body .nav .nm-dd.open > .nm-trigger {
+  background: rgba(27,111,232,.08) !important;
+}
+.nm-chev {
+  width: 14px; height: 14px;
+  transition: transform .3s cubic-bezier(.22,1,.36,1);
+}
+.nm-dd.open .nm-chev { transform: rotate(180deg); }
+
+/* ─────────────────────────────────────────────
+   2. PANEL
+   The transparent top padding overlaps the bar, so the pointer
+   never crosses a dead zone between the trigger and the card.
+   ───────────────────────────────────────────── */
+.nm-panel {
+  position: absolute;
+  top: calc(100% - 14px);
+  left: 50%;
+  z-index: 1000;
+  padding-top: 20px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 10px) scale(.985);
+  transform-origin: top center;
+  transition: opacity .22s ease, transform .3s cubic-bezier(.22,1,.36,1), visibility 0s linear .3s;
+}
+.nm-dd.open > .nm-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translate(-50%, 0) scale(1);
+  transition: opacity .25s ease, transform .4s cubic-bezier(.22,1,.36,1), visibility 0s;
+}
+
+/* soft blue-white wash with a faint dot texture, so the panel isn't flat white */
+.nm-card {
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid #e3ecfb;
+  border-radius: 24px;
+  background:
+    radial-gradient(rgba(27,111,232,.07) 1px, transparent 1.3px) 0 0 / 18px 18px,
+    radial-gradient(ellipse 70% 60% at 0% 0%, rgba(27,111,232,.07), transparent 70%),
+    linear-gradient(180deg, #ffffff, #f6f9ff);
+  box-shadow:
+    0 1px 2px rgba(10,22,40,.04),
+    0 30px 70px -24px rgba(10,22,40,.28),
+    0 12px 30px -18px rgba(27,111,232,.25);
+}
+
+.nm-main { display: flex; flex-direction: column; gap: 10px; }
+
+/* small header row over the grid */
+.nm-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 6px 10px;
+  border-bottom: 1px solid #e3ecfb;
+}
+.nm-head__lbl {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: .6875rem;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #1b6fe8;
+}
+.nm-head__lbl::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #1b6fe8;
+  box-shadow: 0 0 0 3px rgba(27,111,232,.15);
+}
+.nm-head__note {
+  font-size: .75rem;
+  font-weight: 500;
+  color: #718096;
+}
+
+.nm-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 288px);
+  align-content: start;
+  gap: 8px;
+}
+
+/* ─────────────────────────────────────────────
+   3. ITEMS
+   ───────────────────────────────────────────── */
+/* each option is its own small card, tinted by its accent colour --c */
+html:root body .nav .nm-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 14px;
+  border: 1px solid #edf2fb !important;
+  border-radius: 16px;
+  background: rgba(255,255,255,.85);
+  text-decoration: none;
+  transition: background .25s ease, border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+html:root body .nav .nm-item:hover {
+  background: #fff;
+  border-color: color-mix(in srgb, var(--c) 40%, transparent) !important;
+  box-shadow: 0 12px 24px -16px color-mix(in srgb, var(--c) 70%, transparent);
+  transform: translateY(-1px);
+}
+/* accent bar slides in along the left edge on hover */
+html:root body .nav .nm-item::before {
+  content: '';
+  position: absolute;
+  left: -1px; top: 14px; bottom: 14px;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: var(--c);
+  transform: scaleY(0);
+  transition: transform .3s cubic-bezier(.22,1,.36,1);
+}
+html:root body .nav .nm-item:hover::before { transform: scaleY(1); }
+
+/* items deal in one after another as the panel opens */
+.nm-dd.open .nm-item { animation: nm-rise .45s cubic-bezier(.22,1,.36,1) backwards; animation-delay: calc(var(--i) * 30ms + 60ms); }
+@keyframes nm-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.nm-item__ico {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px; height: 44px;
+  border: 1px solid color-mix(in srgb, var(--c) 22%, transparent) !important;
+  border-radius: 13px;
+  background: color-mix(in srgb, var(--c) 10%, #fff);
+  color: var(--c);
+  transition: background .25s ease, color .25s ease, border-color .25s ease, transform .3s cubic-bezier(.3,1.5,.5,1);
+}
+.nm-item__ico svg { width: 20px; height: 20px; }
+/* !important: light-theme.css re-colours every [class*='-item'] border */
+html:root body .nav .nm-item:hover .nm-item__ico {
+  background: var(--c);
+  border-color: var(--c) !important;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.nm-item__txt { display: flex; flex-direction: column; gap: 3px; padding-top: 2px; min-width: 0; }
+html:root body .nav .nm-item__title {
+  font-family: var(--font-body) !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -.01em !important;
+  line-height: 1.3 !important;
+  color: #0a1628 !important;
+  -webkit-text-fill-color: #0a1628 !important;
+}
+html:root body .nav .nm-item__desc {
+  font-size: .875rem !important;
+  line-height: 1.4 !important;
+  color: #718096 !important;
+  -webkit-text-fill-color: #718096 !important;
+}
+html:root body .nav .nm-item:hover .nm-item__title {
+  color: var(--c) !important;
+  -webkit-text-fill-color: var(--c) !important;
+}
+
+/* ─────────────────────────────────────────────
+   4. FEATURE CARD
+   ───────────────────────────────────────────── */
+html:root body .nav .nm-feature {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 280px;
+  padding: 24px 24px 22px;
+  overflow: hidden;
+  border-radius: 18px;
+  background:
+    radial-gradient(ellipse 80% 60% at 100% 0%, rgba(27,111,232,.45), transparent 65%),
+    #0a1628;
+  text-decoration: none;
+  transition: transform .35s cubic-bezier(.22,1,.36,1);
+}
+html:root body .nav .nm-feature:hover { transform: translateY(-2px); }
+.nm-feature__glow {
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(77,148,255,.35), transparent 65%);
+  filter: blur(10px);
+  animation: nm-glow 6s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes nm-glow { to { transform: translate(-30px, 30px) scale(1.2); } }
+
+.nm-feature__ico {
+  position: absolute;
+  top: 24px; left: 26px;
+  width: 30px; height: 30px;
+  color: #7fb0ff;
+}
+.nm-dd.open .nm-feature__ico { animation: nm-twinkle 2.4s ease-in-out infinite; }
+@keyframes nm-twinkle {
+  0%, 100% { transform: scale(1) rotate(0); }
+  50%      { transform: scale(.85) rotate(20deg); }
+}
+
+html:root body .nav .nm-feature__title {
+  position: relative;
+  margin-top: 48px;
+  font-family: var(--font-heading) !important;
+  font-size: 1.375rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -.035em !important;
+  line-height: 1.15 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+html:root body .nav .nm-feature__desc {
+  position: relative;
+  margin-top: 12px;
+  font-size: .875rem !important;
+  line-height: 1.5 !important;
+  color: #a0b4cc !important;
+  -webkit-text-fill-color: #a0b4cc !important;
+}
+html:root body .nav .nm-feature__cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 22px;
+  font-size: .9375rem !important;
+  font-weight: 650 !important;
+  color: #7fb0ff !important;
+  -webkit-text-fill-color: #7fb0ff !important;
+}
+.nm-feature__cta svg { width: 15px; height: 15px; transition: transform .3s ease; }
+.nm-feature:hover .nm-feature__cta svg { transform: translateX(4px); }
+.nm-dd.open .nm-feature { animation: nm-slide .5s cubic-bezier(.22,1,.36,1) .08s both; }
+@keyframes nm-slide {
+  from { opacity: 0; transform: translateX(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ─────────────────────────────────────────────
+   5. DARK THEME
+   ───────────────────────────────────────────── */
+:root[data-theme='dark'] body .nm-card {
+  border-color: rgba(160,180,204,.16);
+  background: radial-gradient(rgba(127,176,255,.08) 1px, transparent 1.3px) 0 0 / 18px 18px, #0d1b30;
+  box-shadow: 0 30px 70px -24px rgba(0,0,0,.6);
+}
+:root[data-theme='dark'] body .nm-head { border-color: rgba(160,180,204,.16); }
+:root[data-theme='dark'] body .nav .nm-item { background: rgba(255,255,255,.03); border-color: rgba(160,180,204,.12) !important; }
+:root[data-theme='dark'] body .nav .nm-item:hover { background: rgba(255,255,255,.06); }
+:root[data-theme='dark'] body .nm-item__ico { background: color-mix(in srgb, var(--c) 18%, transparent); }
+:root[data-theme='dark'] body .nav .nm-item__title { color: #fff !important; -webkit-text-fill-color: #fff !important; }
+:root[data-theme='dark'] body .nav .nm-item__desc { color: #a0b4cc !important; -webkit-text-fill-color: #a0b4cc !important; }
+:root[data-theme='dark'] body .nav .nm-feature { background: radial-gradient(ellipse 80% 60% at 100% 0%, rgba(27,111,232,.45), transparent 65%), #14243f; }
+
+/* narrower desktops: one grid column fewer */
+@media (max-width: 1180px) {
+  .nm-grid { grid-template-columns: repeat(2, 250px); }
+  html:root body .nav .nm-feature { width: 260px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nm-panel, .nm-dd.open > .nm-panel { transition: opacity .15s ease, visibility 0s; transform: translate(-50%, 0); }
+  .nm-dd.open .nm-item, .nm-dd.open .nm-feature, .nm-dd.open .nm-feature__ico, .nm-feature__glow { animation: none; }
+}

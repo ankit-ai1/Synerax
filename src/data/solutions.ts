@@ -129,41 +129,6 @@ export const solutions: Solution[] = [
     ctaDesc: 'Get a pipeline and cloud-spend assessment within 24 hours — no commitment required.',
   },
 
-  /* ── 3 ─────────────────────────────────────────────────────── */
-  {
-    slug: 'cybersecurity',
-    name: 'Cybersecurity Solutions',
-    tag: 'Cybersecurity Solutions',
-    headline: 'Enterprise Security, Compliance and',
-    headlineBlue: 'Threat Defense',
-    heroDesc: 'Enterprise security, compliance, and threat defense. A 24/7 SOC, zero-trust architecture, and audit-ready controls that hold up under real scrutiny.',
-    overviewTitle: 'Security That Survives an Audit and an Incident',
-    overviewDesc: 'We treat security as an operating capability, not a document. That means a monitored perimeter, identity-first access control, tested response runbooks, and evidence collected continuously rather than assembled the week before an audit.\n\nCompliance work — SOC 2, ISO 27001, HIPAA — is mapped onto the controls you already run, so certification becomes a reporting exercise instead of a second system to maintain.',
-    pillars: [
-      { icon: '🛡️', title: '24/7 SOC', desc: 'Round-the-clock monitoring, triage, and escalation.' },
-      { icon: '🔐', title: 'Zero-Trust Architecture', desc: 'Identity-first access with continuous verification.' },
-      { icon: '🎯', title: 'Penetration Testing', desc: 'Adversarial testing against your real environment.' },
-      { icon: '📋', title: 'Compliance', desc: 'SOC 2, ISO 27001 and HIPAA mapped to live controls.' },
-    ],
-    stats: [
-      { value: '24', suffix: '/7', label: 'SOC monitoring' },
-      { value: '15', suffix: 'min', label: 'Critical alert response' },
-      { value: '3', suffix: '', label: 'Frameworks certified' },
-      { value: '99', suffix: '.9%', label: 'Threat detection rate' },
-    ],
-    capabilities: [
-      { title: '24/7 Security Operations', desc: 'Continuous monitoring with tuned detections, triage, and an escalation path that reaches a human every time.', svgPath: ICON.search },
-      { title: 'Zero-Trust Architecture', desc: 'Identity-first access, network segmentation, and continuous verification instead of a trusted internal network.', svgPath: ICON.shieldOk },
-      { title: 'Penetration Testing', desc: 'Application, infrastructure, and social engineering testing against your live environment, with retest included.', svgPath: ICON.globe },
-      { title: 'Compliance & Certification', desc: 'SOC 2 Type II, ISO 27001, and HIPAA programmes mapped onto controls you already operate.', svgPath: ICON.doc },
-      { title: 'Incident Response', desc: 'Tested runbooks, forensics, containment, and post-incident review that closes the loop back into engineering.', svgPath: ICON.shield },
-      { title: 'Vulnerability Management', desc: 'Continuous scanning across code, images, and infrastructure with risk-ranked, owner-assigned remediation.', svgPath: ICON.gear },
-    ],
-    ctaTag: 'Cybersecurity Experts',
-    ctaHeadline: 'Ready to Harden\nYour Environment?',
-    ctaDesc: 'Get a security posture assessment within 24 hours — no commitment required.',
-  },
-
   /* ── 4 ─────────────────────────────────────────────────────── */
   {
     slug: 'agentic-ai',

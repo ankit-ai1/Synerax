@@ -86,7 +86,7 @@ export default function Admin() {
           className={pwdErr ? 'shake' : ''}
         />
         {pwdErr && <span className="adm-login__err">Incorrect password</span>}
-        <button onClick={login}>Login →</button>
+        <button onClick={login}>Login</button>
         <Link to="/" className="adm-login__back">← Back to website</Link>
       </div>
     </div>

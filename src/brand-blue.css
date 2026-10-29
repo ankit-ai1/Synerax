@@ -1,0 +1,359 @@
+/* ═════════════════════════════════════════════════════════════
+   BRAND BLUE — white / blue / navy palette from the cloud mark
+   Loaded last. The orange → blue and charcoal → navy value swaps
+   already live in the earlier files; this layer re-points the
+   light-mode tokens and restyles the pieces that were hardcoded
+   to #000 / #fff or need the enterprise card + button recipe.
+
+   Selectors are prefixed `html:root[data-theme='light'] body` so
+   they outrank the doubled-class and :not() rules in
+   light-theme.css without adding more !important wars there.
+   ═════════════════════════════════════════════════════════════ */
+
+:root {
+  --color-bg-primary:    #FFFFFF;
+  --color-bg-secondary:  #F4F8FF;
+  --color-bg-dark:       #0A1628;
+  --color-accent:        #1B6FE8;
+  --color-accent-hover:  #1459C7;
+  --color-text-primary:  #0A1628;
+  --color-text-secondary:#4A5568;
+  --color-text-light:    #FFFFFF;
+  --color-border:        #D6E4FF;
+  --color-card-shadow:   0 2px 12px rgba(27,111,232,.08);
+  --color-card-shadow-hover: 0 8px 24px rgba(27,111,232,.14);
+}
+
+/* ─────────────────────────────────────────────
+   1. TOKENS (light — the default theme)
+   ───────────────────────────────────────────── */
+:root[data-theme='light'] {
+  --fx-00: #ffffff !important;   /* heroes, raised surfaces */
+  --fx-01: #ffffff !important;   /* page floor + primary bands */
+  --fx-02: #f4f8ff !important;   /* alternate band */
+  --fx-03: #ffffff !important;   /* card surface */
+  --fx-04: #f4f8ff !important;   /* chips, wells */
+  --fx-05: #eaf2ff !important;   /* hover */
+  --fx-06: #d6e4ff !important;
+
+  --border:        #d6e4ff !important;
+  --border-strong: #b5cdf5 !important;
+  --fx-hair:       #d6e4ff;
+
+  --text:          #0a1628 !important;
+  --text-dim:      #4a5568 !important;
+  --text-faint:    #718096 !important;
+
+  --accent:        #1b6fe8 !important;
+  --accent-bright: #1459c7 !important;
+  --accent-soft:   rgba(27,111,232,.08) !important;
+  --accent-line:   rgba(27,111,232,.32) !important;
+  --primary:       #1b6fe8 !important;
+}
+
+/* Chart palettes: blue data, navy ink */
+:root[data-theme='light'] .fx-dash--factory { --d-ink: #0a1628; --d-mid: #4a5568; }
+:root[data-theme='light'] .pfc { --p-ink: #0a1628; --p-mid: #0a1628; --p-orange: #1b6fe8; }
+:root[data-theme='light'] .fx-stick { --s-ink: #0a1628; --s-orange: #1b6fe8; }
+:root[data-theme='light'] .fx-slider { --sl-ink: #0a1628; --sl-line: #d6e4ff; --sl-orange: #1b6fe8; }
+
+/* ─────────────────────────────────────────────
+   2. TYPE — navy headings, slate body, blue links
+   ───────────────────────────────────────────── */
+html:root[data-theme='light'] body :is(h1, h2, h3, h4, h5, h6, .iq-h2, .section-title, .iq-hero__h1, .fx-stick__title, .iq-careers-banner__title):not(.iq-accent, .iq-em, [class*='accent'], [class*='btn']) {
+  color: #0a1628 !important;
+  -webkit-text-fill-color: #0a1628 !important;
+}
+
+html:root[data-theme='light'] body :is(
+  .iq-eye.iq-eye, .iq-eye--light.iq-eye--light, .section-tag.section-tag,
+  .ab-section-tag.ab-section-tag, .fx-viz__lbl.fx-viz__lbl, .iq-techstrip__lbl.iq-techstrip__lbl,
+  .ab-hero__tag.ab-hero__tag, .bl-hero__label.bl-hero__label, .car-hero__label.car-hero__label,
+  .ct-hero__tag.ct-hero__tag, .ct-left__tag.ct-left__tag, .cta-band__tag.cta-band__tag,
+  .tl-hero__tag.tl-hero__tag, .tl-related__label.tl-related__label, .st-card__label.st-card__label,
+  .ct-details-box__label.ct-details-box__label, .ct-info-card__label.ct-info-card__label,
+  .bpost-sidebar__label.bpost-sidebar__label, .ind-hero__chip.ind-hero__chip, .bl-grid-label.bl-grid-label
+) {
+  color: #0a1628 !important;
+  -webkit-text-fill-color: #0a1628 !important;
+}
+
+html:root[data-theme='light'] body :is(p, .bpost-body li, .pp-content li) a:not([class*='btn']):not([class*='cta']),
+html:root[data-theme='light'] body .iq-news__link {
+  color: #1b6fe8 !important;
+  -webkit-text-fill-color: #1b6fe8 !important;
+}
+html:root[data-theme='light'] body :is(p, .bpost-body li, .pp-content li) a:not([class*='btn']):not([class*='cta']):hover,
+html:root[data-theme='light'] body .iq-news__link:hover {
+  color: #1459c7 !important;
+  -webkit-text-fill-color: #1459c7 !important;
+}
+
+::selection { background: rgba(27,111,232,.18); }
+
+/* ─────────────────────────────────────────────
+   3. NAVBAR
+   ───────────────────────────────────────────── */
+html:root[data-theme='light'] body .nav,
+html:root[data-theme='light'] body .nav.scrolled {
+  background: #ffffff !important;
+  border-bottom: 1px solid #d6e4ff !important;
+}
+html:root[data-theme='light'] body :is(.nav__logo, .nav__logo .brand__word) {
+  color: #0a1628 !important;
+  -webkit-text-fill-color: #0a1628 !important;
+}
+html:root[data-theme='light'] body .nav__logo .brand__sub {
+  color: rgba(10,22,40,.65) !important;
+  -webkit-text-fill-color: rgba(10,22,40,.65) !important;
+}
+html:root[data-theme='light'] body .nav :is(.nav__links > li > a, .nav__links > li > button, .nav__dropdown-trigger, .nav__link) {
+  color: #0a1628 !important;
+  -webkit-text-fill-color: #0a1628 !important;
+}
+html:root[data-theme='light'] body .nav :is(.nav__links > li > a:hover, .nav__links > li > a.active, .nav__dropdown-trigger:hover, .nav__dropdown.open .nav__dropdown-trigger) {
+  color: #1b6fe8 !important;
+  -webkit-text-fill-color: #1b6fe8 !important;
+}
+
+/* ─────────────────────────────────────────────
+   4. BUTTONS — blue fill primary, blue outline secondary
+   ───────────────────────────────────────────── */
+html:root[data-theme='light'] body :is(
+  .iq-btn-fill, .iq-btn-fill--lg, .btn--primary, .nav__cta, .nav__contact-btn,
+  .nav__mobile-cta-btn, .car-apply-btn, .ct-form__submit, .bl-newsletter__btn
+) {
+  background: #1b6fe8 !important;
+  border: 1px solid #1b6fe8 !important;
+  border-radius: 6px !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+html:root[data-theme='light'] body :is(
+  .iq-btn-fill, .iq-btn-fill--lg, .btn--primary, .nav__cta, .nav__contact-btn,
+  .nav__mobile-cta-btn, .car-apply-btn, .ct-form__submit, .bl-newsletter__btn
+):hover {
+  background: #1459c7 !important;
+  border-color: #1459c7 !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+html:root[data-theme='light'] body :is(.iq-btn-fill, .btn--primary, .nav__contact-btn, .car-apply-btn, .ct-form__submit) :is(span, b, strong, svg) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+html:root[data-theme='light'] body :is(.iq-btn-ring, .iq-btn-ring--light, .btn--outline, .btn--ghost) {
+  background: transparent !important;
+  border: 1px solid #1b6fe8 !important;
+  border-radius: 6px !important;
+  color: #1b6fe8 !important;
+  -webkit-text-fill-color: #1b6fe8 !important;
+}
+html:root[data-theme='light'] body :is(.iq-btn-ring, .iq-btn-ring--light, .btn--outline, .btn--ghost):hover {
+  background: rgba(27,111,232,.06) !important;
+  border-color: #1459c7 !important;
+  color: #1459c7 !important;
+  -webkit-text-fill-color: #1459c7 !important;
+}
+html:root[data-theme='light'] body :is(.iq-btn-ring, .iq-btn-ring--light, .btn--outline, .btn--ghost) :is(span, b, strong) {
+  color: inherit !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+/* ─────────────────────────────────────────────
+   5. SECTION BANDS — #FFF / #F4F8FF alternating
+   ───────────────────────────────────────────── */
+html:root[data-theme='light'] body .iq-hero {
+  background:
+    radial-gradient(ellipse 62% 40% at 50% 18%, rgba(27,111,232,.05), transparent 70%),
+    #ffffff !important;
+}
+/* hero W → ecosystem T → services W → intelligence T → insights W →
+   testimonials T → industries W → careers T → CTA W */
+html:root[data-theme='light'] body section.iq-section.iq-section--tint,
+html:root[data-theme='light'] body section.iq-section.iq-section--gradient,
+html:root[data-theme='light'] body section.iq-section.iq-section--radial,
+html:root[data-theme='light'] body section.iq-section:has(.iq-careers-banner) {
+  background: #f4f8ff !important;
+}
+html:root[data-theme='light'] body section.iq-section.iq-section--white-b,
+html:root[data-theme='light'] body section.iq-section.iq-section--tint-b,
+html:root[data-theme='light'] body section.iq-section.fx-ind-section,
+html:root[data-theme='light'] body .iq-cta {
+  background: #ffffff !important;
+}
+
+/* Final CTA panel spans the full content width. It carries .fx-lede--center
+   for its centred text, which also caps it at ~760px — lift that cap. */
+html:root body .iq-cta .iq-cta__panel.fx-lede--center {
+  max-width: none !important;
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Contact hero: two info cards now (email + location, no phone), so the
+   row splits in two instead of leaving an empty third column */
+@media (min-width: 769px) {
+  html:root body .ct-info-row { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+}
+
+/* ─────────────────────────────────────────────
+   6. CARDS — white, blue hairline, soft blue shadow
+   ───────────────────────────────────────────── */
+html:root[data-theme='light'] body :is(
+  .fx-card, .fx-pillar, .fx-wide-panel, .fx-stage, .fx-analytics,
+  .iq-news, .iq-feat, .iq-mini-card, .iq-bigstat, .iq-platform-item, .iq-cta__panel, .card,
+  .ab-mv-card, .ab-step, .ab-team-card, .ab-value-card, .bl-card, .bl-featured,
+  .bpost-cta-box, .bpost-sidebar, .car-benefit-card, .car-job-card, .car-val-card,
+  .ct-details-box, .ct-form-card, .ct-info-card, .ind-benefit-item, .ind-challenge-item,
+  .ind-feature, .ind-spec-card, .ind-stat, .pp-card, .srv-card, .st-card, .tech-category,
+  .tech-tile, .testi-card, .tl-banner, .tl-cap-card, .tl-usecase-item, .wp-card,
+  .fx-slider .iq-testi
+) {
+  background: #ffffff !important;
+  border: 1px solid #d6e4ff !important;
+  box-shadow: var(--color-card-shadow) !important;
+}
+html:root[data-theme='light'] body :is(
+  .fx-card, .fx-pillar, .fx-stage, .iq-news, .iq-feat, .iq-mini-card, .iq-bigstat, .iq-platform-item,
+  .ab-mv-card, .ab-team-card, .ab-value-card, .bl-card, .car-benefit-card, .car-job-card, .car-val-card,
+  .ind-feature, .ind-spec-card, .pp-card, .srv-card, .st-card, .tech-tile, .tl-cap-card,
+  .tl-usecase-item, .wp-card, .fx-slider .iq-testi
+):hover {
+  background: #ffffff !important;
+  border-color: rgba(27,111,232,.45) !important;
+  box-shadow: var(--color-card-shadow-hover) !important;
+}
+
+/* card icons / marks */
+html:root[data-theme='light'] body :is(
+  .car-benefit-card__icon, .ab-value-card__icon, .tl-usecase-icon, .ab-step__num,
+  .ab-mv-card__badge, .fx-card__idx, .fx-micro__idx, .car-val-card__num, .car-process__step-num
+) {
+  color: #1b6fe8 !important;
+  -webkit-text-fill-color: #1b6fe8 !important;
+}
+
+/* ─────────────────────────────────────────────
+   7. STATS — blue numbers, navy labels
+   ───────────────────────────────────────────── */
+html:root[data-theme='light'] body .fx-stat .fx-stat__num.fx-stat__num,
+html:root[data-theme='light'] body .fx-stat .fx-stat__num.fx-stat__num * {
+  color: #1b6fe8 !important;
+  -webkit-text-fill-color: #1b6fe8 !important;
+}
+html:root[data-theme='light'] body .fx-stat .fx-stat__lbl.fx-stat__lbl {
+  color: #0a1628 !important;
+  -webkit-text-fill-color: #0a1628 !important;
+}
+html:root[data-theme='light'] body :is(.ind-stat__val, .car-hero__stat > span) {
+  color: #1b6fe8 !important;
+  -webkit-text-fill-color: #1b6fe8 !important;
+}
+
+/* ─────────────────────────────────────────────
+   8. INSIGHTS + TESTIMONIALS
+   ───────────────────────────────────────────── */
+html:root[data-theme='light'] body .iq-news__tag {
+  color: #1b6fe8 !important;
+  -webkit-text-fill-color: #1b6fe8 !important;
+}
+html:root[data-theme='light'] body :is(.bl-card__tag-badge, .bl-tag) {
+  background: rgba(27,111,232,.08) !important;
+  border-color: rgba(27,111,232,.25) !important;
+  color: #1b6fe8 !important;
+  -webkit-text-fill-color: #1b6fe8 !important;
+}
+html:root[data-theme='light'] body :is(.bl-card__meta, .bl-featured__meta, .bl-meta-text, .bpost-meta-text) {
+  color: #4a5568 !important;
+  -webkit-text-fill-color: #4a5568 !important;
+}
+
+html:root[data-theme='light'] body .fx-slide__mark { color: #1b6fe8; opacity: .6; }
+html:root[data-theme='light'] body .fx-slider .iq-testi:hover .fx-slide__mark { opacity: .9; }
+html:root[data-theme='light'] body .fx-slider__seg.is-active,
+html:root[data-theme='light'] body .fx-slider__seg[aria-current='true'] { background: #1b6fe8; }
+
+/* ═════════════════════════════════════════════════════════════
+   9. NAVY BLOCKS — footer, careers, dark CTA bands
+   Re-pointing the tokens on the block itself lets every rule
+   that reads var(--text) / var(--border) inside it flip to the
+   dark scheme without enumerating each one.
+   ═════════════════════════════════════════════════════════════ */
+html:root[data-theme='light'] body :is(.ft-new, .iq-careers-banner, .car-general-apply, .cta-band, .ind-cta, .tl-dark-feature) {
+  --fx-00: #0a1628;
+  --fx-01: #0a1628;
+  --fx-02: #0d1b30;
+  --fx-03: #112038;
+  --fx-04: #14243f;
+  --fx-05: #1a2b48;
+  --text: #ffffff;
+  --text-dim: #a0b4cc;
+  --text-faint: #7f93ad;
+  --border: rgba(160,180,204,.18);
+  --border-strong: rgba(160,180,204,.32);
+  background: #0a1628 !important;
+  background-image: none !important;
+  border-color: rgba(160,180,204,.18) !important;
+  color: #ffffff !important;
+}
+
+html:root[data-theme='light'] body :is(.ft-new, .iq-careers-banner, .car-general-apply, .cta-band, .ind-cta, .tl-dark-feature) :is(
+  h1, h2, h3, h4, h5, h6, strong, b, .iq-careers-banner__title, .iq-careers-banner__title.iq-careers-banner__title,
+  .ft-new__heading, .cta-band__tag.cta-band__tag, .section-tag.section-tag, .iq-eye.iq-eye
+):not(.iq-accent, .iq-em, [class*='accent'], [class*='btn']) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+html:root[data-theme='light'] body :is(.ft-new, .iq-careers-banner, .car-general-apply, .cta-band, .ind-cta, .tl-dark-feature) :is(p, li, span, small, address, label):not(.iq-accent, .iq-em, [class*='accent'], [class*='btn'], [class*='btn'] *, a *, [class*='signature'], [class*='signature'] *) {
+  color: #a0b4cc !important;
+  -webkit-text-fill-color: #a0b4cc !important;
+}
+
+/* outline buttons on navy go white */
+html:root[data-theme='light'] body :is(.ft-new, .iq-careers-banner, .car-general-apply, .cta-band, .ind-cta, .tl-dark-feature) :is(.iq-btn-ring, .iq-btn-ring--light, .btn--outline, .btn--ghost) {
+  border-color: rgba(255,255,255,.5) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+html:root[data-theme='light'] body :is(.ft-new, .iq-careers-banner, .car-general-apply, .cta-band, .ind-cta, .tl-dark-feature) :is(.iq-btn-ring, .iq-btn-ring--light, .btn--outline, .btn--ghost):hover {
+  background: rgba(255,255,255,.08) !important;
+  border-color: #ffffff !important;
+}
+
+/* footer specifics */
+html:root[data-theme='light'] body .ft-new a {
+  color: #a0b4cc !important;
+  -webkit-text-fill-color: #a0b4cc !important;
+}
+html:root[data-theme='light'] body .ft-new a:hover {
+  color: #1b6fe8 !important;
+  -webkit-text-fill-color: #1b6fe8 !important;
+}
+html:root[data-theme='light'] body .ft-new .ft-new__social {
+  border-color: rgba(160,180,204,.3) !important;
+}
+html:root[data-theme='light'] body .ft-new .ft-new__social:hover {
+  border-color: #1b6fe8 !important;
+}
+html:root[data-theme='light'] body :is(.ft-new__logo, .ft-new__logo .brand__word) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+html:root[data-theme='light'] body .ft-new__logo .brand__sub {
+  color: rgba(255,255,255,.65) !important;
+  -webkit-text-fill-color: rgba(255,255,255,.65) !important;
+}
+html:root[data-theme='light'] body .ft-new__logo-img { filter: brightness(0) invert(1) !important; }
+html:root[data-theme='light'] body .ft-new__signature {
+  --sig-tone:  rgba(255,255,255,.08);
+  --sig-shine: rgba(255,255,255,.2);
+}
+html:root[data-theme='light'] body .ft-new .ft-new__signature-sub {
+  color: rgba(160,180,204,.6) !important;
+}
+html:root[data-theme='light'] body .ft-new :is(.ft-new__bottom, .ft-new__top) {
+  border-color: rgba(160,180,204,.18) !important;
+}

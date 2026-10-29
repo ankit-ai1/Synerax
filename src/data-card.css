@@ -9,7 +9,7 @@
   --dc-ink: #f0f0f0;
   --dc-mid: rgba(255,255,255,.58);
   --dc-low: rgba(255,255,255,.36);
-  --dc-accent: #ff5c29;
+  --dc-accent: #1b6fe8;
   --dc-good: #7fae63;
 
   position: relative;
@@ -23,7 +23,7 @@
   background:
     linear-gradient(to right, rgba(255,255,255,.014) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255,255,255,.014) 1px, transparent 1px),
-    var(--fx-03, #121214);
+    var(--fx-03, #112038);
   background-size: 48px 48px;
   overflow: hidden;
   font-variant-numeric: tabular-nums;
@@ -85,7 +85,7 @@
 .dcard__ring { fill: none; stroke: var(--dc-soft); stroke-width: .5; }
 .dcard__spoke { stroke: var(--dc-soft); stroke-width: .4; }
 .dcard__shape {
-  fill: rgba(255,92,41,.15);
+  fill: rgba(27,111,232,.15);
   stroke: var(--dc-accent);
   stroke-width: 1.1;
   stroke-linejoin: round;
@@ -248,7 +248,7 @@
   height: 62px;
   border-radius: 50%;
   border: 1px solid var(--dc-line);
-  background: var(--fx-01, #0b0b0d);
+  background: var(--fx-01, #0a1628);
   font-family: var(--font-mono);
   font-size: .5rem;
   letter-spacing: .09em;
@@ -261,7 +261,7 @@
 .dcard__orbit-node.is-on {
   border-color: var(--dc-accent);
   color: var(--dc-ink);
-  box-shadow: 0 0 0 4px rgba(255,92,41,.1);
+  box-shadow: 0 0 0 4px rgba(27,111,232,.1);
 }
 
 /* ── Console ────────────────────────────────────────────────── */
@@ -408,25 +408,25 @@
 
 /* ── Light theme ────────────────────────────────────────────── */
 :root[data-theme='light'] .dcard {
-  --dc-line: rgba(18,18,26,.14);
-  --dc-soft: rgba(18,18,26,.09);
-  --dc-ink: #101015;
-  --dc-mid: #52525c;
-  --dc-low: #78787f;
-  --dc-accent: #e04e18;
+  --dc-line: rgba(10,22,40,.14);
+  --dc-soft: rgba(10,22,40,.09);
+  --dc-ink: #0a1628;
+  --dc-mid: #4a5568;
+  --dc-low: #718096;
+  --dc-accent: #1b6fe8;
   --dc-good: #3f7a2c;
 
   background:
-    linear-gradient(to right, rgba(18,18,26,.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(18,18,26,.035) 1px, transparent 1px),
+    linear-gradient(to right, rgba(10,22,40,.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10,22,40,.035) 1px, transparent 1px),
     var(--fx-00, #fff);
   background-size: 48px 48px;
-  box-shadow: 0 1px 2px rgba(18,18,26,.05), 0 4px 14px rgba(18,18,26,.05);
+  box-shadow: 0 1px 2px rgba(10,22,40,.05), 0 4px 14px rgba(10,22,40,.05);
 }
-:root[data-theme='light'] .dcard__shape { fill: rgba(224,78,24,.13); }
-:root[data-theme='light'] .dcard__orbit-node { background: var(--fx-01, #f4f4f1); }
-:root[data-theme='light'] .dcard__console-track { background: rgba(18,18,26,.1); }
-:root[data-theme='light'] .dcard__console-steps li.is-active { background: rgba(18,18,26,.06); }
+:root[data-theme='light'] .dcard__shape { fill: rgba(27,111,232,.13); }
+:root[data-theme='light'] .dcard__orbit-node { background: var(--fx-01, #f4f8ff); }
+:root[data-theme='light'] .dcard__console-track { background: rgba(10,22,40,.1); }
+:root[data-theme='light'] .dcard__console-steps li.is-active { background: rgba(10,22,40,.06); }
 
 @media (prefers-reduced-motion: reduce) {
   .dcard__shape,
@@ -496,7 +496,7 @@
   padding: .4rem .55rem;
   border: 1px solid var(--dc-line);
   border-radius: 5px;
-  background: var(--fx-05, #1a1a1c);
+  background: var(--fx-05, #1a2b48);
   box-shadow: 0 8px 22px rgba(0,0,0,.5);
   white-space: nowrap;
   pointer-events: none;
@@ -524,7 +524,7 @@
 /* ── Radar interaction ──────────────────────────────────────── */
 .dcard__radar-plot { position: relative; min-width: 0; }
 .dcard__node { cursor: pointer; transition: r .2s ease, cx 1.4s cubic-bezier(.4,0,.2,1), cy 1.4s cubic-bezier(.4,0,.2,1); }
-.dcard__node.is-on { filter: drop-shadow(0 0 5px rgba(255,92,41,.9)); }
+.dcard__node.is-on { filter: drop-shadow(0 0 5px rgba(27,111,232,.9)); }
 .dcard__axes li { cursor: default; transition: color .2s ease; }
 .dcard__axes li.is-on span { color: var(--dc-ink); }
 .dcard__axes li.is-on b { color: var(--dc-accent); }
@@ -562,9 +562,9 @@
 /* ── Light theme ────────────────────────────────────────────── */
 :root[data-theme='light'] .dcard__tip {
   background: var(--fx-00, #fff);
-  box-shadow: 0 8px 22px rgba(18,18,26,.14);
+  box-shadow: 0 8px 22px rgba(10,22,40,.14);
 }
-:root[data-theme='light'] .dcard__cursor { stroke: rgba(18,18,26,.3); }
+:root[data-theme='light'] .dcard__cursor { stroke: rgba(10,22,40,.3); }
 
 @media (prefers-reduced-motion: reduce) {
   .dcard__bar { animation: none !important; }
@@ -696,7 +696,7 @@
 .dcard__orbit-spoke.is-on {
   stroke: var(--dc-accent);
   stroke-width: .7;
-  filter: drop-shadow(0 0 1.5px rgba(255,92,41,.8));
+  filter: drop-shadow(0 0 1.5px rgba(27,111,232,.8));
 }
 @keyframes dc-orb-flow { to { stroke-dashoffset: 15.2 } }
 
@@ -727,7 +727,7 @@
   border: 1px solid var(--dc-line);
   background:
     radial-gradient(circle at 50% 35%, rgba(255,255,255,.05), transparent 70%),
-    var(--fx-01, #0b0b0d);
+    var(--fx-01, #0a1628);
   font-family: var(--font-mono);
   font-size: .4375rem;
   line-height: 1.4;
@@ -753,9 +753,9 @@
   color: var(--dc-ink);
   transform: scale(1.13);
   box-shadow:
-    0 0 0 1px rgba(255,92,41,.35),
-    0 0 26px rgba(255,92,41,.28),
-    inset 0 0 18px rgba(255,92,41,.09);
+    0 0 0 1px rgba(27,111,232,.35),
+    0 0 26px rgba(27,111,232,.28),
+    inset 0 0 18px rgba(27,111,232,.09);
 }
 .dcard__orbit-node.is-on .dcard__orbit-idx { color: var(--dc-accent); }
 
@@ -804,7 +804,7 @@
   height: 7px;
   border-radius: 50%;
   background: var(--dc-accent);
-  box-shadow: 0 0 0 5px rgba(255,92,41,.12), 0 0 14px rgba(255,92,41,.5);
+  box-shadow: 0 0 0 5px rgba(27,111,232,.12), 0 0 14px rgba(27,111,232,.5);
   animation: dc-orb-pip 2.6s ease-in-out infinite;
 }
 @keyframes dc-orb-pip {
@@ -823,14 +823,14 @@
 /* ── light theme ────────────────────────────────────────────── */
 :root[data-theme='light'] .dcard__orbit-node {
   background:
-    radial-gradient(circle at 50% 35%, rgba(18,18,26,.03), transparent 70%),
+    radial-gradient(circle at 50% 35%, rgba(10,22,40,.03), transparent 70%),
     var(--fx-00, #fff);
 }
 :root[data-theme='light'] .dcard__orbit-node.is-on {
   box-shadow:
-    0 0 0 1px rgba(224,78,24,.3),
-    0 8px 24px rgba(224,78,24,.18),
-    inset 0 0 18px rgba(224,78,24,.06);
+    0 0 0 1px rgba(27,111,232,.3),
+    0 8px 24px rgba(27,111,232,.18),
+    inset 0 0 18px rgba(27,111,232,.06);
 }
 
 @media (max-width: 720px) {

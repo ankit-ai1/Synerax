@@ -9,8 +9,8 @@
   --c-ink: #f0f0f0;
   --c-mid: rgba(255,255,255,.6);
   --c-low: rgba(255,255,255,.38);
-  --c-panel: var(--fx-02, #0e0e10);
-  --c-sunk: var(--fx-01, #0b0b0d);
+  --c-panel: var(--fx-02, #0d1b30);
+  --c-sunk: var(--fx-01, #0a1628);
 
   display: flex;
   flex-direction: column;
@@ -72,7 +72,7 @@
 }
 .cc__seg button:hover { color: var(--c-ink); }
 .cc__seg button.is-active {
-  background: var(--fx-05, #1a1a1c);
+  background: var(--fx-05, #1a2b48);
   color: var(--c-ink);
   font-weight: 500;
 }
@@ -97,7 +97,7 @@
 .cc__export:hover {
   border-color: rgba(255,255,255,.2);
   color: var(--c-ink);
-  background: var(--fx-04, #151517);
+  background: var(--fx-04, #14243f);
 }
 
 /* ── Filter row ───────────────────────────────────────────── */
@@ -271,8 +271,8 @@
 
 /* ── Light theme ──────────────────────────────────────────── */
 :root[data-theme='light'] .cc {
-  --c-line: rgba(20,20,26,.12);
-  --c-ink: #16161a;
+  --c-line: rgba(10,22,40,.12);
+  --c-ink: #14243f;
   --c-mid: rgba(22,22,26,.66);
   --c-low: rgba(22,22,26,.46);
   --c-panel: var(--fx-00, #fff);
@@ -283,8 +283,8 @@
 :root[data-theme='light'] .cc__export:hover { background: var(--fx-03); }
 :root[data-theme='light'] .cc__grid,
 :root[data-theme='light'] .cc__xaxis { background: none; }
-:root[data-theme='light'] .cc__grid { background: rgba(20,20,26,.08); }
-:root[data-theme='light'] .cc__xaxis { border-top-color: rgba(20,20,26,.08); }
+:root[data-theme='light'] .cc__grid { background: rgba(10,22,40,.08); }
+:root[data-theme='light'] .cc__xaxis { border-top-color: rgba(10,22,40,.08); }
 
 @media (prefers-reduced-motion: reduce) {
   .cc__bar { animation: none !important; }

@@ -1,0 +1,116 @@
+/* ═════════════════════════════════════════════════════════════
+   CAREERS BANNER — homepage (CareersBanner.tsx)
+   The original simple split on a navy panel: copy left, photo
+   right fading into the panel. Uses its own cr-* classes so the
+   older .iq-careers-banner rules in the factory layers can't
+   reach it (they were turning the panel light and the title white).
+   ═════════════════════════════════════════════════════════════ */
+
+html:root[data-theme='light'] body section.iq-section.cr-section { background: #f4f8ff !important; }
+
+.cr {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  min-height: 480px;
+  overflow: hidden;
+  border-radius: 28px;
+  background: #0a1628;
+  box-shadow: 0 40px 80px -40px rgba(10,22,40,.6);
+}
+
+/* ── copy ── */
+.cr-copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 64px 56px 64px 72px;
+}
+
+html:root body .cr .cr-title.cr-title {
+  margin: 0 0 18px !important;
+  font-size: clamp(2.25rem, 4vw, 3.25rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -.045em !important;
+  line-height: 1.05 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+html:root body .cr .cr-title.cr-title span {
+  font-family: var(--font-accent) !important;
+  font-style: italic !important;
+  font-weight: 500 !important;
+  letter-spacing: -.03em !important;
+  color: #4d94ff !important;
+  -webkit-text-fill-color: #4d94ff !important;
+}
+
+html:root body .cr .cr-desc {
+  margin: 0 0 32px !important;
+  max-width: 42ch;
+  font-size: 1.125rem !important;
+  line-height: 1.6 !important;
+  color: #a0b4cc !important;
+  -webkit-text-fill-color: #a0b4cc !important;
+}
+
+html:root body .cr .cr-cta {
+  display: inline-flex;
+  align-items: center;
+  height: 52px;
+  padding: 0 28px;
+  border-radius: 6px;
+  background: #1b6fe8;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-size: .9375rem !important;
+  font-weight: 650;
+  letter-spacing: .02em;
+  text-decoration: none;
+  transition: background .25s ease, transform .25s ease;
+}
+html:root body .cr .cr-cta:hover { background: #1459c7; transform: translateY(-1px); }
+
+/* ── photo, blending into the navy on its left edge ── */
+.cr-media {
+  position: relative;
+  overflow: hidden;
+}
+/* The photo is a tall portrait. Filling the wide column with `cover` zooms
+   it so far that only the face fits, so instead show it at the column's
+   full height — face down to the crossed hands — and feather both side
+   edges into the navy so the photo's own background blends away. */
+/* In the photo the head starts ~17% down and the watch sits ~66% down, so
+   at 175% of the column height, shifted up 24%, the frame runs from just
+   above the head to just below the watch and crossed hands. */
+.cr-media img {
+  position: absolute;
+  top: -24%; right: 4%;
+  height: 175%;
+  width: auto;
+  max-width: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 22%, #000 80%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 22%, #000 80%, transparent 100%);
+}
+.cr-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, #0a1628 0%, rgba(10,22,40,.6) 22%, rgba(10,22,40,0) 55%),
+    linear-gradient(180deg, rgba(27,111,232,.10), rgba(10,22,40,.25));
+}
+
+/* ── responsive ── */
+@media (max-width: 900px) {
+  .cr { grid-template-columns: 1fr; min-height: 0; border-radius: 22px; }
+  .cr-media { height: 360px; order: -1; }
+  .cr-media img { right: auto; left: 50%; transform: translateX(-50%); }
+  .cr-media::after {
+    background: linear-gradient(0deg, #0a1628 0%, rgba(10,22,40,0) 50%);
+  }
+  .cr-copy { padding: 36px 28px 44px; }
+}

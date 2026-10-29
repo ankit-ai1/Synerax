@@ -1,0 +1,158 @@
+/* ═════════════════════════════════════════════════════════════
+   TYPE SCALE — bigger, more confident sizes site-wide
+   Loaded last. Families and weights still come from type-apply.css;
+   this layer only lifts sizes:
+     body copy      ≥ 17px
+     section h2     2.5–3rem
+     hero h1        4rem+ on desktop
+     stat numbers   bold, ~4.5rem
+   Prefixed `html:root body` (+ a parent class where needed) so it
+   outranks the single-class !important rules in the factory layers.
+   Mockup UI (hero dashboard, charts, consoles) is left at its own
+   scale — it is meant to read as a miniature product screen.
+   ═════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   1. BODY COPY — 17px floor
+   ───────────────────────────────────────────── */
+html:root body {
+  font-size: 17px;
+}
+
+html:root body main p:not([class]),
+html:root body main li:not([class]),
+html:root body :is(.bpost-body, .pp-content) :is(p, li) {
+  font-size: 1.0625rem !important;   /* 17px */
+  line-height: 1.7 !important;
+}
+
+/* Homepage copy */
+html:root body .iq-section :is(
+  .iq-body, .fx-card__txt, .fx-micro__desc, .fx-stick__desc, .iq-news__desc,
+  .iq-careers-banner__desc, .iq-cta__sub, .fx-stat__sub, .fx-ind-row__note
+),
+html:root body :is(.iq-careers-banner__desc, .iq-cta__sub) {
+  font-size: 1.0625rem !important;   /* 17px */
+  line-height: 1.7 !important;
+}
+html:root body .iq-section .iq-body {
+  font-size: 1.125rem !important;    /* 18px — section intros */
+}
+
+/* Inner-page copy (the roles in typography-unify.css §5) */
+html:root body :is(
+  .ab-mv__sub, .ab-mv-card__desc, .ab-process__sub, .ab-step__desc, .about-story__text,
+  .bl-card__desc, .bl-card__body, .bl-featured__desc, .bl-featured__body, .bl-newsletter__sub,
+  .bpost-cta-box__text, .car-benefit-card__desc, .car-benefits__sub, .car-general-apply__text,
+  .car-process__sub, .car-process__step-desc, .car-val-card__desc, .ct-faq__sub, .ct-info-card__body,
+  .ct-left__desc, .ind-challenges__desc, .ind-compliance__desc, .ind-compliance__text, .ind-cta__desc,
+  .ind-feature__desc, .ind-feature__text, .pp-card__body, .pp-cta__tagline, .st-card__desc,
+  .st-card__body, .st-section__sub, .tl-cap-card__desc, .tl-dark-feature__sub, .tl-dark-feature__text,
+  .tl-enterprise__desc, .tl-enterprise__text, .tl-techstack__text, .tl-usecases__text, .wp-card__desc
+) {
+  font-size: 1.0625rem !important;   /* 17px */
+  line-height: 1.7 !important;
+}
+
+/* Testimonial quotes read as pull-quotes */
+html:root body .fx-slider .iq-testi__quote,
+html:root body .iq-testi .iq-testi__quote {
+  font-size: clamp(1.125rem, 1.3vw, 1.25rem) !important;
+  line-height: 1.6 !important;
+}
+
+/* ─────────────────────────────────────────────
+   2. HERO
+   ───────────────────────────────────────────── */
+/* 6.4vw reaches 4rem at ~1000px wide and caps at 92px */
+html:root body .iq-hero .iq-hero__h1 {
+  font-size: clamp(2.6rem, 6.4vw, 5.75rem) !important;
+  line-height: 1.02 !important;
+}
+html:root body .iq-hero .iq-hero__sub {
+  font-size: clamp(1.125rem, 1.4vw, 1.3125rem) !important;   /* 18–21px */
+  line-height: 1.6 !important;
+}
+
+html:root body :is(
+  .ab-hero__h1, .bl-hero__h1, .bpost-hero__h1, .car-hero__h1, .ct-hero__h1,
+  .ind-hero__h1, .pp-hero__h1, .srv-hero__h1, .tl-hero__h1, .fx-pagehero h1
+) {
+  font-size: clamp(2.5rem, 5.6vw, 4.75rem) !important;
+  line-height: 1.04 !important;
+}
+html:root body :is(
+  .ab-hero__sub, .bl-hero__sub, .bpost-hero__desc, .car-hero__sub, .ct-hero__sub,
+  .ind-hero__desc, .pp-hero__sub, .tl-hero__desc, .srv-hero__sub
+) {
+  font-size: clamp(1.0625rem, 1.3vw, 1.25rem) !important;   /* 17–20px */
+  line-height: 1.6 !important;
+}
+
+/* ─────────────────────────────────────────────
+   3. SECTION HEADINGS — 2.5–3rem
+   ───────────────────────────────────────────── */
+html:root body :is(
+  .iq-h2, .section-title, .iq-careers-banner__title,
+  .ab-mv__title, .ab-process__title, .bl-newsletter__h2, .bpost-related__title,
+  .car-benefits__h2, .car-jobs__h2, .car-process__h2, .car-values__h2,
+  .ct-faq__h2, .ct-left__h2, .ind-benefits__title, .ind-challenges__title,
+  .ind-compliance__title, .ind-cta__title, .ind-specialized__title,
+  .st-section__title, .tl-enterprise__title
+) {
+  font-size: clamp(2.125rem, 3.8vw, 3rem) !important;   /* 34px mobile → 48px */
+  line-height: 1.08 !important;
+}
+/* closing CTA stays the biggest heading below the hero */
+html:root body .iq-cta .iq-cta__h2 {
+  font-size: clamp(2.5rem, 5.4vw, 4.5rem) !important;
+}
+
+/* Card titles step up with everything else */
+html:root body :is(
+  .fx-card__title, .iq-news__title, .fx-stick__title,
+  .ab-mv-card__title, .ab-step__title, .bl-card__title, .car-benefit-card__title,
+  .car-job-card__title, .car-val-card__title, .ind-feature__title, .ind-spec-card__title,
+  .pp-card__title, .tl-cap-card__title, .wp-card__title
+) {
+  font-size: clamp(1.25rem, 1.6vw, 1.5rem) !important;   /* 20–24px */
+  line-height: 1.2 !important;
+}
+html:root body .bl-featured__title {
+  font-size: clamp(1.5rem, 2.2vw, 2rem) !important;
+}
+
+/* ─────────────────────────────────────────────
+   4. STATS — bold and prominent
+   ───────────────────────────────────────────── */
+html:root body .fx-stat .fx-stat__num.fx-stat__num {
+  font-size: clamp(3rem, 5.4vw, 4.75rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -.045em !important;
+  line-height: 1 !important;
+}
+html:root body .fx-stat .fx-stat__num.fx-stat__num * {
+  font-weight: inherit !important;
+}
+html:root body .fx-stat .fx-stat__lbl.fx-stat__lbl {
+  font-size: 1.125rem !important;
+  font-weight: 600 !important;
+}
+
+html:root body .ind-stat .ind-stat__val {
+  font-size: clamp(2.25rem, 3.6vw, 3rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.05 !important;
+}
+html:root body .ind-stat .ind-stat__lbl {
+  font-size: 1rem !important;
+}
+html:root body .car-hero__stat > span {
+  font-size: clamp(2rem, 3.2vw, 2.75rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.05 !important;
+}
+html:root body .st-card .st-card__num {
+  font-size: clamp(2.25rem, 3.6vw, 3rem) !important;
+  font-weight: 700 !important;
+}

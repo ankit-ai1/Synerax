@@ -132,8 +132,8 @@ export default function PrivacyPolicy() {
             <div className="pp-cta__tagline">Building tomorrow's digital infrastructure.</div>
           </div>
           <div className="pp-cta__actions">
-            <Link to="/contact" className="pp-cta__btn">Contact us →</Link>
-            <Link to="/blog" className="pp-cta__btn">Read our Blog →</Link>
+            <Link to="/contact" className="pp-cta__btn">Contact us</Link>
+            <Link to="/blog" className="pp-cta__btn">Read our Blog</Link>
           </div>
         </div>
       </section>

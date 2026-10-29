@@ -1,0 +1,215 @@
+/* ═════════════════════════════════════════════════════════════
+   FOOTER (Footer.tsx)
+   .ft-new still supplies the navy surface and the light-on-dark
+   tokens (brand-blue.css §9); the layout lives on fresh ft2-*
+   classes so none of the older .ft-new__* layout rules apply.
+   ═════════════════════════════════════════════════════════════ */
+
+html:root body .ft2 {
+  position: relative;
+  overflow: hidden;
+  padding: 0 !important;
+  background:
+    radial-gradient(ellipse 60% 50% at 85% 0%, rgba(27,111,232,.16), transparent 70%),
+    #0a1628 !important;
+}
+
+.ft2-wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 56px);
+}
+
+/* ─────────────────────────────────────────────
+   1. TOP — brand + columns
+   ───────────────────────────────────────────── */
+.ft2-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 2.85fr);
+  gap: 64px;
+  padding: 88px 0 64px;
+}
+
+.ft2-brand { display: flex; flex-direction: column; align-items: flex-start; }
+
+html:root body .ft2 .ft2-tagline {
+  margin: 26px 0 12px !important;
+  font-family: var(--font-heading) !important;
+  font-size: 1.25rem !important;
+  font-weight: 600;
+  letter-spacing: -.02em;
+  line-height: 1.35 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+html:root body .ft2 .ft2-pitch {
+  margin: 0 !important;
+  max-width: 34ch;
+  font-size: .9375rem !important;
+  line-height: 1.65 !important;
+  color: #a0b4cc !important;
+  -webkit-text-fill-color: #a0b4cc !important;
+}
+
+.ft2-socials { display: flex; gap: 10px; margin-top: 28px; }
+html:root body .ft2 .ft2-social {
+  display: grid;
+  place-items: center;
+  width: 40px; height: 40px;
+  border: 1px solid rgba(160,180,204,.25) !important;
+  border-radius: 50%;
+  background: rgba(255,255,255,.04);
+  color: #a0b4cc !important;
+  -webkit-text-fill-color: #a0b4cc !important;
+  transition: background .25s ease, border-color .25s ease, color .25s ease, transform .25s ease;
+}
+.ft2-social svg { width: 16px; height: 16px; }
+html:root body .ft2 .ft2-social:hover {
+  background: #1b6fe8;
+  border-color: #1b6fe8 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  transform: translateY(-2px);
+}
+
+.ft2-cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.15fr) minmax(0, .8fr) minmax(0, .8fr);
+  gap: 32px;
+}
+html:root body .ft2 .ft2-heading {
+  margin: 4px 0 22px !important;
+  font-family: var(--font-mono) !important;
+  font-size: .75rem !important;
+  font-weight: 600 !important;
+  letter-spacing: .18em !important;
+  line-height: 1 !important;
+  text-transform: uppercase;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+html:root body .ft2 .ft2-col ul {
+  display: grid;
+  gap: 13px;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none;
+}
+html:root body .ft2 .ft2-col li { margin: 0 !important; line-height: 1.3 !important; }
+html:root body .ft2 .ft2-col a {
+  display: inline-block;
+  font-size: .9375rem !important;
+  white-space: nowrap;
+  color: #a0b4cc !important;
+  -webkit-text-fill-color: #a0b4cc !important;
+  text-decoration: none;
+  transition: color .2s ease, transform .25s ease;
+}
+html:root body .ft2 .ft2-col a:hover {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  transform: translateX(3px);
+}
+
+/* ─────────────────────────────────────────────
+   2. SIGNATURE — the SYNERAX wordmark, large
+   The logo PNG is used as a mask, so the letters take the exact
+   shapes of the logo but are filled with a quiet navy→blue
+   gradient (with a slow light sweep) instead of flat white.
+   ───────────────────────────────────────────────────────────── */
+.ft2-sig {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+  padding: 40px 0 44px;
+  border-top: 1px solid rgba(160,180,204,.14);
+  pointer-events: none;
+  user-select: none;
+}
+.ft2-sig__mark {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1234 / 160;
+  background-image:
+    linear-gradient(100deg, transparent 40%, rgba(255,255,255,.22) 50%, transparent 60%),
+    linear-gradient(90deg, rgba(160,180,204,.16) 0%, rgba(160,180,204,.2) 35%, #1b6fe8 70%, #4d94ff 100%);
+  background-size: 250% 100%, 100% 100%;
+  background-position: 100% 0, 0 0;
+  background-repeat: no-repeat;
+  -webkit-mask: url('/brand/synerax-wordmark-light.png') center / contain no-repeat;
+  mask: url('/brand/synerax-wordmark-light.png') center / contain no-repeat;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .9s ease, transform 1s cubic-bezier(.22,1,.36,1);
+}
+.ft2-sig.is-in .ft2-sig__mark {
+  opacity: 1;
+  transform: none;
+  animation: ft2-sweep 7s ease-in-out 1s infinite alternate;
+}
+@keyframes ft2-sweep { to { background-position: 0% 0, 0 0; } }
+
+.ft2-sig__sub {
+  margin-right: -.5em;   /* cancel the trailing letter-space so it centres */
+  font-family: var(--font-mono);
+  font-size: clamp(.75rem, 1.2vw, 1rem);
+  font-weight: 500;
+  letter-spacing: .5em;
+  text-transform: uppercase;
+  color: rgba(160,180,204,.55);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .9s ease .2s, transform 1s cubic-bezier(.22,1,.36,1) .2s;
+}
+.ft2-sig.is-in .ft2-sig__sub { opacity: 1; transform: none; }
+
+/* ─────────────────────────────────────────────
+   3. BOTTOM BAR
+   ───────────────────────────────────────────── */
+.ft2-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px 24px;
+  padding: 24px 0 28px;
+  border-top: 1px solid rgba(160,180,204,.14);
+}
+html:root body .ft2 .ft2-bottom span {
+  font-size: .875rem !important;
+  color: #7f93ad !important;
+  -webkit-text-fill-color: #7f93ad !important;
+}
+.ft2-bottom__links { display: flex; gap: 26px; }
+html:root body .ft2 .ft2-bottom__links a {
+  font-size: .875rem !important;
+  color: #a0b4cc !important;
+  -webkit-text-fill-color: #a0b4cc !important;
+  text-decoration: none;
+}
+html:root body .ft2 .ft2-bottom__links a:hover {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+/* ─────────────────────────────────────────────
+   4. RESPONSIVE
+   ───────────────────────────────────────────── */
+@media (max-width: 1080px) {
+  .ft2-top { grid-template-columns: 1fr; gap: 48px; padding: 72px 0 52px; }
+  .ft2-cols { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .ft2-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 24px; }
+  html:root body .ft2 .ft2-col a { white-space: normal; }
+}
+@media (max-width: 480px) {
+  .ft2-top { padding: 56px 0 40px; }
+  .ft2-bottom { flex-direction: column; align-items: flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ft2-sig__mark, .ft2-sig__sub { transition: none; opacity: 1; transform: none; }
+  .ft2-sig.is-in .ft2-sig__mark { animation: none; }
+}

@@ -358,10 +358,10 @@ html:root body .nav__product-desc {
    exit 2.6–3.5. The two panels carry the background so the curtain can
    split; the content sits above them and leaves first. */
 .site-loader {
-  --ld-orange: #ff5c29;
-  --ld-glow:   rgba(255,92,41,.10);
-  --ld-bg:     #f7f6f3;
-  --ld-ink:    #0b0b0f;
+  --ld-orange: #1b6fe8;
+  --ld-glow:   rgba(27,111,232,.10);
+  --ld-bg:     #f4f8ff;
+  --ld-ink:    #0a1628;
   --ld-dim:    rgba(11,11,15,.5);
   --ld-track:  rgba(11,11,15,.1);
   position: fixed;
@@ -370,11 +370,11 @@ html:root body .nav__product-desc {
   display: grid;
   place-items: center;
 }
-:root[data-theme='light'] .site-loader { --ld-bg: var(--bg, #f7f6f3); }
+:root[data-theme='light'] .site-loader { --ld-bg: var(--bg, #f4f8ff); }
 :root[data-theme='dark'] .site-loader,
 :root:not([data-theme]) .site-loader {
-  --ld-glow:  rgba(255,92,41,.14);
-  --ld-bg:    var(--bg, #0a0a0b);
+  --ld-glow:  rgba(27,111,232,.14);
+  --ld-bg:    var(--bg, #0a1628);
   --ld-ink:   #fff;
   --ld-dim:   rgba(255,255,255,.5);
   --ld-track: rgba(255,255,255,.12);

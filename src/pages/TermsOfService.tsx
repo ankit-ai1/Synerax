@@ -124,8 +124,8 @@ export default function TermsOfService() {
             <div className="pp-cta__tagline">Building tomorrow's digital infrastructure.</div>
           </div>
           <div className="pp-cta__actions">
-            <Link to="/contact" className="pp-cta__btn">Contact us →</Link>
-            <Link to="/privacy-policy" className="pp-cta__btn">Privacy Policy →</Link>
+            <Link to="/contact" className="pp-cta__btn">Contact us</Link>
+            <Link to="/privacy-policy" className="pp-cta__btn">Privacy Policy</Link>
           </div>
         </div>
       </section>

@@ -1,0 +1,571 @@
+/* ═════════════════════════════════════════════════════════════
+   ECOSYSTEM — "One partner. Every layer, connected."
+   (EcosystemFlow.tsx). Replaces the old sticky fx-stick section.
+   Loaded last; `html:root body .eco` prefixes beat the factory
+   layers' single-class !important rules.
+   ═════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   1. HEADER
+   ───────────────────────────────────────────── */
+html:root body .eco .eco__lede {
+  max-width: 900px !important;
+  margin: 0 auto 56px !important;
+  text-align: center;
+}
+
+/* eyebrow flanked by two rules */
+html:root body .eco .eco__eye.eco__eye {
+  display: inline-flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin: 0 0 22px !important;
+  color: #1b6fe8 !important;
+  -webkit-text-fill-color: #1b6fe8 !important;
+  letter-spacing: .32em !important;
+}
+html:root body .eco .eco__eye::before,
+html:root body .eco .eco__eye::after {
+  content: '' !important;
+  display: block;
+  width: 48px !important;
+  height: 2px !important;
+  border-radius: 2px !important;
+  background: linear-gradient(90deg, transparent, #1b6fe8) !important;
+}
+html:root body .eco .eco__eye::after {
+  background: linear-gradient(90deg, #1b6fe8, transparent) !important;
+}
+
+html:root body .eco .eco__h2 {
+  margin: 0 auto 20px !important;
+  font-size: clamp(2.5rem, 5.6vw, 4.75rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -.055em !important;
+  line-height: 1.02 !important;
+}
+html:root body .eco .eco__h2 .eco__grad.eco__grad {
+  display: inline-block;
+  padding-bottom: .08em;
+  background-image: linear-gradient(100deg, #1459c7 0%, #1b6fe8 35%, #4d94ff 55%, #1b6fe8 75%, #1459c7 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  font-family: inherit !important;
+  font-style: normal !important;
+  animation: eco-shimmer 7s ease-in-out infinite alternate;
+}
+@keyframes eco-shimmer { from { background-position: 100% 0; } to { background-position: 0% 0; } }
+
+html:root body .eco .eco__sub {
+  margin: 0 auto !important;
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem) !important;
+  color: var(--text-dim) !important;
+}
+
+/* ─────────────────────────────────────────────
+   2. BOARD
+   ───────────────────────────────────────────── */
+.eco-board {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+  padding: 56px 52px;
+  border: 1px solid var(--border);
+  border-radius: 32px;
+  background:
+    radial-gradient(rgba(27,111,232,.10) 1px, transparent 1.2px) 0 0 / 22px 22px,
+    var(--fx-00);
+  box-shadow:
+    0 1px 2px rgba(10,22,40,.04),
+    0 40px 90px -40px rgba(27,111,232,.28);
+}
+
+/* ─────────────────────────────────────────────
+   3. FLOW — node → wires → capability pills
+   ───────────────────────────────────────────── */
+.eco-flow {
+  display: grid;
+  grid-template-columns: auto 150px minmax(0, 1fr);
+  align-items: center;
+}
+
+.eco-node {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 28px 10px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--fx-00);
+  box-shadow: 0 14px 34px -14px rgba(10,22,40,.22);
+  animation: eco-pop .55s cubic-bezier(.3,1.4,.5,1);
+}
+@keyframes eco-pop {
+  from { opacity: 0; transform: scale(.88); }
+  to   { opacity: 1; transform: none; }
+}
+.eco-node__ico,
+.eco-card__ico {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: linear-gradient(135deg, #4d94ff, #1b6fe8 55%, #1459c7);
+  box-shadow: 0 8px 18px -6px rgba(27,111,232,.6);
+}
+.eco-node__ico { position: relative; width: 48px; height: 48px; }
+
+/* dashed orbit + a satellite dot circling the stage icon */
+.eco-node__ico::before,
+.eco-node__ico::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.eco-node__ico::before {
+  inset: -7px;
+  border: 1.5px dashed rgba(27,111,232,.35);
+  animation: eco-rot 14s linear infinite;
+}
+.eco-node__ico::after {
+  top: -9px; left: 50%;
+  width: 7px; height: 7px;
+  margin-left: -3.5px;
+  background: #1b6fe8;
+  box-shadow: 0 0 8px rgba(27,111,232,.8);
+  transform-origin: 3.5px 33px;
+  animation: eco-rot 3.2s linear infinite;
+}
+@keyframes eco-rot { to { transform: rotate(360deg); } }
+.eco-node__ico svg { width: 22px; height: 22px; }
+.eco-node__name {
+  font-family: var(--font-heading);
+  font-size: clamp(1.4rem, 2vw, 1.875rem);
+  font-weight: 600;
+  letter-spacing: -.035em;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.eco-wires {
+  width: 150px;
+  height: 520px;   /* = 7 rows × 78 − 26, see EcosystemFlow.tsx */
+  overflow: visible;
+}
+.eco-wire {
+  fill: none;
+  stroke: #c9daf6;
+  stroke-width: 1.5;
+  transition: stroke .4s ease, stroke-width .4s ease;
+}
+.eco-wire.is-on {
+  stroke: #1b6fe8;
+  stroke-width: 1.8;
+  stroke-dasharray: 6 5;
+  animation: eco-flow 1s linear infinite;
+}
+@keyframes eco-flow { to { stroke-dashoffset: -22; } }
+.eco-spark {
+  fill: #1b6fe8;
+  filter: drop-shadow(0 0 4px rgba(27,111,232,.9));
+}
+.eco-origin {
+  fill: var(--fx-00);
+  stroke: #1b6fe8;
+  stroke-width: 1.8;
+}
+
+html:root body .eco .eco-caps {
+  display: grid;
+  grid-auto-rows: 52px;
+  row-gap: 26px;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none;
+}
+html:root body .eco .eco-cap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 52px;
+  padding: 0 22px;
+  border: 1.5px solid transparent !important;
+  border-radius: 999px;
+  background: var(--fx-00);
+  box-shadow: 0 10px 26px -14px rgba(10,22,40,.22);
+  font-family: var(--font-body) !important;
+  font-size: 1.0625rem !important;
+  font-weight: 500;
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+  white-space: nowrap;
+  transition:
+    border-color .45s ease,
+    color .45s ease,
+    box-shadow .45s ease,
+    transform .5s cubic-bezier(.22,1,.36,1);
+}
+.eco-cap svg {
+  width: 20px; height: 20px;
+  flex-shrink: 0;
+  color: var(--text-faint);
+  transition: color .45s ease, transform .45s ease;
+}
+html:root body .eco .eco-cap.is-on {
+  border-color: #1b6fe8 !important;
+  color: #1b6fe8 !important;
+  -webkit-text-fill-color: #1b6fe8 !important;
+  box-shadow: 0 0 0 4px rgba(27,111,232,.08), 0 14px 30px -14px rgba(27,111,232,.55);
+  transform: translateX(6px);
+  transition-delay: calc(var(--i) * 40ms);
+}
+.eco-cap.is-on svg { color: #1b6fe8; transform: scale(1.08); }
+
+/* a light sweeps across each pill the moment it switches on */
+html:root body .eco .eco-cap { position: relative; overflow: hidden; }
+.eco-cap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(27,111,232,.16) 50%, transparent 70%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+.eco-cap.is-on::after {
+  animation: eco-sweep .9s ease calc(var(--i) * 40ms + .15s);
+}
+@keyframes eco-sweep { to { transform: translateX(120%); } }
+
+/* ─────────────────────────────────────────────
+   4. SIDE — stacked stage cards + switcher
+   ───────────────────────────────────────────── */
+.eco-side {
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--fx-02);
+}
+
+@property --eco-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+/* the deck — DOM order never changes; CSS `order` re-stacks the cards
+   and the FLIP in EcosystemFlow.tsx animates the move */
+.eco-deck {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.eco-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 14px;
+  align-items: center;
+  padding: 11px 16px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--fx-00) 78%, transparent);
+  cursor: pointer;
+  transition: background .5s ease, box-shadow .5s ease, padding .5s ease;
+}
+.eco-card:not(.is-o0):hover { background: var(--fx-00); }
+
+/* depth: the further down the queue, the quieter. Applied to the
+   contents so GSAP keeps the card's own opacity for the exit move. */
+.eco-card > * { transition: opacity .5s ease; }
+.eco-card.is-o0 > * { opacity: 1; transition: none; }   /* the new top card is crisp at once */
+.eco-card.is-o1 > * { opacity: .75; }
+.eco-card.is-o2 > * { opacity: .55; }
+.eco-card.is-o3 > * { opacity: .38; }
+.eco-card:not(.is-o0):hover > * { opacity: .95; }
+
+/* !important: light-theme.css re-asserts the hairline on every [class*='-card'] */
+html:root body .eco .eco-card.is-o0 {
+  z-index: 2;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 16px;
+  padding: 18px 18px;
+  border-color: rgba(27,111,232,.28) !important;
+  background: var(--fx-00);
+  box-shadow: 0 22px 46px -22px rgba(27,111,232,.5);
+  cursor: default;
+}
+
+/* a light travels round the active card's border */
+.eco-card__ring {
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from var(--eco-angle), transparent 0 70%, #4d94ff 82%, #1b6fe8 90%, transparent 98%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  pointer-events: none;
+  animation: eco-spin 4s linear infinite;
+}
+@keyframes eco-spin { to { --eco-angle: 360deg; } }
+
+.eco-card__ico { position: relative; width: 40px; height: 40px; }
+.eco-card__ico svg { width: 18px; height: 18px; }
+.eco-card:not(.is-o0) .eco-card__ico {
+  background: linear-gradient(135deg, #a9c4ee, #7fa6e3);
+  box-shadow: none;
+}
+.eco-card.is-o0 .eco-card__ico { width: 48px; height: 48px; animation: eco-pop .5s cubic-bezier(.3,1.5,.5,1); }
+.eco-card.is-o0 .eco-card__ico > svg:first-child { width: 21px; height: 21px; }
+
+/* cycle timer: a ring that closes around the icon until the next stage */
+.eco-card__timer {
+  position: absolute;
+  inset: -6px;
+  width: calc(100% + 12px) !important;
+  height: calc(100% + 12px) !important;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+.eco-card__timer circle {
+  fill: none;
+  stroke: #1b6fe8;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 176;
+  stroke-dashoffset: 176;
+  animation: eco-timer linear forwards;
+}
+.eco-board.is-paused .eco-card__timer circle { animation-play-state: paused; }
+@keyframes eco-timer { to { stroke-dashoffset: 0; } }
+
+html:root body .eco .eco-card__title {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 0 !important;
+  font-size: 1.0625rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -.03em !important;
+  line-height: 1.2 !important;
+}
+html:root body .eco .eco-card.is-o0 .eco-card__title {
+  margin: 1px 0 6px !important;
+  font-size: 1.25rem !important;
+}
+
+html:root body .eco .eco-card__desc {
+  margin: 1px 0 0 !important;
+  font-size: .875rem !important;
+  line-height: 1.45 !important;
+  color: var(--text-dim) !important;
+  -webkit-text-fill-color: var(--text-dim) !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+html:root body .eco .eco-card.is-o0 .eco-card__desc {
+  margin: 0 !important;
+  font-size: .9375rem !important;
+  line-height: 1.55 !important;
+  -webkit-line-clamp: 2;
+  animation: eco-rise .55s cubic-bezier(.22,1,.36,1) .12s both;
+}
+@keyframes eco-rise {
+  from { opacity: 0; transform: translateY(10px); filter: blur(4px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+.eco-card__proof {
+  animation: eco-rise .5s cubic-bezier(.22,1,.36,1) .28s both;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 4px 11px;
+  border-radius: 999px;
+  background: rgba(27,111,232,.08);
+  color: #1b6fe8;
+  font-size: .8125rem;
+  font-weight: 600;
+}
+.eco-card__proof svg { width: 14px; height: 14px; }
+
+.eco-card__chips {
+  display: inline-flex;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(27,111,232,.06);
+}
+.eco-card__chips i {
+  display: grid;
+  place-items: center;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  color: #1b6fe8;
+  background: var(--fx-00);
+  box-shadow: 0 2px 6px -2px rgba(27,111,232,.35);
+  animation: eco-pop .45s cubic-bezier(.3,1.5,.5,1) both;
+}
+.eco-card__chips i + i { margin-left: -4px; }
+.eco-card__chips i:nth-child(2) { animation-delay: .08s; }
+.eco-card__chips i:nth-child(3) { animation-delay: .16s; }
+.eco-card__chips svg { width: 13px; height: 13px; }
+
+/* gradient switcher with a sliding white thumb */
+.eco-tabs {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+  margin-top: 16px;
+  padding: 5px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #1459c7, #1b6fe8 45%, #3d86f0);
+  box-shadow: 0 18px 36px -16px rgba(27,111,232,.7);
+}
+.eco-tabs__thumb {
+  position: absolute;
+  top: 5px; bottom: 5px; left: 5px;
+  width: calc((100% - 10px) / var(--n));
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 6px 16px -6px rgba(10,22,40,.4);
+  transform: translateX(calc(var(--idx) * 100%));
+  transition: transform .55s cubic-bezier(.65,0,.25,1);
+}
+html:root body .eco .eco-tab {
+  position: relative;
+  z-index: 1;
+  height: 46px;
+  padding: 0 8px;
+  border: 0 !important;
+  border-radius: 999px;
+  background: none !important;
+  box-shadow: none !important;
+  font-family: var(--font-body) !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  letter-spacing: -.01em !important;
+  text-transform: none !important;
+  color: rgba(255,255,255,.88) !important;
+  -webkit-text-fill-color: rgba(255,255,255,.88) !important;
+  cursor: pointer;
+  transition: color .35s ease;
+}
+html:root body .eco .eco-tab:hover { color: #fff !important; -webkit-text-fill-color: #fff !important; }
+html:root body .eco .eco-tab.is-active {
+  color: #1b6fe8 !important;
+  -webkit-text-fill-color: #1b6fe8 !important;
+}
+.eco-tab:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
+/* ── progress lines: a track with a fill that runs for one cycle, so it is
+   obvious which stage is playing and how long until the next ── */
+.eco-line {
+  position: absolute;
+  display: block;
+  height: 3px;
+  border-radius: 3px;
+  background: rgba(27,111,232,.16);
+  overflow: hidden;
+  pointer-events: none;
+}
+.eco-line i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #1b6fe8, #4d94ff);
+  box-shadow: 0 0 8px rgba(27,111,232,.6);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: eco-prog linear forwards;
+}
+.eco-board.is-paused .eco-line i { animation-play-state: paused; }
+@keyframes eco-prog { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* under the active tab's label */
+.eco-tab__lbl {
+  position: relative;
+  display: inline-block;
+}
+.eco-tab__line {
+  left: -4px; right: -4px;
+  bottom: -8px;
+  animation: eco-rise .4s ease both;
+}
+
+/* along the bottom edge of the active card */
+.eco-card__line {
+  left: 18px; right: 18px;
+  bottom: 0;
+  height: 2px;
+  border-radius: 2px 2px 0 0;
+}
+
+html:root body .eco .eco__cta {
+  justify-content: center !important;
+  margin: 44px 0 0 !important;
+}
+
+/* ─────────────────────────────────────────────
+   5. RESPONSIVE
+   ───────────────────────────────────────────── */
+@media (max-width: 1180px) {
+  .eco-board { grid-template-columns: 1fr; gap: 36px; padding: 40px 32px; }
+  .eco-flow { justify-content: center; }
+}
+
+@media (max-width: 760px) {
+  html:root body .eco .eco__lede { margin-bottom: 36px !important; }
+  html:root body .eco .eco__eye::before,
+  html:root body .eco .eco__eye::after { width: 24px !important; }
+
+  .eco-board { padding: 20px 16px; border-radius: 24px; }
+
+  /* the wire diagram needs width — on phones the pills become a chip cloud */
+  .eco-flow { display: block; }
+  .eco-wires { display: none; }
+  .eco-node { margin: 0 auto 18px; display: flex; width: max-content; }
+  html:root body .eco .eco-caps {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  html:root body .eco .eco-cap { height: 42px; padding: 0 16px; font-size: .9375rem !important; }
+  html:root body .eco .eco-cap.is-on { transform: none; }
+
+  .eco-side { padding: 12px; border-radius: 22px; }
+  .eco-card { gap: 12px; padding: 10px 14px; }
+  html:root body .eco .eco-card.is-o0 { grid-template-columns: 44px minmax(0, 1fr); padding: 16px 14px; }
+  .eco-card.is-o0 .eco-card__ico { width: 44px; height: 44px; }
+  .eco-card__chips { display: none; }
+  .eco-card.is-o3 { display: none; }
+  html:root body .eco .eco-tab { height: 44px; font-size: .875rem !important; }
+  .eco-tab__line { bottom: -6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .eco-wire.is-on,
+  .eco-node,
+  .eco-node__ico::before,
+  .eco-node__ico::after,
+  .eco-card__ring,
+  .eco-card__ico,
+  .eco-card__desc,
+  .eco-card__proof,
+  .eco-card__chips i,
+  .eco-cap::after,
+  html:root body .eco .eco__h2 .eco__grad.eco__grad,
+  html:root body .eco .eco-card.is-o0 .eco-card__desc { animation: none !important; }
+}

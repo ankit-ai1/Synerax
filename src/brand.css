@@ -69,3 +69,41 @@
   .ft-new__logo .brand__mark { width: 31px; height: 31px; }
   .brand__word { font-size: 1.18rem; }
 }
+
+/* ═════════════════════════════════════════════════════════════
+   WORDMARK — transparent SYNERAX PNGs (see Logo.tsx)
+   Two inks render side by side; only the one that suits the
+   surface is shown, so the logo never sits in a coloured box.
+   ═════════════════════════════════════════════════════════════ */
+.brand__wm {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+html:root body .brand__wm-img {
+  display: block;
+  width: auto;
+  height: 22px;
+  max-width: none;
+  filter: none !important;
+  opacity: 1 !important;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+html:root body .ft-new__logo .brand__wm-img { height: 30px; }
+
+/* dark theme (default) and the always-navy footer: white letters */
+.brand__wm-img--ink { display: none !important; }
+:root[data-theme='light'] .nav__logo .brand__wm-img--ink   { display: block !important; }
+:root[data-theme='light'] .nav__logo .brand__wm-img--light { display: none !important; }
+
+/* a touch of life on hover: the cyan bar in the E catches the light */
+.nav__logo .brand__wm,
+.ft-new__logo .brand__wm { transition: transform .35s cubic-bezier(.22,1,.36,1), filter .35s ease; }
+.nav__logo:hover .brand__wm,
+.ft-new__logo:hover .brand__wm { transform: translateY(-1px); filter: drop-shadow(0 4px 10px rgba(27,111,232,.25)); }
+
+@media (max-width: 768px) {
+  html:root body .brand__wm-img { height: 19px; }
+  html:root body .ft-new__logo .brand__wm-img { height: 26px; }
+}

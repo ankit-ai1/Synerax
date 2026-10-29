@@ -1,0 +1,84 @@
+/* ═════════════════════════════════════════════════════════════
+   PLATFORM STRIP — "Built on world-class platforms" (Home.tsx)
+   Each logo sits in its own white tile, greyscale at rest and in
+   full colour on hover. The group's trailing padding equals the
+   gap so the GSAP loop in Home.tsx stays seamless.
+   ═════════════════════════════════════════════════════════════ */
+
+html:root body .iq-techstrip {
+  padding: 52px 0 !important;
+}
+html:root body .iq-techstrip .iq-techstrip__lbl {
+  margin: 0 0 26px !important;
+  font-size: .8125rem !important;
+  letter-spacing: .22em !important;
+}
+
+/* room above and below so the hover lift and shadow aren't clipped */
+html:root body .iq-techstrip .fx-marquee { padding: 14px 0 18px; }
+
+html:root body .iq-techstrip .fx-marquee__group {
+  gap: 18px;
+  padding-right: 18px;
+}
+
+html:root body .iq-techstrip .fx-marquee__item {
+  justify-content: center;
+  gap: 14px;
+  min-width: 200px;
+  height: 88px;
+  padding: 0 32px;
+  /* !important: light-theme.css re-colours every [class*='-item'] border */
+  border: 1px solid #e3ecfb !important;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(10,22,40,.04), 0 8px 20px -14px rgba(10,22,40,.18);
+  filter: grayscale(1) !important;
+  opacity: .78 !important;
+  cursor: default;
+  transition:
+    filter .35s ease,
+    opacity .35s ease,
+    transform .35s cubic-bezier(.22,1,.36,1),
+    border-color .35s ease,
+    box-shadow .35s ease;
+}
+html:root body .iq-techstrip .fx-marquee__item:hover {
+  filter: none !important;
+  opacity: 1 !important;
+  transform: translateY(-4px);
+  border-color: rgba(27,111,232,.35) !important;
+  box-shadow: 0 1px 2px rgba(10,22,40,.04), 0 18px 34px -16px rgba(27,111,232,.45);
+}
+
+html:root body .iq-techstrip .fx-marquee__item img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+html:root body .iq-techstrip .fx-marquee__item span {
+  font-family: var(--font-heading) !important;
+  font-size: 1.1875rem !important;
+  font-weight: 650 !important;
+  letter-spacing: -.02em !important;
+  color: #0a1628 !important;
+  -webkit-text-fill-color: #0a1628 !important;
+}
+
+/* dark theme: tiles on navy */
+:root[data-theme='dark'] body .iq-techstrip .fx-marquee__item {
+  border-color: rgba(160,180,204,.16) !important;
+  background: rgba(255,255,255,.04);
+}
+:root[data-theme='dark'] body .iq-techstrip .fx-marquee__item span {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+@media (max-width: 640px) {
+  html:root body .iq-techstrip { padding: 36px 0 !important; }
+  html:root body .iq-techstrip .fx-marquee__group { gap: 12px; padding-right: 12px; }
+  html:root body .iq-techstrip .fx-marquee__item { min-width: 150px; height: 68px; padding: 0 20px; gap: 10px; }
+  html:root body .iq-techstrip .fx-marquee__item img { width: 26px; height: 26px; }
+  html:root body .iq-techstrip .fx-marquee__item span { font-size: 1rem !important; }
+}

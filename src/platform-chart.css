@@ -10,7 +10,7 @@
   --p-ink: #ededed;
   --p-mid: rgba(255,255,255,.55);
   --p-low: rgba(255,255,255,.34);
-  --p-orange: #ff5c29;
+  --p-orange: #1b6fe8;
 
   display: grid;
   grid-template-columns: minmax(0, 340px) minmax(0, 1fr);
@@ -96,7 +96,7 @@
 .pfc__spoke { stroke: var(--p-grid); stroke-width: .4; }
 
 .pfc__shape {
-  fill: rgba(255,92,41,.16);
+  fill: rgba(27,111,232,.16);
   stroke: var(--p-orange);
   stroke-width: 1.1;
   stroke-linejoin: round;
@@ -106,8 +106,8 @@
   animation: pfc-breathe 5.5s ease-in-out infinite;
 }
 @keyframes pfc-breathe {
-  0%, 100% { fill: rgba(255,92,41,.13); }
-  50%      { fill: rgba(255,92,41,.24); }
+  0%, 100% { fill: rgba(27,111,232,.13); }
+  50%      { fill: rgba(27,111,232,.24); }
 }
 .pfc__node {
   fill: var(--p-orange);
@@ -223,12 +223,12 @@
 /* Marker rides the line; the halo breathes so it reads as live */
 .pfc__marker {
   fill: var(--p-orange);
-  stroke: var(--fx-03, #121214);
+  stroke: var(--fx-03, #112038);
   stroke-width: 1.5;
   transition: cx .09s linear, cy .12s cubic-bezier(.3,0,.2,1);
 }
 .pfc__halo {
-  fill: rgba(255,92,41,.16);
+  fill: rgba(27,111,232,.16);
   transition: cx .09s linear, cy .12s cubic-bezier(.3,0,.2,1);
   animation: pfc-halo 2.4s ease-in-out infinite;
   transform-box: fill-box;
@@ -248,7 +248,7 @@
   padding: .45rem .65rem;
   border: 1px solid var(--p-line);
   border-radius: 5px;
-  background: var(--fx-05, #1a1a1c);
+  background: var(--fx-05, #1a2b48);
   box-shadow: 0 8px 24px rgba(0,0,0,.5);
   white-space: nowrap;
   pointer-events: none;

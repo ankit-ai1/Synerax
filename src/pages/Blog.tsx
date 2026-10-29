@@ -4,12 +4,12 @@ import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 
 const TAG_COLORS: Record<string, { bg: string; color: string }> = {
-  Product:     { bg: 'rgba(242,98,46,0.12)',  color: '#F2622E' },
-  Engineering: { bg: 'rgba(242,98,46,0.15)', color: '#FF7A45' },
+  Product:     { bg: 'rgba(27,111,232,0.12)',  color: '#1b6fe8' },
+  Engineering: { bg: 'rgba(27,111,232,0.15)', color: '#3d86f0' },
   Culture:     { bg: 'rgba(178,178,184,0.16)', color: '#B2B2B8' },
-  Industry:    { bg: 'rgba(242,98,46,0.10)',   color: '#F2622E' },
-  AI:          { bg: 'rgba(242,98,46,0.12)', color: '#F2622E' },
-  DevOps:      { bg: 'rgba(242,98,46,0.12)',   color: '#F2622E' },
+  Industry:    { bg: 'rgba(27,111,232,0.10)',   color: '#1b6fe8' },
+  AI:          { bg: 'rgba(27,111,232,0.12)', color: '#1b6fe8' },
+  DevOps:      { bg: 'rgba(27,111,232,0.12)',   color: '#1b6fe8' },
 }
 
 export const posts = [
@@ -374,7 +374,7 @@ export default function Blog() {
                   className="bl-newsletter__input"
                   required
                 />
-                <button type="submit" className="bl-newsletter__btn">Subscribe →</button>
+                <button type="submit" className="bl-newsletter__btn">Subscribe</button>
               </form>
             )}
           </div>

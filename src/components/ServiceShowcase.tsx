@@ -43,22 +43,22 @@ const CC_RANGES: [CcRange, string][] = [
 /* Each series is one slice of the stack, drawn bottom-up. */
 const CC_SERIES: Record<CcGroup, { label: string; color: string; weight: number }[]> = {
   service: [
-    { label: 'API',       color: '#e2703a', weight: 34 },
+    { label: 'API',       color: '#1b6fe8', weight: 34 },
     { label: 'Web',       color: '#6fae7c', weight: 26 },
     { label: 'Workers',   color: '#e8b04b', weight: 9 },
-    { label: 'Database',  color: '#e2553a', weight: 8 },
+    { label: 'Database',  color: '#1b6fe8', weight: 8 },
     { label: 'Cache',     color: '#5fb0a8', weight: 13 },
     { label: 'Search',    color: '#b9a882', weight: 6 },
-    { label: 'Edge',      color: '#9a9a95', weight: 4 },
+    { label: 'Edge',      color: '#8a94a6', weight: 4 },
   ],
   team: [
-    { label: 'Platform',  color: '#e2703a', weight: 38 },
+    { label: 'Platform',  color: '#1b6fe8', weight: 38 },
     { label: 'Payments',  color: '#6fae7c', weight: 24 },
     { label: 'Identity',  color: '#e8b04b', weight: 10 },
-    { label: 'Checkout',  color: '#e2553a', weight: 8 },
+    { label: 'Checkout',  color: '#1b6fe8', weight: 8 },
     { label: 'Data',      color: '#5fb0a8', weight: 12 },
     { label: 'Mobile',    color: '#b9a882', weight: 5 },
-    { label: 'Internal',  color: '#9a9a95', weight: 3 },
+    { label: 'Internal',  color: '#8a94a6', weight: 3 },
   ],
 }
 
@@ -79,7 +79,7 @@ const ccTotal = (i: number, n: number) => {
   return trend * dip * jitter
 }
 
-const VizObservability = () => {
+export const VizObservability = () => {
   const [range, setRange] = useState<CcRange>('30d')
   const [group, setGroup] = useState<CcGroup>('service')
 
@@ -201,7 +201,7 @@ const VizObservability = () => {
 }
 
 /* ── 2. Agentic AI — agent transcript ───────────────────────── */
-const VizAgenticAI = () => (
+export const VizAgenticAI = () => (
   <div className="fxv">
     <Head>AI Assistant</Head>
     <div className="fxv-chat">
@@ -225,7 +225,7 @@ const VizAgenticAI = () => (
 )
 
 /* ── DevSecOps & FinOps — pipeline stages + spend readout ───── */
-const VizDevSecOps = () => (
+export const VizDevSecOps = () => (
   <div className="fxv">
     <Head>Pipeline</Head>
     <div className="fxv-road">
@@ -254,7 +254,7 @@ const VizDevSecOps = () => (
 )
 
 /* ── Application Modernization — monolith carved into services ─ */
-const VizModernization = () => (
+export const VizModernization = () => (
   <div className="fxv">
     <Head>Migration Path</Head>
     <div className="fxv-road">
@@ -282,7 +282,7 @@ const VizModernization = () => (
 )
 
 /* ── ITSM — service desk queue clearing ─────────────────────── */
-const VizITSM = () => (
+export const VizITSM = () => (
   <div className="fxv">
     <Head>Service Desk</Head>
     <div className="fxv-scan">
@@ -310,7 +310,7 @@ const VizITSM = () => (
 )
 
 /* ── 4. Frontend — preview + Core Web Vitals gauges ─────────── */
-const VizFrontend = () => (
+export const VizFrontend = () => (
   <div className="fxv">
     <Head>Core Web Vitals</Head>
     <div className="fxv-preview">
@@ -344,7 +344,7 @@ const VizFrontend = () => (
 )
 
 /* ── 5. AWS — architecture diagram with flowing data ────────── */
-const VizAWS = () => (
+export const VizAWS = () => (
   <div className="fxv">
     <Head>Cloud Architecture</Head>
     <svg className="fxv-arch" viewBox="0 0 260 150" aria-hidden="true">
@@ -383,7 +383,7 @@ const VizAWS = () => (
 )
 
 /* ── 6. Cybersecurity — scan, checks turning green ──────────── */
-const VizSecurity = () => (
+export const VizSecurity = () => (
   <div className="fxv">
     <Head>Security Scan</Head>
     <div className="fxv-scan">
@@ -417,9 +417,6 @@ const services: Service[] = [
   { tab: 'DevSecOps & FinOps', title: 'DevSecOps & FinOps',
     desc: 'Secure automated delivery and cloud cost efficiency, together. Pipelines that scan as they ship, plus spend you can explain.',
     to: '/solutions/devsecops-finops', viz: <VizDevSecOps /> },
-  { tab: 'Cybersecurity', title: 'Cybersecurity Solutions',
-    desc: 'Enterprise security, compliance, and threat defense. 24/7 SOC, zero-trust architecture, SOC 2 / ISO 27001 / HIPAA.',
-    to: '/solutions/cybersecurity', viz: <VizSecurity /> },
   { tab: 'Agentic AI', title: 'Agentic AI Solutions',
     desc: 'Autonomous LLM agents and AI workflows for your business. Custom pipelines, RAG, NLP and production ML systems.',
     to: '/solutions/agentic-ai', viz: <VizAgenticAI /> },
@@ -678,7 +675,7 @@ export default function ServiceShowcase() {
               ))}
             </h3>
             <p className="fx-stage__desc">{svc.desc}</p>
-            <Link to={svc.to} className="iq-feat__link">Learn more →</Link>
+            <Link to={svc.to} className="iq-feat__link">Learn more</Link>
           </div>
           {/* Always rendered so the panel is never an empty box; the
               animations are held by CSS until `.is-live`. */}

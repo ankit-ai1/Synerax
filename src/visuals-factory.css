@@ -83,7 +83,7 @@
   flex: 1; background: var(--accent); border-radius: 2px 2px 0 0; transform-origin: bottom;
   animation: fxv-grow .6s var(--ease, cubic-bezier(.22,1,.36,1)) backwards;
 }
-.fxv-queue span:nth-child(even) { background: rgba(242,98,46,.34); }
+.fxv-queue span:nth-child(even) { background: rgba(27,111,232,.34); }
 
 /* 2 — Agentic AI */
 .fxv-chat { display: flex; flex-direction: column; gap: .55rem; }
@@ -134,7 +134,7 @@
   border: 1px solid var(--border); border-radius: var(--radius-sm); padding: .8rem;
   display: flex; flex-direction: column; gap: .45rem; background: var(--surface);
 }
-.fxv-preview__bar { height: 6px; width: 40%; border-radius: 2px; background: rgba(242,98,46,.5); animation: fxv-in-l .5s backwards; }
+.fxv-preview__bar { height: 6px; width: 40%; border-radius: 2px; background: rgba(27,111,232,.5); animation: fxv-in-l .5s backwards; }
 .fxv-preview__block { height: 30px; border-radius: 3px; background: var(--surface-2); animation: fxv-in .5s .1s backwards; }
 .fxv-preview__line { height: 5px; border-radius: 2px; background: var(--surface-2); animation: fxv-in .5s .2s backwards; }
 .fxv-preview__line--short { width: 62%; animation-delay: .3s }
@@ -206,7 +206,7 @@
 .fxv-chart { position: relative; display: flex; align-items: flex-end; gap: 4px; height: 104px; }
 .fxv-chart__col { flex: 1; display: flex; align-items: flex-end; height: 100%; }
 .fxv-chart__col i {
-  display: block; width: 100%; background: rgba(242,98,46,.3); border-radius: 2px 2px 0 0;
+  display: block; width: 100%; background: rgba(27,111,232,.3); border-radius: 2px 2px 0 0;
   transform-origin: bottom; animation: fxv-grow .6s var(--ease, cubic-bezier(.22,1,.36,1)) backwards;
 }
 .fxv-chart__trend { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
@@ -243,7 +243,7 @@
   display: block; height: 9px; border-radius: 2px; background: var(--surface-2);
   animation: fxv-slide-in .5s var(--ease, cubic-bezier(.22,1,.36,1)) backwards;
 }
-.fxv-phone__ui i:first-child { background: rgba(242,98,46,.5); width: 65% }
+.fxv-phone__ui i:first-child { background: rgba(27,111,232,.5); width: 65% }
 .fxv-phone__ui i:nth-child(3) { width: 82% }
 @keyframes fxv-slide-in { from { opacity: 0; transform: translateX(14px) } to { opacity: 1; transform: none } }
 .fxv-chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; }
@@ -279,7 +279,7 @@
 .fx-pillar.iq-visible .fx-pipe__rail i { animation: fxv-grow 1.1s .25s var(--ease, cubic-bezier(.22,1,.36,1)) backwards; }
 .fx-pipe__step { position: relative; z-index: 1; }
 .fx-pillar.iq-visible .fx-pipe__step b { animation: fxv-node 2.4s ease-in-out infinite; }
-@keyframes fxv-node { 0%,100% { box-shadow: 0 0 0 0 rgba(242,98,46,0) } 50% { box-shadow: 0 0 0 4px rgba(242,98,46,.18) } }
+@keyframes fxv-node { 0%,100% { box-shadow: 0 0 0 0 rgba(27,111,232,0) } 50% { box-shadow: 0 0 0 4px rgba(27,111,232,.18) } }
 
 /* Compliance badges check in sequentially (One Technology Partner, panel 02) */
 .fx-pillar.iq-visible .iq-mini-feed__item { animation: fxv-in-l .5s var(--ease, cubic-bezier(.22,1,.36,1)) backwards; }

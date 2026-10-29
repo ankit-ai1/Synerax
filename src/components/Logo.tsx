@@ -1,39 +1,27 @@
 /* ─────────────────────────────────────────────────────────────
-   Logo — mark plus wordmark, nothing else.
+   Logo — the SYNERAX wordmark.
 
-   The previous logo was a single PNG that baked in the mark, the
-   name and the "CLOUD TECHNOLOGIES" strapline, so the strapline
-   could not be dropped without cropping the image. Splitting it
-   into an inline mark and real text also means the lockup takes
-   `currentColor`, so it needs no per-theme filter.
+   The source artwork is white letters on a solid navy canvas, which
+   would sit on the white navbar as an obvious pasted box. It has
+   been cut out to transparent PNGs in two inks (public/brand/):
+     -ink    navy letters  → white surfaces (light-theme navbar, mobile sheet)
+     -light  white letters → navy surfaces (footer, dark theme)
+   Both render; brand.css shows the one that suits the surface.
    ───────────────────────────────────────────────────────────── */
 
-/* The source asset is favicon-sized, so it renders soft at logo scale.
-   Cloudinary is asked for a 160px fit — roughly 5× the on-screen size —
-   which keeps the mark crisp on high-DPI screens. */
+export const WORDMARK_INK = '/brand/synerax-wordmark-ink.png'
+export const WORDMARK_LIGHT = '/brand/synerax-wordmark-light.png'
+
+/* The cloud mark is still used on its own by the first-visit loader. */
 export const MARK_SRC =
   'https://res.cloudinary.com/dtg3lepr4/image/upload/w_160,h_160,c_fit,q_auto,f_auto,dpr_2.0/v1783885429/favicon_synerax_vuwmga.png'
 
-function Lockup() {
+/* `lockup` is kept for the existing call sites; the wordmark is the same everywhere. */
+export default function Logo(_: { lockup?: boolean }) {
   return (
-    <>
-      <img className="brand__mark" src={MARK_SRC} alt="" aria-hidden="true" loading="eager" decoding="async" />
-      <span className="brand__lockup">
-        <span className="brand__word">Synerax</span>
-        <span className="brand__sub">Cloud Technologies</span>
-      </span>
-    </>
-  )
-}
-
-/* `lockup` adds the "CLOUD TECHNOLOGIES" second line — the navbar uses it,
-   the footer keeps the single-line wordmark. */
-export default function Logo({ lockup = false }: { lockup?: boolean }) {
-  if (lockup) return <Lockup />
-  return (
-    <>
-      <img className="brand__mark" src={MARK_SRC} alt="" aria-hidden="true" loading="eager" decoding="async" />
-      <span className="brand__word">Synerax</span>
-    </>
+    <span className="brand__wm">
+      <img className="brand__wm-img brand__wm-img--ink" src={WORDMARK_INK} alt="Synerax" width={1234} height={160} decoding="async" />
+      <img className="brand__wm-img brand__wm-img--light" src={WORDMARK_LIGHT} alt="" aria-hidden="true" width={1234} height={160} decoding="async" />
+    </span>
   )
 }

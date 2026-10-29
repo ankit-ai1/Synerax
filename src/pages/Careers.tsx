@@ -64,7 +64,7 @@ export default function Careers() {
           <div className="car-hero__actions">
             <a href="#openings" className="btn btn--primary">See Open Roles ↓</a>
             <button onClick={() => openLead('Careers')} className="btn btn--outline" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.35)' }}>
-              Send Your CV →
+              Send Your CV
             </button>
           </div>
         </div>
@@ -161,7 +161,7 @@ export default function Careers() {
                 </div>
                 <div className="car-job-card__right">
                   <a href={`mailto:careers@synerax.in?subject=Application for ${job.title}`} className="btn btn--primary" style={{ fontSize: '0.875rem', padding: '0.6rem 1.2rem' }}>
-                    Apply Now →
+                    Apply Now
                   </a>
                 </div>
               </div>
@@ -179,7 +179,7 @@ export default function Careers() {
               <p>We're always looking for exceptional talent. Send us your CV and we'll reach out when the right role opens up.</p>
             </div>
             <button onClick={() => openLead('Careers — General Application')} className="btn btn--primary">
-              Send General Application →
+              Send General Application
             </button>
           </div>
         </div>
@@ -219,7 +219,7 @@ export default function Careers() {
           <h2>Ready to do the best<br />work of your career?</h2>
           <p>We are building something meaningful. Come build it with us.</p>
           <div className="cta-band__actions">
-            <a href="#openings" className="btn btn--white">See Open Roles →</a>
+            <a href="#openings" className="btn btn--white">See Open Roles</a>
             <button onClick={() => openLead('Careers')} className="btn btn--outline" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.4)' }}>
               Send Your CV
             </button>

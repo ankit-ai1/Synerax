@@ -27,7 +27,7 @@ export default function IndustryPage() {
 
   if (!industry) return <Navigate to="/" replace />
 
-  const ac = '#F2622E'
+  const ac = '#1b6fe8'
 
   return (
     <>
@@ -53,7 +53,7 @@ export default function IndustryPage() {
             </h1>
             <p className="ind-hero__desc">{industry.heroDesc}</p>
             <div className="ind-hero__actions">
-              <Link to="/contact" className="btn btn--white">Get Free Consultation →</Link>
+              <Link to="/contact" className="btn btn--white">Get Free Consultation</Link>
               <a href="#solutions" className="ind-hero__ghost">Learn About Our Solutions</a>
             </div>
           </div>
@@ -150,7 +150,7 @@ export default function IndustryPage() {
             <h3 className="ind-compliance__title">{industry.complianceTitle}</h3>
             <p className="ind-compliance__desc">{industry.complianceDesc}</p>
             <Link to="/contact" className="btn btn--primary" style={{ marginTop: '1.75rem' }}>
-              Talk to an Expert →
+              Talk to an Expert
             </Link>
           </div>
           <div className="ind-compliance__img-col ind-reveal">
@@ -189,7 +189,7 @@ export default function IndustryPage() {
           <h2 className="ind-cta__title">{industry.ctaTitle}</h2>
           <p className="ind-cta__desc">{industry.ctaDesc}</p>
           <Link to="/contact" className="btn btn--primary" style={{ background: ac, marginTop: '1.5rem' }}>
-            Get a Free Consultation →
+            Get a Free Consultation
           </Link>
         </div>
       </section>

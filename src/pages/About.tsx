@@ -16,10 +16,10 @@ const testimonials = [
 
 /* ─── Values cards ─────────────────────────────────── */
 const values = [
-  { accent: '#F2622E', iconBg: 'rgba(242,98,46,0.1)', icon: '⭐', title: 'Excellence', desc: 'We hold ourselves to the highest technical and service standards in everything we deliver. Good enough is never good enough.' },
-  { accent: '#F2622E', iconBg: 'rgba(242,98,46,0.1)', icon: '🤝', title: 'Partnership', desc: "We're deeply invested in your success beyond the project. Your wins are our wins — we think long-term, not transactional." },
-  { accent: '#F2622E', iconBg: 'rgba(242,98,46,0.1)', icon: '🔍', title: 'Integrity', desc: 'Honest timelines, transparent pricing, and clear communication — always. We tell you what you need to hear, even when it\'s hard.' },
-  { accent: '#F2622E', iconBg: 'rgba(242,98,46,0.1)', icon: '💡', title: 'Innovation', desc: 'We stay ahead of the curve so you don\'t have to. AI, cloud, and emerging tech are not buzzwords — they\'re our daily toolkit.' },
+  { accent: '#1b6fe8', iconBg: 'rgba(27,111,232,0.1)', icon: '⭐', title: 'Excellence', desc: 'We hold ourselves to the highest technical and service standards in everything we deliver. Good enough is never good enough.' },
+  { accent: '#1b6fe8', iconBg: 'rgba(27,111,232,0.1)', icon: '🤝', title: 'Partnership', desc: "We're deeply invested in your success beyond the project. Your wins are our wins — we think long-term, not transactional." },
+  { accent: '#1b6fe8', iconBg: 'rgba(27,111,232,0.1)', icon: '🔍', title: 'Integrity', desc: 'Honest timelines, transparent pricing, and clear communication — always. We tell you what you need to hear, even when it\'s hard.' },
+  { accent: '#1b6fe8', iconBg: 'rgba(27,111,232,0.1)', icon: '💡', title: 'Innovation', desc: 'We stay ahead of the curve so you don\'t have to. AI, cloud, and emerging tech are not buzzwords — they\'re our daily toolkit.' },
 ]
 
 /* ─── Stat cards (reuse st-card style) ────────────── */
@@ -75,7 +75,7 @@ export default function About() {
             infrastructure of tomorrow — headquartered in Noida, India, serving clients across 20+ countries.
           </p>
           <div className="ab-hero__actions">
-            <button onClick={() => openLead()} className="ht-hero__btn-primary">START A PROJECT →</button>
+            <button onClick={() => openLead()} className="ht-hero__btn-primary">START A PROJECT</button>
             <Link to="/solutions/web-enterprise-applications" className="ht-hero__btn-outline">EXPLORE SOLUTIONS</Link>
           </div>
         </div>
@@ -101,7 +101,7 @@ export default function About() {
             <h2>From a Small Studio to a Global Engineering Partner</h2>
             <p>Synerax was founded in Noida, India with a singular mission: to make enterprise-grade technology accessible to every business, regardless of size or location.</p>
             <p>What started as a small development shop has grown into a full-service digital engineering company serving clients across 20+ countries — from early-stage startups to Fortune 500 enterprises.</p>
-            <p>Our cross-functional teams bring deep expertise in software engineering, artificial intelligence, cybersecurity, and cloud architecture to every engagement.</p>
+            <p>Our cross-functional teams bring deep expertise in software engineering, artificial intelligence, and cloud architecture to every engagement.</p>
             <div className="about-pillars">
               <div className="pillar">
                 <div className="pillar__icon">🌍</div>
@@ -278,7 +278,7 @@ export default function About() {
           <h2>Ready to Build<br /><span>Something Great?</span></h2>
           <p>Join 80+ enterprises that trust Synerax to power their digital transformation.</p>
           <div className="cta-band__actions">
-            <button onClick={() => openLead()} className="btn btn--white">Start a Conversation →</button>
+            <button onClick={() => openLead()} className="btn btn--white">Start a Conversation</button>
             <Link to="/services" className="btn btn--outline" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.4)' }}>View Solutions</Link>
           </div>
         </div>

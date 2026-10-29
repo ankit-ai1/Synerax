@@ -40,6 +40,40 @@ export default function Testimonials({ items }: { items: Item[] }) {
   }, [])
 
   useLayoutEffect(() => { apply(idx) }, [idx, perView, apply])
+
+  /* on every slide change the cards now in view settle in softly */
+  const firstRun = useRef(true)
+  useLayoutEffect(() => {
+    if (firstRun.current) { firstRun.current = false; return }
+    const t = track.current
+    if (!t || prefersReduced()) return
+    const shown = Array.from(t.children).slice(idx, idx + perView)
+    gsap.fromTo(shown.map(c => c.querySelectorAll('.iq-testi__quote, .iq-testi__author')).flatMap(n => Array.from(n)),
+      { opacity: 0.35, y: 10, filter: 'blur(3px)' },
+      { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.6, stagger: 0.05, ease: 'power3.out', delay: 0.15, clearProps: 'opacity,transform,filter' })
+  }, [idx, perView])
+
+  /* section entrance: cards rise in one after another */
+  useLayoutEffect(() => {
+    const v = viewport.current
+    if (!v || prefersReduced()) return
+    const ctx = gsap.context(() => {
+      gsap.from('.fx-slide', {
+        y: 40, opacity: 0, stagger: 0.12, duration: 0.8, ease: 'power3.out',
+        clearProps: 'opacity,transform',
+        scrollTrigger: { trigger: v, start: 'top 82%', once: true },
+      })
+    }, v)
+    return () => ctx.revert()
+  }, [])
+
+  /* a soft light follows the pointer across each card */
+  const spot = (e: React.PointerEvent<HTMLElement>) => {
+    const el = e.currentTarget
+    const r = el.getBoundingClientRect()
+    el.style.setProperty('--mx', `${e.clientX - r.left}px`)
+    el.style.setProperty('--my', `${e.clientY - r.top}px`)
+  }
   useLayoutEffect(() => {
     const onResize = () => apply(idx, false)
     window.addEventListener('resize', onResize)
@@ -85,11 +119,20 @@ export default function Testimonials({ items }: { items: Item[] }) {
               className="iq-testi fx-testi fx-slide"
               key={t.name}
               aria-hidden={i < idx || i >= idx + perView}
+              onPointerMove={spot}
             >
+              <span className="tp-ring" aria-hidden="true" />
+              <span className="tp-spot" aria-hidden="true" />
+              <span className="tp-watermark" aria-hidden="true">&ldquo;</span>
               <span className="fx-slide__mark" aria-hidden="true">&ldquo;</span>
               <blockquote className="iq-testi__quote">"{t.quote}"</blockquote>
               <figcaption className="iq-testi__author">
-                <span className="iq-testi__av" aria-hidden="true">{t.initial}</span>
+                <span className="iq-testi__av" aria-hidden="true">
+                  {t.initial}
+                  <i className="tp-verified">
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4 8.5l2.5 2.5L12 5.5" /></svg>
+                  </i>
+                </span>
                 <span>
                   <span className="iq-testi__name">{t.name}</span>
                   <span className="iq-testi__role">{t.role}</span>

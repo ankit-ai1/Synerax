@@ -5,12 +5,12 @@ import { useLead } from '../context/LeadContext'
 import { posts } from './Blog'
 
 const TAG_COLORS: Record<string, { bg: string; color: string }> = {
-  Product:     { bg: 'rgba(242,98,46,0.12)',  color: '#F2622E' },
-  Engineering: { bg: 'rgba(242,98,46,0.15)', color: '#FF7A45' },
+  Product:     { bg: 'rgba(27,111,232,0.12)',  color: '#1b6fe8' },
+  Engineering: { bg: 'rgba(27,111,232,0.15)', color: '#3d86f0' },
   Culture:     { bg: 'rgba(178,178,184,0.16)', color: '#B2B2B8' },
-  Industry:    { bg: 'rgba(242,98,46,0.10)',   color: '#F2622E' },
-  AI:          { bg: 'rgba(242,98,46,0.12)', color: '#F2622E' },
-  DevOps:      { bg: 'rgba(242,98,46,0.12)',   color: '#F2622E' },
+  Industry:    { bg: 'rgba(27,111,232,0.10)',   color: '#1b6fe8' },
+  AI:          { bg: 'rgba(27,111,232,0.12)', color: '#1b6fe8' },
+  DevOps:      { bg: 'rgba(27,111,232,0.12)',   color: '#1b6fe8' },
 }
 
 export default function BlogPost() {
@@ -75,7 +75,7 @@ export default function BlogPost() {
                 <p>Talk to our experts and get a free consultation tailored to your needs.</p>
               </div>
               <button onClick={() => openLead(post.tag)} className="bpost-cta-box__btn">
-                Get a Free Consultation →
+                Get a Free Consultation
               </button>
             </div>
           </article>
@@ -88,7 +88,7 @@ export default function BlogPost() {
                 Synerax builds enterprise-grade AI, cloud, and full-stack solutions for ambitious organisations worldwide.
               </p>
               <button onClick={() => openLead()} className="bpost-sidebar__btn">
-                Start a Project →
+                Start a Project
               </button>
             </div>
 

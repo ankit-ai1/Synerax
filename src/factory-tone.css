@@ -11,13 +11,13 @@
 
 :root {
   /* Neutral grey ramp — 00 is the page floor, 05 the lightest panel */
-  --fx-00: #08080a !important;
-  --fx-01: #0b0b0d !important;
-  --fx-02: #0e0e10 !important;
-  --fx-03: #121214 !important;
-  --fx-04: #151517 !important;
-  --fx-05: #1a1a1c !important;
-  --fx-06: #202023 !important;
+  --fx-00: #060f1e !important;
+  --fx-01: #0a1628 !important;
+  --fx-02: #0d1b30 !important;
+  --fx-03: #112038 !important;
+  --fx-04: #14243f !important;
+  --fx-05: #1a2b48 !important;
+  --fx-06: #213354 !important;
 
   --bg:            var(--fx-01) !important;
   --surface:       var(--fx-03) !important;
@@ -39,10 +39,10 @@
   --font-sans:    'Geist', 'Inter', system-ui, -apple-system, sans-serif !important;
   --font-mono:    'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace !important;
 
-  --accent:        #ff5c29 !important;
-  --accent-bright: #ff6f38 !important;
-  --accent-soft:   rgba(255,92,41,.08) !important;
-  --accent-line:   rgba(255,92,41,.30) !important;
+  --accent:        #1b6fe8 !important;
+  --accent-bright: #3d86f0 !important;
+  --accent-soft:   rgba(27,111,232,.08) !important;
+  --accent-line:   rgba(27,111,232,.30) !important;
 }
 
 /* ─────────────────────────────────────────────
@@ -349,8 +349,8 @@ h1, h2, h3 {
 .iq-btn-ring:hover,
 .iq-btn-ring--light:hover,
 .btn--outline:hover {
-  background: #2a2a2d !important;
-  border-color: #2a2a2d !important;
+  background: #24375a !important;
+  border-color: #24375a !important;
   color: #fff !important;
 }
 
@@ -501,9 +501,9 @@ h1, h2, h3 {
 }
 
 /* Scrollbar in the same grey family */
-* { scrollbar-color: #2a2a2d var(--fx-01) !important; }
+* { scrollbar-color: #24375a var(--fx-01) !important; }
 ::-webkit-scrollbar-track { background: var(--fx-01) !important; }
-::-webkit-scrollbar-thumb { background: #2a2a2d !important; }
+::-webkit-scrollbar-thumb { background: #24375a !important; }
 ::-webkit-scrollbar-thumb:hover { background: #37373b !important; }
 
 /* ─────────────────────────────────────────────

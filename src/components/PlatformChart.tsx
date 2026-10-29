@@ -14,14 +14,13 @@ type Range = '7d' | '1m' | '6m' | '1y' | 'All'
    totals 100%, so the axis scale is capped near the top of the range
    rather than at 100 — otherwise every point would hug the centre. */
 const CATEGORIES = [
-  { label: 'Web Apps',    full: 'Web & Enterprise Applications',            value: 17 },
-  { label: 'SRE',         full: 'Observability, SRE & Production Eng.',     value: 17 },
-  { label: 'DevSecOps',   full: 'DevSecOps & FinOps',                       value: 12 },
-  { label: 'Cloud Eng.',  full: 'Cloud Engineering & Migration',            value: 11 },
-  { label: 'Agentic AI',  full: 'Agentic AI Solutions',                     value: 11 },
-  { label: 'Security',    full: 'Cybersecurity Solutions',                  value: 11 },
-  { label: 'App Modern.', full: 'Application Modernization',                value: 11 },
-  { label: 'ITSM',        full: 'IT Service Management (ITSM)',             value: 10 },
+  { label: 'Web Apps',    full: 'Web & Enterprise Applications',            value: 18 },
+  { label: 'SRE',         full: 'Observability, SRE & Production Eng.',     value: 18 },
+  { label: 'DevSecOps',   full: 'DevSecOps & FinOps',                       value: 14 },
+  { label: 'Cloud Eng.',  full: 'Cloud Engineering & Migration',            value: 13 },
+  { label: 'Agentic AI',  full: 'Agentic AI Solutions',                     value: 13 },
+  { label: 'App Modern.', full: 'Application Modernization',                value: 12 },
+  { label: 'ITSM',        full: 'IT Service Management (ITSM)',             value: 12 },
 ]
 
 /* Top of the radar scale. Values sit at 10–17%, so 20 lets the two 17s
@@ -299,8 +298,8 @@ export default function PlatformChart() {
           >
             <defs>
               <linearGradient id="pfcFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#ff5c29" stopOpacity=".28" />
-                <stop offset="100%" stopColor="#ff5c29" stopOpacity="0" />
+                <stop offset="0%" stopColor="#1b6fe8" stopOpacity=".28" />
+                <stop offset="100%" stopColor="#1b6fe8" stopOpacity="0" />
               </linearGradient>
             </defs>
 

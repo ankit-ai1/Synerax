@@ -1,0 +1,383 @@
+/* ═════════════════════════════════════════════════════════════
+   KNOWLEDGE BASE — "Notes from the engineering floor."
+   (InsightsBento.tsx). Image-led editorial grid: a feature story
+   and two overlay cards, then a row of split cards whose photo
+   takes ~70% of the height and the copy ~30%.
+   ═════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   1. HEADER — title left, intro + link right
+   ───────────────────────────────────────────── */
+.kb-hdr {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  align-items: end;
+  gap: 40px;
+  margin-bottom: 52px;
+}
+html:root body .kb-hdr .kb-hdr__lede { max-width: none !important; margin: 0 !important; }
+html:root body .kb-hdr .kb-hdr__eye.kb-hdr__eye {
+  color: #1b6fe8 !important;
+  -webkit-text-fill-color: #1b6fe8 !important;
+  letter-spacing: .28em !important;
+  margin-bottom: 20px !important;
+}
+html:root body .kb-hdr .kb-hdr__h2 {
+  margin: 0 !important;
+  font-size: clamp(2.5rem, 5vw, 4.25rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: -.055em !important;
+  line-height: 1.02 !important;
+}
+html:root body .kb-hdr .kb-hdr__h2 .kb-hdr__grad.kb-hdr__grad {
+  display: inline-block;
+  padding-bottom: .08em;
+  background-image: linear-gradient(100deg, #1459c7 0%, #1b6fe8 35%, #4d94ff 55%, #1b6fe8 75%, #1459c7 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+  font-family: inherit !important;
+  font-style: normal !important;
+  animation: kb-shimmer 7s ease-in-out infinite alternate;
+}
+@keyframes kb-shimmer { from { background-position: 100% 0; } to { background-position: 0% 0; } }
+
+/* intro + CTA sit flush with the right edge of the grid */
+.kb-hdr__side {
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 26px;
+  padding-bottom: 8px;
+  text-align: right;
+}
+html:root body .kb-hdr .kb-hdr__sub {
+  margin: 0 !important;
+  max-width: 400px;
+  font-size: 1.125rem !important;
+  text-align: right;
+  color: var(--text-dim) !important;
+}
+
+/* filled pill with a white arrow disc; a light sweeps across on hover */
+html:root body .kb-hdr .kb-hdr__all {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  height: 56px;
+  padding: 0 7px 0 26px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(100deg, #1459c7, #1b6fe8 55%, #3d86f0);
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  font-size: 1rem !important;
+  font-weight: 600;
+  letter-spacing: -.01em;
+  text-decoration: none;
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.25) inset,
+    0 14px 30px -12px rgba(27,111,232,.65);
+  transition: box-shadow .35s ease, transform .35s cubic-bezier(.22,1,.36,1);
+}
+html:root body .kb-hdr .kb-hdr__all::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,.28) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform .8s ease;
+  pointer-events: none;
+}
+html:root body .kb-hdr .kb-hdr__all:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.25) inset,
+    0 20px 38px -12px rgba(27,111,232,.8);
+}
+html:root body .kb-hdr .kb-hdr__all:hover::before { transform: translateX(120%); }
+
+.kb-hdr__all-ico {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 42px; height: 42px;
+  overflow: hidden;
+  border-radius: 50%;
+  background: #fff;
+  color: #1b6fe8;
+  transition: transform .45s cubic-bezier(.3,1.5,.5,1);
+}
+/* two arrows: the first slides out, the second slides in */
+.kb-hdr__all-ico svg {
+  position: absolute;
+  width: 17px; height: 17px;
+  transition: transform .45s cubic-bezier(.65,0,.25,1);
+}
+.kb-hdr__all-ico svg + svg { transform: translateX(-28px); }
+.kb-hdr__all:hover .kb-hdr__all-ico { transform: scale(1.06); }
+.kb-hdr__all:hover .kb-hdr__all-ico svg:first-child { transform: translateX(28px); }
+.kb-hdr__all:hover .kb-hdr__all-ico svg + svg { transform: translateX(0); }
+
+/* ─────────────────────────────────────────────
+   2. GRIDS
+   ───────────────────────────────────────────── */
+.kb-bento {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  grid-template-rows: 300px 300px;
+  gap: 20px;
+}
+.kb-card--feature { grid-row: 1 / span 2; }
+
+.kb-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* ─────────────────────────────────────────────
+   3. SHARED CARD BITS
+   ───────────────────────────────────────────── */
+html:root body .kb .kb-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 24px;
+  isolation: isolate;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .5s cubic-bezier(.22,1,.36,1), box-shadow .5s ease;
+}
+
+.kb-card__media {
+  display: block;
+  overflow: hidden;
+  background: #0d1b30;
+}
+.kb-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.01);
+  transition: transform 1.2s cubic-bezier(.22,1,.36,1), filter .6s ease;
+}
+.kb-card:hover .kb-card__media img { transform: scale(1.07); }
+
+.kb-card__top {
+  position: absolute;
+  top: 18px; left: 18px; right: 18px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.kb-pill {
+  padding: 6px 13px;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 999px;
+  background: rgba(10,22,40,.32);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.kb-card__go {
+  display: grid;
+  place-items: center;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  background: #fff;
+  color: #0a1628;
+  box-shadow: 0 8px 20px -8px rgba(10,22,40,.5);
+  transform: scale(.85);
+  transition: transform .45s cubic-bezier(.3,1.5,.5,1), background .3s ease, color .3s ease;
+}
+.kb-card__go svg { width: 16px; height: 16px; transition: transform .45s ease; }
+.kb-card:hover .kb-card__go { transform: scale(1); background: #1b6fe8; color: #fff; }
+.kb-card:hover .kb-card__go svg { transform: rotate(45deg); }
+
+.kb-card__meta {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  letter-spacing: .06em;
+}
+
+/* ─────────────────────────────────────────────
+   4. OVERLAY CARDS — photo fills, copy on a scrim
+   ───────────────────────────────────────────── */
+.kb-card--overlay { min-height: 300px; background: #0a1628; }
+.kb-card--overlay .kb-card__media { position: absolute; inset: 0; z-index: 0; }
+
+.kb-card__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(77,148,255,.22), transparent 60%),
+    linear-gradient(180deg, rgba(10,22,40,0) 38%, rgba(10,22,40,.55) 66%, rgba(10,22,40,.94) 100%);
+  background-size: 100% 100%;
+  transition: opacity .4s ease;
+}
+/* the pointer light only shows on hover */
+.kb-card--overlay:not(:hover) .kb-card__scrim {
+  background: linear-gradient(180deg, rgba(10,22,40,0) 38%, rgba(10,22,40,.55) 66%, rgba(10,22,40,.94) 100%);
+}
+
+.kb-card--overlay .kb-card__copy {
+  position: absolute;
+  left: 26px; right: 26px; bottom: 24px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform .5s cubic-bezier(.22,1,.36,1);
+}
+.kb-card--overlay .kb-card__meta { color: rgba(255,255,255,.72); }
+
+html:root body .kb .kb-card--overlay .kb-card__title.kb-card__title {
+  margin: 0 !important;
+  max-width: 30ch;
+  font-size: clamp(1.15rem, 1.5vw, 1.375rem) !important;
+  font-weight: 650 !important;
+  letter-spacing: -.025em !important;
+  line-height: 1.25 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+html:root body .kb .kb-card--feature .kb-card__title.kb-card__title {
+  max-width: 22ch;
+  font-size: clamp(1.6rem, 2.6vw, 2.25rem) !important;
+  letter-spacing: -.04em !important;
+  line-height: 1.12 !important;
+  -webkit-line-clamp: 3;
+}
+html:root body .kb .kb-card--feature .kb-card__desc {
+  margin: 0 !important;
+  max-width: 52ch;
+  font-size: 1.0625rem !important;
+  line-height: 1.6 !important;
+  color: rgba(255,255,255,.78) !important;
+  -webkit-text-fill-color: rgba(255,255,255,.78) !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* "Read article" waits below the fold of the card and rises on hover */
+.kb-card--overlay .kb-card__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  color: #7fb0ff;
+  font-size: .9375rem;
+  font-weight: 600;
+  transition: height .4s ease, opacity .4s ease;
+}
+.kb-card--overlay .kb-card__cta svg { width: 14px; height: 14px; }
+.kb-card--overlay:hover .kb-card__cta { height: 22px; opacity: 1; }
+
+html:root body .kb .kb-card--overlay:hover {
+  box-shadow: 0 30px 60px -30px rgba(10,22,40,.55);
+}
+
+/* ─────────────────────────────────────────────
+   5. SPLIT CARDS — 70% image / 30% copy
+   ───────────────────────────────────────────── */
+html:root body .kb .kb-card--split {
+  display: flex;
+  flex-direction: column;
+  height: 420px;
+  border: 1px solid var(--border) !important;
+  background: var(--fx-00);
+  box-shadow: 0 1px 2px rgba(10,22,40,.04), 0 18px 40px -26px rgba(10,22,40,.3);
+}
+.kb-card--split .kb-card__media {
+  position: relative;
+  flex: 0 0 70%;
+  margin: 8px 8px 0;
+  border-radius: 18px;
+}
+.kb-card--split .kb-card__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  flex: 1;
+  min-height: 0;
+  padding: 14px 22px 18px;
+}
+.kb-card--split .kb-card__meta { color: var(--text-faint); }
+html:root body .kb .kb-card--split .kb-card__title.kb-card__title {
+  margin: 0 !important;
+  font-size: 1.125rem !important;
+  font-weight: 650 !important;
+  letter-spacing: -.02em !important;
+  line-height: 1.3 !important;
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color .3s ease;
+}
+html:root body .kb .kb-card--split:hover {
+  transform: translateY(-5px);
+  border-color: rgba(27,111,232,.35) !important;
+  box-shadow: 0 1px 2px rgba(10,22,40,.04), 0 30px 50px -28px rgba(27,111,232,.45);
+}
+html:root body .kb .kb-card--split:hover .kb-card__title.kb-card__title {
+  color: #1b6fe8 !important;
+  -webkit-text-fill-color: #1b6fe8 !important;
+}
+
+/* ─────────────────────────────────────────────
+   6. RESPONSIVE
+   ───────────────────────────────────────────── */
+@media (max-width: 1000px) {
+  .kb-hdr { grid-template-columns: 1fr; gap: 20px; margin-bottom: 36px; }
+  /* stacked under the title, the side block reads better left-aligned */
+  .kb-hdr__side { justify-self: start; align-items: flex-start; text-align: left; }
+  html:root body .kb-hdr .kb-hdr__sub { text-align: left; }
+  .kb-bento { grid-template-columns: 1fr 1fr; grid-template-rows: 420px 280px; }
+  .kb-card--feature { grid-row: auto; grid-column: 1 / -1; }
+  .kb-row { grid-template-columns: 1fr 1fr; }
+  html:root body .kb .kb-row .kb-card:nth-child(3) { display: none; }
+}
+
+@media (max-width: 640px) {
+  .kb-bento { grid-template-columns: 1fr; grid-template-rows: none; gap: 14px; }
+  .kb-card--feature { min-height: 400px; }
+  .kb-card--overlay { min-height: 280px; }
+  .kb-row { grid-template-columns: 1fr; gap: 14px; margin-top: 14px; }
+  html:root body .kb .kb-row .kb-card:nth-child(3) { display: flex; }
+  html:root body .kb .kb-card--split { height: 380px; }
+  /* no hover on touch — keep the call to action visible */
+  .kb-card--overlay .kb-card__cta { height: 22px; opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:root body .kb-hdr .kb-hdr__h2 .kb-hdr__grad.kb-hdr__grad { animation: none !important; }
+  .kb-card__media img { transition: none; }
+}

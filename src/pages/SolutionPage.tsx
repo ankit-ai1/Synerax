@@ -63,7 +63,7 @@ export default function SolutionPage() {
     return <Navigate to={replacement ? `/solutions/${replacement}` : '/services'} replace />
   }
 
-  const accent = meta?.accentColor ?? '#F2622E'
+  const accent = meta?.accentColor ?? '#1b6fe8'
 
   return (
     <>
@@ -101,7 +101,7 @@ export default function SolutionPage() {
               <span>✓ Free Scoping</span>
             </div>
             <div className="tl-hero__actions">
-              <button onClick={() => openLead(solution.name)} className="btn btn--primary">Get a Free Consultation →</button>
+              <button onClick={() => openLead(solution.name)} className="btn btn--primary">Get a Free Consultation</button>
               <a href="#capabilities" className="tl-hero__ghost-btn">See Capabilities ↓</a>
             </div>
           </div>
@@ -158,7 +158,7 @@ export default function SolutionPage() {
                 <h3 className="tl-cap-card__title">{cap.title}</h3>
                 <p className="tl-cap-card__desc">{cap.desc}</p>
                 <button onClick={() => openLead(solution.name)} className="tl-cap-card__link" style={{ color: accent, background: 'none', border: 'none', padding: 0, cursor: 'pointer', font: 'inherit' }}>
-                  Get Started →
+                  Get Started
                 </button>
               </div>
             ))}
@@ -210,7 +210,7 @@ export default function SolutionPage() {
                 ))}
               </div>
               <button onClick={() => openLead(solution.name)} className="btn btn--primary" style={{ marginTop: '2rem' }}>
-                Start Your Project →
+                Start Your Project
               </button>
             </div>
           </div>
@@ -274,7 +274,7 @@ export default function SolutionPage() {
             max={48}
             className="tl-dark-feature__chart"
           />
-          <div className="tl-dark-feature__overlay" style={{ background: 'linear-gradient(90deg, rgba(242,98,46,0.88) 0%, rgba(242,98,46,0.45) 60%, transparent 100%)' }}>
+          <div className="tl-dark-feature__overlay" style={{ background: 'linear-gradient(90deg, rgba(27,111,232,0.88) 0%, rgba(27,111,232,0.45) 60%, transparent 100%)' }}>
             <div className="container">
               <div className="tl-dark-feature__text">
                 <h3 className="tl-dark-feature__headline">
@@ -284,7 +284,7 @@ export default function SolutionPage() {
                   Scalable. Secure. Delivered on time — every time.
                 </p>
                 <button onClick={() => openLead(solution.name)} className="btn btn--white" style={{ marginTop: '1.5rem' }}>
-                  Talk to an Expert →
+                  Talk to an Expert
                 </button>
               </div>
             </div>
@@ -369,7 +369,7 @@ export default function SolutionPage() {
           </h2>
           <p>{solution.ctaDesc}</p>
           <div className="cta-band__actions">
-            <button onClick={() => openLead(solution.name)} className="btn btn--white">Start a Project →</button>
+            <button onClick={() => openLead(solution.name)} className="btn btn--white">Start a Project</button>
             <a href="#capabilities" className="btn btn--outline" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.4)' }}>
               See Capabilities ↑
             </a>

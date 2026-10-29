@@ -23,55 +23,55 @@ const techCategories = [
   {
     title: 'Frontend',
     tiles: [
-      { logo: '⚛', bg: '#1C1C1F', color: '#0288D1', name: 'React', fontSize: '1.6rem' },
-      { logo: 'Next', bg: '#1C1C1F', color: '#000', name: 'Next.js', fontWeight: 900, fontSize: '0.85rem' },
-      { logo: 'V', bg: '#1C1C1F', color: '#42B883', name: 'Vue.js', fontWeight: 900 },
-      { logo: 'TS', bg: '#1C1C1F', color: '#3178C6', name: 'TypeScript', fontWeight: 900, fontSize: '0.8rem' },
+      { logo: '⚛', bg: '#1a2b48', color: '#0288D1', name: 'React', fontSize: '1.6rem' },
+      { logo: 'Next', bg: '#1a2b48', color: '#000', name: 'Next.js', fontWeight: 900, fontSize: '0.85rem' },
+      { logo: 'V', bg: '#1a2b48', color: '#42B883', name: 'Vue.js', fontWeight: 900 },
+      { logo: 'TS', bg: '#1a2b48', color: '#3178C6', name: 'TypeScript', fontWeight: 900, fontSize: '0.8rem' },
     ],
   },
   {
     title: 'Backend',
     tiles: [
-      { logo: 'N', bg: '#1C1C1F', color: '#3C873A', name: 'Node.js', fontWeight: 900 },
-      { logo: '🐍', bg: '#1C1C1F', color: '#306998', name: 'Python', fontSize: '1.6rem' },
-      { logo: 'FA', bg: '#1C1C1F', color: '#009688', name: 'FastAPI', fontWeight: 900 },
-      { logo: 'GQL', bg: '#1C1C1F', color: '#E53935', name: 'GraphQL', fontWeight: 900 },
+      { logo: 'N', bg: '#1a2b48', color: '#3C873A', name: 'Node.js', fontWeight: 900 },
+      { logo: '🐍', bg: '#1a2b48', color: '#306998', name: 'Python', fontSize: '1.6rem' },
+      { logo: 'FA', bg: '#1a2b48', color: '#009688', name: 'FastAPI', fontWeight: 900 },
+      { logo: 'GQL', bg: '#1a2b48', color: '#E53935', name: 'GraphQL', fontWeight: 900 },
     ],
   },
   {
     title: 'Mobile',
     tiles: [
-      { logo: 'Fl', bg: '#1C1C1F', color: '#0288D1', name: 'Flutter', fontWeight: 900 },
-      { logo: '⚛', bg: '#1C1C1F', color: '#0288D1', name: 'React Native', fontSize: '1.5rem' },
-      { logo: 'S', bg: '#1C1C1F', color: '#F4511E', name: 'Swift', fontWeight: 900 },
-      { logo: 'K', bg: '#1C1C1F', color: '#7C4DFF', name: 'Kotlin', fontWeight: 900 },
+      { logo: 'Fl', bg: '#1a2b48', color: '#0288D1', name: 'Flutter', fontWeight: 900 },
+      { logo: '⚛', bg: '#1a2b48', color: '#0288D1', name: 'React Native', fontSize: '1.5rem' },
+      { logo: 'S', bg: '#1a2b48', color: '#F4511E', name: 'Swift', fontWeight: 900 },
+      { logo: 'K', bg: '#1a2b48', color: '#7C4DFF', name: 'Kotlin', fontWeight: 900 },
     ],
   },
   {
     title: 'AI / ML',
     tiles: [
-      { logo: 'GPT', bg: '#1C1C1F', color: '#000', name: 'OpenAI', fontWeight: 900, fontSize: '0.8rem' },
-      { logo: 'LC', bg: '#1C1C1F', color: '#1A6B3C', name: 'LangChain', fontWeight: 900 },
-      { logo: 'TF', bg: '#1C1C1F', color: '#FF6F00', name: 'TensorFlow', fontWeight: 900 },
-      { logo: '🤗', bg: '#1C1C1F', color: '#FFC107', name: 'HuggingFace', fontSize: '1.5rem' },
+      { logo: 'GPT', bg: '#1a2b48', color: '#000', name: 'OpenAI', fontWeight: 900, fontSize: '0.8rem' },
+      { logo: 'LC', bg: '#1a2b48', color: '#1A6B3C', name: 'LangChain', fontWeight: 900 },
+      { logo: 'TF', bg: '#1a2b48', color: '#FF6F00', name: 'TensorFlow', fontWeight: 900 },
+      { logo: '🤗', bg: '#1a2b48', color: '#FFC107', name: 'HuggingFace', fontSize: '1.5rem' },
     ],
   },
   {
     title: 'Cloud & DevOps',
     tiles: [
-      { logo: 'AWS', bg: '#1C1C1F', color: '#FF9900', name: 'AWS', fontWeight: 900, fontSize: '0.75rem' },
-      { logo: '🐳', bg: '#1C1C1F', color: '#1976D2', name: 'Docker', fontSize: '1.5rem' },
-      { logo: '⎈', bg: '#1C1C1F', color: '#326CE5', name: 'Kubernetes', fontSize: '1.4rem' },
-      { logo: 'T', bg: '#1C1C1F', color: '#7B42BC', name: 'Terraform', fontWeight: 900 },
+      { logo: 'AWS', bg: '#1a2b48', color: '#FF9900', name: 'AWS', fontWeight: 900, fontSize: '0.75rem' },
+      { logo: '🐳', bg: '#1a2b48', color: '#1976D2', name: 'Docker', fontSize: '1.5rem' },
+      { logo: '⎈', bg: '#1a2b48', color: '#326CE5', name: 'Kubernetes', fontSize: '1.4rem' },
+      { logo: 'T', bg: '#1a2b48', color: '#7B42BC', name: 'Terraform', fontWeight: 900 },
     ],
   },
   {
     title: 'Database',
     tiles: [
-      { logo: 'PG', bg: '#1C1C1F', color: '#336791', name: 'PostgreSQL', fontWeight: 900 },
-      { logo: 'M', bg: '#1C1C1F', color: '#47A248', name: 'MongoDB', fontWeight: 900 },
-      { logo: 'R', bg: '#1C1C1F', color: '#D32F2F', name: 'Redis', fontWeight: 900 },
-      { logo: 'My', bg: '#1C1C1F', color: '#00758F', name: 'MySQL', fontWeight: 900 },
+      { logo: 'PG', bg: '#1a2b48', color: '#336791', name: 'PostgreSQL', fontWeight: 900 },
+      { logo: 'M', bg: '#1a2b48', color: '#47A248', name: 'MongoDB', fontWeight: 900 },
+      { logo: 'R', bg: '#1a2b48', color: '#D32F2F', name: 'Redis', fontWeight: 900 },
+      { logo: 'My', bg: '#1a2b48', color: '#00758F', name: 'MySQL', fontWeight: 900 },
     ],
   },
 ]
@@ -91,7 +91,7 @@ export default function Services() {
           <p>From pixel-perfect interfaces to intelligent AI systems, enterprise contact centers, and cloud infrastructure — we handle every layer of your digital stack.</p>
           <div style={{ display: 'flex', gap: '0.9rem', justifyContent: 'center', marginTop: '2rem', flexWrap: 'wrap' }}>
             <Link to="/contact" className="srv-hero__btn-primary">
-              Get a Free Consultation →
+              Get a Free Consultation
             </Link>
             <a href="#solutions" className="srv-hero__btn-outline">
               View Solutions ↓
@@ -116,7 +116,7 @@ export default function Services() {
                 <div className="srv-card__icon">{card.svg}</div>
                 <h3>{card.title}</h3>
                 <p>{card.desc}</p>
-                <Link to={`/solutions/${card.slug}`} className="srv-card__link">Learn more →</Link>
+                <Link to={`/solutions/${card.slug}`} className="srv-card__link">Learn more</Link>
               </div>
             ))}
           </div>
@@ -200,11 +200,11 @@ export default function Services() {
         <div className="container">
           <div className="cta-band__tag">Have a Project in Mind?</div>
           <h2>
-            Get a Proposal<br />in <span style={{ color: '#FF7A45' }}>24 Hours</span>
+            Get a Proposal<br />in <span style={{ color: '#3d86f0' }}>24 Hours</span>
           </h2>
           <p>No commitment required. Just an honest conversation about your goals and how we can help.</p>
           <div className="cta-band__actions">
-            <Link to="/contact" className="btn btn--white">Request a Proposal →</Link>
+            <Link to="/contact" className="btn btn--white">Request a Proposal</Link>
             <Link to="/about" className="btn btn--outline" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.4)' }}>Learn About Us</Link>
           </div>
         </div>

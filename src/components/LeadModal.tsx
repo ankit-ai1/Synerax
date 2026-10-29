@@ -174,7 +174,7 @@ export default function LeadModal() {
               <button className="lm-submit" type="submit" disabled={sending}>
                 {sending
                   ? <><span className="lm-spinner"/> Sending…</>
-                  : 'Submit Enquiry →'
+                  : 'Submit Enquiry'
                 }
               </button>
             </form>

@@ -126,7 +126,7 @@ function Radar({ labels, tick, seed }: { labels: string[]; tick: number; seed: n
 }
 
 /* ── Stacked bars ───────────────────────────────────────────── */
-const STACK_COLORS = ['#e2703a', '#6fae7c', '#e8b04b', '#5fb0a8', '#b9a882']
+const STACK_COLORS = ['#1b6fe8', '#6fae7c', '#e8b04b', '#5fb0a8', '#b9a882']
 
 function Stacked({
   labels, tick, seed, unit, max,

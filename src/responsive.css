@@ -336,7 +336,7 @@
   .bl-filter,
   .car-dept-btn { min-height: 40px; }
 
-  a, button { -webkit-tap-highlight-color: rgba(255,92,41,.18); }
+  a, button { -webkit-tap-highlight-color: rgba(27,111,232,.18); }
 }
 
 /* ─────────────────────────────────────────────
@@ -345,12 +345,12 @@
    it. These two need the ink versions of the hairlines.
    ───────────────────────────────────────────── */
 @media (max-width: 900px) {
-  :root[data-theme='light'] .fxd-strip__stages { border-top-color: rgba(18,18,26,.14); }
-  :root[data-theme='light'] .fxd-stage { border-bottom-color: rgba(18,18,26,.14); }
+  :root[data-theme='light'] .fxd-strip__stages { border-top-color: rgba(10,22,40,.14); }
+  :root[data-theme='light'] .fxd-stage { border-bottom-color: rgba(10,22,40,.14); }
 }
 @media (hover: none) {
   :root[data-theme='light'] a,
-  :root[data-theme='light'] button { -webkit-tap-highlight-color: rgba(224,78,24,.16); }
+  :root[data-theme='light'] button { -webkit-tap-highlight-color: rgba(27,111,232,.16); }
 }
 
 /* ═════════════════════════════════════════════════════════════

@@ -4,7 +4,7 @@
 
 ## About
 
-Synerax is a team of engineers, designers and AI specialists, founded and headquartered in Noida, India. Its mission is to make enterprise-grade technology accessible to every business, regardless of size or location. What started as a small development shop has grown into a full-service digital engineering company serving clients across 20+ countries, from early-stage startups to Fortune 500 enterprises. Cross-functional teams bring expertise in software engineering, artificial intelligence, cybersecurity and cloud architecture to every engagement.
+Synerax is a team of engineers, designers and AI specialists, founded and headquartered in Noida, India. Its mission is to make enterprise-grade technology accessible to every business, regardless of size or location. What started as a small development shop has grown into a full-service digital engineering company serving clients across 20+ countries, from early-stage startups to Fortune 500 enterprises. Cross-functional teams bring expertise in software engineering, artificial intelligence and cloud architecture to every engagement.
 
 Page: https://synerax.in/about
 
@@ -18,7 +18,7 @@ Synerax was founded in Noida, India with a singular mission: to make enterprise-
 
 What started as a small development shop has grown into a full-service digital engineering company serving clients across 20+ countries — from early-stage startups to Fortune 500 enterprises.
 
-Our cross-functional teams bring deep expertise in software engineering, artificial intelligence, cybersecurity, and cloud architecture to every engagement.
+Our cross-functional teams bring deep expertise in software engineering, artificial intelligence, and cloud architecture to every engagement.
 
 - **Global Reach, Local Expertise** — Serving 20+ countries while staying rooted in India's world-class engineering talent.
 - **98% Client Satisfaction** — We don't just deliver projects — we build partnerships that last for years.
@@ -65,21 +65,6 @@ Delivery speed and cloud spend are the same problem viewed from two ends. We bui
 - Automated Testing & Release — Unit, integration, and end-to-end suites wired to progressive delivery — canary, blue/green, feature flags.
 - Cloud Cost Visibility — Per-team and per-service cost attribution through AWS Cost Explorer and Kubecost, with budgets and alerts.
 - Rightsizing & Optimisation — Continuous instance, storage, and commitment analysis that turns waste into a tracked, closable backlog.
-
-### Cybersecurity Solutions
-
-Page: https://synerax.in/solutions/cybersecurity
-
-Enterprise security, compliance, and threat defense. A 24/7 SOC, zero-trust architecture, and audit-ready controls that hold up under real scrutiny.
-
-We treat security as an operating capability, not a document. That means a monitored perimeter, identity-first access control, tested response runbooks, and evidence collected continuously rather than assembled the week before an audit. Compliance work — SOC 2, ISO 27001, HIPAA — is mapped onto the controls you already run, so certification becomes a reporting exercise instead of a second system to maintain.
-
-- 24/7 Security Operations — Continuous monitoring with tuned detections, triage, and an escalation path that reaches a human every time.
-- Zero-Trust Architecture — Identity-first access, network segmentation, and continuous verification instead of a trusted internal network.
-- Penetration Testing — Application, infrastructure, and social engineering testing against your live environment, with retest included.
-- Compliance & Certification — SOC 2 Type II, ISO 27001, and HIPAA programmes mapped onto controls you already operate.
-- Incident Response — Tested runbooks, forensics, containment, and post-incident review that closes the loop back into engineering.
-- Vulnerability Management — Continuous scanning across code, images, and infrastructure with risk-ranked, owner-assigned remediation.
 
 ### Agentic AI Solutions
 
@@ -164,7 +149,7 @@ Page: https://synerax.in/industries/healthcare
 
 Enable secure, compliant, and resilient IT solutions supporting modern healthcare and pharmaceutical operations. Designed to protect sensitive data, enable digital workflows, and support critical systems at scale.
 
-Specialisations: Digital Healthcare Systems (electronic health records support, connected medical equipment integration, telemedicine platform infrastructure); Healthcare Cybersecurity; Pharma IT Operations.
+Specialisations: Digital Healthcare Systems (electronic health records support, connected medical equipment integration, telemedicine platform infrastructure); Healthcare Data Protection; Pharma IT Operations.
 
 ### Financial Services
 
@@ -172,7 +157,7 @@ Page: https://synerax.in/industries/financial-services
 
 Power banks, fintech startups, and insurance companies with secure, compliant, and high-availability IT infrastructure engineered for the demands of modern financial operations.
 
-Specialisations: Core Banking Systems; Financial Cybersecurity; FinTech & Analytics.
+Specialisations: Core Banking Systems; Financial Data Protection; FinTech & Analytics.
 
 ### Retail & E-Commerce
 
@@ -188,7 +173,7 @@ Page: https://synerax.in/industries/government
 
 Deliver citizen-centric digital services, secure national infrastructure, and compliant data management systems that modernize public sector operations while maintaining the highest security standards.
 
-Specialisations: Digital Government Services; National Cybersecurity; Cloud & Data Sovereignty.
+Specialisations: Digital Government Services; Critical Infrastructure Protection; Cloud & Data Sovereignty.
 
 ### Education & EdTech
 
@@ -196,7 +181,7 @@ Page: https://synerax.in/industries/education
 
 Empower educators, students, and institutions with scalable learning platforms, AI-driven personalisation, and secure campus infrastructure — built to transform how the world learns.
 
-Specialisations: Learning Platforms; Campus Cybersecurity; Analytics & Outcomes.
+Specialisations: Learning Platforms; Campus Data Protection; Analytics & Outcomes.
 
 ### Logistics & Supply Chain
 
@@ -246,7 +231,6 @@ Page: https://synerax.in/about
 Page: https://synerax.in/contact
 
 - Email: syneraxcloudtechnologies@gmail.com
-- Phone: +91 9306917180
 - Location: Noida, India — serving clients globally
 
 ### Legal

@@ -23,7 +23,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
       { icon: '🔗', title: 'Integration Platforms', desc: 'Middleware joining ERP, CRM, and billing with idempotent processing and complete audit trails.' },
       { icon: '📱', title: 'Progressive Web Apps', desc: 'Offline-capable, installable applications with background sync and native-like performance.' },
     ],
-    accentColor: '#F2622E',
+    accentColor: '#1b6fe8',
     technologies: ['React', 'Next.js', 'TypeScript', 'Node.js', 'Python', 'PostgreSQL', 'GraphQL', 'Redis', 'Tailwind CSS', 'Vite', 'Jest', 'Playwright'],
   },
 
@@ -37,25 +37,11 @@ export const solutionMeta: Record<string, SolutionMeta> = {
       { icon: '💰', title: 'Cloud Spend Reduction', desc: 'Rightsizing, commitment planning, and idle-resource cleanup measured against an agreed baseline.' },
       { icon: '📜', title: 'Infrastructure as Code', desc: 'Hand-built environments captured in Terraform, with drift detection and reviewable plans.' },
     ],
-    accentColor: '#F2622E',
+    accentColor: '#1b6fe8',
     technologies: ['GitHub Actions', 'GitLab CI', 'Terraform', 'Docker', 'Kubernetes', 'AWS Cost Explorer', 'Kubecost', 'ArgoCD', 'Trivy', 'SonarQube', 'Vault', 'OPA'],
   },
 
   /* ── 3 ─────────────────────────────────────────────────────── */
-  'cybersecurity': {
-    enterpriseTitle: 'Security posture that holds up under scrutiny',
-    enterpriseDesc: 'A monitored perimeter, identity-first access, tested response runbooks, and evidence collected continuously — not assembled the week before an audit. Our SOC runs around the clock with tuned detections and an escalation path that always reaches a human.\n\nCompliance programmes for SOC 2 Type II, ISO 27001, and HIPAA are mapped onto the controls you already operate, so certification becomes a reporting exercise rather than a parallel system to maintain.',
-    useCases: [
-      { icon: '🏥', title: 'Regulated Industries', desc: 'HIPAA and PCI environments with data residency, encryption, and access review built into the operating model.' },
-      { icon: '🔐', title: 'Zero-Trust Rollout', desc: 'Flat internal networks replaced with identity-first segmentation and continuous verification.' },
-      { icon: '🎯', title: 'Penetration Testing', desc: 'Application, infrastructure, and social engineering assessments against your live environment, retest included.' },
-      { icon: '🚨', title: 'Incident Readiness', desc: 'Runbooks, tabletop exercises, and forensics capability in place before you need them.' },
-    ],
-    accentColor: '#F2622E',
-    technologies: ['CrowdStrike', 'Wazuh', 'Splunk', 'Okta', 'HashiCorp Vault', 'Burp Suite', 'Nessus', 'Snyk', 'AWS GuardDuty', 'Cloudflare', 'Sentinel', 'OpenVAS'],
-  },
-
-  /* ── 4 ─────────────────────────────────────────────────────── */
   'agentic-ai': {
     enterpriseTitle: 'AI systems scoped to a job, not a demo',
     enterpriseDesc: 'Every agent we build is aimed at a specific piece of work — triaging a queue, drafting a document set, reconciling records, answering from your own corpus. Each is evaluated against a held-out set before it ships and comes with guardrails, cost ceilings, and a defined hand-off to a human.\n\nRetrieval runs over your data with row-level permissions intact, and every action an agent takes is logged and replayable, so you can audit exactly what was done and why.',
@@ -65,7 +51,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
       { icon: '🔍', title: 'Internal Knowledge Search', desc: 'Semantic search across wikis, tickets, and repositories with each user\'s existing permissions preserved.' },
       { icon: '⚙️', title: 'Workflow Automation', desc: 'Multi-step agents that operate real tools — ticketing, CRM, internal APIs — under budget and policy limits.' },
     ],
-    accentColor: '#F2622E',
+    accentColor: '#1b6fe8',
     technologies: ['OpenAI', 'Anthropic', 'LangChain', 'LlamaIndex', 'Pinecone', 'pgvector', 'Weaviate', 'Python', 'FastAPI', 'Ray', 'MLflow', 'Hugging Face'],
   },
 
@@ -79,7 +65,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
       { icon: '💸', title: 'Cost Optimisation', desc: 'Rightsizing, commitment planning, and storage tiering measured against a baseline agreed up front.' },
       { icon: '🌐', title: 'Multi-Region Resilience', desc: 'Active-active and warm-standby designs with tested failover and documented recovery objectives.' },
     ],
-    accentColor: '#F2622E',
+    accentColor: '#1b6fe8',
     technologies: ['AWS', 'Azure', 'GCP', 'Terraform', 'Kubernetes', 'Helm', 'Docker', 'Ansible', 'CloudFormation', 'Istio', 'Karpenter', 'Velero'],
   },
 
@@ -93,7 +79,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
       { icon: '🚨', title: 'Incident Practice', desc: 'Roles, runbooks, comms templates, and blameless review that feeds fixes straight back into the backlog.' },
       { icon: '⚡', title: 'Peak Readiness', desc: 'Load testing, latency budgets, and capacity planning ahead of seasonal or launch traffic.' },
     ],
-    accentColor: '#F2622E',
+    accentColor: '#1b6fe8',
     technologies: ['Prometheus', 'Grafana', 'OpenTelemetry', 'Datadog', 'Loki', 'Tempo', 'PagerDuty', 'Jaeger', 'k6', 'Thanos', 'Sentry', 'Elastic'],
   },
 
@@ -107,7 +93,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
       { icon: '📦', title: 'Containerisation', desc: 'Reproducible images and dependency pinning so every environment behaves identically.' },
       { icon: '🔌', title: 'API Enablement', desc: 'Contract-first interfaces over legacy cores, letting new products build without touching the old system.' },
     ],
-    accentColor: '#F2622E',
+    accentColor: '#1b6fe8',
     technologies: ['Docker', 'Kubernetes', 'Java', '.NET', 'Node.js', 'Kafka', 'PostgreSQL', 'gRPC', 'OpenAPI', 'Strangler Fig', 'Flyway', 'Testcontainers'],
   },
 
@@ -121,7 +107,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
       { icon: '🔄', title: 'Change Enablement', desc: 'Risk-scored change workflow that speeds up standard changes instead of slowing everything equally.' },
       { icon: '🤖', title: 'Runbook Automation', desc: 'Provisioning, resets, and access requests automated end to end, freeing the desk for real problems.' },
     ],
-    accentColor: '#F2622E',
+    accentColor: '#1b6fe8',
     technologies: ['ServiceNow', 'Jira Service Management', 'Freshservice', 'PagerDuty', 'Zendesk', 'Ansible', 'Power Automate', 'Okta', 'Confluence', 'Opsgenie', 'Slack', 'Terraform'],
   },
 }

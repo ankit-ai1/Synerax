@@ -18,76 +18,76 @@
      enough apart to actually read — the first pass had them all within
      3% of each other, which is what made the whole thing look washed. */
   --fx-00: #ffffff !important;   /* cards, heroes — the raised surface */
-  --fx-01: #f4f4f1 !important;   /* page floor */
-  --fx-02: #eaeae5 !important;   /* alternate band */
+  --fx-01: #f4f8ff !important;   /* page floor */
+  --fx-02: #e8f0ff !important;   /* alternate band */
   --fx-03: #ffffff !important;   /* card surface */
-  --fx-04: #f1f1ed !important;   /* sunk wells, chips */
-  --fx-05: #e6e6e0 !important;   /* hover */
-  --fx-06: #dcdcd5 !important;
+  --fx-04: #eef4ff !important;   /* sunk wells, chips */
+  --fx-05: #e3ecfb !important;   /* hover */
+  --fx-06: #d6e4ff !important;
 
   --bg:            var(--fx-01) !important;
   --surface:       var(--fx-03) !important;
   --surface-2:     var(--fx-04) !important;
   --surface-3:     var(--fx-05) !important;
 
-  --border:        rgba(18,18,26,.14) !important;
-  --border-strong: rgba(18,18,26,.28) !important;
-  --fx-hair:       rgba(18,18,26,.11);
+  --border:        rgba(10,22,40,.14) !important;
+  --border-strong: rgba(10,22,40,.28) !important;
+  --fx-hair:       rgba(10,22,40,.11);
 
   /* Solid inks, not alpha. Low-alpha text over a light page is exactly
      what reads as "faded"; these hit proper contrast ratios. */
-  --text:          #101015 !important;
-  --text-dim:      #52525c !important;
-  --text-faint:    #78787f !important;
+  --text:          #0a1628 !important;
+  --text-dim:      #4a5568 !important;
+  --text-faint:    #718096 !important;
 
   /* A touch deeper than the dark-mode orange so it holds contrast on white */
-  --accent:        #e04e18 !important;
-  --accent-bright: #f2622e !important;
-  --accent-soft:   rgba(224,78,24,.10) !important;
-  --accent-line:   rgba(224,78,24,.32) !important;
+  --accent:        #1b6fe8 !important;
+  --accent-bright: #1b6fe8 !important;
+  --accent-soft:   rgba(27,111,232,.10) !important;
+  --accent-line:   rgba(27,111,232,.32) !important;
 
-  --primary:       #e04e18 !important;
+  --primary:       #1b6fe8 !important;
 
   color-scheme: light;
 }
 
 /* Per-component palettes declared on their own roots */
 :root[data-theme='light'] .fx-dash--factory {
-  --d-line: rgba(18,18,26,.14);
-  --d-line-soft: rgba(18,18,26,.09);
-  --d-ink: #101015;
-  --d-mid: #52525c;
-  --d-low: #78787f;
+  --d-line: rgba(10,22,40,.14);
+  --d-line-soft: rgba(10,22,40,.09);
+  --d-ink: #0a1628;
+  --d-mid: #4a5568;
+  --d-low: #718096;
   --d-good: #3f7a2c;
-  --d-warn: #d24d17;
+  --d-warn: #1459c7;
 }
 :root[data-theme='light'] .pfc {
-  --p-line: rgba(18,18,26,.14);
-  --p-grid: rgba(18,18,26,.12);
-  --p-ink: #101015;
-  --p-mid: #52525c;
-  --p-low: #78787f;
-  --p-orange: #e04e18;
+  --p-line: rgba(10,22,40,.14);
+  --p-grid: rgba(10,22,40,.12);
+  --p-ink: #0a1628;
+  --p-mid: #4a5568;
+  --p-low: #718096;
+  --p-orange: #1b6fe8;
 }
 :root[data-theme='light'] .fx-stick {
-  --s-line: rgba(18,18,26,.14);
-  --s-ink: #101015;
-  --s-mid: #52525c;
-  --s-low: #78787f;
-  --s-orange: #e04e18;
+  --s-line: rgba(10,22,40,.14);
+  --s-ink: #0a1628;
+  --s-mid: #4a5568;
+  --s-low: #718096;
+  --s-orange: #1b6fe8;
 }
 :root[data-theme='light'] .fx-slider {
-  --sl-line: rgba(18,18,26,.14);
-  --sl-ink: #101015;
-  --sl-mid: #52525c;
-  --sl-low: #78787f;
-  --sl-orange: #e04e18;
+  --sl-line: rgba(10,22,40,.14);
+  --sl-ink: #0a1628;
+  --sl-mid: #4a5568;
+  --sl-low: #718096;
+  --sl-orange: #1b6fe8;
 }
 :root[data-theme='light'] .cc {
-  --c-line: rgba(18,18,26,.14);
-  --c-ink: #101015;
-  --c-mid: #52525c;
-  --c-low: #78787f;
+  --c-line: rgba(10,22,40,.14);
+  --c-ink: #0a1628;
+  --c-mid: #4a5568;
+  --c-low: #718096;
 }
 
 /* ─────────────────────────────────────────────
@@ -106,17 +106,17 @@
 
 :root[data-theme='light'] .iq-hero {
   background:
-    radial-gradient(ellipse 62% 40% at 50% 18%, rgba(224,78,24,.07), transparent 70%),
+    radial-gradient(ellipse 62% 40% at 50% 18%, rgba(27,111,232,.07), transparent 70%),
     var(--fx-00) !important;
 }
 :root[data-theme='light'] .iq-cta {
   background:
-    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(224,78,24,.06), transparent 72%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(27,111,232,.06), transparent 72%),
     var(--fx-02) !important;
 }
 :root[data-theme='light'] .iq-section--radial {
   background:
-    radial-gradient(ellipse 55% 45% at 50% 0%, rgba(20,20,26,.03), transparent 68%),
+    radial-gradient(ellipse 55% 45% at 50% 0%, rgba(10,22,40,.03), transparent 68%),
     var(--fx-02) !important;
 }
 :root[data-theme='light'] .iq-section--gradient {
@@ -128,7 +128,7 @@
 :root[data-theme='light'] .car-hero,
 :root[data-theme='light'] .abt-hero {
   background:
-    radial-gradient(ellipse 60% 40% at 50% 16%, rgba(224,78,24,.06), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 50% 16%, rgba(27,111,232,.06), transparent 70%),
     var(--fx-00) !important;
 }
 
@@ -150,13 +150,13 @@
 :root[data-theme='light'] .adm-panel,
 :root[data-theme='light'] .card {
   background:
-    linear-gradient(to right, rgba(18,18,26,.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(18,18,26,.035) 1px, transparent 1px),
+    linear-gradient(to right, rgba(10,22,40,.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10,22,40,.035) 1px, transparent 1px),
     var(--fx-00) !important;
   background-size: 56px 56px;
   border-color: var(--border) !important;
   /* white cards on a tinted page need a real shadow to separate */
-  box-shadow: 0 1px 2px rgba(18,18,26,.05), 0 4px 14px rgba(18,18,26,.05) !important;
+  box-shadow: 0 1px 2px rgba(10,22,40,.05), 0 4px 14px rgba(10,22,40,.05) !important;
 }
 :root[data-theme='light'] .fx-card:hover,
 :root[data-theme='light'] .fx-pillar:hover,
@@ -168,14 +168,14 @@
 :root[data-theme='light'] .iq-bigstat:hover {
   background-color: var(--fx-00) !important;
   border-color: var(--border-strong) !important;
-  box-shadow: 0 2px 4px rgba(18,18,26,.06), 0 10px 28px rgba(18,18,26,.09) !important;
+  box-shadow: 0 2px 4px rgba(10,22,40,.06), 0 10px 28px rgba(10,22,40,.09) !important;
 }
 
 :root[data-theme='light'] .nav__mega,
 :root[data-theme='light'] .nav__mobile {
   background: var(--fx-00) !important;
   border-color: var(--border) !important;
-  box-shadow: 0 20px 50px rgba(20,20,26,.14) !important;
+  box-shadow: 0 20px 50px rgba(10,22,40,.14) !important;
 }
 
 /* ─────────────────────────────────────────────
@@ -247,8 +247,8 @@
 }
 
 :root[data-theme='light'] ::selection {
-  background: rgba(224,78,24,.22) !important;
-  color: #16161a !important;
+  background: rgba(27,111,232,.22) !important;
+  color: #14243f !important;
 }
 :root[data-theme='light'] :focus-visible {
   outline-color: var(--accent) !important;
@@ -306,8 +306,8 @@
 :root[data-theme='light'] .btn--white,
 :root[data-theme='light'] .nav__cta,
 :root[data-theme='light'] .nav__mobile-cta-btn {
-  background: #16161a !important;
-  border-color: #16161a !important;
+  background: #14243f !important;
+  border-color: #14243f !important;
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
 }
@@ -339,8 +339,8 @@
    ───────────────────────────────────────────── */
 :root[data-theme='light'] .fx-dash--factory {
   background:
-    linear-gradient(to right, rgba(20,20,26,.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(20,20,26,.02) 1px, transparent 1px),
+    linear-gradient(to right, rgba(10,22,40,.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(10,22,40,.02) 1px, transparent 1px),
     var(--fx-00) !important;
   background-size: 34px 34px;
   border-color: var(--d-line) !important;
@@ -351,24 +351,24 @@
 :root[data-theme='light'] .fxd-card,
 :root[data-theme='light'] .fxd-log { background: var(--fx-01) !important; }
 :root[data-theme='light'] .fxd-card::before,
-:root[data-theme='light'] .fxd-card::after { border-color: rgba(20,20,26,.24) !important; }
+:root[data-theme='light'] .fxd-card::after { border-color: rgba(10,22,40,.24) !important; }
 :root[data-theme='light'] .fxd-plot__tip { background: var(--fx-00) !important; }
-:root[data-theme='light'] .fx-dash__nav.is-active { background: rgba(20,20,26,.06) !important; }
-:root[data-theme='light'] .fxd-plot__cursor { background: rgba(20,20,26,.3) !important; }
+:root[data-theme='light'] .fx-dash__nav.is-active { background: rgba(10,22,40,.06) !important; }
+:root[data-theme='light'] .fxd-plot__cursor { background: rgba(10,22,40,.3) !important; }
 :root[data-theme='light'] .fxd-marker,
 :root[data-theme='light'] .pfc__marker { stroke: var(--fx-00) !important; }
-:root[data-theme='light'] .pfc__cursor { stroke: rgba(20,20,26,.3) !important; }
+:root[data-theme='light'] .pfc__cursor { stroke: rgba(10,22,40,.3) !important; }
 :root[data-theme='light'] .pfc__readout {
   background: var(--fx-00) !important;
-  box-shadow: 0 8px 24px rgba(20,20,26,.14) !important;
+  box-shadow: 0 8px 24px rgba(10,22,40,.14) !important;
 }
-:root[data-theme='light'] .pfc__shape { fill: rgba(224,78,24,.14) !important; }
+:root[data-theme='light'] .pfc__shape { fill: rgba(27,111,232,.14) !important; }
 :root[data-theme='light'] .pfc__tabs button.is-active::after { background: var(--text) !important; }
-:root[data-theme='light'] .pfc__tabs button:hover { background: rgba(20,20,26,.05) !important; }
+:root[data-theme='light'] .pfc__tabs button:hover { background: rgba(10,22,40,.05) !important; }
 
 /* the dashboard's idle sheen was a white wash */
 :root[data-theme='light'] .fx-dash::after {
-  background: linear-gradient(180deg, transparent 0%, rgba(20,20,26,.03) 50%, transparent 100%) !important;
+  background: linear-gradient(180deg, transparent 0%, rgba(10,22,40,.03) 50%, transparent 100%) !important;
 }
 
 /* ─────────────────────────────────────────────
@@ -376,31 +376,31 @@
    ───────────────────────────────────────────── */
 :root[data-theme='light'] .fx-slider .iq-testi {
   background:
-    radial-gradient(ellipse 90% 60% at 0% 0%, rgba(224,78,24,.05), transparent 62%),
+    radial-gradient(ellipse 90% 60% at 0% 0%, rgba(27,111,232,.05), transparent 62%),
     linear-gradient(165deg, var(--fx-00) 0%, var(--fx-02) 78%) !important;
   border-color: var(--sl-line) !important;
-  box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 10px 26px rgba(20,20,26,.07) !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 10px 26px rgba(10,22,40,.07) !important;
 }
 :root[data-theme='light'] .fx-slider .iq-testi::before {
-  background: linear-gradient(90deg, transparent, rgba(20,20,26,.1) 22%, rgba(20,20,26,.1) 78%, transparent);
+  background: linear-gradient(90deg, transparent, rgba(10,22,40,.1) 22%, rgba(10,22,40,.1) 78%, transparent);
 }
 :root[data-theme='light'] .fx-slider .iq-testi:hover {
-  border-color: rgba(224,78,24,.35) !important;
-  box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 34px rgba(20,20,26,.11) !important;
+  border-color: rgba(27,111,232,.35) !important;
+  box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 34px rgba(10,22,40,.11) !important;
 }
 :root[data-theme='light'] .fx-slider .iq-testi__av {
-  background: rgba(224,78,24,.1);
-  border-color: rgba(224,78,24,.3);
+  background: rgba(27,111,232,.1);
+  border-color: rgba(27,111,232,.3);
 }
 :root[data-theme='light'] .fx-slider__arrow { background: var(--fx-00); }
 :root[data-theme='light'] .fx-slider__arrow:hover { background: var(--fx-03); }
-:root[data-theme='light'] .fx-slider__seg { background: rgba(20,20,26,.14); }
-:root[data-theme='light'] .fx-slider__seg:hover { background: rgba(20,20,26,.3); }
+:root[data-theme='light'] .fx-slider__seg { background: rgba(10,22,40,.14); }
+:root[data-theme='light'] .fx-slider__seg:hover { background: rgba(10,22,40,.3); }
 
 :root[data-theme='light'] .fx-ind-list,
 :root[data-theme='light'] .fx-ind-row { border-color: var(--border); }
-:root[data-theme='light'] .fx-ind-link:hover { background: rgba(20,20,26,.03); }
-:root[data-theme='light'] .fx-ind-marker { background: rgba(20,20,26,.24) !important; }
+:root[data-theme='light'] .fx-ind-link:hover { background: rgba(10,22,40,.03); }
+:root[data-theme='light'] .fx-ind-marker { background: rgba(10,22,40,.24) !important; }
 :root[data-theme='light'] .fx-ind-row__name { color: var(--text-dim); }
 :root[data-theme='light'] .fx-ind-link:hover .fx-ind-row__name { color: var(--text); }
 :root[data-theme='light'] .fx-ind-row__note { color: var(--text-faint); }
@@ -437,10 +437,10 @@
 :root[data-theme='light'] input::placeholder,
 :root[data-theme='light'] textarea::placeholder { color: var(--text-faint) !important; }
 
-:root[data-theme='light'] * { scrollbar-color: rgba(20,20,26,.28) var(--fx-01) !important; }
+:root[data-theme='light'] * { scrollbar-color: rgba(10,22,40,.28) var(--fx-01) !important; }
 :root[data-theme='light'] ::-webkit-scrollbar-track { background: var(--fx-01) !important; }
-:root[data-theme='light'] ::-webkit-scrollbar-thumb { background: rgba(20,20,26,.24) !important; }
-:root[data-theme='light'] ::-webkit-scrollbar-thumb:hover { background: rgba(20,20,26,.38) !important; }
+:root[data-theme='light'] ::-webkit-scrollbar-thumb { background: rgba(10,22,40,.24) !important; }
+:root[data-theme='light'] ::-webkit-scrollbar-thumb:hover { background: rgba(10,22,40,.38) !important; }
 
 /* ─────────────────────────────────────────────
    9. SWITCH TRANSITION
@@ -557,7 +557,7 @@ html, body {
   .ab-hero__overlay,
   .bpost-cover::after
 ) {
-  background: linear-gradient(180deg, transparent, rgba(18,18,26,.35)) !important;
+  background: linear-gradient(180deg, transparent, rgba(10,22,40,.35)) !important;
 }
 
 /* ── Dark-on-dark blocks that must invert wholesale ────────── */
@@ -646,8 +646,8 @@ html, body {
 :root[data-theme='light'] .nav__sol-title,
 :root[data-theme='light'] .nav__mobile-acc,
 :root[data-theme='light'] .nav__mobile-sublink {
-  color: #0b0b0f !important;
-  -webkit-text-fill-color: #0b0b0f !important;
+  color: #0a1628 !important;
+  -webkit-text-fill-color: #0a1628 !important;
   opacity: 1 !important;
 }
 :root[data-theme='light'] .nav__links > li > a:hover,
@@ -678,8 +678,8 @@ html, body {
 :root[data-theme='light'] .ct-info-card__label,
 :root[data-theme='light'] .bpost-sidebar__label,
 :root[data-theme='light'] .ind-hero__chip {
-  color: #0b0b0f !important;
-  -webkit-text-fill-color: #0b0b0f !important;
+  color: #0a1628 !important;
+  -webkit-text-fill-color: #0a1628 !important;
   opacity: 1 !important;
 }
 
@@ -690,8 +690,8 @@ html, body {
 :root[data-theme='light'] .section-title,
 :root[data-theme='light'] .fx-stick__title,
 :root[data-theme='light'] .iq-careers-banner__title {
-  color: #0b0b0f !important;
-  -webkit-text-fill-color: #0b0b0f !important;
+  color: #0a1628 !important;
+  -webkit-text-fill-color: #0a1628 !important;
 }
 
 /* ═════════════════════════════════════════════════════════════
@@ -763,7 +763,7 @@ html, body {
    Two light-mode faults:
 
    1. The gauge under each number is painted with `var(--border)`,
-      which is rgba(18,18,26,.14) here — invisible against the
+      which is rgba(10,22,40,.14) here — invisible against the
       section. The keyframes reference the same variable, so
       redefining it locally on the meter fixes the static bars,
       the entrance and the scan animation in one go.
@@ -777,10 +777,10 @@ html, body {
 :root[data-theme='light'] .fx-stat__meter {
   /* the keyframes read --border, so scoping it here recolours
      the resting state and the scan together */
-  --border: rgba(18,18,26,.30);
+  --border: rgba(10,22,40,.30);
 }
 :root[data-theme='light'] .fx-stat__meter i {
-  background: rgba(18,18,26,.30);
+  background: rgba(10,22,40,.30);
 }
 :root[data-theme='light'] .fx-stat__meter i:nth-child(-n + 7) {
   background: var(--accent);
@@ -804,18 +804,18 @@ html, body {
 
 /* a restrained warm tint instead of the dark-mode bloom */
 :root[data-theme='light'] .fx-stat.is-lit .fx-stat__num {
-  text-shadow: 0 0 18px rgba(224,78,24,.18) !important;
+  text-shadow: 0 0 18px rgba(27,111,232,.18) !important;
 }
 
 /* ── 3. the spotlight, sized for a dark page ────────────────── */
 :root[data-theme='light'] .fx-stat__spot,
 :root[data-theme='light'] .fx-stat:hover .fx-stat__spot,
 :root[data-theme='light'] .fx-stat.is-lit .fx-stat__spot {
-  background: radial-gradient(320px circle at 20% 0%, rgba(224,78,24,.07), transparent 70%) !important;
+  background: radial-gradient(320px circle at 20% 0%, rgba(27,111,232,.07), transparent 70%) !important;
 }
 :root[data-theme='light'] .fx-stat:hover,
 :root[data-theme='light'] .fx-stat.is-lit {
-  background: rgba(224,78,24,.045) !important;
+  background: rgba(27,111,232,.045) !important;
 }
 
 /* index numeral and dividers */
@@ -838,15 +838,15 @@ html, body {
    ═════════════════════════════════════════════════════════════ */
 
 @keyframes fx-stat-scan-light {
-  0%, 100% { background: rgba(18,18,26,.26); }
-  30%      { background: #e04e18; }
+  0%, 100% { background: rgba(10,22,40,.26); }
+  30%      { background: #1b6fe8; }
 }
 
 :root[data-theme='light'] .fx-stat__meter i {
-  background: rgba(18,18,26,.26);
+  background: rgba(10,22,40,.26);
 }
 :root[data-theme='light'] .fx-stat__meter i:nth-child(-n + 7) {
-  background: #e04e18;
+  background: #1b6fe8;
 }
 :root[data-theme='light'] .fx-stat:hover .fx-stat__meter i,
 :root[data-theme='light'] .fx-stat.is-lit .fx-stat__meter i {

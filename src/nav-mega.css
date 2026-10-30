@@ -9,7 +9,143 @@
 /* position the panels against the whole bar, not the trigger,
    so every menu centres on the page */
 html:root body .nav__inner { position: relative; }
+
+/* Phones: the links are gone, so the logo holds the left edge and the actions
+   are anchored to the right edge of the bar, clear of the desktop grid. */
+@media (max-width: 768px) {
+  html:root body .nav__inner {
+    grid-template-columns: minmax(0, 1fr);
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+  html:root body .nav__cta-wrap {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 8px;
+    transform: translateY(-50%);
+  }
+  html:root body .nav__hamburger {
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 34px !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 6px !important;
+  }
+}
+@media (max-width: 360px) {
+  html:root body .nav .brand__wm-img { height: 16px; }
+  /* Contact stays reachable from the mobile sheet */
+  html:root body .nav__inner > .nav__cta-wrap .nav__contact-btn { display: none; }
+}
 html:root body .nav__dropdown.nm-dd { position: static; }
+
+/* ─────────────────────────────────────────────
+   MOBILE MENU — the accordions carry the desktop panel's items:
+   tinted icon tile, title, one-line description, then a navy card.
+   ───────────────────────────────────────────── */
+html:root body .nav__mobile-row:has(> .nav__mobile-acc.open) .nav__mobile-acc {
+  border-radius: 14px;
+  background: rgba(0,187,254,.08) !important;
+}
+html:root body .nav__mobile-acc.open .nav__mobile-icon {
+  border-color: #00bbfe;
+  background: #00bbfe !important;
+  color: #fff !important;
+}
+
+html:root body .nav__mobile-sub.nmob {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 10px 2px 14px;
+  border: 0;
+}
+
+html:root body .nav .nmob__row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--fx-00);
+  text-decoration: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+html:root body .nav .nmob__row:active {
+  border-color: color-mix(in srgb, var(--c) 45%, transparent);
+  box-shadow: 0 10px 20px -14px color-mix(in srgb, var(--c) 70%, transparent);
+}
+.nmob__ico {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 38px; height: 38px;
+  border-radius: 11px;
+  color: var(--c);
+  background: color-mix(in srgb, var(--c) 12%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 20%, transparent);
+}
+.nmob__ico svg { width: 19px; height: 19px; }
+.nmob__txt { display: grid; gap: 2px; min-width: 0; }
+html:root body .nav .nmob__title {
+  font-size: .9375rem !important;
+  font-weight: 600;
+  line-height: 1.3 !important;
+  color: var(--text) !important;
+  -webkit-text-fill-color: var(--text) !important;
+}
+html:root body .nav .nmob__desc {
+  font-size: .8125rem !important;
+  line-height: 1.35 !important;
+  color: var(--text-dim) !important;
+  -webkit-text-fill-color: var(--text-dim) !important;
+}
+
+html:root body .nav .nmob__promo {
+  display: grid;
+  gap: 6px;
+  margin-top: 2px;
+  padding: 16px;
+  border-radius: 14px;
+  background:
+    radial-gradient(ellipse 70% 90% at 100% 0%, rgba(0,187,254,.35), transparent 70%),
+    #0a1628;
+  text-decoration: none;
+}
+html:root body .nav .nmob__promo-title {
+  font-size: 1rem !important;
+  font-weight: 600;
+  line-height: 1.3 !important;
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+}
+html:root body .nav .nmob__promo-cta {
+  font-size: .8125rem !important;
+  font-weight: 600;
+  color: #7fdcfe !important;
+  -webkit-text-fill-color: #7fdcfe !important;
+}
+
+/* items step in, one after another, as the accordion opens */
+.nav__mobile-sub-wrap.open :is(.nmob__row, .nmob__promo) {
+  animation: nmob-in .42s cubic-bezier(.22,1,.36,1) both;
+  animation-delay: calc(var(--i) * 45ms + 60ms);
+}
+@keyframes nmob-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav__mobile-sub-wrap.open :is(.nmob__row, .nmob__promo) { animation: none; }
+}
 
 /* ─────────────────────────────────────────────
    1. TRIGGER — pill when open

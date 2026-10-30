@@ -36,35 +36,6 @@ function ThemeToggle({ className = '' }: { className?: string }) {
   )
 }
 
-/* Dropdown order is column-major: items 1–4 fill the left column,
-   items 5–8 the right, matching the two-column mega-menu grid. */
-const navSolutions = [
-  { label: 'Web & Enterprise Applications', slug: 'web-enterprise-applications', color: '#7C3AED', bg: '#1a2b48', icon: <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="16" height="14" rx="2"/><path d="M2 7.5h16M5 5.2h.01M7.4 5.2h.01M5 11h4M5 14h6"/></svg> },
-  { label: 'DevSecOps & FinOps',            slug: 'devsecops-finops',            color: '#DC2626', bg: '#1a2b48', icon: <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="5" cy="5" r="2"/><circle cx="5" cy="15" r="2"/><path d="M5 7v6"/><path d="M14 4v12M12 6.5h3.4a1.6 1.6 0 010 3.2h-2.8a1.6 1.6 0 000 3.3H16"/></svg> },
-  { label: 'Agentic AI Solutions',          slug: 'agentic-ai',                  color: '#D97706', bg: '#1a2b48', icon: <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="6" width="12" height="9" rx="2"/><path d="M10 3v3M7.5 10h.01M12.5 10h.01M8 13h4M2 9v3M18 9v3"/></svg> },
-
-  { label: 'Cloud Engineering & Migration', slug: 'cloud-engineering-migration', color: '#059669', bg: '#1a2b48', icon: <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M6 15h8.5a3.5 3.5 0 100-7 5 5 0 00-9.6 1.4A3.3 3.3 0 006 15z"/></svg> },
-  { label: 'Observability, SRE & Production Engineering', slug: 'observability-sre', color: '#7C3AED', bg: '#1a2b48', icon: <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M2 11h3l2.5-6 3 12L13 11h5"/></svg> },
-  { label: 'Application Modernization',     slug: 'application-modernization',   color: '#0891B2', bg: '#1a2b48', icon: <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M17 8a7 7 0 00-12-3L3 7"/><path d="M3 3v4h4"/><path d="M3 12a7 7 0 0012 3l2-2"/><path d="M17 17v-4h-4"/></svg> },
-  { label: 'IT Service Management (ITSM)',  slug: 'itsm',                        color: '#D97706', bg: '#1a2b48', icon: <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M2 7.5a2 2 0 010-3V4a1 1 0 011-1h14a1 1 0 011 1v.5a2 2 0 010 3v5a2 2 0 010 3v.5a1 1 0 01-1 1H3a1 1 0 01-1-1v-.5a2 2 0 010-3z"/><path d="M8 7h6M8 13h4"/></svg> },
-]
-
-const navIndustries = [
-  { label: 'Healthcare',               href: '/industries/healthcare',         icon: '🏥' },
-  { label: 'Financial Services',       href: '/industries/financial-services', icon: '💳' },
-  { label: 'Retail & E-Commerce',      href: '/industries/retail',             icon: '🛒' },
-  { label: 'Government',               href: '/industries/government',         icon: '🏛️' },
-  { label: 'Education & EdTech',       href: '/industries/education',          icon: '🎓' },
-  { label: 'Logistics & Supply Chain', href: '/industries/logistics',          icon: '🚚' },
-]
-
-const navResources = [
-  { label: 'Blog & Insights',  href: '/blog',    icon: '📝' },
-  { label: 'Case Studies',     href: '/blog',    icon: '📊' },
-  { label: 'Contact Us',       href: '/contact', icon: '📧' },
-  { label: 'About Synerax',    href: '/about',   icon: '🏢' },
-]
-
 /* ── Desktop mega-menu content ─────────────────────────────── */
 const ico = (d: React.ReactNode) => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{d}</svg>
@@ -142,6 +113,27 @@ function MegaPanel({ items, feature, label, note }: { items: MegaItem[]; feature
           </span>
         </Link>
       </div>
+    </div>
+  )
+}
+
+/* Mobile accordion body: the same items and feature card as the desktop panels */
+function MobileMega({ items, feature, onNavigate }: { items: MegaItem[]; feature: MegaFeature; onNavigate: () => void }) {
+  return (
+    <div className="nav__mobile-sub nmob">
+      {items.map((it, i) => (
+        <Link key={it.label} to={it.to} className="nmob__row" onClick={onNavigate} style={{ ['--i' as string]: i, ['--c' as string]: it.color }}>
+          <span className="nmob__ico">{it.icon}</span>
+          <span className="nmob__txt">
+            <span className="nmob__title">{it.label}</span>
+            <span className="nmob__desc">{it.desc}</span>
+          </span>
+        </Link>
+      ))}
+      <Link to={feature.to} className="nmob__promo" onClick={onNavigate} style={{ ['--i' as string]: items.length }}>
+        <span className="nmob__promo-title">{feature.title}</span>
+        <span className="nmob__promo-cta">{feature.cta}</span>
+      </Link>
     </div>
   )
 }
@@ -366,7 +358,7 @@ export default function Nav() {
           <div className="nav__mobile-list">
 
             <div className="nav__mobile-row" style={{ ['--i' as string]: 0 }}>
-              <button className={`nav__mobile-acc${mSolOpen ? ' open' : ''}`} onClick={() => setMSolOpen(o => !o)}>
+              <button className={`nav__mobile-acc${mSolOpen ? ' open' : ''}`} onClick={() => { setMSolOpen(o => !o); setMIndOpen(false); setMResOpen(false) }}>
                 <span className="nav__mobile-acc-left">
                   <span className="nav__mobile-icon">
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
@@ -377,20 +369,13 @@ export default function Nav() {
               </button>
               <div className={`nav__mobile-sub-wrap${mSolOpen ? ' open' : ''}`}>
                 <div className="nav__mobile-sub-inner">
-                  <div className="nav__mobile-sub">
-                    {navSolutions.map(s => (
-                      <Link key={s.slug} to={`/solutions/${s.slug}`} className="nav__mobile-sublink" onClick={() => setMobileOpen(false)}>
-                        <span className="nav__mobile-sublink-dot" style={{ background: s.color }} />
-                        {s.label}
-                      </Link>
-                    ))}
-                  </div>
+                  <MobileMega items={megaSolutions} feature={features.sol} onNavigate={() => setMobileOpen(false)} />
                 </div>
               </div>
             </div>
 
             <div className="nav__mobile-row" style={{ ['--i' as string]: 1 }}>
-              <button className={`nav__mobile-acc${mIndOpen ? ' open' : ''}`} onClick={() => setMIndOpen(o => !o)}>
+              <button className={`nav__mobile-acc${mIndOpen ? ' open' : ''}`} onClick={() => { setMIndOpen(o => !o); setMSolOpen(false); setMResOpen(false) }}>
                 <span className="nav__mobile-acc-left">
                   <span className="nav__mobile-icon">
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 8h2M13 8h2M9 12h2M13 12h2M9 16h2M13 16h2"/></svg>
@@ -401,20 +386,13 @@ export default function Nav() {
               </button>
               <div className={`nav__mobile-sub-wrap${mIndOpen ? ' open' : ''}`}>
                 <div className="nav__mobile-sub-inner">
-                  <div className="nav__mobile-sub">
-                    {navIndustries.map(i => (
-                      <Link key={i.label} to={i.href} className="nav__mobile-sublink" onClick={() => setMobileOpen(false)}>
-                        <span className="nav__mobile-sublink-emoji">{i.icon}</span>
-                        {i.label}
-                      </Link>
-                    ))}
-                  </div>
+                  <MobileMega items={megaIndustries} feature={features.ind} onNavigate={() => setMobileOpen(false)} />
                 </div>
               </div>
             </div>
 
             <div className="nav__mobile-row" style={{ ['--i' as string]: 2 }}>
-              <button className={`nav__mobile-acc${mResOpen ? ' open' : ''}`} onClick={() => setMResOpen(o => !o)}>
+              <button className={`nav__mobile-acc${mResOpen ? ' open' : ''}`} onClick={() => { setMResOpen(o => !o); setMSolOpen(false); setMIndOpen(false) }}>
                 <span className="nav__mobile-acc-left">
                   <span className="nav__mobile-icon">
                     <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M4 5a2 2 0 012-2h11a1 1 0 011 1v14a1 1 0 01-1 1H6a2 2 0 00-2 2V5z"/><path d="M4 19a2 2 0 002 2h12"/></svg>
@@ -425,14 +403,7 @@ export default function Nav() {
               </button>
               <div className={`nav__mobile-sub-wrap${mResOpen ? ' open' : ''}`}>
                 <div className="nav__mobile-sub-inner">
-                  <div className="nav__mobile-sub">
-                    {navResources.map(r => (
-                      <Link key={r.label} to={r.href} className="nav__mobile-sublink" onClick={() => setMobileOpen(false)}>
-                        <span className="nav__mobile-sublink-emoji">{r.icon}</span>
-                        {r.label}
-                      </Link>
-                    ))}
-                  </div>
+                  <MobileMega items={megaResources} feature={features.res} onNavigate={() => setMobileOpen(false)} />
                 </div>
               </div>
             </div>

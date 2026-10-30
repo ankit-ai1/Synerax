@@ -415,30 +415,46 @@ html:root body .svs .svs-rail__dot.is-on span { opacity: 1; transition-delay: .2
   .svs-card { gap: 32px; padding: 36px; }
 }
 
-/* below this the cards are taller than the screen, so they stop pinning
-   and simply stack; the window sits under the copy */
+/* below this the window sits under the copy. Cards still pin and stack, so
+   each is sized to one screen: the window takes whatever height is left.
+   The deepest card pins at 66 + 6×6 = 102px under the mobile nav. */
 @media (max-width: 900px) {
   .svs-stack { margin-top: 40px; }
   .svs-card {
-    position: relative;
-    top: auto;
-    grid-template-columns: 1fr;
-    height: auto;
-    min-height: 0;
-    margin-bottom: 20px;
-    padding: 28px 22px;
+    --pin: calc(66px + var(--i) * 6px);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+    gap: 18px;
+    height: clamp(470px, calc(100svh - 120px), 640px);
+    margin-bottom: 10vh;
+    padding: 28px 22px 22px;
     border-radius: 24px;
   }
-  .svs-card__shade { display: none; }
   html:root body .svs .svs-card__title.svs-card__title { max-width: none; margin-top: 20px !important; }
-  .svs-window { height: 360px; }
   .svs-rail { display: none; }
 }
 
+/* phones: keep the headline, a short lede and the live window */
 @media (max-width: 640px) {
   html:root body .svs-lede .svs-lede__eye::before,
   html:root body .svs-lede .svs-lede__eye::after { width: 24px !important; }
-  .svs-window { height: 320px; }
+  html:root body .svs .svs-card__title.svs-card__title {
+    margin: 14px 0 8px !important;
+    font-size: 1.625rem !important;
+  }
+  html:root body .svs .svs-card__lede {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    font-size: .9375rem !important;
+    line-height: 1.5 !important;
+  }
+  html:root body .svs .svs-card__points,
+  .svs-card__stack { display: none; }
+  .svs-card__foot { padding-top: 14px; }
+  html:root body .svs .svs-card__link { padding: 8px 16px; font-size: .875rem !important; }
+  .svs-window__bar { height: 34px; }
   .svs-window__bar span { display: none; }
 }
 

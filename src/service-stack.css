@@ -92,11 +92,11 @@ html:root body .svs-lede .svs-lede__sub {
   border: 1px solid var(--border);
   border-radius: 32px;
   background:
-    radial-gradient(ellipse 60% 70% at 100% 0%, $10,187,254,.07), transparent 70%),
+    radial-gradient(ellipse 60% 70% at 100% 0%, rgba(0,187,254,.07), transparent 70%),
     var(--fx-00);
   box-shadow:
     0 -14px 40px -24px rgba(10,22,40,.22),
-    0 40px 80px -44px $10,187,254,.35);
+    0 40px 80px -44px rgba(0,187,254,.35);
   transform-origin: top center;
   will-change: transform;
 }
@@ -106,8 +106,8 @@ html:root body .svs-lede .svs-lede__sub {
 html:root body .svs .svs-card--dark {
   border-color: rgba(160,180,204,.16) !important;
   background:
-    radial-gradient(ellipse 60% 80% at 100% 0%, $10,187,254,.28), transparent 65%),
-    radial-gradient(ellipse 50% 60% at 0% 100%, $151,201,254,.12), transparent 70%),
+    radial-gradient(ellipse 60% 80% at 100% 0%, rgba(0,187,254,.28), transparent 65%),
+    radial-gradient(ellipse 50% 60% at 0% 100%, rgba(51,201,254,.12), transparent 70%),
     #0a1628;
   box-shadow:
     0 -14px 40px -24px rgba(10,22,40,.45),
@@ -132,12 +132,12 @@ html:root body .svs .svs-card--dark {
   top: -180px; right: -120px;
   width: 460px; height: 460px;
   border-radius: 50%;
-  background: radial-gradient(circle, $10,187,254,.18), transparent 65%);
+  background: radial-gradient(circle, rgba(0,187,254,.18), transparent 65%);
   filter: blur(30px);
   pointer-events: none;
   animation: svs-drift 14s ease-in-out infinite alternate;
 }
-.svs-card--dark .svs-card__glow { background: radial-gradient(circle, $151,201,254,.3), transparent 65%); }
+.svs-card--dark .svs-card__glow { background: radial-gradient(circle, rgba(51,201,254,.3), transparent 65%); }
 @keyframes svs-drift { to { transform: translate(-80px, 60px) scale(1.15); } }
 
 /* ─────────────────────────────────────────────
@@ -174,8 +174,8 @@ html:root body .svs .svs-card--dark {
   width: 38px; height: 38px;
   border-radius: 11px;
   color: #00bbfe;
-  background: $10,187,254,.1);
-  box-shadow: inset 0 0 0 1px $10,187,254,.18);
+  background: rgba(0,187,254,.1);
+  box-shadow: inset 0 0 0 1px rgba(0,187,254,.18);
 }
 .svs-card__tag {
   margin-left: 4px;
@@ -232,7 +232,7 @@ html:root body .svs .svs-card__points li {
   width: 24px; height: 24px;
   border-radius: 50%;
   color: #00bbfe;
-  background: $10,187,254,.12);
+  background: rgba(0,187,254,.12);
 }
 .svs-check svg { width: 12px; height: 12px; }
 
@@ -266,13 +266,13 @@ html:root body .svs .svs-card__link {
   font-size: .9375rem !important;
   font-weight: 600;
   text-decoration: none;
-  box-shadow: 0 10px 22px -10px $10,187,254,.7);
+  box-shadow: 0 10px 22px -10px rgba(0,187,254,.7);
   transition: background .25s ease, transform .25s ease, box-shadow .25s ease;
 }
 html:root body .svs .svs-card__link:hover {
   background: #009fdb;
   transform: translateY(-1px);
-  box-shadow: 0 14px 28px -10px $10,187,254,.8);
+  box-shadow: 0 14px 28px -10px rgba(0,187,254,.8);
 }
 .svs-card__link svg { width: 15px; height: 15px; transition: transform .25s ease; }
 .svs-card__link:hover svg { transform: translateX(3px); }
@@ -282,9 +282,9 @@ html:root body .svs .svs-card--dark .svs-card__title.svs-card__title { color: #f
 html:root body .svs .svs-card--dark .svs-card__lede { color: #a0b4cc !important; -webkit-text-fill-color: #a0b4cc !important; }
 html:root body .svs .svs-card--dark .svs-card__points li { color: #e6eefa !important; -webkit-text-fill-color: #e6eefa !important; }
 .svs-card--dark .svs-card__num { color: #fff; border-color: rgba(160,180,204,.3); }
-.svs-card--dark .svs-card__ico { color: #7fdcfe; background: $151,201,254,.14); box-shadow: inset 0 0 0 1px $151,201,254,.3); }
+.svs-card--dark .svs-card__ico { color: #7fdcfe; background: rgba(51,201,254,.14); box-shadow: inset 0 0 0 1px rgba(51,201,254,.3); }
 .svs-card--dark .svs-card__tag { color: #7fdcfe; }
-.svs-card--dark .svs-check { color: #7fdcfe; background: $151,201,254,.16); }
+.svs-card--dark .svs-check { color: #7fdcfe; background: rgba(51,201,254,.16); }
 .svs-card--dark .svs-card__stack span { color: #a0b4cc; border-color: rgba(160,180,204,.25); }
 
 /* ─────────────────────────────────────────────
@@ -306,7 +306,7 @@ html:root body .svs .svs-card--dark .svs-card__points li { color: #e6eefa !impor
 }
 .svs-card--dark .svs-window {
   border-color: rgba(160,180,204,.25);
-  box-shadow: 0 30px 70px -26px rgba(0,0,0,.6), 0 0 0 6px $151,201,254,.06);
+  box-shadow: 0 30px 70px -26px rgba(0,0,0,.6), 0 0 0 6px rgba(51,201,254,.06);
 }
 .svs-window__bar {
   display: flex;
@@ -386,7 +386,7 @@ html:root body .svs .svs-rail__dot {
   overflow: hidden;
   transition: width .45s cubic-bezier(.65,0,.25,1), height .45s cubic-bezier(.65,0,.25,1), background .3s ease;
 }
-html:root body .svs .svs-rail__dot.is-past { background: $10,187,254,.45) !important; }
+html:root body .svs .svs-rail__dot.is-past { background: rgba(0,187,254,.45) !important; }
 html:root body .svs .svs-rail__dot.is-on {
   width: 118px;
   height: 28px;
@@ -405,7 +405,7 @@ html:root body .svs .svs-rail__dot span {
   transition: opacity .25s ease;
 }
 html:root body .svs .svs-rail__dot.is-on span { opacity: 1; transition-delay: .2s; }
-.svs-rail__dot:not(.is-on):hover { background: $10,187,254,.6) !important; }
+.svs-rail__dot:not(.is-on):hover { background: rgba(0,187,254,.6) !important; }
 .svs-rail__dot:focus-visible { outline: 2px solid #00bbfe; outline-offset: 3px; }
 
 /* ─────────────────────────────────────────────

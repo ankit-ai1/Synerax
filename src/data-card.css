@@ -85,7 +85,7 @@
 .dcard__ring { fill: none; stroke: var(--dc-soft); stroke-width: .5; }
 .dcard__spoke { stroke: var(--dc-soft); stroke-width: .4; }
 .dcard__shape {
-  fill: $10,187,254,.15);
+  fill: rgba(0,187,254,.15);
   stroke: var(--dc-accent);
   stroke-width: 1.1;
   stroke-linejoin: round;
@@ -261,7 +261,7 @@
 .dcard__orbit-node.is-on {
   border-color: var(--dc-accent);
   color: var(--dc-ink);
-  box-shadow: 0 0 0 4px $10,187,254,.1);
+  box-shadow: 0 0 0 4px rgba(0,187,254,.1);
 }
 
 /* ── Console ────────────────────────────────────────────────── */
@@ -423,7 +423,7 @@
   background-size: 48px 48px;
   box-shadow: 0 1px 2px rgba(10,22,40,.05), 0 4px 14px rgba(10,22,40,.05);
 }
-:root[data-theme='light'] .dcard__shape { fill: $10,187,254,.13); }
+:root[data-theme='light'] .dcard__shape { fill: rgba(0,187,254,.13); }
 :root[data-theme='light'] .dcard__orbit-node { background: var(--fx-01, #f4f8ff); }
 :root[data-theme='light'] .dcard__console-track { background: rgba(10,22,40,.1); }
 :root[data-theme='light'] .dcard__console-steps li.is-active { background: rgba(10,22,40,.06); }
@@ -524,7 +524,7 @@
 /* ── Radar interaction ──────────────────────────────────────── */
 .dcard__radar-plot { position: relative; min-width: 0; }
 .dcard__node { cursor: pointer; transition: r .2s ease, cx 1.4s cubic-bezier(.4,0,.2,1), cy 1.4s cubic-bezier(.4,0,.2,1); }
-.dcard__node.is-on { filter: drop-shadow(0 0 5px $10,187,254,.9)); }
+.dcard__node.is-on { filter: drop-shadow(0 0 5px rgba(0,187,254,.9)); }
 .dcard__axes li { cursor: default; transition: color .2s ease; }
 .dcard__axes li.is-on span { color: var(--dc-ink); }
 .dcard__axes li.is-on b { color: var(--dc-accent); }
@@ -696,7 +696,7 @@
 .dcard__orbit-spoke.is-on {
   stroke: var(--dc-accent);
   stroke-width: .7;
-  filter: drop-shadow(0 0 1.5px $10,187,254,.8));
+  filter: drop-shadow(0 0 1.5px rgba(0,187,254,.8));
 }
 @keyframes dc-orb-flow { to { stroke-dashoffset: 15.2 } }
 
@@ -753,9 +753,9 @@
   color: var(--dc-ink);
   transform: scale(1.13);
   box-shadow:
-    0 0 0 1px $10,187,254,.35),
-    0 0 26px $10,187,254,.28),
-    inset 0 0 18px $10,187,254,.09);
+    0 0 0 1px rgba(0,187,254,.35),
+    0 0 26px rgba(0,187,254,.28),
+    inset 0 0 18px rgba(0,187,254,.09);
 }
 .dcard__orbit-node.is-on .dcard__orbit-idx { color: var(--dc-accent); }
 
@@ -804,7 +804,7 @@
   height: 7px;
   border-radius: 50%;
   background: var(--dc-accent);
-  box-shadow: 0 0 0 5px $10,187,254,.12), 0 0 14px $10,187,254,.5);
+  box-shadow: 0 0 0 5px rgba(0,187,254,.12), 0 0 14px rgba(0,187,254,.5);
   animation: dc-orb-pip 2.6s ease-in-out infinite;
 }
 @keyframes dc-orb-pip {
@@ -828,9 +828,9 @@
 }
 :root[data-theme='light'] .dcard__orbit-node.is-on {
   box-shadow:
-    0 0 0 1px $10,187,254,.3),
-    0 8px 24px $10,187,254,.18),
-    inset 0 0 18px $10,187,254,.06);
+    0 0 0 1px rgba(0,187,254,.3),
+    0 8px 24px rgba(0,187,254,.18),
+    inset 0 0 18px rgba(0,187,254,.06);
 }
 
 @media (max-width: 720px) {

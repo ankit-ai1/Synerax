@@ -41,8 +41,8 @@
 
   --accent:        #00bbfe !important;
   --accent-bright: #2cc6fe !important;
-  --accent-soft:   $10,187,254,.08) !important;
-  --accent-line:   $10,187,254,.30) !important;
+  --accent-soft:   rgba(0,187,254,.08) !important;
+  --accent-line:   rgba(0,187,254,.30) !important;
 }
 
 /* ─────────────────────────────────────────────

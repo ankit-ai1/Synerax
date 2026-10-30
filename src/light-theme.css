@@ -43,8 +43,8 @@
   /* A touch deeper than the dark-mode orange so it holds contrast on white */
   --accent:        #00bbfe !important;
   --accent-bright: #00bbfe !important;
-  --accent-soft:   $10,187,254,.10) !important;
-  --accent-line:   $10,187,254,.32) !important;
+  --accent-soft:   rgba(0,187,254,.10) !important;
+  --accent-line:   rgba(0,187,254,.32) !important;
 
   --primary:       #00bbfe !important;
 
@@ -106,12 +106,12 @@
 
 :root[data-theme='light'] .iq-hero {
   background:
-    radial-gradient(ellipse 62% 40% at 50% 18%, $10,187,254,.07), transparent 70%),
+    radial-gradient(ellipse 62% 40% at 50% 18%, rgba(0,187,254,.07), transparent 70%),
     var(--fx-00) !important;
 }
 :root[data-theme='light'] .iq-cta {
   background:
-    radial-gradient(ellipse 60% 40% at 50% 100%, $10,187,254,.06), transparent 72%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(0,187,254,.06), transparent 72%),
     var(--fx-02) !important;
 }
 :root[data-theme='light'] .iq-section--radial {
@@ -128,7 +128,7 @@
 :root[data-theme='light'] .car-hero,
 :root[data-theme='light'] .abt-hero {
   background:
-    radial-gradient(ellipse 60% 40% at 50% 16%, $10,187,254,.06), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 50% 16%, rgba(0,187,254,.06), transparent 70%),
     var(--fx-00) !important;
 }
 
@@ -247,7 +247,7 @@
 }
 
 :root[data-theme='light'] ::selection {
-  background: $10,187,254,.22) !important;
+  background: rgba(0,187,254,.22) !important;
   color: #14243f !important;
 }
 :root[data-theme='light'] :focus-visible {
@@ -362,7 +362,7 @@
   background: var(--fx-00) !important;
   box-shadow: 0 8px 24px rgba(10,22,40,.14) !important;
 }
-:root[data-theme='light'] .pfc__shape { fill: $10,187,254,.14) !important; }
+:root[data-theme='light'] .pfc__shape { fill: rgba(0,187,254,.14) !important; }
 :root[data-theme='light'] .pfc__tabs button.is-active::after { background: var(--text) !important; }
 :root[data-theme='light'] .pfc__tabs button:hover { background: rgba(10,22,40,.05) !important; }
 
@@ -376,7 +376,7 @@
    ───────────────────────────────────────────── */
 :root[data-theme='light'] .fx-slider .iq-testi {
   background:
-    radial-gradient(ellipse 90% 60% at 0% 0%, $10,187,254,.05), transparent 62%),
+    radial-gradient(ellipse 90% 60% at 0% 0%, rgba(0,187,254,.05), transparent 62%),
     linear-gradient(165deg, var(--fx-00) 0%, var(--fx-02) 78%) !important;
   border-color: var(--sl-line) !important;
   box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 10px 26px rgba(10,22,40,.07) !important;
@@ -385,12 +385,12 @@
   background: linear-gradient(90deg, transparent, rgba(10,22,40,.1) 22%, rgba(10,22,40,.1) 78%, transparent);
 }
 :root[data-theme='light'] .fx-slider .iq-testi:hover {
-  border-color: $10,187,254,.35) !important;
+  border-color: rgba(0,187,254,.35) !important;
   box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 16px 34px rgba(10,22,40,.11) !important;
 }
 :root[data-theme='light'] .fx-slider .iq-testi__av {
-  background: $10,187,254,.1);
-  border-color: $10,187,254,.3);
+  background: rgba(0,187,254,.1);
+  border-color: rgba(0,187,254,.3);
 }
 :root[data-theme='light'] .fx-slider__arrow { background: var(--fx-00); }
 :root[data-theme='light'] .fx-slider__arrow:hover { background: var(--fx-03); }
@@ -804,18 +804,18 @@ html, body {
 
 /* a restrained warm tint instead of the dark-mode bloom */
 :root[data-theme='light'] .fx-stat.is-lit .fx-stat__num {
-  text-shadow: 0 0 18px $10,187,254,.18) !important;
+  text-shadow: 0 0 18px rgba(0,187,254,.18) !important;
 }
 
 /* ── 3. the spotlight, sized for a dark page ────────────────── */
 :root[data-theme='light'] .fx-stat__spot,
 :root[data-theme='light'] .fx-stat:hover .fx-stat__spot,
 :root[data-theme='light'] .fx-stat.is-lit .fx-stat__spot {
-  background: radial-gradient(320px circle at 20% 0%, $10,187,254,.07), transparent 70%) !important;
+  background: radial-gradient(320px circle at 20% 0%, rgba(0,187,254,.07), transparent 70%) !important;
 }
 :root[data-theme='light'] .fx-stat:hover,
 :root[data-theme='light'] .fx-stat.is-lit {
-  background: $10,187,254,.045) !important;
+  background: rgba(0,187,254,.045) !important;
 }
 
 /* index numeral and dividers */

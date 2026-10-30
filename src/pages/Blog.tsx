@@ -4,12 +4,12 @@ import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 
 const TAG_COLORS: Record<string, { bg: string; color: string }> = {
-  Product:     { bg: '$10,187,254,0.12)',  color: '#00bbfe' },
-  Engineering: { bg: '$10,187,254,0.15)', color: '#2cc6fe' },
+  Product:     { bg: 'rgba(0,187,254,0.12)',  color: '#00bbfe' },
+  Engineering: { bg: 'rgba(0,187,254,0.15)', color: '#2cc6fe' },
   Culture:     { bg: 'rgba(178,178,184,0.16)', color: '#B2B2B8' },
-  Industry:    { bg: '$10,187,254,0.10)',   color: '#00bbfe' },
-  AI:          { bg: '$10,187,254,0.12)', color: '#00bbfe' },
-  DevOps:      { bg: '$10,187,254,0.12)',   color: '#00bbfe' },
+  Industry:    { bg: 'rgba(0,187,254,0.10)',   color: '#00bbfe' },
+  AI:          { bg: 'rgba(0,187,254,0.12)', color: '#00bbfe' },
+  DevOps:      { bg: 'rgba(0,187,254,0.12)',   color: '#00bbfe' },
 }
 
 export const posts = [

@@ -91,7 +91,7 @@ html:root body .ixp-lede .ixp-lede__sub {
 .ixa-panel.is-on {
   flex: 6.2 1 0;
   cursor: default;
-  box-shadow: 0 44px 80px -40px rgba(10,22,40,.65), 0 0 0 1px $10,187,254,.25);
+  box-shadow: 0 44px 80px -40px rgba(10,22,40,.65), 0 0 0 1px rgba(0,187,254,.25);
 }
 .ixa-panel:not(.is-on):hover { transform: translateY(-6px); }
 .ixa-panel:focus-visible { box-shadow: 0 0 0 3px #00bbfe; }
@@ -155,7 +155,7 @@ html:root body .ixp-lede .ixp-lede__sub {
   display: block;
   height: 100%;
   background: linear-gradient(90deg, #00bbfe, #7fdcfe);
-  box-shadow: 0 0 10px $151,201,254,.8);
+  box-shadow: 0 0 10px rgba(51,201,254,.8);
   transform: scaleX(0);
   transform-origin: left center;
   animation: ixa-prog linear forwards;
@@ -263,8 +263,8 @@ html:root body .ixp-lede .ixp-lede__sub {
   animation: ixa-pulse 1.8s ease-out infinite;
 }
 @keyframes ixa-pulse {
-  0%   { box-shadow: 0 0 0 0 $151,201,254,.6); }
-  100% { box-shadow: 0 0 0 9px $151,201,254,0); }
+  0%   { box-shadow: 0 0 0 0 rgba(51,201,254,.6); }
+  100% { box-shadow: 0 0 0 9px rgba(51,201,254,0); }
 }
 .ixa-count {
   font-family: var(--font-mono);
@@ -343,7 +343,7 @@ html:root body .ixa .ixa-cta {
   box-shadow: 0 14px 30px -14px rgba(0,0,0,.6);
   transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease;
 }
-html:root body .ixa .ixa-cta:hover { transform: translateY(-2px); box-shadow: 0 20px 36px -14px $10,187,254,.75); }
+html:root body .ixa .ixa-cta:hover { transform: translateY(-2px); box-shadow: 0 20px 36px -14px rgba(0,187,254,.75); }
 .ixa-cta__ico {
   display: grid;
   place-items: center;

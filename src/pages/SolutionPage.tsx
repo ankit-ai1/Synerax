@@ -274,7 +274,7 @@ export default function SolutionPage() {
             max={48}
             className="tl-dark-feature__chart"
           />
-          <div className="tl-dark-feature__overlay" style={{ background: 'linear-gradient(90deg, $10,187,254,0.88) 0%, $10,187,254,0.45) 60%, transparent 100%)' }}>
+          <div className="tl-dark-feature__overlay" style={{ background: 'linear-gradient(90deg, rgba(0,187,254,0.88) 0%, rgba(0,187,254,0.45) 60%, transparent 100%)' }}>
             <div className="container">
               <div className="tl-dark-feature__text">
                 <h3 className="tl-dark-feature__headline">

@@ -82,7 +82,7 @@ html:root body .kb-hdr .kb-hdr__all {
   text-decoration: none;
   box-shadow:
     0 1px 0 rgba(255,255,255,.25) inset,
-    0 14px 30px -12px $10,187,254,.65);
+    0 14px 30px -12px rgba(0,187,254,.65);
   transition: box-shadow .35s ease, transform .35s cubic-bezier(.22,1,.36,1);
 }
 html:root body .kb-hdr .kb-hdr__all::before {
@@ -98,7 +98,7 @@ html:root body .kb-hdr .kb-hdr__all:hover {
   transform: translateY(-2px);
   box-shadow:
     0 1px 0 rgba(255,255,255,.25) inset,
-    0 20px 38px -12px $10,187,254,.8);
+    0 20px 38px -12px rgba(0,187,254,.8);
 }
 html:root body .kb-hdr .kb-hdr__all:hover::before { transform: translateX(120%); }
 
@@ -226,7 +226,7 @@ html:root body .kb .kb-card {
   inset: 0;
   z-index: 1;
   background:
-    radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), $151,201,254,.22), transparent 60%),
+    radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(51,201,254,.22), transparent 60%),
     linear-gradient(180deg, rgba(10,22,40,0) 38%, rgba(10,22,40,.55) 66%, rgba(10,22,40,.94) 100%);
   background-size: 100% 100%;
   transition: opacity .4s ease;
@@ -344,8 +344,8 @@ html:root body .kb .kb-card--split .kb-card__title.kb-card__title {
 }
 html:root body .kb .kb-card--split:hover {
   transform: translateY(-5px);
-  border-color: $10,187,254,.35) !important;
-  box-shadow: 0 1px 2px rgba(10,22,40,.04), 0 30px 50px -28px $10,187,254,.45);
+  border-color: rgba(0,187,254,.35) !important;
+  box-shadow: 0 1px 2px rgba(10,22,40,.04), 0 30px 50px -28px rgba(0,187,254,.45);
 }
 html:root body .kb .kb-card--split:hover .kb-card__title.kb-card__title {
   color: #00bbfe !important;

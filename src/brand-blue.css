@@ -20,8 +20,8 @@
   --color-text-secondary:#4A5568;
   --color-text-light:    #FFFFFF;
   --color-border:        #D6E4FF;
-  --color-card-shadow:   0 2px 12px $10,187,254,.08);
-  --color-card-shadow-hover: 0 8px 24px $10,187,254,.14);
+  --color-card-shadow:   0 2px 12px rgba(0,187,254,.08);
+  --color-card-shadow-hover: 0 8px 24px rgba(0,187,254,.14);
 }
 
 /* ─────────────────────────────────────────────
@@ -46,8 +46,8 @@
 
   --accent:        #00bbfe !important;
   --accent-bright: #009fdb !important;
-  --accent-soft:   $10,187,254,.08) !important;
-  --accent-line:   $10,187,254,.32) !important;
+  --accent-soft:   rgba(0,187,254,.08) !important;
+  --accent-line:   rgba(0,187,254,.32) !important;
   --primary:       #00bbfe !important;
 }
 
@@ -89,7 +89,7 @@ html:root[data-theme='light'] body .iq-news__link:hover {
   -webkit-text-fill-color: #009fdb !important;
 }
 
-::selection { background: $10,187,254,.18); }
+::selection { background: rgba(0,187,254,.18); }
 
 /* ─────────────────────────────────────────────
    3. NAVBAR
@@ -151,7 +151,7 @@ html:root[data-theme='light'] body :is(.iq-btn-ring, .iq-btn-ring--light, .btn--
   -webkit-text-fill-color: #00bbfe !important;
 }
 html:root[data-theme='light'] body :is(.iq-btn-ring, .iq-btn-ring--light, .btn--outline, .btn--ghost):hover {
-  background: $10,187,254,.06) !important;
+  background: rgba(0,187,254,.06) !important;
   border-color: #009fdb !important;
   color: #009fdb !important;
   -webkit-text-fill-color: #009fdb !important;
@@ -166,7 +166,7 @@ html:root[data-theme='light'] body :is(.iq-btn-ring, .iq-btn-ring--light, .btn--
    ───────────────────────────────────────────── */
 html:root[data-theme='light'] body .iq-hero {
   background:
-    radial-gradient(ellipse 62% 40% at 50% 18%, $10,187,254,.05), transparent 70%),
+    radial-gradient(ellipse 62% 40% at 50% 18%, rgba(0,187,254,.05), transparent 70%),
     #ffffff !important;
 }
 /* hero W → ecosystem T → services W → intelligence T → insights W →
@@ -223,7 +223,7 @@ html:root[data-theme='light'] body :is(
   .tl-usecase-item, .wp-card, .fx-slider .iq-testi
 ):hover {
   background: #ffffff !important;
-  border-color: $10,187,254,.45) !important;
+  border-color: rgba(0,187,254,.45) !important;
   box-shadow: var(--color-card-shadow-hover) !important;
 }
 
@@ -261,8 +261,8 @@ html:root[data-theme='light'] body .iq-news__tag {
   -webkit-text-fill-color: #00bbfe !important;
 }
 html:root[data-theme='light'] body :is(.bl-card__tag-badge, .bl-tag) {
-  background: $10,187,254,.08) !important;
-  border-color: $10,187,254,.25) !important;
+  background: rgba(0,187,254,.08) !important;
+  border-color: rgba(0,187,254,.25) !important;
   color: #00bbfe !important;
   -webkit-text-fill-color: #00bbfe !important;
 }

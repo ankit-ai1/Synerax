@@ -18,7 +18,7 @@ html:root body .fx-slider .iq-testi.fx-slide {
   border: 1px solid #e3ecfb !important;
   border-radius: 22px !important;
   background:
-    radial-gradient(ellipse 70% 45% at 100% 0%, $10,187,254,.07), transparent 70%),
+    radial-gradient(ellipse 70% 45% at 100% 0%, rgba(0,187,254,.07), transparent 70%),
     linear-gradient(180deg, #ffffff 0%, #fbfdff 100%) !important;
   box-shadow:
     0 1px 2px rgba(10,22,40,.04),
@@ -42,10 +42,10 @@ html:root body .fx-slider .iq-testi.fx-slide::before {
 }
 html:root body .fx-slider .iq-testi.fx-slide:hover {
   transform: translateY(-6px);
-  border-color: $10,187,254,.3) !important;
+  border-color: rgba(0,187,254,.3) !important;
   box-shadow:
     0 1px 2px rgba(10,22,40,.04),
-    0 30px 60px -30px $10,187,254,.45) !important;
+    0 30px 60px -30px rgba(0,187,254,.45) !important;
 }
 html:root body .fx-slider .iq-testi.fx-slide:hover::before { opacity: 1; left: 0; right: 0; }
 
@@ -72,7 +72,7 @@ html:root body .fx-slider .iq-testi.fx-slide:hover::before { opacity: 1; left: 0
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), $10,187,254,.08), transparent 65%);
+  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), rgba(0,187,254,.08), transparent 65%);
   opacity: 0;
   transition: opacity .35s ease;
   pointer-events: none;
@@ -87,11 +87,11 @@ html:root body .fx-slider .iq-testi.fx-slide:hover::before { opacity: 1; left: 0
   font-family: var(--font-accent), Georgia, serif;
   font-size: 13rem;
   line-height: 1;
-  color: $10,187,254,.06);
+  color: rgba(0,187,254,.06);
   transition: transform .6s cubic-bezier(.22,1,.36,1), color .4s ease;
   pointer-events: none;
 }
-.fx-slide:hover .tp-watermark { transform: translate(-6px, 6px) rotate(-6deg); color: $10,187,254,.1); }
+.fx-slide:hover .tp-watermark { transform: translate(-6px, 6px) rotate(-6deg); color: rgba(0,187,254,.1); }
 
 /* everything readable sits above the decoration */
 html:root body .fx-slider .iq-testi.fx-slide > :not(.tp-ring):not(.tp-spot):not(.tp-watermark) {
@@ -112,7 +112,7 @@ html:root body .fx-slider .fx-slide__mark {
   font-size: 2.6rem !important;
   line-height: 1 !important;
   opacity: 1 !important;
-  box-shadow: 0 10px 20px -10px $10,187,254,.7);
+  box-shadow: 0 10px 20px -10px rgba(0,187,254,.7);
   transition: transform .45s cubic-bezier(.3,1.5,.5,1);
 }
 html:root body .fx-slider .iq-testi:hover .fx-slide__mark { opacity: 1 !important; transform: rotate(-8deg) scale(1.06); }
@@ -137,7 +137,7 @@ html:root body .fx-slider .iq-testi .iq-testi__av {
   font-family: var(--font-heading) !important;
   font-size: 1.0625rem !important;
   font-weight: 700 !important;
-  box-shadow: 0 0 0 4px $10,187,254,.1), 0 8px 18px -8px $10,187,254,.7);
+  box-shadow: 0 0 0 4px rgba(0,187,254,.1), 0 8px 18px -8px rgba(0,187,254,.7);
 }
 .tp-verified {
   position: absolute;
@@ -167,7 +167,7 @@ html:root body .fx-slider .fx-slider__seg {
   overflow: hidden;
 }
 html:root body .fx-slider .fx-slider__seg.is-active {
-  background: $10,187,254,.18) !important;
+  background: rgba(0,187,254,.18) !important;
 }
 html:root body .fx-slider .fx-slider__seg.is-active::after {
   content: '';
@@ -195,7 +195,7 @@ html:root body .fx-slider .fx-slider__arrow:hover {
 /* ── dark theme ── */
 :root[data-theme='dark'] body .fx-slider .iq-testi.fx-slide {
   border-color: rgba(160,180,204,.16) !important;
-  background: radial-gradient(ellipse 70% 45% at 100% 0%, $10,187,254,.18), transparent 70%), #0d1b30 !important;
+  background: radial-gradient(ellipse 70% 45% at 100% 0%, rgba(0,187,254,.18), transparent 70%), #0d1b30 !important;
 }
 :root[data-theme='dark'] body .fx-slider .iq-testi .iq-testi__quote,
 :root[data-theme='dark'] body .fx-slider .iq-testi .iq-testi__name { color: #fff !important; -webkit-text-fill-color: #fff !important; }

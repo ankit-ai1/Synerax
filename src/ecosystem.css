@@ -78,11 +78,11 @@ html:root body .eco .eco__sub {
   border: 1px solid var(--border);
   border-radius: 32px;
   background:
-    radial-gradient($10,187,254,.10) 1px, transparent 1.2px) 0 0 / 22px 22px,
+    radial-gradient(rgba(0,187,254,.10) 1px, transparent 1.2px) 0 0 / 22px 22px,
     var(--fx-00);
   box-shadow:
     0 1px 2px rgba(10,22,40,.04),
-    0 40px 90px -40px $10,187,254,.28);
+    0 40px 90px -40px rgba(0,187,254,.28);
 }
 
 /* ─────────────────────────────────────────────
@@ -117,7 +117,7 @@ html:root body .eco .eco__sub {
   border-radius: 50%;
   color: #fff;
   background: linear-gradient(135deg, #33c9fe, #00bbfe 55%, #009fdb);
-  box-shadow: 0 8px 18px -6px $10,187,254,.6);
+  box-shadow: 0 8px 18px -6px rgba(0,187,254,.6);
 }
 .eco-node__ico { position: relative; width: 48px; height: 48px; }
 
@@ -131,7 +131,7 @@ html:root body .eco .eco__sub {
 }
 .eco-node__ico::before {
   inset: -7px;
-  border: 1.5px dashed $10,187,254,.35);
+  border: 1.5px dashed rgba(0,187,254,.35);
   animation: eco-rot 14s linear infinite;
 }
 .eco-node__ico::after {
@@ -139,7 +139,7 @@ html:root body .eco .eco__sub {
   width: 7px; height: 7px;
   margin-left: -3.5px;
   background: #00bbfe;
-  box-shadow: 0 0 8px $10,187,254,.8);
+  box-shadow: 0 0 8px rgba(0,187,254,.8);
   transform-origin: 3.5px 33px;
   animation: eco-rot 3.2s linear infinite;
 }
@@ -174,7 +174,7 @@ html:root body .eco .eco__sub {
 @keyframes eco-flow { to { stroke-dashoffset: -22; } }
 .eco-spark {
   fill: #00bbfe;
-  filter: drop-shadow(0 0 4px $10,187,254,.9));
+  filter: drop-shadow(0 0 4px rgba(0,187,254,.9));
 }
 .eco-origin {
   fill: var(--fx-00);
@@ -222,7 +222,7 @@ html:root body .eco .eco-cap.is-on {
   border-color: #00bbfe !important;
   color: #00bbfe !important;
   -webkit-text-fill-color: #00bbfe !important;
-  box-shadow: 0 0 0 4px $10,187,254,.08), 0 14px 30px -14px $10,187,254,.55);
+  box-shadow: 0 0 0 4px rgba(0,187,254,.08), 0 14px 30px -14px rgba(0,187,254,.55);
   transform: translateX(6px);
   transition-delay: calc(var(--i) * 40ms);
 }
@@ -234,7 +234,7 @@ html:root body .eco .eco-cap { position: relative; overflow: hidden; }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(105deg, transparent 30%, $10,187,254,.16) 50%, transparent 70%);
+  background: linear-gradient(105deg, transparent 30%, rgba(0,187,254,.16) 50%, transparent 70%);
   transform: translateX(-120%);
   pointer-events: none;
 }
@@ -299,9 +299,9 @@ html:root body .eco .eco-card.is-o0 {
   align-items: start;
   gap: 16px;
   padding: 18px 18px;
-  border-color: $10,187,254,.28) !important;
+  border-color: rgba(0,187,254,.28) !important;
   background: var(--fx-00);
-  box-shadow: 0 22px 46px -22px $10,187,254,.5);
+  box-shadow: 0 22px 46px -22px rgba(0,187,254,.5);
   cursor: default;
 }
 
@@ -395,7 +395,7 @@ html:root body .eco .eco-card.is-o0 .eco-card__desc {
   margin-top: 10px;
   padding: 4px 11px;
   border-radius: 999px;
-  background: $10,187,254,.08);
+  background: rgba(0,187,254,.08);
   color: #00bbfe;
   font-size: .8125rem;
   font-weight: 600;
@@ -406,7 +406,7 @@ html:root body .eco .eco-card.is-o0 .eco-card__desc {
   display: inline-flex;
   padding: 4px;
   border-radius: 999px;
-  background: $10,187,254,.06);
+  background: rgba(0,187,254,.06);
 }
 .eco-card__chips i {
   display: grid;
@@ -415,7 +415,7 @@ html:root body .eco .eco-card.is-o0 .eco-card__desc {
   border-radius: 50%;
   color: #00bbfe;
   background: var(--fx-00);
-  box-shadow: 0 2px 6px -2px $10,187,254,.35);
+  box-shadow: 0 2px 6px -2px rgba(0,187,254,.35);
   animation: eco-pop .45s cubic-bezier(.3,1.5,.5,1) both;
 }
 .eco-card__chips i + i { margin-left: -4px; }
@@ -432,7 +432,7 @@ html:root body .eco .eco-card.is-o0 .eco-card__desc {
   padding: 5px;
   border-radius: 999px;
   background: linear-gradient(90deg, #009fdb, #00bbfe 45%, #2cc6fe);
-  box-shadow: 0 18px 36px -16px $10,187,254,.7);
+  box-shadow: 0 18px 36px -16px rgba(0,187,254,.7);
 }
 .eco-tabs__thumb {
   position: absolute;
@@ -476,7 +476,7 @@ html:root body .eco .eco-tab.is-active {
   display: block;
   height: 3px;
   border-radius: 3px;
-  background: $10,187,254,.16);
+  background: rgba(0,187,254,.16);
   overflow: hidden;
   pointer-events: none;
 }
@@ -485,7 +485,7 @@ html:root body .eco .eco-tab.is-active {
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, #00bbfe, #33c9fe);
-  box-shadow: 0 0 8px $10,187,254,.6);
+  box-shadow: 0 0 8px rgba(0,187,254,.6);
   transform: scaleX(0);
   transform-origin: left center;
   animation: eco-prog linear forwards;

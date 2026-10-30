@@ -10,7 +10,7 @@ html:root body .ft2 {
   overflow: hidden;
   padding: 0 !important;
   background:
-    radial-gradient(ellipse 60% 50% at 85% 0%, $10,187,254,.16), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 85% 0%, rgba(0,187,254,.16), transparent 70%),
     #0a1628 !important;
 }
 

@@ -326,7 +326,7 @@
 :root[data-theme='light'] .srv-hero,
 :root[data-theme='light'] .tl-hero {
   background-image:
-    radial-gradient(ellipse 62% 40% at 50% 18%, $10,187,254,.07), transparent 70%) !important;
+    radial-gradient(ellipse 62% 40% at 50% 18%, rgba(0,187,254,.07), transparent 70%) !important;
   background-color: var(--fx-00) !important;
 }
 

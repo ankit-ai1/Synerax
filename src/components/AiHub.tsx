@@ -13,7 +13,7 @@ const ic: Record<string, ReactNode> = {
 }
 
 /* four lanes, two per side — each lane has its own colour, like a circuit bus */
-const lanes = ['#1b6fe8', '#0ea5e9', '#6366f1', '#14b8a6']
+const lanes = ['#00bbfe', '#0ea5e9', '#6366f1', '#14b8a6']
 
 const items = [
   { domain: 'Forecasting', title: 'Predictive Demand & Revenue Models', icon: 'chart',

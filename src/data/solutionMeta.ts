@@ -23,7 +23,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
       { icon: '🔗', title: 'Integration Platforms', desc: 'Middleware joining ERP, CRM, and billing with idempotent processing and complete audit trails.' },
       { icon: '📱', title: 'Progressive Web Apps', desc: 'Offline-capable, installable applications with background sync and native-like performance.' },
     ],
-    accentColor: '#1b6fe8',
+    accentColor: '#00bbfe',
     technologies: ['React', 'Next.js', 'TypeScript', 'Node.js', 'Python', 'PostgreSQL', 'GraphQL', 'Redis', 'Tailwind CSS', 'Vite', 'Jest', 'Playwright'],
   },
 
@@ -37,7 +37,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
       { icon: '💰', title: 'Cloud Spend Reduction', desc: 'Rightsizing, commitment planning, and idle-resource cleanup measured against an agreed baseline.' },
       { icon: '📜', title: 'Infrastructure as Code', desc: 'Hand-built environments captured in Terraform, with drift detection and reviewable plans.' },
     ],
-    accentColor: '#1b6fe8',
+    accentColor: '#00bbfe',
     technologies: ['GitHub Actions', 'GitLab CI', 'Terraform', 'Docker', 'Kubernetes', 'AWS Cost Explorer', 'Kubecost', 'ArgoCD', 'Trivy', 'SonarQube', 'Vault', 'OPA'],
   },
 
@@ -51,7 +51,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
       { icon: '🔍', title: 'Internal Knowledge Search', desc: 'Semantic search across wikis, tickets, and repositories with each user\'s existing permissions preserved.' },
       { icon: '⚙️', title: 'Workflow Automation', desc: 'Multi-step agents that operate real tools — ticketing, CRM, internal APIs — under budget and policy limits.' },
     ],
-    accentColor: '#1b6fe8',
+    accentColor: '#00bbfe',
     technologies: ['OpenAI', 'Anthropic', 'LangChain', 'LlamaIndex', 'Pinecone', 'pgvector', 'Weaviate', 'Python', 'FastAPI', 'Ray', 'MLflow', 'Hugging Face'],
   },
 
@@ -65,7 +65,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
       { icon: '💸', title: 'Cost Optimisation', desc: 'Rightsizing, commitment planning, and storage tiering measured against a baseline agreed up front.' },
       { icon: '🌐', title: 'Multi-Region Resilience', desc: 'Active-active and warm-standby designs with tested failover and documented recovery objectives.' },
     ],
-    accentColor: '#1b6fe8',
+    accentColor: '#00bbfe',
     technologies: ['AWS', 'Azure', 'GCP', 'Terraform', 'Kubernetes', 'Helm', 'Docker', 'Ansible', 'CloudFormation', 'Istio', 'Karpenter', 'Velero'],
   },
 
@@ -79,7 +79,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
       { icon: '🚨', title: 'Incident Practice', desc: 'Roles, runbooks, comms templates, and blameless review that feeds fixes straight back into the backlog.' },
       { icon: '⚡', title: 'Peak Readiness', desc: 'Load testing, latency budgets, and capacity planning ahead of seasonal or launch traffic.' },
     ],
-    accentColor: '#1b6fe8',
+    accentColor: '#00bbfe',
     technologies: ['Prometheus', 'Grafana', 'OpenTelemetry', 'Datadog', 'Loki', 'Tempo', 'PagerDuty', 'Jaeger', 'k6', 'Thanos', 'Sentry', 'Elastic'],
   },
 
@@ -93,7 +93,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
       { icon: '📦', title: 'Containerisation', desc: 'Reproducible images and dependency pinning so every environment behaves identically.' },
       { icon: '🔌', title: 'API Enablement', desc: 'Contract-first interfaces over legacy cores, letting new products build without touching the old system.' },
     ],
-    accentColor: '#1b6fe8',
+    accentColor: '#00bbfe',
     technologies: ['Docker', 'Kubernetes', 'Java', '.NET', 'Node.js', 'Kafka', 'PostgreSQL', 'gRPC', 'OpenAPI', 'Strangler Fig', 'Flyway', 'Testcontainers'],
   },
 
@@ -107,7 +107,7 @@ export const solutionMeta: Record<string, SolutionMeta> = {
       { icon: '🔄', title: 'Change Enablement', desc: 'Risk-scored change workflow that speeds up standard changes instead of slowing everything equally.' },
       { icon: '🤖', title: 'Runbook Automation', desc: 'Provisioning, resets, and access requests automated end to end, freeing the desk for real problems.' },
     ],
-    accentColor: '#1b6fe8',
+    accentColor: '#00bbfe',
     technologies: ['ServiceNow', 'Jira Service Management', 'Freshservice', 'PagerDuty', 'Zendesk', 'Ansible', 'Power Automate', 'Okta', 'Confluence', 'Opsgenie', 'Slack', 'Terraform'],
   },
 }

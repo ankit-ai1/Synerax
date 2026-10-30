@@ -16,7 +16,7 @@ html, body { overflow-x: clip !important; }
   --s-ink: #ffffff;
   --s-mid: rgba(255,255,255,.52);
   --s-low: rgba(255,255,255,.34);
-  --s-orange: #1b6fe8;
+  --s-orange: #00bbfe;
 
   padding-top: 7rem !important;
   padding-bottom: 7rem !important;

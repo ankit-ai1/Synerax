@@ -24,7 +24,7 @@ html:root body .nav .nm-trigger {
 html:root body .nav .nm-trigger::after { display: none !important; }
 html:root body .nav .nm-dd:hover > .nm-trigger,
 html:root body .nav .nm-dd.open > .nm-trigger {
-  background: rgba(27,111,232,.08) !important;
+  background: $10,187,254,.08) !important;
 }
 .nm-chev {
   width: 14px; height: 14px;
@@ -67,13 +67,13 @@ html:root body .nav .nm-dd.open > .nm-trigger {
   border: 1px solid #e3ecfb;
   border-radius: 24px;
   background:
-    radial-gradient(rgba(27,111,232,.07) 1px, transparent 1.3px) 0 0 / 18px 18px,
-    radial-gradient(ellipse 70% 60% at 0% 0%, rgba(27,111,232,.07), transparent 70%),
+    radial-gradient($10,187,254,.07) 1px, transparent 1.3px) 0 0 / 18px 18px,
+    radial-gradient(ellipse 70% 60% at 0% 0%, $10,187,254,.07), transparent 70%),
     linear-gradient(180deg, #ffffff, #f6f9ff);
   box-shadow:
     0 1px 2px rgba(10,22,40,.04),
     0 30px 70px -24px rgba(10,22,40,.28),
-    0 12px 30px -18px rgba(27,111,232,.25);
+    0 12px 30px -18px $10,187,254,.25);
 }
 
 .nm-main { display: flex; flex-direction: column; gap: 10px; }
@@ -95,14 +95,14 @@ html:root body .nav .nm-dd.open > .nm-trigger {
   font-weight: 600;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: #1b6fe8;
+  color: #00bbfe;
 }
 .nm-head__lbl::before {
   content: '';
   width: 6px; height: 6px;
   border-radius: 50%;
-  background: #1b6fe8;
-  box-shadow: 0 0 0 3px rgba(27,111,232,.15);
+  background: #00bbfe;
+  box-shadow: 0 0 0 3px $10,187,254,.15);
 }
 .nm-head__note {
   font-size: .75rem;
@@ -213,7 +213,7 @@ html:root body .nav .nm-feature {
   overflow: hidden;
   border-radius: 18px;
   background:
-    radial-gradient(ellipse 80% 60% at 100% 0%, rgba(27,111,232,.45), transparent 65%),
+    radial-gradient(ellipse 80% 60% at 100% 0%, $10,187,254,.45), transparent 65%),
     #0a1628;
   text-decoration: none;
   transition: transform .35s cubic-bezier(.22,1,.36,1);
@@ -224,7 +224,7 @@ html:root body .nav .nm-feature:hover { transform: translateY(-2px); }
   top: -60px; right: -60px;
   width: 200px; height: 200px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(77,148,255,.35), transparent 65%);
+  background: radial-gradient(circle, $151,201,254,.35), transparent 65%);
   filter: blur(10px);
   animation: nm-glow 6s ease-in-out infinite alternate;
   pointer-events: none;
@@ -235,7 +235,7 @@ html:root body .nav .nm-feature:hover { transform: translateY(-2px); }
   position: absolute;
   top: 24px; left: 26px;
   width: 30px; height: 30px;
-  color: #7fb0ff;
+  color: #7fdcfe;
 }
 .nm-dd.open .nm-feature__ico { animation: nm-twinkle 2.4s ease-in-out infinite; }
 @keyframes nm-twinkle {
@@ -270,8 +270,8 @@ html:root body .nav .nm-feature__cta {
   margin-top: 22px;
   font-size: .9375rem !important;
   font-weight: 650 !important;
-  color: #7fb0ff !important;
-  -webkit-text-fill-color: #7fb0ff !important;
+  color: #7fdcfe !important;
+  -webkit-text-fill-color: #7fdcfe !important;
 }
 .nm-feature__cta svg { width: 15px; height: 15px; transition: transform .3s ease; }
 .nm-feature:hover .nm-feature__cta svg { transform: translateX(4px); }
@@ -286,7 +286,7 @@ html:root body .nav .nm-feature__cta {
    ───────────────────────────────────────────── */
 :root[data-theme='dark'] body .nm-card {
   border-color: rgba(160,180,204,.16);
-  background: radial-gradient(rgba(127,176,255,.08) 1px, transparent 1.3px) 0 0 / 18px 18px, #0d1b30;
+  background: radial-gradient($1127,220,254,.08) 1px, transparent 1.3px) 0 0 / 18px 18px, #0d1b30;
   box-shadow: 0 30px 70px -24px rgba(0,0,0,.6);
 }
 :root[data-theme='dark'] body .nm-head { border-color: rgba(160,180,204,.16); }
@@ -295,7 +295,7 @@ html:root body .nav .nm-feature__cta {
 :root[data-theme='dark'] body .nm-item__ico { background: color-mix(in srgb, var(--c) 18%, transparent); }
 :root[data-theme='dark'] body .nav .nm-item__title { color: #fff !important; -webkit-text-fill-color: #fff !important; }
 :root[data-theme='dark'] body .nav .nm-item__desc { color: #a0b4cc !important; -webkit-text-fill-color: #a0b4cc !important; }
-:root[data-theme='dark'] body .nav .nm-feature { background: radial-gradient(ellipse 80% 60% at 100% 0%, rgba(27,111,232,.45), transparent 65%), #14243f; }
+:root[data-theme='dark'] body .nav .nm-feature { background: radial-gradient(ellipse 80% 60% at 100% 0%, $10,187,254,.45), transparent 65%), #14243f; }
 
 /* narrower desktops: one grid column fewer */
 @media (max-width: 1180px) {

@@ -336,7 +336,7 @@
   .bl-filter,
   .car-dept-btn { min-height: 40px; }
 
-  a, button { -webkit-tap-highlight-color: rgba(27,111,232,.18); }
+  a, button { -webkit-tap-highlight-color: $10,187,254,.18); }
 }
 
 /* ─────────────────────────────────────────────
@@ -350,7 +350,7 @@
 }
 @media (hover: none) {
   :root[data-theme='light'] a,
-  :root[data-theme='light'] button { -webkit-tap-highlight-color: rgba(27,111,232,.16); }
+  :root[data-theme='light'] button { -webkit-tap-highlight-color: $10,187,254,.16); }
 }
 
 /* ═════════════════════════════════════════════════════════════

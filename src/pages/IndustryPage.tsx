@@ -27,7 +27,7 @@ export default function IndustryPage() {
 
   if (!industry) return <Navigate to="/" replace />
 
-  const ac = '#1b6fe8'
+  const ac = '#00bbfe'
 
   return (
     <>

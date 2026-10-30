@@ -101,7 +101,7 @@ html:root body .ft-new__logo .brand__wm-img { height: 30px; }
 .nav__logo .brand__wm,
 .ft-new__logo .brand__wm { transition: transform .35s cubic-bezier(.22,1,.36,1), filter .35s ease; }
 .nav__logo:hover .brand__wm,
-.ft-new__logo:hover .brand__wm { transform: translateY(-1px); filter: drop-shadow(0 4px 10px rgba(27,111,232,.25)); }
+.ft-new__logo:hover .brand__wm { transform: translateY(-1px); filter: drop-shadow(0 4px 10px $10,187,254,.25)); }
 
 @media (max-width: 768px) {
   html:root body .brand__wm-img { height: 19px; }

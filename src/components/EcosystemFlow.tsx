@@ -135,7 +135,7 @@ export default function EcosystemFlow() {
           <defs>
             {(['on', 'off'] as const).map(v => (
               <marker key={v} id={`eco-arrow-${v}`} viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-                <path d="M1 1l7 4-7 4" fill="none" stroke={v === 'on' ? '#1b6fe8' : '#a9c4ee'} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M1 1l7 4-7 4" fill="none" stroke={v === 'on' ? '#00bbfe' : '#a9c4ee'} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </marker>
             ))}
           </defs>

@@ -200,7 +200,7 @@ export default function Services() {
         <div className="container">
           <div className="cta-band__tag">Have a Project in Mind?</div>
           <h2>
-            Get a Proposal<br />in <span style={{ color: '#3d86f0' }}>24 Hours</span>
+            Get a Proposal<br />in <span style={{ color: '#2cc6fe' }}>24 Hours</span>
           </h2>
           <p>No commitment required. Just an honest conversation about your goals and how we can help.</p>
           <div className="cta-band__actions">

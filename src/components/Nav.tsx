@@ -74,7 +74,7 @@ type MegaItem = { color: string; label: string; desc: string; to: string; icon: 
 type MegaFeature = { title: string; desc: string; cta: string; to: string }
 
 const megaSolutions: MegaItem[] = [
-  { color: '#1b6fe8', label: 'Web & Enterprise Apps', desc: 'Platforms engineered to scale',      to: '/solutions/web-enterprise-applications', icon: ico(<><rect x="3" y="4" width="18" height="16" rx="2.5" /><path d="M3 9h18M7 6.5h.01M10 6.5h.01" /></>) },
+  { color: '#00bbfe', label: 'Web & Enterprise Apps', desc: 'Platforms engineered to scale',      to: '/solutions/web-enterprise-applications', icon: ico(<><rect x="3" y="4" width="18" height="16" rx="2.5" /><path d="M3 9h18M7 6.5h.01M10 6.5h.01" /></>) },
   { color: '#0ea5e9', label: 'Cloud & Migration',     desc: 'AWS, Azure, GCP — zero downtime',     to: '/solutions/cloud-engineering-migration', icon: ico(<path d="M7 18h10.5a4 4 0 00.6-7.96A6 6 0 006.3 9.2 4.4 4.4 0 007 18z" />) },
   { color: '#6366f1', label: 'Agentic AI',            desc: 'Agents that do real work',            to: '/solutions/agentic-ai',                  icon: ico(<><rect x="4" y="7" width="16" height="12" rx="3" /><path d="M12 3v4M9 12h.01M15 12h.01M9 16h6" /></>) },
   { color: '#8b5cf6', label: 'DevSecOps & FinOps',    desc: 'Ship safely, spend less',             to: '/solutions/devsecops-finops',            icon: ico(<><circle cx="6" cy="6" r="2.2" /><circle cx="6" cy="18" r="2.2" /><path d="M6 8.2v7.6M17 4v16M14.5 7h4a2 2 0 010 4h-3a2 2 0 000 4h4" /></>) },
@@ -84,7 +84,7 @@ const megaSolutions: MegaItem[] = [
 ]
 
 const megaIndustries: MegaItem[] = [
-  { color: '#1b6fe8', label: 'Healthcare',               desc: 'HIPAA-ready clinical systems',  to: '/industries/healthcare',         icon: ico(<><path d="M12 21s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.6-7 10-7 10z" /><path d="M9 12h6M12 9v6" /></>) },
+  { color: '#00bbfe', label: 'Healthcare',               desc: 'HIPAA-ready clinical systems',  to: '/industries/healthcare',         icon: ico(<><path d="M12 21s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.6-7 10-7 10z" /><path d="M9 12h6M12 9v6" /></>) },
   { color: '#0ea5e9', label: 'Financial Services',       desc: 'Resilient, compliant fintech',  to: '/industries/financial-services', icon: ico(<><rect x="3" y="6" width="18" height="12" rx="2.5" /><path d="M3 10h18M7 15h4" /></>) },
   { color: '#6366f1', label: 'Retail & E-Commerce',      desc: 'Commerce that handles peak',    to: '/industries/retail',             icon: ico(<><path d="M5 7h14l-1.2 11.2a2 2 0 01-2 1.8H8.2a2 2 0 01-2-1.8z" /><path d="M9 7V6a3 3 0 016 0v1" /></>) },
   { color: '#14b8a6', label: 'Government',               desc: 'Secure citizen services',       to: '/industries/government',         icon: ico(<><path d="M3 10l9-6 9 6" /><path d="M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18" /></>) },
@@ -93,7 +93,7 @@ const megaIndustries: MegaItem[] = [
 ]
 
 const megaResources: MegaItem[] = [
-  { color: '#1b6fe8', label: 'Blog & Insights', desc: 'Playbooks from our engineers', to: '/blog',    icon: ico(<><path d="M5 4h11l3 3v13H5z" /><path d="M9 10h6M9 14h6M9 18h3" /></>) },
+  { color: '#00bbfe', label: 'Blog & Insights', desc: 'Playbooks from our engineers', to: '/blog',    icon: ico(<><path d="M5 4h11l3 3v13H5z" /><path d="M9 10h6M9 14h6M9 18h3" /></>) },
   { color: '#0ea5e9', label: 'Case Studies',    desc: 'Outcomes we have shipped',     to: '/blog',    icon: ico(<><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" /></>) },
   { color: '#6366f1', label: 'About Synerax',   desc: 'Who we are and how we work',   to: '/about',   icon: ico(<><circle cx="12" cy="12" r="9" /><path d="M12 11v5M12 8h.01" /></>) },
   { color: '#14b8a6', label: 'Contact Us',      desc: 'Talk to a senior engineer',    to: '/contact', icon: ico(<><rect x="3" y="5" width="18" height="14" rx="2.5" /><path d="M3 8l9 6 9-6" /></>) },

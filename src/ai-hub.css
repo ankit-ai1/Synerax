@@ -15,7 +15,7 @@ html:root body .aih-section { position: relative; overflow: clip !important; }
   content: '';
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(rgba(27,111,232,.16) 1.2px, transparent 1.6px);
+  background-image: radial-gradient($10,187,254,.16) 1.2px, transparent 1.6px);
   background-size: 22px 22px;
   -webkit-mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 20%, transparent 85%);
   mask-image: radial-gradient(ellipse 75% 70% at 50% 45%, #000 20%, transparent 85%);
@@ -34,8 +34,8 @@ html:root body .aih-lede .aih-lede__eye.aih-lede__eye {
   align-items: center;
   gap: 12px;
   margin: 0 0 22px !important;
-  color: #1b6fe8 !important;
-  -webkit-text-fill-color: #1b6fe8 !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
   letter-spacing: .3em !important;
 }
 html:root body .aih-lede .aih-lede__eye::before,
@@ -45,10 +45,10 @@ html:root body .aih-lede .aih-lede__eye::after {
   width: 40px !important;
   height: 1.5px !important;
   border-radius: 2px !important;
-  background: linear-gradient(90deg, transparent, rgba(27,111,232,.7)) !important;
+  background: linear-gradient(90deg, transparent, $10,187,254,.7)) !important;
 }
 html:root body .aih-lede .aih-lede__eye::after {
-  background: linear-gradient(90deg, rgba(27,111,232,.7), transparent) !important;
+  background: linear-gradient(90deg, $10,187,254,.7), transparent) !important;
 }
 .aih-lede__eye svg {
   width: 16px; height: 16px;
@@ -70,7 +70,7 @@ html:root body .aih-lede .aih-lede__h2 {
 html:root body .aih-lede .aih-lede__h2 .aih-lede__grad.aih-lede__grad {
   display: inline-block;
   padding-bottom: .08em;
-  background-image: linear-gradient(100deg, #1b6fe8 0%, #4d94ff 30%, #0ea5e9 55%, #4d94ff 75%, #1b6fe8 100%);
+  background-image: linear-gradient(100deg, #00bbfe 0%, #33c9fe 30%, #0ea5e9 55%, #33c9fe 75%, #00bbfe 100%);
   background-size: 220% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -295,14 +295,14 @@ html:root body .aih .aih-card__desc {
   background:
     radial-gradient(circle at 50% 35%, #ffffff, #eef4ff 70%);
   box-shadow:
-    0 0 0 10px rgba(27,111,232,.05),
-    0 0 0 22px rgba(27,111,232,.03),
-    0 30px 60px -24px rgba(27,111,232,.45);
+    0 0 0 10px $10,187,254,.05),
+    0 0 0 22px $10,187,254,.03),
+    0 30px 60px -24px $10,187,254,.45);
   animation: aih-breathe 4s ease-in-out infinite;
 }
 @keyframes aih-breathe {
-  0%, 100% { box-shadow: 0 0 0 10px rgba(27,111,232,.05), 0 0 0 22px rgba(27,111,232,.03), 0 30px 60px -24px rgba(27,111,232,.45); }
-  50%      { box-shadow: 0 0 0 14px rgba(27,111,232,.07), 0 0 0 30px rgba(27,111,232,.035), 0 30px 70px -20px rgba(27,111,232,.55); }
+  0%, 100% { box-shadow: 0 0 0 10px $10,187,254,.05), 0 0 0 22px $10,187,254,.03), 0 30px 60px -24px $10,187,254,.45); }
+  50%      { box-shadow: 0 0 0 14px $10,187,254,.07), 0 0 0 30px $10,187,254,.035), 0 30px 70px -20px $10,187,254,.55); }
 }
 :root[data-theme='dark'] .aih-hub__core { background: radial-gradient(circle at 50% 35%, #14243f, #0a1628 70%); border-color: rgba(160,180,204,.2); }
 
@@ -313,12 +313,12 @@ html:root body .aih .aih-card__desc {
 }
 .aih-hub__ring--a {
   inset: 12px;
-  border: 1px dashed rgba(27,111,232,.3);
+  border: 1px dashed $10,187,254,.3);
   animation: aih-rot 30s linear infinite;
 }
 .aih-hub__ring--b {
   inset: -14px;
-  border: 1.5px dotted rgba(27,111,232,.22);
+  border: 1.5px dotted $10,187,254,.22);
   animation: aih-rot 48s linear infinite reverse;
 }
 @keyframes aih-rot { to { transform: rotate(360deg); } }

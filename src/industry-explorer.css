@@ -19,8 +19,8 @@ html:root body .ixp-lede .ixp-lede__eye.ixp-lede__eye {
   align-items: center;
   gap: 18px;
   margin: 0 0 22px !important;
-  color: #1b6fe8 !important;
-  -webkit-text-fill-color: #1b6fe8 !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
   letter-spacing: .32em !important;
 }
 html:root body .ixp-lede .ixp-lede__eye::before,
@@ -30,10 +30,10 @@ html:root body .ixp-lede .ixp-lede__eye::after {
   width: 48px !important;
   height: 2px !important;
   border-radius: 2px !important;
-  background: linear-gradient(90deg, transparent, #1b6fe8) !important;
+  background: linear-gradient(90deg, transparent, #00bbfe) !important;
 }
 html:root body .ixp-lede .ixp-lede__eye::after {
-  background: linear-gradient(90deg, #1b6fe8, transparent) !important;
+  background: linear-gradient(90deg, #00bbfe, transparent) !important;
 }
 html:root body .ixp-lede .ixp-lede__h2 {
   margin: 0 auto 20px !important;
@@ -45,7 +45,7 @@ html:root body .ixp-lede .ixp-lede__h2 {
 html:root body .ixp-lede .ixp-lede__h2 .ixp-lede__grad.ixp-lede__grad {
   display: inline-block;
   padding-bottom: .08em;
-  background-image: linear-gradient(100deg, #1459c7 0%, #1b6fe8 35%, #4d94ff 55%, #1b6fe8 75%, #1459c7 100%);
+  background-image: linear-gradient(100deg, #009fdb 0%, #00bbfe 35%, #33c9fe 55%, #00bbfe 75%, #009fdb 100%);
   background-size: 220% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -91,10 +91,10 @@ html:root body .ixp-lede .ixp-lede__sub {
 .ixa-panel.is-on {
   flex: 6.2 1 0;
   cursor: default;
-  box-shadow: 0 44px 80px -40px rgba(10,22,40,.65), 0 0 0 1px rgba(27,111,232,.25);
+  box-shadow: 0 44px 80px -40px rgba(10,22,40,.65), 0 0 0 1px $10,187,254,.25);
 }
 .ixa-panel:not(.is-on):hover { transform: translateY(-6px); }
-.ixa-panel:focus-visible { box-shadow: 0 0 0 3px #1b6fe8; }
+.ixa-panel:focus-visible { box-shadow: 0 0 0 3px #00bbfe; }
 
 /* folded photos are muted; the open one comes alive and drifts */
 .ixa-panel__img {
@@ -154,8 +154,8 @@ html:root body .ixp-lede .ixp-lede__sub {
 .ixa-panel__prog i {
   display: block;
   height: 100%;
-  background: linear-gradient(90deg, #1b6fe8, #7fb0ff);
-  box-shadow: 0 0 10px rgba(77,148,255,.8);
+  background: linear-gradient(90deg, #00bbfe, #7fdcfe);
+  box-shadow: 0 0 10px $151,201,254,.8);
   transform: scaleX(0);
   transform-origin: left center;
   animation: ixa-prog linear forwards;
@@ -207,7 +207,7 @@ html:root body .ixp-lede .ixp-lede__sub {
   transition: transform .45s ease, background .3s ease;
 }
 .ixa-strip__plus svg { width: 14px; height: 14px; }
-.ixa-panel:hover .ixa-strip__plus { transform: rotate(90deg); background: #1b6fe8; border-color: #1b6fe8; }
+.ixa-panel:hover .ixa-strip__plus { transform: rotate(90deg); background: #00bbfe; border-color: #00bbfe; }
 
 /* ── open body ── fixed min width so copy never reflows mid-expansion */
 .ixa-body {
@@ -259,12 +259,12 @@ html:root body .ixp-lede .ixp-lede__sub {
 .ixa-pill i {
   width: 7px; height: 7px;
   border-radius: 50%;
-  background: #4d94ff;
+  background: #33c9fe;
   animation: ixa-pulse 1.8s ease-out infinite;
 }
 @keyframes ixa-pulse {
-  0%   { box-shadow: 0 0 0 0 rgba(77,148,255,.6); }
-  100% { box-shadow: 0 0 0 9px rgba(77,148,255,0); }
+  0%   { box-shadow: 0 0 0 0 $151,201,254,.6); }
+  100% { box-shadow: 0 0 0 9px $151,201,254,0); }
 }
 .ixa-count {
   font-family: var(--font-mono);
@@ -284,7 +284,7 @@ html:root body .ixa .ixa-title.ixa-title {
   -webkit-text-fill-color: #fff !important;
 }
 html:root body .ixa .ixa-title span {
-  background-image: linear-gradient(90deg, #a9c9ff, #4d94ff);
+  background-image: linear-gradient(90deg, #a9c9ff, #33c9fe);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent !important;
@@ -343,13 +343,13 @@ html:root body .ixa .ixa-cta {
   box-shadow: 0 14px 30px -14px rgba(0,0,0,.6);
   transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease;
 }
-html:root body .ixa .ixa-cta:hover { transform: translateY(-2px); box-shadow: 0 20px 36px -14px rgba(27,111,232,.75); }
+html:root body .ixa .ixa-cta:hover { transform: translateY(-2px); box-shadow: 0 20px 36px -14px $10,187,254,.75); }
 .ixa-cta__ico {
   display: grid;
   place-items: center;
   width: 40px; height: 40px;
   border-radius: 50%;
-  background: #1b6fe8;
+  background: #00bbfe;
   color: #fff;
   transition: transform .45s cubic-bezier(.3,1.5,.5,1);
 }

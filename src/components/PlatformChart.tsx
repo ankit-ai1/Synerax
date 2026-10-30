@@ -298,8 +298,8 @@ export default function PlatformChart() {
           >
             <defs>
               <linearGradient id="pfcFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#1b6fe8" stopOpacity=".28" />
-                <stop offset="100%" stopColor="#1b6fe8" stopOpacity="0" />
+                <stop offset="0%" stopColor="#00bbfe" stopOpacity=".28" />
+                <stop offset="100%" stopColor="#00bbfe" stopOpacity="0" />
               </linearGradient>
             </defs>
 

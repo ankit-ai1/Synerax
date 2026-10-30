@@ -43,19 +43,19 @@ const CC_RANGES: [CcRange, string][] = [
 /* Each series is one slice of the stack, drawn bottom-up. */
 const CC_SERIES: Record<CcGroup, { label: string; color: string; weight: number }[]> = {
   service: [
-    { label: 'API',       color: '#1b6fe8', weight: 34 },
+    { label: 'API',       color: '#00bbfe', weight: 34 },
     { label: 'Web',       color: '#6fae7c', weight: 26 },
     { label: 'Workers',   color: '#e8b04b', weight: 9 },
-    { label: 'Database',  color: '#1b6fe8', weight: 8 },
+    { label: 'Database',  color: '#00bbfe', weight: 8 },
     { label: 'Cache',     color: '#5fb0a8', weight: 13 },
     { label: 'Search',    color: '#b9a882', weight: 6 },
     { label: 'Edge',      color: '#8a94a6', weight: 4 },
   ],
   team: [
-    { label: 'Platform',  color: '#1b6fe8', weight: 38 },
+    { label: 'Platform',  color: '#00bbfe', weight: 38 },
     { label: 'Payments',  color: '#6fae7c', weight: 24 },
     { label: 'Identity',  color: '#e8b04b', weight: 10 },
-    { label: 'Checkout',  color: '#1b6fe8', weight: 8 },
+    { label: 'Checkout',  color: '#00bbfe', weight: 8 },
     { label: 'Data',      color: '#5fb0a8', weight: 12 },
     { label: 'Mobile',    color: '#b9a882', weight: 5 },
     { label: 'Internal',  color: '#8a94a6', weight: 3 },

@@ -17,8 +17,8 @@
 }
 html:root body .kb-hdr .kb-hdr__lede { max-width: none !important; margin: 0 !important; }
 html:root body .kb-hdr .kb-hdr__eye.kb-hdr__eye {
-  color: #1b6fe8 !important;
-  -webkit-text-fill-color: #1b6fe8 !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
   letter-spacing: .28em !important;
   margin-bottom: 20px !important;
 }
@@ -32,7 +32,7 @@ html:root body .kb-hdr .kb-hdr__h2 {
 html:root body .kb-hdr .kb-hdr__h2 .kb-hdr__grad.kb-hdr__grad {
   display: inline-block;
   padding-bottom: .08em;
-  background-image: linear-gradient(100deg, #1459c7 0%, #1b6fe8 35%, #4d94ff 55%, #1b6fe8 75%, #1459c7 100%);
+  background-image: linear-gradient(100deg, #009fdb 0%, #00bbfe 35%, #33c9fe 55%, #00bbfe 75%, #009fdb 100%);
   background-size: 220% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -73,7 +73,7 @@ html:root body .kb-hdr .kb-hdr__all {
   overflow: hidden;
   border: 0;
   border-radius: 999px;
-  background: linear-gradient(100deg, #1459c7, #1b6fe8 55%, #3d86f0);
+  background: linear-gradient(100deg, #009fdb, #00bbfe 55%, #2cc6fe);
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
   font-size: 1rem !important;
@@ -82,7 +82,7 @@ html:root body .kb-hdr .kb-hdr__all {
   text-decoration: none;
   box-shadow:
     0 1px 0 rgba(255,255,255,.25) inset,
-    0 14px 30px -12px rgba(27,111,232,.65);
+    0 14px 30px -12px $10,187,254,.65);
   transition: box-shadow .35s ease, transform .35s cubic-bezier(.22,1,.36,1);
 }
 html:root body .kb-hdr .kb-hdr__all::before {
@@ -98,7 +98,7 @@ html:root body .kb-hdr .kb-hdr__all:hover {
   transform: translateY(-2px);
   box-shadow:
     0 1px 0 rgba(255,255,255,.25) inset,
-    0 20px 38px -12px rgba(27,111,232,.8);
+    0 20px 38px -12px $10,187,254,.8);
 }
 html:root body .kb-hdr .kb-hdr__all:hover::before { transform: translateX(120%); }
 
@@ -110,7 +110,7 @@ html:root body .kb-hdr .kb-hdr__all:hover::before { transform: translateX(120%);
   overflow: hidden;
   border-radius: 50%;
   background: #fff;
-  color: #1b6fe8;
+  color: #00bbfe;
   transition: transform .45s cubic-bezier(.3,1.5,.5,1);
 }
 /* two arrows: the first slides out, the second slides in */
@@ -205,7 +205,7 @@ html:root body .kb .kb-card {
   transition: transform .45s cubic-bezier(.3,1.5,.5,1), background .3s ease, color .3s ease;
 }
 .kb-card__go svg { width: 16px; height: 16px; transition: transform .45s ease; }
-.kb-card:hover .kb-card__go { transform: scale(1); background: #1b6fe8; color: #fff; }
+.kb-card:hover .kb-card__go { transform: scale(1); background: #00bbfe; color: #fff; }
 .kb-card:hover .kb-card__go svg { transform: rotate(45deg); }
 
 .kb-card__meta {
@@ -226,7 +226,7 @@ html:root body .kb .kb-card {
   inset: 0;
   z-index: 1;
   background:
-    radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(77,148,255,.22), transparent 60%),
+    radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), $151,201,254,.22), transparent 60%),
     linear-gradient(180deg, rgba(10,22,40,0) 38%, rgba(10,22,40,.55) 66%, rgba(10,22,40,.94) 100%);
   background-size: 100% 100%;
   transition: opacity .4s ease;
@@ -289,7 +289,7 @@ html:root body .kb .kb-card--feature .kb-card__desc {
   height: 0;
   overflow: hidden;
   opacity: 0;
-  color: #7fb0ff;
+  color: #7fdcfe;
   font-size: .9375rem;
   font-weight: 600;
   transition: height .4s ease, opacity .4s ease;
@@ -344,12 +344,12 @@ html:root body .kb .kb-card--split .kb-card__title.kb-card__title {
 }
 html:root body .kb .kb-card--split:hover {
   transform: translateY(-5px);
-  border-color: rgba(27,111,232,.35) !important;
-  box-shadow: 0 1px 2px rgba(10,22,40,.04), 0 30px 50px -28px rgba(27,111,232,.45);
+  border-color: $10,187,254,.35) !important;
+  box-shadow: 0 1px 2px rgba(10,22,40,.04), 0 30px 50px -28px $10,187,254,.45);
 }
 html:root body .kb .kb-card--split:hover .kb-card__title.kb-card__title {
-  color: #1b6fe8 !important;
-  -webkit-text-fill-color: #1b6fe8 !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
 }
 
 /* ─────────────────────────────────────────────

@@ -18,7 +18,7 @@ html:root body .fx-slider .iq-testi.fx-slide {
   border: 1px solid #e3ecfb !important;
   border-radius: 22px !important;
   background:
-    radial-gradient(ellipse 70% 45% at 100% 0%, rgba(27,111,232,.07), transparent 70%),
+    radial-gradient(ellipse 70% 45% at 100% 0%, $10,187,254,.07), transparent 70%),
     linear-gradient(180deg, #ffffff 0%, #fbfdff 100%) !important;
   box-shadow:
     0 1px 2px rgba(10,22,40,.04),
@@ -35,17 +35,17 @@ html:root body .fx-slider .iq-testi.fx-slide::before {
   top: 0; left: 28px; right: 28px;
   height: 2px;
   border-radius: 0 0 2px 2px;
-  background: linear-gradient(90deg, transparent, #1b6fe8, #4d94ff, transparent);
+  background: linear-gradient(90deg, transparent, #00bbfe, #33c9fe, transparent);
   opacity: .55;
   transform: none;
   transition: opacity .4s ease, left .5s ease, right .5s ease;
 }
 html:root body .fx-slider .iq-testi.fx-slide:hover {
   transform: translateY(-6px);
-  border-color: rgba(27,111,232,.3) !important;
+  border-color: $10,187,254,.3) !important;
   box-shadow:
     0 1px 2px rgba(10,22,40,.04),
-    0 30px 60px -30px rgba(27,111,232,.45) !important;
+    0 30px 60px -30px $10,187,254,.45) !important;
 }
 html:root body .fx-slider .iq-testi.fx-slide:hover::before { opacity: 1; left: 0; right: 0; }
 
@@ -56,7 +56,7 @@ html:root body .fx-slider .iq-testi.fx-slide:hover::before { opacity: 1; left: 0
   z-index: 0;
   border-radius: inherit;
   padding: 1.5px;
-  background: conic-gradient(from var(--tp-angle), transparent 0 70%, #4d94ff 82%, #1b6fe8 90%, transparent 98%);
+  background: conic-gradient(from var(--tp-angle), transparent 0 70%, #33c9fe 82%, #00bbfe 90%, transparent 98%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
@@ -72,7 +72,7 @@ html:root body .fx-slider .iq-testi.fx-slide:hover::before { opacity: 1; left: 0
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), rgba(27,111,232,.08), transparent 65%);
+  background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 0%), $10,187,254,.08), transparent 65%);
   opacity: 0;
   transition: opacity .35s ease;
   pointer-events: none;
@@ -87,11 +87,11 @@ html:root body .fx-slider .iq-testi.fx-slide:hover::before { opacity: 1; left: 0
   font-family: var(--font-accent), Georgia, serif;
   font-size: 13rem;
   line-height: 1;
-  color: rgba(27,111,232,.06);
+  color: $10,187,254,.06);
   transition: transform .6s cubic-bezier(.22,1,.36,1), color .4s ease;
   pointer-events: none;
 }
-.fx-slide:hover .tp-watermark { transform: translate(-6px, 6px) rotate(-6deg); color: rgba(27,111,232,.1); }
+.fx-slide:hover .tp-watermark { transform: translate(-6px, 6px) rotate(-6deg); color: $10,187,254,.1); }
 
 /* everything readable sits above the decoration */
 html:root body .fx-slider .iq-testi.fx-slide > :not(.tp-ring):not(.tp-spot):not(.tp-watermark) {
@@ -106,13 +106,13 @@ html:root body .fx-slider .fx-slide__mark {
   width: 42px; height: 42px;
   padding-top: 14px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #4d94ff, #1b6fe8 60%, #1459c7);
+  background: linear-gradient(135deg, #33c9fe, #00bbfe 60%, #009fdb);
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
   font-size: 2.6rem !important;
   line-height: 1 !important;
   opacity: 1 !important;
-  box-shadow: 0 10px 20px -10px rgba(27,111,232,.7);
+  box-shadow: 0 10px 20px -10px $10,187,254,.7);
   transition: transform .45s cubic-bezier(.3,1.5,.5,1);
 }
 html:root body .fx-slider .iq-testi:hover .fx-slide__mark { opacity: 1 !important; transform: rotate(-8deg) scale(1.06); }
@@ -131,13 +131,13 @@ html:root body .fx-slider .iq-testi .iq-testi__av {
   width: 46px !important; height: 46px !important;
   border: 0 !important;
   border-radius: 50% !important;
-  background: linear-gradient(135deg, #4d94ff, #1459c7) !important;
+  background: linear-gradient(135deg, #33c9fe, #009fdb) !important;
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
   font-family: var(--font-heading) !important;
   font-size: 1.0625rem !important;
   font-weight: 700 !important;
-  box-shadow: 0 0 0 4px rgba(27,111,232,.1), 0 8px 18px -8px rgba(27,111,232,.7);
+  box-shadow: 0 0 0 4px $10,187,254,.1), 0 8px 18px -8px $10,187,254,.7);
 }
 .tp-verified {
   position: absolute;
@@ -157,8 +157,8 @@ html:root body .fx-slider .iq-testi .iq-testi__name {
   font-weight: 650 !important;
 }
 html:root body .fx-slider .iq-testi .iq-testi__role {
-  color: #1b6fe8 !important;
-  -webkit-text-fill-color: #1b6fe8 !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
 }
 
 /* ── controls: the active dash fills like a timer (5s auto-advance) ── */
@@ -167,13 +167,13 @@ html:root body .fx-slider .fx-slider__seg {
   overflow: hidden;
 }
 html:root body .fx-slider .fx-slider__seg.is-active {
-  background: rgba(27,111,232,.18) !important;
+  background: $10,187,254,.18) !important;
 }
 html:root body .fx-slider .fx-slider__seg.is-active::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: #1b6fe8;
+  background: #00bbfe;
   transform-origin: left center;
   animation: tp-fill 5s linear forwards;
 }
@@ -186,8 +186,8 @@ html:root body .fx-slider .fx-slider__arrow {
   transition: background .25s ease, color .25s ease, border-color .25s ease, transform .25s ease;
 }
 html:root body .fx-slider .fx-slider__arrow:hover {
-  background: #1b6fe8 !important;
-  border-color: #1b6fe8 !important;
+  background: #00bbfe !important;
+  border-color: #00bbfe !important;
   color: #fff !important;
   transform: translateY(-1px);
 }
@@ -195,7 +195,7 @@ html:root body .fx-slider .fx-slider__arrow:hover {
 /* ── dark theme ── */
 :root[data-theme='dark'] body .fx-slider .iq-testi.fx-slide {
   border-color: rgba(160,180,204,.16) !important;
-  background: radial-gradient(ellipse 70% 45% at 100% 0%, rgba(27,111,232,.18), transparent 70%), #0d1b30 !important;
+  background: radial-gradient(ellipse 70% 45% at 100% 0%, $10,187,254,.18), transparent 70%), #0d1b30 !important;
 }
 :root[data-theme='dark'] body .fx-slider .iq-testi .iq-testi__quote,
 :root[data-theme='dark'] body .fx-slider .iq-testi .iq-testi__name { color: #fff !important; -webkit-text-fill-color: #fff !important; }

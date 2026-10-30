@@ -39,7 +39,7 @@ const testimonials = [
 
 const whyCards = [
   {
-    accent: '#1b6fe8', iconBg: '#1a2b48', metric: '200+', tag: 'TEAM',
+    accent: '#00bbfe', iconBg: '#1a2b48', metric: '200+', tag: 'TEAM',
     title: 'Senior-Only Execution',
     desc: 'Every project is led by a senior engineer. No juniors-as-proxies — you work directly with the people building your product.',
     img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80',

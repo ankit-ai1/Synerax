@@ -14,14 +14,14 @@
   --color-bg-primary:    #FFFFFF;
   --color-bg-secondary:  #F4F8FF;
   --color-bg-dark:       #0A1628;
-  --color-accent:        #1B6FE8;
-  --color-accent-hover:  #1459C7;
+  --color-accent:        #00bbfe;
+  --color-accent-hover:  #009fdb;
   --color-text-primary:  #0A1628;
   --color-text-secondary:#4A5568;
   --color-text-light:    #FFFFFF;
   --color-border:        #D6E4FF;
-  --color-card-shadow:   0 2px 12px rgba(27,111,232,.08);
-  --color-card-shadow-hover: 0 8px 24px rgba(27,111,232,.14);
+  --color-card-shadow:   0 2px 12px $10,187,254,.08);
+  --color-card-shadow-hover: 0 8px 24px $10,187,254,.14);
 }
 
 /* ─────────────────────────────────────────────
@@ -44,18 +44,18 @@
   --text-dim:      #4a5568 !important;
   --text-faint:    #718096 !important;
 
-  --accent:        #1b6fe8 !important;
-  --accent-bright: #1459c7 !important;
-  --accent-soft:   rgba(27,111,232,.08) !important;
-  --accent-line:   rgba(27,111,232,.32) !important;
-  --primary:       #1b6fe8 !important;
+  --accent:        #00bbfe !important;
+  --accent-bright: #009fdb !important;
+  --accent-soft:   $10,187,254,.08) !important;
+  --accent-line:   $10,187,254,.32) !important;
+  --primary:       #00bbfe !important;
 }
 
 /* Chart palettes: blue data, navy ink */
 :root[data-theme='light'] .fx-dash--factory { --d-ink: #0a1628; --d-mid: #4a5568; }
-:root[data-theme='light'] .pfc { --p-ink: #0a1628; --p-mid: #0a1628; --p-orange: #1b6fe8; }
-:root[data-theme='light'] .fx-stick { --s-ink: #0a1628; --s-orange: #1b6fe8; }
-:root[data-theme='light'] .fx-slider { --sl-ink: #0a1628; --sl-line: #d6e4ff; --sl-orange: #1b6fe8; }
+:root[data-theme='light'] .pfc { --p-ink: #0a1628; --p-mid: #0a1628; --p-orange: #00bbfe; }
+:root[data-theme='light'] .fx-stick { --s-ink: #0a1628; --s-orange: #00bbfe; }
+:root[data-theme='light'] .fx-slider { --sl-ink: #0a1628; --sl-line: #d6e4ff; --sl-orange: #00bbfe; }
 
 /* ─────────────────────────────────────────────
    2. TYPE — navy headings, slate body, blue links
@@ -80,16 +80,16 @@ html:root[data-theme='light'] body :is(
 
 html:root[data-theme='light'] body :is(p, .bpost-body li, .pp-content li) a:not([class*='btn']):not([class*='cta']),
 html:root[data-theme='light'] body .iq-news__link {
-  color: #1b6fe8 !important;
-  -webkit-text-fill-color: #1b6fe8 !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
 }
 html:root[data-theme='light'] body :is(p, .bpost-body li, .pp-content li) a:not([class*='btn']):not([class*='cta']):hover,
 html:root[data-theme='light'] body .iq-news__link:hover {
-  color: #1459c7 !important;
-  -webkit-text-fill-color: #1459c7 !important;
+  color: #009fdb !important;
+  -webkit-text-fill-color: #009fdb !important;
 }
 
-::selection { background: rgba(27,111,232,.18); }
+::selection { background: $10,187,254,.18); }
 
 /* ─────────────────────────────────────────────
    3. NAVBAR
@@ -112,8 +112,8 @@ html:root[data-theme='light'] body .nav :is(.nav__links > li > a, .nav__links > 
   -webkit-text-fill-color: #0a1628 !important;
 }
 html:root[data-theme='light'] body .nav :is(.nav__links > li > a:hover, .nav__links > li > a.active, .nav__dropdown-trigger:hover, .nav__dropdown.open .nav__dropdown-trigger) {
-  color: #1b6fe8 !important;
-  -webkit-text-fill-color: #1b6fe8 !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
 }
 
 /* ─────────────────────────────────────────────
@@ -123,8 +123,8 @@ html:root[data-theme='light'] body :is(
   .iq-btn-fill, .iq-btn-fill--lg, .btn--primary, .nav__cta, .nav__contact-btn,
   .nav__mobile-cta-btn, .car-apply-btn, .ct-form__submit, .bl-newsletter__btn
 ) {
-  background: #1b6fe8 !important;
-  border: 1px solid #1b6fe8 !important;
+  background: #00bbfe !important;
+  border: 1px solid #00bbfe !important;
   border-radius: 6px !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
@@ -133,8 +133,8 @@ html:root[data-theme='light'] body :is(
   .iq-btn-fill, .iq-btn-fill--lg, .btn--primary, .nav__cta, .nav__contact-btn,
   .nav__mobile-cta-btn, .car-apply-btn, .ct-form__submit, .bl-newsletter__btn
 ):hover {
-  background: #1459c7 !important;
-  border-color: #1459c7 !important;
+  background: #009fdb !important;
+  border-color: #009fdb !important;
   color: #ffffff !important;
   -webkit-text-fill-color: #ffffff !important;
 }
@@ -145,16 +145,16 @@ html:root[data-theme='light'] body :is(.iq-btn-fill, .btn--primary, .nav__contac
 
 html:root[data-theme='light'] body :is(.iq-btn-ring, .iq-btn-ring--light, .btn--outline, .btn--ghost) {
   background: transparent !important;
-  border: 1px solid #1b6fe8 !important;
+  border: 1px solid #00bbfe !important;
   border-radius: 6px !important;
-  color: #1b6fe8 !important;
-  -webkit-text-fill-color: #1b6fe8 !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
 }
 html:root[data-theme='light'] body :is(.iq-btn-ring, .iq-btn-ring--light, .btn--outline, .btn--ghost):hover {
-  background: rgba(27,111,232,.06) !important;
-  border-color: #1459c7 !important;
-  color: #1459c7 !important;
-  -webkit-text-fill-color: #1459c7 !important;
+  background: $10,187,254,.06) !important;
+  border-color: #009fdb !important;
+  color: #009fdb !important;
+  -webkit-text-fill-color: #009fdb !important;
 }
 html:root[data-theme='light'] body :is(.iq-btn-ring, .iq-btn-ring--light, .btn--outline, .btn--ghost) :is(span, b, strong) {
   color: inherit !important;
@@ -166,7 +166,7 @@ html:root[data-theme='light'] body :is(.iq-btn-ring, .iq-btn-ring--light, .btn--
    ───────────────────────────────────────────── */
 html:root[data-theme='light'] body .iq-hero {
   background:
-    radial-gradient(ellipse 62% 40% at 50% 18%, rgba(27,111,232,.05), transparent 70%),
+    radial-gradient(ellipse 62% 40% at 50% 18%, $10,187,254,.05), transparent 70%),
     #ffffff !important;
 }
 /* hero W → ecosystem T → services W → intelligence T → insights W →
@@ -223,7 +223,7 @@ html:root[data-theme='light'] body :is(
   .tl-usecase-item, .wp-card, .fx-slider .iq-testi
 ):hover {
   background: #ffffff !important;
-  border-color: rgba(27,111,232,.45) !important;
+  border-color: $10,187,254,.45) !important;
   box-shadow: var(--color-card-shadow-hover) !important;
 }
 
@@ -232,8 +232,8 @@ html:root[data-theme='light'] body :is(
   .car-benefit-card__icon, .ab-value-card__icon, .tl-usecase-icon, .ab-step__num,
   .ab-mv-card__badge, .fx-card__idx, .fx-micro__idx, .car-val-card__num, .car-process__step-num
 ) {
-  color: #1b6fe8 !important;
-  -webkit-text-fill-color: #1b6fe8 !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
 }
 
 /* ─────────────────────────────────────────────
@@ -241,40 +241,40 @@ html:root[data-theme='light'] body :is(
    ───────────────────────────────────────────── */
 html:root[data-theme='light'] body .fx-stat .fx-stat__num.fx-stat__num,
 html:root[data-theme='light'] body .fx-stat .fx-stat__num.fx-stat__num * {
-  color: #1b6fe8 !important;
-  -webkit-text-fill-color: #1b6fe8 !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
 }
 html:root[data-theme='light'] body .fx-stat .fx-stat__lbl.fx-stat__lbl {
   color: #0a1628 !important;
   -webkit-text-fill-color: #0a1628 !important;
 }
 html:root[data-theme='light'] body :is(.ind-stat__val, .car-hero__stat > span) {
-  color: #1b6fe8 !important;
-  -webkit-text-fill-color: #1b6fe8 !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
 }
 
 /* ─────────────────────────────────────────────
    8. INSIGHTS + TESTIMONIALS
    ───────────────────────────────────────────── */
 html:root[data-theme='light'] body .iq-news__tag {
-  color: #1b6fe8 !important;
-  -webkit-text-fill-color: #1b6fe8 !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
 }
 html:root[data-theme='light'] body :is(.bl-card__tag-badge, .bl-tag) {
-  background: rgba(27,111,232,.08) !important;
-  border-color: rgba(27,111,232,.25) !important;
-  color: #1b6fe8 !important;
-  -webkit-text-fill-color: #1b6fe8 !important;
+  background: $10,187,254,.08) !important;
+  border-color: $10,187,254,.25) !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
 }
 html:root[data-theme='light'] body :is(.bl-card__meta, .bl-featured__meta, .bl-meta-text, .bpost-meta-text) {
   color: #4a5568 !important;
   -webkit-text-fill-color: #4a5568 !important;
 }
 
-html:root[data-theme='light'] body .fx-slide__mark { color: #1b6fe8; opacity: .6; }
+html:root[data-theme='light'] body .fx-slide__mark { color: #00bbfe; opacity: .6; }
 html:root[data-theme='light'] body .fx-slider .iq-testi:hover .fx-slide__mark { opacity: .9; }
 html:root[data-theme='light'] body .fx-slider__seg.is-active,
-html:root[data-theme='light'] body .fx-slider__seg[aria-current='true'] { background: #1b6fe8; }
+html:root[data-theme='light'] body .fx-slider__seg[aria-current='true'] { background: #00bbfe; }
 
 /* ═════════════════════════════════════════════════════════════
    9. NAVY BLOCKS — footer, careers, dark CTA bands
@@ -329,14 +329,14 @@ html:root[data-theme='light'] body .ft-new a {
   -webkit-text-fill-color: #a0b4cc !important;
 }
 html:root[data-theme='light'] body .ft-new a:hover {
-  color: #1b6fe8 !important;
-  -webkit-text-fill-color: #1b6fe8 !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
 }
 html:root[data-theme='light'] body .ft-new .ft-new__social {
   border-color: rgba(160,180,204,.3) !important;
 }
 html:root[data-theme='light'] body .ft-new .ft-new__social:hover {
-  border-color: #1b6fe8 !important;
+  border-color: #00bbfe !important;
 }
 html:root[data-theme='light'] body :is(.ft-new__logo, .ft-new__logo .brand__word) {
   color: #ffffff !important;

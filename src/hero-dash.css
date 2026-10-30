@@ -11,7 +11,7 @@
   --d-mid: rgba(255,255,255,.55);
   --d-low: rgba(255,255,255,.34);
   --d-good: #7fae63;
-  --d-warn: #1b6fe8;
+  --d-warn: #00bbfe;
 
   background:
     linear-gradient(to right, rgba(255,255,255,.012) 1px, transparent 1px),
@@ -215,8 +215,8 @@
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    rgba(27,111,232,.05) 40deg,
-    rgba(27,111,232,.26) 88deg,
+    $10,187,254,.05) 40deg,
+    $10,187,254,.26) 88deg,
     transparent 90deg
   );
   animation: fxd-sweep 3.6s linear infinite;
@@ -230,7 +230,7 @@
   height: 1.5px;
   transform: translateY(-50%);
   transform-origin: left center;
-  background: linear-gradient(90deg, rgba(27,111,232,0), var(--d-warn) 88%);
+  background: linear-gradient(90deg, $10,187,254,0), var(--d-warn) 88%);
   border-radius: 1px;
 }
 /* the blip at the needle tip */
@@ -244,7 +244,7 @@
   margin: -1.5px 0 0 -3px;
   border-radius: 50%;
   background: var(--d-warn);
-  box-shadow: 0 0 5px rgba(27,111,232,.9);
+  box-shadow: 0 0 5px $10,187,254,.9);
 }
 @keyframes fxd-breathe { 0%,100% { transform: translate(-50%,-50%) scale(1); } 50% { transform: translate(-50%,-50%) scale(1.35); } }
 @keyframes fxd-sweep { to { transform: translate(-50%,-50%) rotate(360deg); } }
@@ -481,7 +481,7 @@
   border-radius: 1px;
 }
 .fxd-plot__band--good { background: rgba(127,174,99,.13); }
-.fxd-plot__band--warn { background: rgba(27,111,232,.11); }
+.fxd-plot__band--warn { background: $10,187,254,.11); }
 .fxd-plot__mid {
   position: absolute;
   left: 0; right: 0; top: 50%;

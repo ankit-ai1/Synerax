@@ -21,8 +21,8 @@ html:root body .eco .eco__eye.eco__eye {
   align-items: center;
   gap: 18px;
   margin: 0 0 22px !important;
-  color: #1b6fe8 !important;
-  -webkit-text-fill-color: #1b6fe8 !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
   letter-spacing: .32em !important;
 }
 html:root body .eco .eco__eye::before,
@@ -32,10 +32,10 @@ html:root body .eco .eco__eye::after {
   width: 48px !important;
   height: 2px !important;
   border-radius: 2px !important;
-  background: linear-gradient(90deg, transparent, #1b6fe8) !important;
+  background: linear-gradient(90deg, transparent, #00bbfe) !important;
 }
 html:root body .eco .eco__eye::after {
-  background: linear-gradient(90deg, #1b6fe8, transparent) !important;
+  background: linear-gradient(90deg, #00bbfe, transparent) !important;
 }
 
 html:root body .eco .eco__h2 {
@@ -48,7 +48,7 @@ html:root body .eco .eco__h2 {
 html:root body .eco .eco__h2 .eco__grad.eco__grad {
   display: inline-block;
   padding-bottom: .08em;
-  background-image: linear-gradient(100deg, #1459c7 0%, #1b6fe8 35%, #4d94ff 55%, #1b6fe8 75%, #1459c7 100%);
+  background-image: linear-gradient(100deg, #009fdb 0%, #00bbfe 35%, #33c9fe 55%, #00bbfe 75%, #009fdb 100%);
   background-size: 220% 100%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -78,11 +78,11 @@ html:root body .eco .eco__sub {
   border: 1px solid var(--border);
   border-radius: 32px;
   background:
-    radial-gradient(rgba(27,111,232,.10) 1px, transparent 1.2px) 0 0 / 22px 22px,
+    radial-gradient($10,187,254,.10) 1px, transparent 1.2px) 0 0 / 22px 22px,
     var(--fx-00);
   box-shadow:
     0 1px 2px rgba(10,22,40,.04),
-    0 40px 90px -40px rgba(27,111,232,.28);
+    0 40px 90px -40px $10,187,254,.28);
 }
 
 /* ─────────────────────────────────────────────
@@ -116,8 +116,8 @@ html:root body .eco .eco__sub {
   flex-shrink: 0;
   border-radius: 50%;
   color: #fff;
-  background: linear-gradient(135deg, #4d94ff, #1b6fe8 55%, #1459c7);
-  box-shadow: 0 8px 18px -6px rgba(27,111,232,.6);
+  background: linear-gradient(135deg, #33c9fe, #00bbfe 55%, #009fdb);
+  box-shadow: 0 8px 18px -6px $10,187,254,.6);
 }
 .eco-node__ico { position: relative; width: 48px; height: 48px; }
 
@@ -131,15 +131,15 @@ html:root body .eco .eco__sub {
 }
 .eco-node__ico::before {
   inset: -7px;
-  border: 1.5px dashed rgba(27,111,232,.35);
+  border: 1.5px dashed $10,187,254,.35);
   animation: eco-rot 14s linear infinite;
 }
 .eco-node__ico::after {
   top: -9px; left: 50%;
   width: 7px; height: 7px;
   margin-left: -3.5px;
-  background: #1b6fe8;
-  box-shadow: 0 0 8px rgba(27,111,232,.8);
+  background: #00bbfe;
+  box-shadow: 0 0 8px $10,187,254,.8);
   transform-origin: 3.5px 33px;
   animation: eco-rot 3.2s linear infinite;
 }
@@ -166,19 +166,19 @@ html:root body .eco .eco__sub {
   transition: stroke .4s ease, stroke-width .4s ease;
 }
 .eco-wire.is-on {
-  stroke: #1b6fe8;
+  stroke: #00bbfe;
   stroke-width: 1.8;
   stroke-dasharray: 6 5;
   animation: eco-flow 1s linear infinite;
 }
 @keyframes eco-flow { to { stroke-dashoffset: -22; } }
 .eco-spark {
-  fill: #1b6fe8;
-  filter: drop-shadow(0 0 4px rgba(27,111,232,.9));
+  fill: #00bbfe;
+  filter: drop-shadow(0 0 4px $10,187,254,.9));
 }
 .eco-origin {
   fill: var(--fx-00);
-  stroke: #1b6fe8;
+  stroke: #00bbfe;
   stroke-width: 1.8;
 }
 
@@ -219,14 +219,14 @@ html:root body .eco .eco-cap {
   transition: color .45s ease, transform .45s ease;
 }
 html:root body .eco .eco-cap.is-on {
-  border-color: #1b6fe8 !important;
-  color: #1b6fe8 !important;
-  -webkit-text-fill-color: #1b6fe8 !important;
-  box-shadow: 0 0 0 4px rgba(27,111,232,.08), 0 14px 30px -14px rgba(27,111,232,.55);
+  border-color: #00bbfe !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
+  box-shadow: 0 0 0 4px $10,187,254,.08), 0 14px 30px -14px $10,187,254,.55);
   transform: translateX(6px);
   transition-delay: calc(var(--i) * 40ms);
 }
-.eco-cap.is-on svg { color: #1b6fe8; transform: scale(1.08); }
+.eco-cap.is-on svg { color: #00bbfe; transform: scale(1.08); }
 
 /* a light sweeps across each pill the moment it switches on */
 html:root body .eco .eco-cap { position: relative; overflow: hidden; }
@@ -234,7 +234,7 @@ html:root body .eco .eco-cap { position: relative; overflow: hidden; }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(105deg, transparent 30%, rgba(27,111,232,.16) 50%, transparent 70%);
+  background: linear-gradient(105deg, transparent 30%, $10,187,254,.16) 50%, transparent 70%);
   transform: translateX(-120%);
   pointer-events: none;
 }
@@ -299,9 +299,9 @@ html:root body .eco .eco-card.is-o0 {
   align-items: start;
   gap: 16px;
   padding: 18px 18px;
-  border-color: rgba(27,111,232,.28) !important;
+  border-color: $10,187,254,.28) !important;
   background: var(--fx-00);
-  box-shadow: 0 22px 46px -22px rgba(27,111,232,.5);
+  box-shadow: 0 22px 46px -22px $10,187,254,.5);
   cursor: default;
 }
 
@@ -311,7 +311,7 @@ html:root body .eco .eco-card.is-o0 {
   inset: -1px;
   border-radius: inherit;
   padding: 1.5px;
-  background: conic-gradient(from var(--eco-angle), transparent 0 70%, #4d94ff 82%, #1b6fe8 90%, transparent 98%);
+  background: conic-gradient(from var(--eco-angle), transparent 0 70%, #33c9fe 82%, #00bbfe 90%, transparent 98%);
   -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
   -webkit-mask-composite: xor;
   mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
@@ -340,7 +340,7 @@ html:root body .eco .eco-card.is-o0 {
 }
 .eco-card__timer circle {
   fill: none;
-  stroke: #1b6fe8;
+  stroke: #00bbfe;
   stroke-width: 2;
   stroke-linecap: round;
   stroke-dasharray: 176;
@@ -395,8 +395,8 @@ html:root body .eco .eco-card.is-o0 .eco-card__desc {
   margin-top: 10px;
   padding: 4px 11px;
   border-radius: 999px;
-  background: rgba(27,111,232,.08);
-  color: #1b6fe8;
+  background: $10,187,254,.08);
+  color: #00bbfe;
   font-size: .8125rem;
   font-weight: 600;
 }
@@ -406,16 +406,16 @@ html:root body .eco .eco-card.is-o0 .eco-card__desc {
   display: inline-flex;
   padding: 4px;
   border-radius: 999px;
-  background: rgba(27,111,232,.06);
+  background: $10,187,254,.06);
 }
 .eco-card__chips i {
   display: grid;
   place-items: center;
   width: 26px; height: 26px;
   border-radius: 50%;
-  color: #1b6fe8;
+  color: #00bbfe;
   background: var(--fx-00);
-  box-shadow: 0 2px 6px -2px rgba(27,111,232,.35);
+  box-shadow: 0 2px 6px -2px $10,187,254,.35);
   animation: eco-pop .45s cubic-bezier(.3,1.5,.5,1) both;
 }
 .eco-card__chips i + i { margin-left: -4px; }
@@ -431,8 +431,8 @@ html:root body .eco .eco-card.is-o0 .eco-card__desc {
   margin-top: 16px;
   padding: 5px;
   border-radius: 999px;
-  background: linear-gradient(90deg, #1459c7, #1b6fe8 45%, #3d86f0);
-  box-shadow: 0 18px 36px -16px rgba(27,111,232,.7);
+  background: linear-gradient(90deg, #009fdb, #00bbfe 45%, #2cc6fe);
+  box-shadow: 0 18px 36px -16px $10,187,254,.7);
 }
 .eco-tabs__thumb {
   position: absolute;
@@ -465,8 +465,8 @@ html:root body .eco .eco-tab {
 }
 html:root body .eco .eco-tab:hover { color: #fff !important; -webkit-text-fill-color: #fff !important; }
 html:root body .eco .eco-tab.is-active {
-  color: #1b6fe8 !important;
-  -webkit-text-fill-color: #1b6fe8 !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
 }
 .eco-tab:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
 /* ── progress lines: a track with a fill that runs for one cycle, so it is
@@ -476,7 +476,7 @@ html:root body .eco .eco-tab.is-active {
   display: block;
   height: 3px;
   border-radius: 3px;
-  background: rgba(27,111,232,.16);
+  background: $10,187,254,.16);
   overflow: hidden;
   pointer-events: none;
 }
@@ -484,8 +484,8 @@ html:root body .eco .eco-tab.is-active {
   display: block;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #1b6fe8, #4d94ff);
-  box-shadow: 0 0 8px rgba(27,111,232,.6);
+  background: linear-gradient(90deg, #00bbfe, #33c9fe);
+  box-shadow: 0 0 8px $10,187,254,.6);
   transform: scaleX(0);
   transform-origin: left center;
   animation: eco-prog linear forwards;

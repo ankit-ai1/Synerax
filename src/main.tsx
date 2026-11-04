@@ -39,8 +39,9 @@ import './testimonials-premium.css'
 import './faq-premium.css'
 
 /* #root may already hold this route's prerendered HTML. Wait for the page's
-   chunk so React swaps it for the live page in a single commit, then fetch
-   the remaining pages in the background. */
+   chunk so React swaps it for the live page in a single commit. The other
+   pages are fetched once the visitor first scrolls, taps or types, not on a
+   timer, so a page load that is only looked at downloads only its own code. */
 const mount = () => {
   ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
@@ -51,9 +52,12 @@ const mount = () => {
       </BrowserRouter>
     </React.StrictMode>
   )
-  const prefetch = () => setTimeout(() => { preloadAllRoutes().catch(() => {}) }, 2500)
-  if (document.readyState === 'complete') prefetch()
-  else window.addEventListener('load', prefetch, { once: true })
+  const events = ['pointerdown', 'pointermove', 'touchstart', 'wheel', 'scroll', 'keydown']
+  const prefetch = () => {
+    events.forEach(e => window.removeEventListener(e, prefetch))
+    preloadAllRoutes().catch(() => {})
+  }
+  events.forEach(e => window.addEventListener(e, prefetch, { once: true, passive: true }))
 }
 
 preloadRoute(window.location.pathname).then(mount, mount)

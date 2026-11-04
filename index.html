@@ -66,24 +66,75 @@
       document.documentElement.style.colorScheme = 'light';
       try { localStorage.removeItem('synerax-theme'); } catch (e) { /* ignore */ }
     })();
-    /* On a visit where the intro loader will play (first page of the session,
-       motion allowed; mirrors shouldShow() in SiteLoader.tsx), keep the
-       prerendered page hidden until the loader mounts and removes the class,
-       so the page does not flash first. The timeout is a safety net in case
-       the app never starts. */
+    /* Intro loader: first page of the session, motion allowed. The class
+       turns on the static overlay at the top of <body> before first paint;
+       the script after it runs the timeline. */
     (function () {
       try {
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
         if (sessionStorage.getItem('synerax-loader-seen')) return;
+        sessionStorage.setItem('synerax-loader-seen', '1');
       } catch (e) { /* storage blocked: the loader still plays */ }
-      var html = document.documentElement;
-      html.classList.add('sx-preload');
-      setTimeout(function () { html.classList.remove('sx-preload'); }, 6000);
+      document.documentElement.classList.add('sx-loading');
     })();
   </script>
-  <style>html.sx-preload #root { visibility: hidden; }</style>
+  <style>
+    #site-loader { display: none; }
+    html.sx-loading #site-loader { display: grid; }
+    html.sx-loading { overflow: hidden; }
+  </style>
 </head>
 <body>
+  <!-- First-visit loader (styles: src/type-apply.css §7). It sits outside
+       #root and is plain HTML, so it plays from the first frame without
+       waiting for the JS bundle, and the prerendered page paints underneath
+       it straight away. That keeps LCP on the real page instead of ~3.5s
+       later. 0–1.0s logo draws · 0.8–1.8s wordmark · 1.6–2.6s tagline and
+       counter · 2.6–3.5s curtains open. SiteLoader.tsx only pauses Lenis. -->
+  <div id="site-loader" class="site-loader" role="presentation">
+    <div class="site-loader__panel site-loader__panel--top" aria-hidden="true"></div>
+    <div class="site-loader__panel site-loader__panel--bottom" aria-hidden="true"></div>
+    <div class="site-loader__inner" aria-hidden="true">
+      <div class="site-loader__logo">
+        <svg class="site-loader__outline" viewBox="0 0 72 72" fill="none">
+          <rect x="2" y="2" width="68" height="68" rx="18" pathLength="1" />
+        </svg>
+        <img class="site-loader__mark site-loader__mark--light" src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1793255810/file_000000003248820a89cfbef7459b0960_wz01du.png" alt="Synerax" decoding="async" />
+      </div>
+      <span class="site-loader__word">
+        <img class="site-loader__wm site-loader__wm--ink" src="/brand/synerax-wordmark-ink.png" alt="Synerax" decoding="async" />
+      </span>
+      <p class="site-loader__tagline">From Code to <em>Cloud.</em></p>
+      <div class="site-loader__meter">
+        <span class="site-loader__count">000</span>
+        <span class="site-loader__bar"></span>
+      </div>
+    </div>
+    <button type="button" class="site-loader__skip">Skip</button>
+  </div>
+  <script>
+    (function () {
+      var html = document.documentElement;
+      var el = document.getElementById('site-loader');
+      if (!html.classList.contains('sx-loading')) { el.parentNode.removeChild(el); return; }
+      var count = el.querySelector('.site-loader__count');
+      var start = performance.now(), raf = 0;
+      function tick(now) {
+        var t = Math.min(Math.max((now - start - 1600) / 1000, 0), 1);
+        count.textContent = ('00' + Math.round(t * 100)).slice(-3);
+        if (t < 1) raf = requestAnimationFrame(tick);
+      }
+      function finish() {
+        cancelAnimationFrame(raf);
+        clearTimeout(end);
+        html.classList.remove('sx-loading');
+        if (el.parentNode) el.parentNode.removeChild(el);
+      }
+      raf = requestAnimationFrame(tick);
+      var end = setTimeout(finish, 3500);
+      el.querySelector('.site-loader__skip').addEventListener('click', finish);
+    })();
+  </script>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>

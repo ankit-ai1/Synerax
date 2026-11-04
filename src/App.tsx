@@ -1,15 +1,16 @@
 import { Routes, Route, useLocation, Navigate, matchPath } from 'react-router-dom'
 import { useEffect } from 'react'
 import { ReactLenis, useLenis } from 'lenis/react'
-import Home from './pages/Home'
 import LeadModal from './components/LeadModal'
 import SiteLoader from './components/SiteLoader'
 import Seo from './components/Seo'
 import { lazyPage, type LazyPage } from './lib/lazyPage'
 
-/* The homepage ships in the main bundle; every other page is its own chunk
-   (see lib/lazyPage.tsx), so the first load only pays for the page it shows. */
-const Services       = lazyPage(() => import('./pages/Services'))
+/* Every page is its own chunk (see lib/lazyPage.tsx), the homepage too, so
+   the first load only pays for the page it shows — inner pages no longer
+   carry the homepage sections or gsap. */
+const Home           = lazyPage(() => import('./pages/Home'))
+const Services      = lazyPage(() => import('./pages/Services'))
 const About          = lazyPage(() => import('./pages/About'))
 const Contact        = lazyPage(() => import('./pages/Contact'))
 const SolutionPage   = lazyPage(() => import('./pages/SolutionPage'))
@@ -22,6 +23,7 @@ const Admin          = lazyPage(() => import('./pages/Admin'))
 const Careers        = lazyPage(() => import('./pages/Careers'))
 
 const lazyRoutes: [string, LazyPage][] = [
+  ['/', Home],
   ['/services', Services],
   ['/solutions', Services],
   ['/about', About],

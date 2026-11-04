@@ -36,7 +36,7 @@ html:root body .aih-lede .aih-lede__eye.aih-lede__eye {
   margin: 0 0 22px !important;
   color: #00bbfe !important;
   -webkit-text-fill-color: #00bbfe !important;
-  letter-spacing: .03em !important;
+  letter-spacing: normal !important;
 }
 html:root body .aih-lede .aih-lede__eye::before,
 html:root body .aih-lede .aih-lede__eye::after {
@@ -320,7 +320,7 @@ html:root body .aih .aih-card__desc {
   font-family: var(--font-mono);
   font-size: .8125rem;
   font-weight: 600;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   line-height: 1.5;
   text-align: center;
   text-transform: uppercase;

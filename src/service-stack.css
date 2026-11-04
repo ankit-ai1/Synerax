@@ -26,7 +26,7 @@ html:root body .svs-lede .svs-lede__eye.svs-lede__eye {
   margin: 0 0 22px !important;
   color: #00bbfe !important;
   -webkit-text-fill-color: #00bbfe !important;
-  letter-spacing: .03em !important;
+  letter-spacing: normal !important;
 }
 html:root body .svs-lede .svs-lede__eye::before,
 html:root body .svs-lede .svs-lede__eye::after {
@@ -175,7 +175,7 @@ html:root body .svs .svs-card--dark {
   font-family: var(--font-mono);
   font-size: .75rem;
   font-weight: 600;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   color: #00bbfe;
 }

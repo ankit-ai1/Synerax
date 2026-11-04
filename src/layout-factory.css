@@ -85,7 +85,7 @@
 .fx-pillar__num {
   font-family: var(--font-mono);
   font-size: .6875rem;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   color: var(--accent);
   display: block;
   margin-bottom: 1.1rem;
@@ -127,7 +127,7 @@
   gap: .6rem;
   font-family: var(--font-mono);
   font-size: .6875rem;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   color: var(--text-dim);
   border: 1px solid var(--border);
@@ -194,7 +194,7 @@
   white-space: nowrap;
   font-family: var(--font-mono);
   font-size: .6875rem;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   color: var(--text-faint);
   padding: .5rem .85rem;
@@ -275,7 +275,7 @@
 .fx-viz__lbl {
   font-family: var(--font-mono);
   font-size: .625rem;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   color: var(--text-faint);
 }
@@ -291,7 +291,7 @@
 .fx-metric__l {
   font-family: var(--font-mono);
   font-size: .625rem;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   color: var(--text-faint);
 }
@@ -309,7 +309,7 @@
 .fx-rows__v {
   font-family: var(--font-mono);
   font-size: .625rem;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   color: var(--accent);
 }
@@ -317,7 +317,7 @@
 .fx-chip {
   font-family: var(--font-mono);
   font-size: .625rem;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   color: var(--text-dim);
   border: 1px solid var(--border);
@@ -338,7 +338,7 @@
   justify-content: space-between;
   font-family: var(--font-mono);
   font-size: .625rem;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   color: var(--text-faint);
   margin-bottom: .3rem;
@@ -354,7 +354,7 @@
   gap: .4rem;
   font-family: var(--font-mono);
   font-size: .625rem;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   color: var(--text-dim);
   border: 1px solid var(--border);
@@ -400,7 +400,7 @@
   display: block;
   font-family: var(--font-mono);
   font-size: .6875rem;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   color: var(--text);
   margin-bottom: .6rem;

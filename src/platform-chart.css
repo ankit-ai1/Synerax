@@ -39,7 +39,7 @@
   font-family: var(--font-mono);
   font-size: .75rem;
   font-weight: 400;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   color: var(--p-mid);
   white-space: nowrap;
@@ -60,7 +60,7 @@
   cursor: pointer;
   font-family: var(--font-mono);
   font-size: .75rem;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   color: var(--p-low);
   padding: .3rem .5rem;
   border-radius: 3px;
@@ -118,7 +118,7 @@
 .pfc__axis-lbl {
   font-family: var(--font-mono);
   font-size: 4.2px;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   fill: var(--p-low);
 }
@@ -156,7 +156,7 @@
 .pfc__legend span {
   font-family: var(--font-mono);
   font-size: .5625rem;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   color: var(--p-low);
   white-space: nowrap;
@@ -195,7 +195,7 @@
   fill: var(--p-low);
 }
 .pfc__ylbl { font-size: 10px; }
-.pfc__xlbl { font-size: 9px; letter-spacing: .03em; text-transform: uppercase; }
+.pfc__xlbl { font-size: 9px; letter-spacing: normal; text-transform: uppercase; }
 
 .pfc__area { stroke: none; }
 .pfc__line {
@@ -259,7 +259,7 @@
   font-style: normal;
   font-family: var(--font-mono);
   font-size: .5rem;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   color: var(--p-low);
   opacity: 0;
@@ -278,7 +278,7 @@
   font-family: var(--font-mono);
   font-style: normal;
   font-size: .5625rem;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   color: var(--p-low);
 }

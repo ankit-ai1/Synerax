@@ -11,7 +11,7 @@ html:root body .iq-techstrip {
 html:root body .iq-techstrip .iq-techstrip__lbl {
   margin: 0 0 26px !important;
   font-size: .8125rem !important;
-  letter-spacing: .03em !important;
+  letter-spacing: normal !important;
 }
 
 /* room above and below so the hover lift and shadow aren't clipped */

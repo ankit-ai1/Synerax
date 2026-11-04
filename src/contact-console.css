@@ -90,7 +90,7 @@
   cursor: pointer;
   font-family: var(--font-mono);
   font-size: .625rem;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   transition: border-color .2s ease, color .2s ease, background .2s ease;
 }
@@ -116,7 +116,7 @@
 .cc__label {
   font-family: var(--font-mono);
   font-size: .5625rem;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   color: var(--c-low);
 }
@@ -153,7 +153,7 @@
   display: block;
   font-family: var(--font-mono);
   font-size: .5625rem;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   color: var(--c-low);
   margin-bottom: .9rem;

@@ -131,7 +131,7 @@
   display: block;
   font-family: var(--font-mono);
   font-size: .625rem;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   color: var(--sl-low);
   margin-top: .15rem;
@@ -266,7 +266,7 @@
 .fx-ind-row__note {
   font-family: var(--font-mono);
   font-size: .625rem;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   color: rgba(255,255,255,.32);
   text-align: right;

@@ -41,16 +41,16 @@
 .fxv { display: flex; flex-direction: column; gap: .8rem; height: 100%; }
 .fxv__hd { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
 .fxv__lbl {
-  font-family: var(--font-mono); font-size: .625rem; letter-spacing: .03em;
+  font-family: var(--font-mono); font-size: .625rem; letter-spacing: normal;
   text-transform: uppercase; color: var(--text-faint);
 }
 .fxv__cap {
-  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: .03em;
+  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: normal;
   text-transform: uppercase; color: var(--text-faint);
 }
 .fxv__live {
   display: inline-flex; align-items: center; gap: .35rem;
-  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: .03em;
+  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: normal;
   text-transform: uppercase; color: var(--accent);
   border: 1px solid var(--accent-line); border-radius: 999px; padding: .15rem .5rem;
 }
@@ -75,7 +75,7 @@
   color: var(--accent); letter-spacing: -.02em; font-variant-numeric: tabular-nums;
 }
 .fxv-metric__l {
-  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: .03em;
+  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: normal;
   text-transform: uppercase; color: var(--text-faint);
 }
 .fxv-queue { display: flex; align-items: flex-end; gap: 4px; height: 84px; margin-top: auto; }
@@ -123,7 +123,7 @@
 }
 .fxv-api__row:last-child { border-bottom: 0 }
 .fxv-api__m {
-  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: .03em; color: var(--accent);
+  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: normal; color: var(--accent);
   border: 1px solid var(--accent-line); border-radius: 3px; padding: .1rem .25rem; text-align: center;
 }
 .fxv-api__p { font-family: var(--font-mono); font-size: .75rem; color: var(--text-dim); }
@@ -148,7 +148,7 @@
 }
 @keyframes fxv-gauge { to { stroke-dashoffset: var(--dash) } }
 .fxv-gauge__k {
-  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: .03em;
+  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: normal;
   text-transform: uppercase; color: var(--text-faint);
 }
 
@@ -159,11 +159,11 @@
 .fxv-arch__line, .fx-arch__line { fill: none; stroke: var(--border); stroke-width: 1; }
 .fxv-arch__t, .fx-arch__t {
   fill: var(--text-dim); font-family: var(--font-mono); font-size: 9px;
-  letter-spacing: .03em; text-transform: uppercase;
+  letter-spacing: normal; text-transform: uppercase;
 }
 .fxv-arch__vpclbl, .fx-arch__vpclbl {
   fill: var(--text-faint); font-family: var(--font-mono); font-size: 8px;
-  letter-spacing: .03em; text-transform: uppercase;
+  letter-spacing: normal; text-transform: uppercase;
 }
 /* orange data flowing along the connectors */
 .fxv-arch__flow, .fx-arch__flow {
@@ -198,7 +198,7 @@
 }
 @keyframes fxv-tick { from { transform: scale(.4); opacity: 0 } to { transform: scale(1); opacity: 1 } }
 .fxv-scan__s {
-  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: .03em;
+  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: normal;
   text-transform: uppercase; color: var(--data-4); animation: fxv-in .4s backwards;
 }
 
@@ -223,7 +223,7 @@
 }
 .fxv-rows__row:last-child { border-bottom: 0 }
 .fxv-rows__v {
-  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: .03em;
+  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: normal;
   text-transform: uppercase; color: var(--accent);
 }
 
@@ -249,7 +249,7 @@
 .fxv-chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: auto; }
 .fxv-chips--col { flex-direction: column; align-items: flex-start; margin-top: 0; }
 .fxv-chip {
-  font-family: var(--font-mono); font-size: .625rem; letter-spacing: .03em; text-transform: uppercase;
+  font-family: var(--font-mono); font-size: .625rem; letter-spacing: normal; text-transform: uppercase;
   color: var(--text-dim); border: 1px solid var(--border); border-radius: 999px; padding: .25rem .6rem;
   animation: fxv-in .4s var(--ease, cubic-bezier(.22,1,.36,1)) backwards;
 }
@@ -268,7 +268,7 @@
 }
 .fxv-road__t { display: block; font-size: .875rem; font-weight: 500; color: var(--text); }
 .fxv-road__s {
-  display: block; font-family: var(--font-mono); font-size: .5625rem; letter-spacing: .03em;
+  display: block; font-family: var(--font-mono); font-size: .5625rem; letter-spacing: normal;
   text-transform: uppercase; color: var(--text-faint); margin-top: .15rem;
 }
 

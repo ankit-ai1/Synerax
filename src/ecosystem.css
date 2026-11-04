@@ -23,7 +23,7 @@ html:root body .eco .eco__eye.eco__eye {
   margin: 0 0 22px !important;
   color: #00bbfe !important;
   -webkit-text-fill-color: #00bbfe !important;
-  letter-spacing: .03em !important;
+  letter-spacing: normal !important;
 }
 html:root body .eco .eco__eye::before,
 html:root body .eco .eco__eye::after {

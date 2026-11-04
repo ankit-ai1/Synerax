@@ -77,7 +77,7 @@
   align-items: center !important;
   gap: .35rem !important;
   font-size: .5625rem !important;
-  letter-spacing: .03em;
+  letter-spacing: normal;
   text-transform: uppercase;
   white-space: nowrap;
 }

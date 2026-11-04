@@ -114,7 +114,7 @@
   font-family: var(--font-mono) !important;
   font-size: .6875rem !important;
   font-weight: 400 !important;
-  letter-spacing: .03em !important;
+  letter-spacing: normal !important;
   text-transform: uppercase !important;
   color: #fff !important;
   -webkit-text-fill-color: #fff !important;
@@ -187,7 +187,7 @@
 .ct-info-card__sub,
 .bpost-sidebar__text {
   font-size: .6875rem !important;
-  letter-spacing: .03em !important;
+  letter-spacing: normal !important;
   text-transform: uppercase !important;
   color: rgba(255,255,255,.38) !important;
   -webkit-text-fill-color: rgba(255,255,255,.38) !important;
@@ -201,7 +201,7 @@
 .iq-news__link {
   font-family: var(--font-mono) !important;
   font-size: .6875rem !important;
-  letter-spacing: .03em !important;
+  letter-spacing: normal !important;
   text-transform: uppercase !important;
 }
 

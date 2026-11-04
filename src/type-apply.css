@@ -80,7 +80,7 @@ html:root body :is(
   font-family: var(--font-body) !important;
   font-weight: 600 !important;
   font-size: 13px !important;
-  letter-spacing: .03em !important;
+  letter-spacing: normal !important;
   text-transform: uppercase !important;
 }
 

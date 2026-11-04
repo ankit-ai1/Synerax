@@ -268,7 +268,7 @@ h1, h2, h3 {
   font-family: var(--font-mono) !important;
   font-size: .6875rem !important;
   font-weight: 400 !important;
-  letter-spacing: .03em !important;
+  letter-spacing: normal !important;
   text-transform: uppercase !important;
   color: rgba(255,255,255,.42) !important;
 }
@@ -319,7 +319,7 @@ h1, h2, h3 {
   border-radius: 4px !important;
   font-family: var(--font-mono) !important;
   font-size: .8125rem !important;
-  letter-spacing: .03em !important;
+  letter-spacing: normal !important;
   text-transform: uppercase !important;
   box-shadow: none !important;
 }
@@ -343,7 +343,7 @@ h1, h2, h3 {
   border-radius: 4px !important;
   font-family: var(--font-mono) !important;
   font-size: .8125rem !important;
-  letter-spacing: .03em !important;
+  letter-spacing: normal !important;
   text-transform: uppercase !important;
 }
 .iq-btn-ring:hover,

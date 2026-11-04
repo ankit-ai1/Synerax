@@ -36,7 +36,7 @@ html:root body .aih-lede .aih-lede__eye.aih-lede__eye {
   margin: 0 0 22px !important;
   color: #00bbfe !important;
   -webkit-text-fill-color: #00bbfe !important;
-  letter-spacing: .3em !important;
+  letter-spacing: .08em !important;
 }
 html:root body .aih-lede .aih-lede__eye::before,
 html:root body .aih-lede .aih-lede__eye::after {
@@ -70,15 +70,10 @@ html:root body .aih-lede .aih-lede__h2 {
 html:root body .aih-lede .aih-lede__h2 .aih-lede__grad.aih-lede__grad {
   display: inline-block;
   padding-bottom: .08em;
-  background-image: linear-gradient(100deg, #00bbfe 0%, #33c9fe 30%, #0ea5e9 55%, #33c9fe 75%, #00bbfe 100%);
-  background-size: 220% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
   font-family: inherit !important;
   font-style: normal !important;
-  animation: aih-shimmer 7s ease-in-out infinite alternate;
 }
 @keyframes aih-shimmer { from { background-position: 100% 0; } to { background-position: 0% 0; } }
 html:root body .aih-lede .aih-lede__sub {
@@ -130,8 +125,6 @@ html:root body .aih .aih-card {
   border: 1px solid var(--border) !important;
   border-radius: 16px;
   background: color-mix(in srgb, var(--fx-00) 88%, transparent);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
   box-shadow: 0 1px 2px rgba(10,22,40,.04), 0 14px 32px -20px rgba(10,22,40,.22);
   cursor: default;
   transition:
@@ -327,7 +320,7 @@ html:root body .aih .aih-card__desc {
   font-family: var(--font-mono);
   font-size: .8125rem;
   font-weight: 600;
-  letter-spacing: .2em;
+  letter-spacing: .08em;
   line-height: 1.5;
   text-align: center;
   text-transform: uppercase;

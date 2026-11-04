@@ -34,10 +34,10 @@
 
   /* Use the families actually loaded in index.html. Helvetica Neue
      resolves to Arial on Windows and breaks the grotesk look. */
-  --font-heading: 'Geist', 'Inter', system-ui, -apple-system, sans-serif !important;
-  --font-body:    'Geist', 'Inter', system-ui, -apple-system, sans-serif !important;
-  --font-sans:    'Geist', 'Inter', system-ui, -apple-system, sans-serif !important;
-  --font-mono:    'Geist Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace !important;
+  --font-heading: 'Instrument Sans', system-ui, -apple-system, sans-serif !important;
+  --font-body:    'Instrument Sans', system-ui, -apple-system, sans-serif !important;
+  --font-sans:    'Instrument Sans', system-ui, -apple-system, sans-serif !important;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace !important;
 
   --accent:        #00bbfe !important;
   --accent-bright: #2cc6fe !important;
@@ -268,7 +268,7 @@ h1, h2, h3 {
   font-family: var(--font-mono) !important;
   font-size: .6875rem !important;
   font-weight: 400 !important;
-  letter-spacing: .12em !important;
+  letter-spacing: .08em !important;
   text-transform: uppercase !important;
   color: rgba(255,255,255,.42) !important;
 }

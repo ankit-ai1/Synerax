@@ -29,8 +29,8 @@ export default function CareersBanner() {
           Careers at <span>Synerax.</span>
         </h2>
         <p className="cr-desc">
-          We invite you to supercharge your potential. Find what inspires
-          and drives you. Find your spark.
+          Senior, remote-first teams shipping cloud and AI systems for real clients.
+          See the open roles and how we hire.
         </p>
         <Link to="/careers" className="cr-cta">Explore Careers</Link>
       </div>

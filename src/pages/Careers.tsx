@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import FaqSection from '../components/FaqSection'
+import { careersFaqs } from '../data/faqs'
 import { useLead } from '../context/LeadContext'
 
 const benefits = [
@@ -11,7 +13,7 @@ const benefits = [
   { icon: '🎓', title: 'Learning Budget', desc: '$2,000/year for courses, conferences, books, and certifications. We invest in your growth.' },
   { icon: '🏥', title: 'Health Coverage', desc: 'Comprehensive health, dental, and vision insurance for you and your dependants.' },
   { icon: '💡', title: '20% R&D Time', desc: 'One day per week to explore new technologies, build side projects, or contribute to open source.' },
-  { icon: '🌍', title: 'Global Team', desc: 'Work alongside world-class engineers across 20+ countries. Diverse perspectives, better solutions.' },
+  { icon: '🌍', title: 'Global Team', desc: 'Work alongside senior engineers across 20+ countries. Diverse perspectives, better solutions.' },
   { icon: '🏖️', title: 'Unlimited PTO', desc: 'Take the time you need. We trust our team to manage their time and deliver results.' },
 ]
 
@@ -52,7 +54,7 @@ export default function Careers() {
             Join Our <span className="car-hero__accent">Team</span>
           </h1>
           <p className="car-hero__sub">
-            Join a team of world-class engineers, AI researchers, and product thinkers
+            Join a team of senior engineers, AI researchers, and product thinkers
             building enterprise technology used by millions of people every day.
           </p>
           <div className="car-hero__stats">
@@ -211,6 +213,9 @@ export default function Careers() {
           </div>
         </div>
       </section>
+
+      {/* ── FAQ ── */}
+      <FaqSection faqs={careersFaqs} sub="What it is like to work at Synerax, and how to apply." />
 
       {/* ── CTA BAND ── */}
       <section className="cta-band">

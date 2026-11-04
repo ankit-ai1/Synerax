@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import FaqSection from '../components/FaqSection'
+import { contactFaqs } from '../data/faqs'
 
 interface FormData {
   name: string
@@ -19,7 +21,6 @@ export default function Contact() {
     service: '', budget: '', message: ''
   })
   const [submitted, setSubmitted] = useState(false)
-  const [openFaq, setOpenFaq] = useState<number | null>(null)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm(f => ({ ...f, [e.target.name]: e.target.value }))
@@ -33,15 +34,6 @@ export default function Contact() {
       setForm({ name: '', email: '', phone: '', company: '', service: '', budget: '', message: '' })
     }, 4000)
   }
-
-  const faqs = [
-    { q: 'How long does a typical project take?', a: 'Timelines vary by scope: a landing page takes 1–2 weeks; a full web/mobile app MVP takes 6–10 weeks; an enterprise platform with AI integrations typically takes 3–6 months. We provide a detailed timeline in every proposal.' },
-    { q: 'What engagement models do you offer?', a: 'We work on Fixed-Price (best for well-defined scopes), Time & Materials (best for evolving requirements), and Dedicated Team (best for long-term development). We\'ll recommend the best model for your situation.' },
-    { q: 'Do you sign NDAs before sharing project details?', a: 'Absolutely. We sign an NDA at any stage — even before the initial call if you prefer. Your ideas and business information are completely confidential.' },
-    { q: 'What happens after I submit this form?', a: 'You\'ll receive a confirmation email immediately. Within 24 hours, a senior specialist will reach out to schedule a 30-minute discovery call. After the call, we\'ll prepare a detailed proposal within 48 hours.' },
-    { q: 'Do you provide post-launch support?', a: 'Yes. All projects include a 30-day free support period post-launch. After that, we offer flexible maintenance plans from basic bug fixes to full managed services with 24/7 monitoring and SLA-backed uptime.' },
-    { q: 'Can you work with our existing team and codebase?', a: 'Absolutely. Many engagements involve augmenting existing teams or inheriting legacy codebases. We conduct a thorough technical audit first, then provide a transparent assessment before we begin.' },
-  ]
 
   const contactInfo = [
     {
@@ -282,28 +274,7 @@ export default function Contact() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="ct-faq">
-        <div className="ct-container">
-          <div className="ct-faq__header">
-            <span className="ct-hero__tag">FAQ</span>
-            <h2 className="ct-faq__h2">Frequently Asked <span>Questions</span></h2>
-            <p className="ct-faq__sub">Everything you need to know before starting a project with us.</p>
-          </div>
-          <div className="ct-faq__list">
-            {faqs.map((faq, i) => (
-              <div key={i} className={`ct-faq__item${openFaq === i ? ' open' : ''}`}>
-                <button className="ct-faq__q" onClick={() => setOpenFaq(openFaq === i ? null : i)}>
-                  <span>{faq.q}</span>
-                  <span className="ct-faq__icon">{openFaq === i ? '−' : '+'}</span>
-                </button>
-                {openFaq === i && (
-                  <div className="ct-faq__a">{faq.a}</div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FaqSection faqs={contactFaqs} sub="Everything you need to know before starting a project with us." />
 
       {/* ── CTA ── */}
       <section className="cta-band">

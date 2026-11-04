@@ -85,7 +85,7 @@
 .fx-pillar__num {
   font-family: var(--font-mono);
   font-size: .6875rem;
-  letter-spacing: .12em;
+  letter-spacing: .08em;
   color: var(--accent);
   display: block;
   margin-bottom: 1.1rem;

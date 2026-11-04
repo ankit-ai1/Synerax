@@ -1,6 +1,6 @@
 import { useLayoutEffect, useRef, useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import { gsap, ScrollTrigger, prefersReduced } from '../lib/motion'
+import { gsap, ScrollTrigger } from '../lib/motion'
 import {
   VizAWS, VizAgenticAI, VizObservability, VizDevSecOps,
   VizFrontend, VizModernization, VizITSM,
@@ -24,15 +24,15 @@ type Svc = {
 
 const services: Svc[] = [
   { tag: 'Cloud', icon: 'cloud', title: 'Land in the cloud without the turbulence.',
-    lede: 'Multi-cloud architecture and zero-downtime migrations on AWS, Azure and GCP — codified in Terraform from day one.',
+    lede: 'Multi-cloud architecture and zero-downtime migrations on AWS, Azure and GCP, codified in Terraform from day one.',
     points: ['Landing zones & Terraform IaC', 'Zero-downtime cutovers', '99.99% availability by design'],
     stack: ['AWS', 'Azure', 'GCP', 'Kubernetes'], to: '/solutions/cloud-engineering-migration', viz: <VizAWS /> },
   { tag: 'Agentic AI', icon: 'ai', title: 'Agents that do the work, not just the talking.',
-    lede: 'Production LLM agents wired into your tools and data — with retrieval, evaluations and guardrails built in.',
+    lede: 'Production LLM agents wired into your tools and data, with retrieval, evaluations and guardrails built in.',
     points: ['RAG over your private data', 'Tool-using autonomous workflows', 'Evals, tracing & human-in-loop'],
     stack: ['OpenAI', 'Claude', 'LangGraph', 'pgvector'], to: '/solutions/agentic-ai', viz: <VizAgenticAI /> },
   { tag: 'Reliability', icon: 'pulse', title: 'See everything. Get paged less.',
-    lede: 'Metrics, logs and traces unified behind SLOs — and an on-call rotation your engineers can actually live with.',
+    lede: 'Metrics, logs and traces unified behind SLOs, plus an on-call rotation your engineers can actually live with.',
     points: ['OpenTelemetry end to end', 'SLOs & error budgets', 'Runbooks that self-heal'],
     stack: ['Grafana', 'Datadog', 'Prometheus'], to: '/solutions/observability-sre', viz: <VizObservability /> },
   { tag: 'Delivery', icon: 'ship', title: 'Ship fast. Ship safe. Spend less.',
@@ -40,15 +40,15 @@ const services: Svc[] = [
     points: ['SAST, SCA & secrets in every build', 'Canary releases with auto-rollback', 'Up to 38% lower cloud bill'],
     stack: ['GitHub Actions', 'ArgoCD', 'Kubecost'], to: '/solutions/devsecops-finops', viz: <VizDevSecOps /> },
   { tag: 'Product', icon: 'app', title: 'Software your teams want to open.',
-    lede: 'Enterprise web platforms engineered for speed, scale and accessibility — from design system to deployed API.',
+    lede: 'Enterprise web platforms engineered for speed, scale and accessibility, from design system to deployed API.',
     points: ['Design systems & accessible UI', 'Core Web Vitals in the green', 'APIs built to be integrated'],
     stack: ['React', 'Next.js', 'Node.js', 'Python'], to: '/solutions/web-enterprise-applications', viz: <VizFrontend /> },
   { tag: 'Modernization', icon: 'refresh', title: 'Retire the monolith. Keep the business running.',
-    lede: 'Strangler-pattern re-architecture that moves legacy systems to services route by route — with no feature freeze.',
+    lede: 'Strangler-pattern re-architecture that moves legacy systems to services route by route, with no feature freeze.',
     points: ['Seams mapped from real call graphs', 'Traffic shifted route by route', '4× release rate afterwards'],
     stack: ['Docker', 'Kafka', 'Kubernetes'], to: '/solutions/application-modernization', viz: <VizModernization /> },
   { tag: 'Operations', icon: 'desk', title: 'IT that mostly runs itself.',
-    lede: 'ITIL-aligned service desks where automation resolves the routine and routes the rest — inside your SLAs.',
+    lede: 'ITIL-aligned service desks where automation resolves the routine and routes the rest, inside your SLAs.',
     points: ['Auto-resolved access & resets', 'SLA governance dashboards', 'ServiceNow & Jira SM experts'],
     stack: ['ServiceNow', 'Jira SM', 'ITIL 4'], to: '/solutions/itsm', viz: <VizITSM /> },
 ]
@@ -69,51 +69,83 @@ export default function ServiceStack() {
 
   useLayoutEffect(() => {
     const el = root.current
-    if (!el) return
+    const stack = el?.querySelector<HTMLElement>('.svs-stack')
+    if (!el || !stack) return
     const cards = gsap.utils.toArray<HTMLElement>('.svs-card', el)
 
-    const ctx = gsap.context(() => {
+    /* Every trigger is measured against the (non-sticky) stack, at each
+       card's position in normal flow. Triggering on the sticky cards
+       themselves made ScrollTrigger read wherever a card happened to be
+       stuck at refresh time (fonts landing, a resize, the mobile URL bar)
+       and the stack jumped. Heights are re-read on every refresh. */
+    const flowTop = (k: number) => {
+      let y = 0
+      for (let j = 0; j < k; j++) {
+        y += cards[j].offsetHeight + parseFloat(getComputedStyle(cards[j]).marginBottom)
+      }
+      return y
+    }
+    const at = (k: number, viewport: string, extra = 0) => () =>
+      `top+=${flowTop(k) + extra} ${viewport}`
+
+    const mm = gsap.matchMedia(el)
+    mm.add({ desktop: '(min-width: 901px)', reduce: '(prefers-reduced-motion: reduce)' }, ctx => {
+      const { desktop, reduce } = ctx.conditions as { desktop: boolean; reduce: boolean }
+
       cards.forEach((card, i) => {
+        const last = i === cards.length - 1
+
         // which card is "on top" — drives the dot rail
         ScrollTrigger.create({
-          trigger: card,
-          start: 'top 55%',
-          end: 'bottom 55%',
+          trigger: stack,
+          start: at(i, '55%'),
+          end: last ? at(i, '55%', card.offsetHeight) : at(i + 1, '55%'),
+          invalidateOnRefresh: true,
           onToggle: self => { if (self.isActive) setCurrent(i) },
         })
 
-        if (prefersReduced()) return
+        if (reduce) return
 
         // content lands as the card arrives
         gsap.from(card.querySelectorAll('.svs-reveal'), {
-          y: 26, opacity: 0, stagger: 0.07, duration: 0.7, ease: 'power3.out',
+          y: 20, opacity: 0, stagger: 0.05, duration: 0.55, ease: 'power3.out',
           clearProps: 'transform,opacity',
-          scrollTrigger: { trigger: card, start: 'top 72%', once: true },
+          scrollTrigger: { trigger: stack, start: at(i, '78%'), once: true, invalidateOnRefresh: true },
         })
         gsap.from(card.querySelector('.svs-window'), {
-          y: 40, opacity: 0, scale: 0.96, duration: 0.9, ease: 'power3.out',
+          y: 30, opacity: 0, duration: 0.7, ease: 'power3.out',
           clearProps: 'transform,opacity',
-          scrollTrigger: { trigger: card, start: 'top 70%', once: true },
+          scrollTrigger: { trigger: stack, start: at(i, '76%'), once: true, invalidateOnRefresh: true },
         })
 
-        // covered cards recede: shrink a little and dim, scrubbed to scroll
-        const next = cards[i + 1]
-        if (!next) return
-        const depth = cards.length - i
-        gsap.to(card, {
-          scale: 1 - Math.min(depth, 5) * 0.018,
-          ease: 'none',
-          scrollTrigger: { trigger: next, start: 'top bottom', end: 'top 30%', scrub: true },
-        })
+        // covered cards recede as the next one slides over: dim everywhere,
+        // shrink only on desktop (scaling text on phones makes it shimmer)
+        if (last) return
+        if (desktop) {
+          gsap.to(card, {
+            scale: 1 - Math.min(cards.length - i, 5) * 0.018,
+            ease: 'none',
+            force3D: true,
+            scrollTrigger: { trigger: stack, start: at(i + 1, 'bottom'), end: at(i + 1, '30%'), scrub: 0.4, invalidateOnRefresh: true },
+          })
+        }
         gsap.to(card.querySelector('.svs-card__shade'), {
           opacity: 1,
           ease: 'none',
-          scrollTrigger: { trigger: next, start: 'top 85%', end: 'top 30%', scrub: true },
+          scrollTrigger: { trigger: stack, start: at(i + 1, '85%'), end: at(i + 1, '30%'), scrub: 0.4, invalidateOnRefresh: true },
         })
       })
-    }, el)
+    })
 
-    return () => ctx.revert()
+    // card heights settle once fonts and images land
+    const refresh = () => ScrollTrigger.refresh()
+    window.addEventListener('load', refresh)
+    ;(document as Document & { fonts?: FontFaceSet }).fonts?.ready.then(refresh)
+
+    return () => {
+      window.removeEventListener('load', refresh)
+      mm.revert()
+    }
   }, [])
 
   /* A pinned card reports its stuck position, so work out where it sits in

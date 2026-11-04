@@ -13,11 +13,14 @@ const ic: Record<string, ReactNode> = {
 }
 
 /* four lanes, two per side — each lane has its own colour, like a circuit bus */
-const lanes = ['#00bbfe', '#0ea5e9', '#6366f1', '#14b8a6']
+const lanes = ['#00bbfe', '#0ea5e9', '#2563eb', '#14b8a6']
+
+/* one beat for every wire pulse, hub → card */
+const PULSE = '2s'
 
 const items = [
   { domain: 'Forecasting', title: 'Predictive Demand & Revenue Models', icon: 'chart',
-    desc: 'ML models trained on your history that forecast demand, churn and revenue weeks ahead — with confidence bands finance can plan against.' },
+    desc: 'ML models trained on your history that forecast demand, churn and revenue weeks ahead, with confidence bands finance can plan against.' },
   { domain: 'Commerce', title: 'Intelligent Recommendations Engine', icon: 'spark',
     desc: 'Context-aware recommendations across web, app and sales tools that lift conversion and basket size, retrained on live behaviour.' },
   { domain: 'Sales', title: 'Autonomous Sales Learning Engine', icon: 'rocket',
@@ -25,13 +28,13 @@ const items = [
   { domain: 'Payments', title: 'Visual Dispute Analytics', icon: 'scan',
     desc: 'AI dashboards that surface chargeback patterns and anomalies in real time, so disputes are won before they escalate.' },
   { domain: 'Operations', title: 'Agentic AI Workflows', icon: 'bot',
-    desc: 'Autonomous agents that run multi-step processes end to end — reading documents, calling your APIs and escalating only when it matters.' },
+    desc: 'Autonomous agents that run multi-step processes end to end: reading documents, calling your APIs and escalating only when it matters.' },
   { domain: 'Revenue', title: 'Quota & Territory Intelligence', icon: 'target',
     desc: 'Data-driven quota setting and territory design at enterprise scale, rebalanced automatically as markets shift.' },
   { domain: 'Process', title: 'Process Mining & Intelligence', icon: 'flow',
     desc: 'Event-log analysis that maps how work really flows, pinpoints bottlenecks and models the payoff of every fix before you build it.' },
   { domain: 'Global', title: 'Compliant AI at Global Scale', icon: 'globe',
-    desc: 'Multi-region AI infrastructure with data residency, guardrails and audit trails built in — deployed close to every market you serve.' },
+    desc: 'Multi-region AI infrastructure with data residency, guardrails and audit trails built in, deployed close to every market you serve.' },
 ]
 /* items 0–3 sit on the left, 4–7 on the right; lane = side × half */
 const laneOf = (i: number) => (i < 4 ? (i < 2 ? 0 : 1) : (i < 6 ? 2 : 3))
@@ -120,7 +123,7 @@ export default function AiHub() {
         <span className="aih-card__line" aria-hidden="true" />
         <span className="aih-card__ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{ic[it.icon]}</svg></span>
         <div className="aih-card__body">
-          <h3 className="aih-card__title"><span>{it.domain} —</span> {it.title}</h3>
+          <h3 className="aih-card__title"><span>{it.domain}:</span> {it.title}</h3>
           <p className="aih-card__desc">{it.desc}</p>
         </div>
         <svg className="aih-card__arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" /></svg>
@@ -136,9 +139,21 @@ export default function AiHub() {
             <path className="aih-wire__glow" d={w.d} pathLength={1} />
             <path className="aih-wire__line" d={w.d} pathLength={1} />
             <circle className="aih-wire__node" cx={w.jx} cy={w.jy} r="4" />
+            {/* every pulse shares one clock: they leave the hub together and
+                reach their cards together (keyPoints 1→0 runs the
+                card→hub path backwards), fading in at the rim and out at
+                the card. The duration never changes with the highlight, so
+                the rhythm cannot jump. */}
             {inView && !still && (
-              <circle className="aih-wire__pulse" r="3.5">
-                <animateMotion dur={i === active ? '1.4s' : '2.6s'} begin={`${(i % 4) * 0.4}s`} repeatCount="indefinite" path={w.d} />
+              <circle className="aih-wire__pulse" r="3.5" opacity="0">
+                <animateMotion
+                  dur={PULSE} begin="0s" repeatCount="indefinite" path={w.d}
+                  keyPoints="1;0" keyTimes="0;1" calcMode="spline" keySplines=".45 0 .25 1"
+                />
+                <animate
+                  attributeName="opacity" dur={PULSE} begin="0s" repeatCount="indefinite"
+                  values="0;1;1;0" keyTimes="0;.12;.82;1"
+                />
               </circle>
             )}
           </g>

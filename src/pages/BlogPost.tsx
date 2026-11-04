@@ -2,7 +2,8 @@ import { useParams, Link, Navigate } from 'react-router-dom'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import { useLead } from '../context/LeadContext'
-import { posts } from './Blog'
+import { posts } from '../data/posts'
+import { SITE_URL } from '../seo'
 
 const TAG_COLORS: Record<string, { bg: string; color: string }> = {
   Product:     { bg: 'rgba(0,187,254,0.12)',  color: '#00bbfe' },
@@ -95,10 +96,10 @@ export default function BlogPost() {
             <div className="bpost-sidebar__card">
               <div className="bpost-sidebar__label">Share This Article</div>
               <div className="bpost-share">
-                <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noreferrer" className="bpost-share__btn">
+                <a href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(`${SITE_URL}/blog/${post.slug}`)}`} target="_blank" rel="noreferrer" className="bpost-share__btn">
                   𝕏 Twitter
                 </a>
-                <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`} target="_blank" rel="noreferrer" className="bpost-share__btn">
+                <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${SITE_URL}/blog/${post.slug}`)}`} target="_blank" rel="noreferrer" className="bpost-share__btn">
                   in LinkedIn
                 </a>
               </div>

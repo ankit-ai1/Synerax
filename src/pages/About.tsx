@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import FaqSection from '../components/FaqSection'
+import { aboutFaqs } from '../data/faqs'
 import DataCard from '../components/DataCard'
 import { useLead } from '../context/LeadContext'
 
@@ -107,7 +109,7 @@ export default function About() {
                 <div className="pillar__icon">🌍</div>
                 <div>
                   <strong>Global Reach, Local Expertise</strong>
-                  <p>Serving 20+ countries while staying rooted in India's world-class engineering talent.</p>
+                  <p>Serving 20+ countries while staying rooted in India's deep engineering talent.</p>
                 </div>
               </div>
               <div className="pillar">
@@ -120,8 +122,8 @@ export default function About() {
               <div className="pillar">
                 <div className="pillar__icon">🚀</div>
                 <div>
-                  <strong>Cutting-Edge by Default</strong>
-                  <p>We invest in R&amp;D so our clients always have access to the latest technology innovations.</p>
+                  <strong>Current Technology, Proven First</strong>
+                  <p>We invest in R&amp;D so new tools reach client work only after we have proven them in-house.</p>
                 </div>
               </div>
             </div>
@@ -268,6 +270,11 @@ export default function About() {
           </div>
         </div>
       </section>
+
+      {/* ══════════════════════════════════════════
+          FAQ
+      ══════════════════════════════════════════ */}
+      <FaqSection faqs={aboutFaqs} sub="A few things people ask before working with us." />
 
       {/* ══════════════════════════════════════════
           CTA BAND

@@ -4,6 +4,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+/* Phones resize the viewport whenever the URL bar shows or hides while
+   scrolling. Re-measuring every trigger on that makes scrubbed and sticky
+   sections jump mid-scroll, so only real width changes trigger a refresh. */
+ScrollTrigger.config({ ignoreMobileResize: true })
+
 /* Shared motion language for the whole page. */
 export const EASE = 'power3.out'
 export const DUR = 0.7

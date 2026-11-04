@@ -36,7 +36,7 @@ type Phase = 'typing' | 'run' | 'hold' | 'erase'
 /**
  * The hero's "command bar": types a project brief, then a plan builds
  * underneath it — skeleton cards fill in and progress to Ready before the
- * next brief replaces it. Hovering the panel pauses the loop so it can be read.
+ * next brief replaces it. Hovering holds a finished plan so it can be read.
  */
 export default function HeroCommand() {
   const still = prefersReduced()
@@ -49,23 +49,25 @@ export default function HeroCommand() {
   const run = runs[qi]
 
   useEffect(() => {
-    if (still || hover) return
+    // hovering holds the finished plan for reading; it never freezes a
+    // half-typed brief or a spinning "Planning" state
+    if (still || (hover && phase === 'hold')) return
     let t: number
 
     if (phase === 'typing') {
       t = n < run.brief.length
-        ? window.setTimeout(() => setN(n + 1), 32 + Math.random() * 44)
-        : window.setTimeout(() => { setPhase('run'); setStage(1) }, 560)
+        ? window.setTimeout(() => setN(n + 1), 16 + Math.random() * 20)
+        : window.setTimeout(() => { setPhase('run'); setStage(1) }, 150)
     } else if (phase === 'run') {
       t = stage < 3
-        ? window.setTimeout(() => setStage(stage + 1), 1150)
-        : window.setTimeout(() => setPhase('hold'), 200)
+        ? window.setTimeout(() => setStage(stage + 1), 380)
+        : window.setTimeout(() => setPhase('hold'), 100)
     } else if (phase === 'hold') {
-      t = window.setTimeout(() => { setStage(0); setPhase('erase') }, 3000)
+      t = window.setTimeout(() => { setStage(0); setPhase('erase') }, 2000)
     } else {
       t = n > 0
-        ? window.setTimeout(() => setN(n - 1), 13)
-        : window.setTimeout(() => { setQi((qi + 1) % runs.length); setPhase('typing') }, 420)
+        ? window.setTimeout(() => setN(n - 1), 8)
+        : window.setTimeout(() => { setQi((qi + 1) % runs.length); setPhase('typing') }, 250)
     }
     return () => window.clearTimeout(t)
   }, [phase, n, stage, hover, qi, still, run.brief.length])

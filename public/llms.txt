@@ -8,23 +8,23 @@ Synerax is a team of engineers, designers and AI specialists, founded and headqu
 
 ## Services
 
-- [Web & Enterprise Applications](https://synerax.in/solutions/web-enterprise-applications): Custom web platforms and enterprise-grade applications, engineered to scale.
-- [DevSecOps & FinOps](https://synerax.in/solutions/devsecops-finops): Secure automated delivery pipelines, infrastructure as code and cloud cost efficiency.
-- [Agentic AI Solutions](https://synerax.in/solutions/agentic-ai): Autonomous LLM agents, custom LLM pipelines and retrieval over your own data.
-- [Cloud Engineering & Migration](https://synerax.in/solutions/cloud-engineering-migration): Cloud architecture, wave-based migration and optimization on AWS, Azure and GCP.
-- [Observability, SRE & Production Engineering](https://synerax.in/solutions/observability-sre): Metrics, logs and traces, SLOs with error budgets, incident response and on-call engineering.
-- [Application Modernization](https://synerax.in/solutions/application-modernization): Legacy systems re-architected for the cloud era, without a big-bang rewrite.
-- [IT Service Management (ITSM)](https://synerax.in/solutions/itsm): ITIL-aligned processes, service desk and SLA governance.
-- [All solutions](https://synerax.in/solutions)
+- [Web & Enterprise Applications](https://www.synerax.in/solutions/web-enterprise-applications): Custom web platforms and enterprise-grade applications, engineered to scale.
+- [DevSecOps & FinOps](https://www.synerax.in/solutions/devsecops-finops): Secure automated delivery pipelines, infrastructure as code and cloud cost efficiency.
+- [Agentic AI Solutions](https://www.synerax.in/solutions/agentic-ai): Autonomous LLM agents, custom LLM pipelines and retrieval over your own data.
+- [Cloud Engineering & Migration](https://www.synerax.in/solutions/cloud-engineering-migration): Cloud architecture, wave-based migration and optimization on AWS, Azure and GCP.
+- [Observability, SRE & Production Engineering](https://www.synerax.in/solutions/observability-sre): Metrics, logs and traces, SLOs with error budgets, incident response and on-call engineering.
+- [Application Modernization](https://www.synerax.in/solutions/application-modernization): Legacy systems re-architected for the cloud era, without a big-bang rewrite.
+- [IT Service Management (ITSM)](https://www.synerax.in/solutions/itsm): ITIL-aligned processes, service desk and SLA governance.
+- [All solutions](https://www.synerax.in/solutions)
 
 ## Industries
 
-- [Healthcare](https://synerax.in/industries/healthcare): Secure, compliant IT for healthcare and pharmaceutical operations.
-- [Financial Services](https://synerax.in/industries/financial-services): High-availability, compliant IT for banks, fintech and insurance.
-- [Retail & E-Commerce](https://synerax.in/industries/retail): E-commerce platforms, real-time inventory and AI personalisation.
-- [Government](https://synerax.in/industries/government): Citizen-centric digital services and secure public-sector infrastructure.
-- [Education & EdTech](https://synerax.in/industries/education): Scalable learning platforms and secure campus infrastructure.
-- [Logistics & Supply Chain](https://synerax.in/industries/logistics): Real-time tracking, demand forecasting, warehouse automation and carrier integrations.
+- [Healthcare](https://www.synerax.in/industries/healthcare): Secure, compliant IT for healthcare and pharmaceutical operations.
+- [Financial Services](https://www.synerax.in/industries/financial-services): High-availability, compliant IT for banks, fintech and insurance.
+- [Retail & E-Commerce](https://www.synerax.in/industries/retail): E-commerce platforms, real-time inventory and AI personalisation.
+- [Government](https://www.synerax.in/industries/government): Citizen-centric digital services and secure public-sector infrastructure.
+- [Education & EdTech](https://www.synerax.in/industries/education): Scalable learning platforms and secure campus infrastructure.
+- [Logistics & Supply Chain](https://www.synerax.in/industries/logistics): Real-time tracking, demand forecasting, warehouse automation and carrier integrations.
 
 ## Products
 
@@ -33,14 +33,14 @@ Synerax is a team of engineers, designers and AI specialists, founded and headqu
 
 ## Resources
 
-- [Blog & Insights](https://synerax.in/blog): Articles on AI, engineering, DevOps, security and industry topics.
-- [Case Studies](https://synerax.in/blog): Case studies are published on the blog.
+- [Blog & Insights](https://www.synerax.in/blog): Articles on AI, engineering, DevOps, security and industry topics.
+- [Case Studies](https://www.synerax.in/blog): Case studies are published on the blog.
 
 ## Company
 
-- [About](https://synerax.in/about)
-- [Careers](https://synerax.in/careers): Careers email — careers@synerax.in
-- [Contact](https://synerax.in/contact): syneraxcloudtechnologies@gmail.com · Noida, India
-- [Privacy Policy](https://synerax.in/privacy-policy)
-- [Terms of Service](https://synerax.in/terms-of-service)
-- Full content for AI crawlers: [llms-full.txt](https://synerax.in/llms-full.txt)
+- [About](https://www.synerax.in/about)
+- [Careers](https://www.synerax.in/careers): Careers email — careers@synerax.in
+- [Contact](https://www.synerax.in/contact): syneraxcloudtechnologies@gmail.com · Noida, India
+- [Privacy Policy](https://www.synerax.in/privacy-policy)
+- [Terms of Service](https://www.synerax.in/terms-of-service)
+- Full content for AI crawlers: [llms-full.txt](https://www.synerax.in/llms-full.txt)

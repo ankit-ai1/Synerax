@@ -147,16 +147,10 @@ html:root body .iq-hero.hx .fx-line {
 /* second line: brand-blue gradient with a slow shimmer */
 html:root body .iq-hero.hx .hx__h1 .hx-accent.hx-accent {
   display: inline-block;
-  background-image: linear-gradient(100deg, #009fdb 0%, #00bbfe 30%, #33c9fe 50%, #00bbfe 70%, #009fdb 100%);
-  background-size: 220% 100%;
-  background-position: 100% 0;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
   font-family: inherit !important;
   font-style: normal !important;
-  animation: hx-shimmer 6s ease-in-out infinite alternate;
 }
 @keyframes hx-shimmer { to { background-position: 0% 0; } }
 
@@ -342,10 +336,10 @@ html:root body .hx .hx-bar .hx-bar__sep {
   margin-left: -3px;
   border-radius: 50%;
   background: #00bbfe;
-  box-shadow: 0 0 10px 2px rgba(0,187,254,.55);
+  box-shadow: none;
   opacity: 0;
 }
-.hx-cmd.is-live .hx-beam i { animation: hx-drop 1.1s ease-in infinite; }
+.hx-cmd.is-live .hx-beam i { animation: hx-drop .55s ease-in infinite; }
 @keyframes hx-drop {
   0%   { top: -4px; opacity: 0; }
   20%  { opacity: 1; }
@@ -363,8 +357,6 @@ html:root body .hx .hx-bar .hx-bar__sep {
   background:
     linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.35)),
     var(--fx-02);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
   box-shadow: 0 30px 70px -36px rgba(10,22,40,.25);
 }
 :root[data-theme='dark'] .hx-panel { background: var(--fx-02); }
@@ -384,7 +376,7 @@ html:root body .hx .hx-run__lbl {
   font-family: var(--font-mono) !important;
   font-size: .8125rem !important;
   font-weight: 500;
-  letter-spacing: .16em !important;
+  letter-spacing: .08em !important;
   text-transform: uppercase;
   color: var(--text) !important;
   -webkit-text-fill-color: var(--text) !important;
@@ -437,7 +429,7 @@ html:root body .hx .hx-card:hover { transform: translateY(-3px); }
 
 /* card content arrives staggered */
 .hx-card__body {
-  animation: hx-card-in .65s cubic-bezier(.22,1,.36,1) calc(var(--i) * 150ms) both;
+  animation: hx-card-in .45s cubic-bezier(.22,1,.36,1) calc(var(--i) * 90ms) both;
 }
 @keyframes hx-card-in {
   from { opacity: 0; transform: translateY(12px); filter: blur(5px); }
@@ -454,7 +446,7 @@ html:root body .hx .hx-card:hover { transform: translateY(-3px); }
   pointer-events: none;
 }
 .hx-card--s3::after {
-  animation: hx-glare 1.1s ease calc(var(--i) * 150ms) forwards;
+  animation: hx-glare .7s ease calc(var(--i) * 90ms) forwards;
 }
 @keyframes hx-glare { to { transform: translateX(110%); } }
 
@@ -494,7 +486,7 @@ html:root body .hx .hx-card:hover { transform: translateY(-3px); }
 .hx-card__status.is-ready {
   background: #00bbfe;
   color: #fff;
-  animation: hx-press .45s ease calc(var(--i) * 150ms);
+  animation: hx-press .45s ease calc(var(--i) * 90ms);
 }
 .hx-card__status.is-ready::before { display: none; }
 .hx-card__status svg { width: 14px; height: 14px; }
@@ -536,7 +528,7 @@ html:root body .hx .hx-card__meta {
   border-radius: 50%;
   border: 2px solid var(--fx-00);
   background: linear-gradient(135deg, #33c9fe, #009fdb);
-  animation: hx-pop .4s cubic-bezier(.3,1.5,.5,1) calc(var(--i) * 150ms + var(--k) * 70ms + .3s) both;
+  animation: hx-pop .3s cubic-bezier(.22,1,.36,1) calc(var(--i) * 90ms + var(--k) * 40ms + .15s) both;
 }
 .hx-card__team i:first-child { margin-left: 0; }
 .hx-card__team i:nth-child(2n) { background: linear-gradient(135deg, #0a1628, #24375a); }
@@ -582,7 +574,7 @@ html:root body .hx .hx-card__meta {
   height: 100%;
   width: 0;
   background: linear-gradient(90deg, #00bbfe, #33c9fe);
-  transition: width 1s cubic-bezier(.22,1,.36,1) calc(var(--i) * 150ms);
+  transition: width .6s cubic-bezier(.22,1,.36,1) calc(var(--i) * 90ms);
 }
 .hx-card--s1 .hx-card__bar i { width: 34%; }
 .hx-card--s2 .hx-card__bar i { width: 72%; }

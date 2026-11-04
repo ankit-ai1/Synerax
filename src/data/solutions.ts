@@ -68,7 +68,7 @@ export const solutions: Solution[] = [
     headlineBlue: 'Enterprise Applications',
     heroDesc: 'Custom web platforms and enterprise-grade applications, engineered to scale. High-performance front ends, deep systems integration, and architecture that holds up as your business grows.',
     overviewTitle: 'Applications Built to Carry Real Business Load',
-    overviewDesc: 'We build web platforms and internal applications that sit at the centre of how a business operates — order systems, customer portals, operations consoles, partner networks. Every build starts from the integration map and the load profile, not from a template.\n\nThe result is software that is fast under real traffic, secure by design, and straightforward for your own engineers to extend once we hand it over.',
+    overviewDesc: 'We build web platforms and internal applications that sit at the centre of how a business operates: order systems, customer portals, operations consoles, partner networks. Every build starts from the integration map and the load profile, not from a template.\n\nThe result is software that is fast under real traffic, secure by design, and straightforward for your own engineers to extend once we hand it over.',
     pillars: [
       { icon: '⚡', title: 'High-Performance Web Apps', desc: 'Sub-second interactions, server rendering, and Core Web Vitals in the green.' },
       { icon: '🔗', title: 'Enterprise Integrations', desc: 'ERP, CRM, billing and legacy systems joined through resilient APIs.' },
@@ -91,7 +91,7 @@ export const solutions: Solution[] = [
     ],
     ctaTag: 'Web & Enterprise Experts',
     ctaHeadline: 'Ready to Build\nYour Next Platform?',
-    ctaDesc: 'Get a detailed application proposal within 24 hours — no commitment required.',
+    ctaDesc: 'Get a detailed application proposal within 24 hours. No commitment required.',
   },
 
   /* ── 2 ─────────────────────────────────────────────────────── */
@@ -120,13 +120,13 @@ export const solutions: Solution[] = [
       { title: 'CI/CD Pipelines', desc: 'GitHub Actions and GitLab CI pipelines with parallel stages, artefact promotion, and one-command rollback.', svgPath: ICON.branch },
       { title: 'Security Scanning In-Pipeline', desc: 'SAST, DAST, dependency and secrets scanning that blocks on real findings instead of drowning teams in noise.', svgPath: ICON.shield },
       { title: 'Infrastructure as Code', desc: 'Terraform modules with remote state, policy checks, plan review, and drift detection across environments.', svgPath: ICON.doc },
-      { title: 'Automated Testing & Release', desc: 'Unit, integration, and end-to-end suites wired to progressive delivery — canary, blue/green, feature flags.', svgPath: ICON.gear },
+      { title: 'Automated Testing & Release', desc: 'Unit, integration, and end-to-end suites wired to progressive delivery: canary, blue/green, feature flags.', svgPath: ICON.gear },
       { title: 'Cloud Cost Visibility', desc: 'Per-team and per-service cost attribution through AWS Cost Explorer and Kubecost, with budgets and alerts.', svgPath: ICON.chart },
       { title: 'Rightsizing & Optimisation', desc: 'Continuous instance, storage, and commitment analysis that turns waste into a tracked, closable backlog.', svgPath: ICON.graph },
     ],
     ctaTag: 'DevSecOps & FinOps Experts',
     ctaHeadline: 'Ready to Ship Faster\nand Spend Less?',
-    ctaDesc: 'Get a pipeline and cloud-spend assessment within 24 hours — no commitment required.',
+    ctaDesc: 'Get a pipeline and cloud-spend assessment within 24 hours. No commitment required.',
   },
 
   /* ── 4 ─────────────────────────────────────────────────────── */
@@ -138,7 +138,7 @@ export const solutions: Solution[] = [
     headlineBlue: 'AI Workflows',
     heroDesc: 'Autonomous LLM agents and AI workflows for your business. Custom pipelines, retrieval over your own data, and agents that complete work rather than just answer questions.',
     overviewTitle: 'Agents That Do the Work, Not Just Describe It',
-    overviewDesc: 'We build AI systems around a specific job to be done — triaging a queue, drafting a document set, reconciling records, answering from your own corpus. Each one is scoped, evaluated against a held-out set, and shipped with guardrails and a human escalation path.\n\nRetrieval runs over your data with access control intact, and every agent action is logged so you can audit what was done and why.',
+    overviewDesc: 'We build AI systems around a specific job to be done: triaging a queue, drafting a document set, reconciling records, answering from your own corpus. Each one is scoped, evaluated against a held-out set, and shipped with guardrails and a human escalation path.\n\nRetrieval runs over your data with access control intact, and every agent action is logged so you can audit what was done and why.',
     pillars: [
       { icon: '🤖', title: 'Autonomous Agents', desc: 'Multi-step agents with tools, memory, and escalation.' },
       { icon: '🧠', title: 'Custom LLM Pipelines', desc: 'Task-specific chains, evaluated and versioned.' },
@@ -161,7 +161,7 @@ export const solutions: Solution[] = [
     ],
     ctaTag: 'Agentic AI Experts',
     ctaHeadline: 'Ready to Put Agents\nto Work?',
-    ctaDesc: 'Get an AI automation proposal within 24 hours — no commitment required.',
+    ctaDesc: 'Get an AI automation proposal within 24 hours. No commitment required.',
   },
 
   /* ── 5 ─────────────────────────────────────────────────────── */
@@ -196,7 +196,7 @@ export const solutions: Solution[] = [
     ],
     ctaTag: 'Cloud Engineering Experts',
     ctaHeadline: 'Ready to Move\nto the Cloud?',
-    ctaDesc: 'Get a migration plan and cost model within 24 hours — no commitment required.',
+    ctaDesc: 'Get a migration plan and cost model within 24 hours. No commitment required.',
   },
 
   /* ── 6 ─────────────────────────────────────────────────────── */
@@ -231,7 +231,7 @@ export const solutions: Solution[] = [
     ],
     ctaTag: 'SRE & Observability Experts',
     ctaHeadline: 'Ready to Make\nProduction Predictable?',
-    ctaDesc: 'Get a reliability assessment within 24 hours — no commitment required.',
+    ctaDesc: 'Get a reliability assessment within 24 hours. No commitment required.',
   },
 
   /* ── 7 ─────────────────────────────────────────────────────── */
@@ -243,7 +243,7 @@ export const solutions: Solution[] = [
     headlineBlue: 'for the Cloud Era',
     heroDesc: 'Legacy systems re-architected for the cloud era. Monoliths decomposed, platforms replaced, and technical debt paid down without stopping delivery.',
     overviewTitle: 'Modernise Without a Big-Bang Rewrite',
-    overviewDesc: 'Rewrites fail because they ask a business to wait. We modernise incrementally — carve a seam, stand up the replacement behind an API, move traffic, retire the old path. Each step ships and each step is reversible.\n\nThe end state is an API-first, containerised system your team can deploy independently, with the technical debt register visibly shorter than when we started.',
+    overviewDesc: 'Rewrites fail because they ask a business to wait. We modernise incrementally: carve a seam, stand up the replacement behind an API, move traffic, retire the old path. Each step ships and each step is reversible.\n\nThe end state is an API-first, containerised system your team can deploy independently, with the technical debt register visibly shorter than when we started.',
     pillars: [
       { icon: '🧩', title: 'Monolith → Microservices', desc: 'Seams identified and carved out incrementally.' },
       { icon: '🔄', title: 'Re-Platforming', desc: 'Moved onto modern runtimes without feature freeze.' },
@@ -266,7 +266,7 @@ export const solutions: Solution[] = [
     ],
     ctaTag: 'Modernization Experts',
     ctaHeadline: 'Ready to Modernise\nWithout the Risk?',
-    ctaDesc: 'Get a modernisation roadmap within 24 hours — no commitment required.',
+    ctaDesc: 'Get a modernisation roadmap within 24 hours. No commitment required.',
   },
 
   /* ── 8 ─────────────────────────────────────────────────────── */
@@ -278,7 +278,7 @@ export const solutions: Solution[] = [
     headlineBlue: 'Service Delivery',
     heroDesc: 'Streamlined IT operations and service delivery. ITIL-aligned processes, a service desk people actually use, and SLA governance backed by real reporting.',
     overviewTitle: 'Service Management That Reduces Work, Not Adds It',
-    overviewDesc: 'Most ITSM programmes fail by adding process faster than they remove friction. We start from the ticket data — where time is actually lost — and design the smallest process that fixes it, then automate the repetitive parts.\n\nWhat you get is an ITIL-aligned operation with clear incident, change, and problem paths, a service catalogue that reflects reality, and SLA reporting your stakeholders trust.',
+    overviewDesc: 'Most ITSM programmes fail by adding process faster than they remove friction. We start from the ticket data, where time is actually lost, and design the smallest process that fixes it, then automate the repetitive parts.\n\nWhat you get is an ITIL-aligned operation with clear incident, change, and problem paths, a service catalogue that reflects reality, and SLA reporting your stakeholders trust.',
     pillars: [
       { icon: '📋', title: 'ITIL-Aligned Processes', desc: 'Right-sized to your organisation, not the textbook.' },
       { icon: '🎫', title: 'Service Desk', desc: 'Single intake with routing, self-service, and knowledge.' },
@@ -296,12 +296,12 @@ export const solutions: Solution[] = [
       { title: 'Service Desk', desc: 'Single point of intake with skills-based routing, self-service portal, and a knowledge base that stays current.', svgPath: ICON.people },
       { title: 'Incident Management', desc: 'Priority matrices, escalation paths, and major-incident handling with communications built into the process.', svgPath: ICON.shield },
       { title: 'Change & Problem Management', desc: 'Change advisory workflow with risk scoring, plus root-cause analysis that removes repeat incidents.', svgPath: ICON.swap },
-      { title: 'Automation', desc: 'Runbook automation for the repetitive majority — provisioning, resets, access requests, routine checks.', svgPath: ICON.gear },
+      { title: 'Automation', desc: 'Runbook automation for the repetitive majority: provisioning, resets, access requests, routine checks.', svgPath: ICON.gear },
       { title: 'SLA Governance & Reporting', desc: 'Service levels defined with the business, measured continuously, and reviewed on a fixed cadence.', svgPath: ICON.chart },
     ],
     ctaTag: 'ITSM Experts',
     ctaHeadline: 'Ready to Streamline\nIT Operations?',
-    ctaDesc: 'Get an ITSM assessment within 24 hours — no commitment required.',
+    ctaDesc: 'Get an ITSM assessment within 24 hours. No commitment required.',
   },
 ]
 

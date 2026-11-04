@@ -1,20 +1,51 @@
-import { Routes, Route, useLocation, Navigate } from 'react-router-dom'
+import { Routes, Route, useLocation, Navigate, matchPath } from 'react-router-dom'
 import { useEffect } from 'react'
 import { ReactLenis, useLenis } from 'lenis/react'
 import Home from './pages/Home'
-import Services from './pages/Services'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import SolutionPage from './pages/SolutionPage'
-import IndustryPage from './pages/IndustryPage'
-import Blog from './pages/Blog'
-import BlogPost from './pages/BlogPost'
-import PrivacyPolicy from './pages/PrivacyPolicy'
-import TermsOfService from './pages/TermsOfService'
-import Admin from './pages/Admin'
-import Careers from './pages/Careers'
 import LeadModal from './components/LeadModal'
 import SiteLoader from './components/SiteLoader'
+import Seo from './components/Seo'
+import { lazyPage, type LazyPage } from './lib/lazyPage'
+
+/* The homepage ships in the main bundle; every other page is its own chunk
+   (see lib/lazyPage.tsx), so the first load only pays for the page it shows. */
+const Services       = lazyPage(() => import('./pages/Services'))
+const About          = lazyPage(() => import('./pages/About'))
+const Contact        = lazyPage(() => import('./pages/Contact'))
+const SolutionPage   = lazyPage(() => import('./pages/SolutionPage'))
+const IndustryPage   = lazyPage(() => import('./pages/IndustryPage'))
+const Blog           = lazyPage(() => import('./pages/Blog'))
+const BlogPost       = lazyPage(() => import('./pages/BlogPost'))
+const PrivacyPolicy  = lazyPage(() => import('./pages/PrivacyPolicy'))
+const TermsOfService = lazyPage(() => import('./pages/TermsOfService'))
+const Admin          = lazyPage(() => import('./pages/Admin'))
+const Careers        = lazyPage(() => import('./pages/Careers'))
+
+const lazyRoutes: [string, LazyPage][] = [
+  ['/services', Services],
+  ['/solutions', Services],
+  ['/about', About],
+  ['/contact', Contact],
+  ['/solutions/:slug', SolutionPage],
+  ['/industries/:slug', IndustryPage],
+  ['/blog', Blog],
+  ['/blog/:slug', BlogPost],
+  ['/privacy-policy', PrivacyPolicy],
+  ['/terms-of-service', TermsOfService],
+  ['/admin', Admin],
+  ['/careers', Careers],
+]
+
+/** Loads the chunk for `pathname` (if it is a split route). */
+export function preloadRoute(pathname: string): Promise<void> {
+  const hit = lazyRoutes.find(([path]) => matchPath(path, pathname))
+  return hit ? hit[1].preload() : Promise.resolve()
+}
+
+/** Loads every page chunk — the prerender needs all of them up front. */
+export function preloadAllRoutes(): Promise<void> {
+  return Promise.all(lazyRoutes.map(([, page]) => page.preload())).then(() => undefined)
+}
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -43,6 +74,7 @@ export default function App() {
       }}
     >
       <SiteLoader />
+      <Seo />
       <ScrollToTop />
       <LeadModal />
       <Routes>

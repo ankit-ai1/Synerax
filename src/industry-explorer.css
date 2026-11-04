@@ -21,7 +21,7 @@ html:root body .ixp-lede .ixp-lede__eye.ixp-lede__eye {
   margin: 0 0 22px !important;
   color: #00bbfe !important;
   -webkit-text-fill-color: #00bbfe !important;
-  letter-spacing: .32em !important;
+  letter-spacing: .08em !important;
 }
 html:root body .ixp-lede .ixp-lede__eye::before,
 html:root body .ixp-lede .ixp-lede__eye::after {
@@ -45,15 +45,10 @@ html:root body .ixp-lede .ixp-lede__h2 {
 html:root body .ixp-lede .ixp-lede__h2 .ixp-lede__grad.ixp-lede__grad {
   display: inline-block;
   padding-bottom: .08em;
-  background-image: linear-gradient(100deg, #009fdb 0%, #00bbfe 35%, #33c9fe 55%, #00bbfe 75%, #009fdb 100%);
-  background-size: 220% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
   font-family: inherit !important;
   font-style: normal !important;
-  animation: ixp-shimmer 7s ease-in-out infinite alternate;
 }
 @keyframes ixp-shimmer { from { background-position: 100% 0; } to { background-position: 0% 0; } }
 html:root body .ixp-lede .ixp-lede__sub {
@@ -155,7 +150,7 @@ html:root body .ixp-lede .ixp-lede__sub {
   display: block;
   height: 100%;
   background: linear-gradient(90deg, #00bbfe, #7fdcfe);
-  box-shadow: 0 0 10px rgba(51,201,254,.8);
+  box-shadow: none;
   transform: scaleX(0);
   transform-origin: left center;
   animation: ixa-prog linear forwards;
@@ -202,8 +197,6 @@ html:root body .ixp-lede .ixp-lede__sub {
   border: 1px solid rgba(255,255,255,.35);
   border-radius: 50%;
   background: rgba(255,255,255,.1);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
   transition: transform .45s ease, background .3s ease;
 }
 .ixa-strip__plus svg { width: 14px; height: 14px; }
@@ -249,11 +242,9 @@ html:root body .ixp-lede .ixp-lede__sub {
   border: 1px solid rgba(255,255,255,.28);
   border-radius: 999px;
   background: rgba(255,255,255,.1);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
   font-family: var(--font-mono);
   font-size: .75rem;
-  letter-spacing: .12em;
+  letter-spacing: .08em;
   text-transform: uppercase;
 }
 .ixa-pill i {
@@ -284,11 +275,8 @@ html:root body .ixa .ixa-title.ixa-title {
   -webkit-text-fill-color: #fff !important;
 }
 html:root body .ixa .ixa-title span {
-  background-image: linear-gradient(90deg, #a9c9ff, #33c9fe);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
+  color: #33c9fe !important;
+  -webkit-text-fill-color: #33c9fe !important;
 }
 html:root body .ixa .ixa-desc {
   margin: 0 !important;
@@ -316,8 +304,6 @@ html:root body .ixa .ixa-desc {
   border: 1px solid rgba(255,255,255,.16);
   border-radius: 14px;
   background: rgba(255,255,255,.08);
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
 }
 .ixa-stat__v {
   font-family: var(--font-heading);

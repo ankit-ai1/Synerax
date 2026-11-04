@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import FaqSection from '../components/FaqSection'
+import { solutionsFaqs } from '../data/faqs'
 import { solutions } from '../data/solutions'
 
 /* Cards are derived from the single solutions source, so the listing can
@@ -44,7 +46,7 @@ const techCategories = [
       { logo: 'Fl', bg: '#1a2b48', color: '#0288D1', name: 'Flutter', fontWeight: 900 },
       { logo: '⚛', bg: '#1a2b48', color: '#0288D1', name: 'React Native', fontSize: '1.5rem' },
       { logo: 'S', bg: '#1a2b48', color: '#F4511E', name: 'Swift', fontWeight: 900 },
-      { logo: 'K', bg: '#1a2b48', color: '#7C4DFF', name: 'Kotlin', fontWeight: 900 },
+      { logo: 'K', bg: '#1a2b48', color: '#00bbfe', name: 'Kotlin', fontWeight: 900 },
     ],
   },
   {
@@ -195,6 +197,8 @@ export default function Services() {
           </div>
         </div>
       </section>
+
+      <FaqSection faqs={solutionsFaqs} sub="How we engage, deliver and support — answered." />
 
       <section className="cta-band">
         <div className="container">

@@ -190,7 +190,7 @@
 .fx-slider__seg:hover { background: rgba(255,255,255,.26); }
 .fx-slider__seg.is-active {
   background: var(--sl-orange);
-  box-shadow: 0 0 10px rgba(0,187,254,.45);
+  box-shadow: none;
 }
 
 @media (max-width: 700px) {

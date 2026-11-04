@@ -3,12 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Synerax Cloud Technologies</title>
-  <!-- Site name for search results and link previews -->
+  <!-- Per-route tags. These are the homepage values; scripts/prerender.mjs
+       replaces everything between the seo markers for each page at build
+       time, and components/Seo.tsx keeps them current while navigating.
+       Values come from src/seo.ts. -->
+  <!--seo:start-->
+  <title>Synerax Cloud Technologies — Cloud, AI &amp; Enterprise Engineering</title>
+  <meta name="description" content="Synerax engineers cloud platforms, agentic AI, contact centers and enterprise applications — from code to cloud, engineered to last." />
+  <link rel="canonical" href="https://www.synerax.in/" />
   <meta property="og:site_name" content="Synerax Cloud Technologies" />
-  <meta property="og:title" content="Synerax Cloud Technologies" />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://synerax.in/" />
+  <meta property="og:title" content="Synerax Cloud Technologies — Cloud, AI &amp; Enterprise Engineering" />
+  <meta property="og:description" content="Synerax engineers cloud platforms, agentic AI, contact centers and enterprise applications — from code to cloud, engineered to last." />
+  <meta property="og:url" content="https://www.synerax.in/" />
+  <meta property="og:image" content="https://www.synerax.in/icons/icon-512.png" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Synerax Cloud Technologies — Cloud, AI &amp; Enterprise Engineering" />
+  <meta name="twitter:description" content="Synerax engineers cloud platforms, agentic AI, contact centers and enterprise applications — from code to cloud, engineered to last." />
+  <meta name="twitter:image" content="https://www.synerax.in/icons/icon-512.png" />
+  <!--seo:end-->
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -17,13 +30,13 @@
           "@type": "WebSite",
           "name": "Synerax Cloud Technologies",
           "alternateName": "Synerax",
-          "url": "https://synerax.in/"
+          "url": "https://www.synerax.in/"
         },
         {
           "@type": "Organization",
           "name": "Synerax Cloud Technologies",
-          "url": "https://synerax.in/",
-          "logo": "https://synerax.in/icons/icon-512.png"
+          "url": "https://www.synerax.in/",
+          "logo": "https://www.synerax.in/icons/icon-512.png"
         }
       ]
     }
@@ -37,29 +50,38 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
   <!-- Web app metadata: name, colours and install icons (public/manifest.json) -->
   <link rel="manifest" href="/manifest.json" />
-  <meta name="description" content="Synerax engineers cloud platforms, agentic AI, contact centers and enterprise applications — from code to cloud, engineered to last." />
   <meta name="application-name" content="Synerax Cloud Technologies" />
   <meta name="apple-mobile-web-app-title" content="Synerax" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@1,400;1,500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-  <meta name="theme-color" content="#0A1628">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#ffffff">
   <script>
-    /* Resolve the theme before first paint so there is no flash of the
-       wrong palette. Light unless the visitor picked dark with the toggle.
-       Mirrors src/hooks/useTheme.ts. */
+    /* The site is light-only. Set the theme before first paint, and clear
+       the choice saved by the old dark-mode toggle so returning visitors
+       who picked dark are not left on it. */
+    (function () {
+      document.documentElement.dataset.theme = 'light';
+      document.documentElement.style.colorScheme = 'light';
+      try { localStorage.removeItem('synerax-theme'); } catch (e) { /* ignore */ }
+    })();
+    /* On a visit where the intro loader will play (first page of the session,
+       motion allowed — mirrors shouldShow() in SiteLoader.tsx), keep the
+       prerendered page hidden until the loader mounts and removes the class,
+       so the page does not flash first. The timeout is a safety net in case
+       the app never starts. */
     (function () {
       try {
-        var s = localStorage.getItem('synerax-theme');
-        var t = (s === 'light' || s === 'dark') ? s : 'light';
-        document.documentElement.dataset.theme = t;
-        document.documentElement.style.colorScheme = t;
-      } catch (e) {
-        document.documentElement.dataset.theme = 'light';
-      }
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        if (sessionStorage.getItem('synerax-loader-seen')) return;
+      } catch (e) { /* storage blocked — the loader still plays */ }
+      var html = document.documentElement;
+      html.classList.add('sx-preload');
+      setTimeout(function () { html.classList.remove('sx-preload'); }, 6000);
     })();
   </script>
+  <style>html.sx-preload #root { visibility: hidden; }</style>
 </head>
 <body>
   <div id="root"></div>

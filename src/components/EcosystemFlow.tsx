@@ -32,16 +32,16 @@ type Cap = typeof caps[number]['key']
 
 const stages: { name: string; icon: keyof typeof I; desc: string; caps: Cap[]; proof: string }[] = [
   { name: 'Modernize', icon: 'rocket', caps: ['apps', 'data', 'cloud'],
-    desc: 'Move legacy apps, databases and data centers onto cloud-native foundations — without freezing the business.',
+    desc: 'Move legacy apps, databases and data centers onto cloud-native foundations without freezing the business.',
     proof: '40% lower run cost, typical' },
   { name: 'Build', icon: 'build', caps: ['data', 'ai', 'platform'],
     desc: 'Ship products, AI agents and internal platforms with senior engineers and quality built into every sprint.',
     proof: 'First release in 6–8 weeks' },
   { name: 'Secure', icon: 'shield', caps: ['cloud', 'security', 'ops'],
-    desc: 'Bake in SOC 2, ISO 27001 and HIPAA controls — policy-as-code, audit trails and zero-trust access.',
+    desc: 'Bake in SOC 2, ISO 27001 and HIPAA controls: policy-as-code, audit trails and zero-trust access.',
     proof: 'Audit-ready from day one' },
   { name: 'Scale', icon: 'scale', caps: ['platform', 'cloud', 'ops'],
-    desc: 'Run it at 99.99% with SRE, FinOps and observability — so growth never outpaces reliability.',
+    desc: 'Run it at 99.99% with SRE, FinOps and observability, so growth never outpaces reliability.',
     proof: '24/7 SRE, 15-min response' },
 ]
 
@@ -53,7 +53,7 @@ const pathFor = (i: number) => {
   return `M6 ${mid} C 58 ${mid}, 46 ${y}, 96 ${y} L ${W - 8} ${y}`
 }
 
-const CYCLE = 4200
+const CYCLE = 2400
 
 export default function EcosystemFlow() {
   const [active, setActive] = useState(0)

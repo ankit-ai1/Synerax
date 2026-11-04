@@ -31,6 +31,12 @@ export default function SiteLoader() {
   const countRef = useRef<HTMLSpanElement>(null)
   const lenis = useLenis()
 
+  // index.html hides the prerendered page on a loader visit so it does not
+  // flash before this overlay mounts — the overlay is up now, show the page
+  useEffect(() => {
+    document.documentElement.classList.remove('sx-preload')
+  }, [])
+
   // Timeline + counter
   useEffect(() => {
     if (!show || gone) return

@@ -19,7 +19,7 @@ html:root body .kb-hdr .kb-hdr__lede { max-width: none !important; margin: 0 !im
 html:root body .kb-hdr .kb-hdr__eye.kb-hdr__eye {
   color: #00bbfe !important;
   -webkit-text-fill-color: #00bbfe !important;
-  letter-spacing: .28em !important;
+  letter-spacing: .08em !important;
   margin-bottom: 20px !important;
 }
 html:root body .kb-hdr .kb-hdr__h2 {
@@ -32,15 +32,10 @@ html:root body .kb-hdr .kb-hdr__h2 {
 html:root body .kb-hdr .kb-hdr__h2 .kb-hdr__grad.kb-hdr__grad {
   display: inline-block;
   padding-bottom: .08em;
-  background-image: linear-gradient(100deg, #009fdb 0%, #00bbfe 35%, #33c9fe 55%, #00bbfe 75%, #009fdb 100%);
-  background-size: 220% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent !important;
-  -webkit-text-fill-color: transparent !important;
+  color: #00bbfe !important;
+  -webkit-text-fill-color: #00bbfe !important;
   font-family: inherit !important;
   font-style: normal !important;
-  animation: kb-shimmer 7s ease-in-out infinite alternate;
 }
 @keyframes kb-shimmer { from { background-position: 100% 0; } to { background-position: 0% 0; } }
 
@@ -185,8 +180,6 @@ html:root body .kb .kb-card {
   border: 1px solid rgba(255,255,255,.35);
   border-radius: 999px;
   background: rgba(10,22,40,.32);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
   color: #fff;
   font-size: .75rem;
   font-weight: 600;

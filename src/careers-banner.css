@@ -41,9 +41,9 @@ html:root body .cr .cr-title.cr-title {
 }
 html:root body .cr .cr-title.cr-title span {
   font-family: var(--font-accent) !important;
-  font-style: italic !important;
-  font-weight: 500 !important;
-  letter-spacing: -.03em !important;
+  font-style: normal !important;
+  font-weight: inherit !important;
+  letter-spacing: inherit !important;
   color: #33c9fe !important;
   -webkit-text-fill-color: #33c9fe !important;
 }

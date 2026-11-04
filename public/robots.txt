@@ -22,4 +22,4 @@ User-agent: Google-Extended
 Allow: /
 Disallow: /admin
 
-Sitemap: https://synerax.in/sitemap.xml
+Sitemap: https://www.synerax.in/sitemap.xml

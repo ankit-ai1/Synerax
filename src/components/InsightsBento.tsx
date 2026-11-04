@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { gsap, prefersReduced } from '../lib/motion'
-import { posts } from '../pages/Blog'
+import { posts } from '../data/posts'
 
 type Post = (typeof posts)[number]
 

@@ -95,7 +95,7 @@
 
 .awsa__tier-lbl {
   font-size: 12.5px;
-  letter-spacing: .16em;
+  letter-spacing: .08em;
   text-transform: uppercase;
   fill: var(--a-ink);
   text-anchor: middle;

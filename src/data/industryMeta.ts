@@ -130,7 +130,7 @@ export const industries: Industry[] = [
       { value: 'Zero',    label: 'Data Breach Tolerance' },
     ],
     challengeTitle: 'IT Challenges in Financial Services',
-    challengeDesc: 'Financial institutions face relentless pressure from evolving security threats, strict regulatory requirements, and the need to deliver seamless customer experiences. From core banking to real-time payments, every system must perform flawlessly while staying fully compliant with global financial regulations.',
+    challengeDesc: 'Financial institutions face relentless pressure from evolving security threats, strict regulatory requirements, and the need to deliver reliable customer experiences. From core banking to real-time payments, every system must perform flawlessly while staying fully compliant with global financial regulations.',
     challenges: [
       'Meeting PCI-DSS, SOX, and GDPR compliance requirements',
       'Preventing fraud and securing transaction pipelines',
@@ -179,7 +179,7 @@ export const industries: Industry[] = [
       'Eliminate costly compliance penalties and audit failures',
       'Sub-millisecond transaction processing at scale',
       'Real-time fraud detection reducing chargebacks by 60%',
-      'Seamless legacy-to-cloud migration with zero downtime',
+      'Legacy-to-cloud migration with zero downtime',
       'Automated regulatory reporting and audit trails',
       'Multi-region failover with 99.99% uptime SLA',
       '24/7 security operations and incident response',
@@ -197,7 +197,7 @@ export const industries: Industry[] = [
     accentColor: '#00bbfe',
     heroTitle: 'Scalable Technology for',
     heroTitleBlue: 'Retail & E-Commerce',
-    heroDesc: 'Drive conversions, reduce cart abandonment, and handle peak traffic effortlessly with modern e-commerce platforms, real-time inventory systems, and AI-powered personalisation engines.',
+    heroDesc: 'Drive conversions, reduce cart abandonment, and handle peak traffic effortlessly with modern e-commerce platforms, real-time inventory systems, and AI-driven personalisation engines.',
     stats: [
       { value: '2s',   label: 'Average Page Load' },
       { value: '40%',  label: 'Higher Conversion Rate' },
@@ -206,7 +206,7 @@ export const industries: Industry[] = [
       { value: '24/7', label: 'Order Processing' },
     ],
     challengeTitle: 'Technology Challenges in Retail',
-    challengeDesc: 'Modern retailers must deliver seamless omnichannel experiences while managing complex inventory, logistics, and payments across dozens of platforms. Flash sales, seasonal spikes, and rising customer expectations demand infrastructure that is fast, reliable, and intelligent — at any scale.',
+    challengeDesc: 'Modern retailers must deliver consistent omnichannel experiences while managing complex inventory, logistics, and payments across dozens of platforms. Flash sales, seasonal spikes, and rising customer expectations demand infrastructure that is fast, reliable, and intelligent — at any scale.',
     challenges: [
       'Handling Black Friday and seasonal traffic spikes',
       'Unifying inventory across online, in-store, and marketplace channels',
@@ -349,7 +349,7 @@ export const industries: Industry[] = [
     accentColor: '#00bbfe',
     heroTitle: 'Smarter Technology for',
     heroTitleBlue: 'Education & EdTech',
-    heroDesc: 'Empower educators, students, and institutions with scalable learning platforms, AI-driven personalisation, and secure campus infrastructure — built to transform how the world learns.',
+    heroDesc: 'Give educators, students, and institutions scalable learning platforms, AI-driven personalisation, and secure campus infrastructure — built to transform how the world learns.',
     stats: [
       { value: '1M+',   label: 'Students Supported' },
       { value: '99.9%', label: 'Platform Uptime' },
@@ -362,7 +362,7 @@ export const industries: Industry[] = [
     challenges: [
       'Scaling learning platforms for remote and hybrid learning',
       'Protecting student data under FERPA and GDPR',
-      'Integrating LMS, SIS, and communication tools seamlessly',
+      'Integrating LMS, SIS, and communication tools cleanly',
       'Supporting diverse device types across campus networks',
     ],
     featureImage: 'https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=700&q=80',
@@ -376,7 +376,7 @@ export const industries: Industry[] = [
         points: [
           'Custom LMS development and integration',
           'Virtual classroom and live-streaming infrastructure',
-          'AI-powered adaptive learning pathways',
+          'Adaptive learning pathways driven by AI',
         ],
       },
       {
@@ -404,7 +404,7 @@ export const industries: Industry[] = [
     benefitsTitle: 'Key Benefits for Educational Institutions',
     benefitsBg: '#1a2b48',
     benefits: [
-      'Seamless hybrid and remote learning experiences',
+      'Hybrid and remote learning that works on any device',
       'Full FERPA and GDPR student data compliance',
       'Reduced IT overhead with cloud-managed infrastructure',
       'AI-driven insights improving student outcomes',
@@ -413,7 +413,7 @@ export const industries: Industry[] = [
       '24/7 student support and platform monitoring',
       'Accessibility compliance for all learner needs',
     ],
-    ctaTitle: 'Build the Future of Learning Today',
+    ctaTitle: 'Modernise Your Learning Platform',
     ctaDesc: 'Partner with technology specialists who understand the unique demands of education — from K-12 to higher education and EdTech startups.',
   },
 
@@ -484,7 +484,7 @@ export const industries: Industry[] = [
       '35% reduction in delivery delays through route optimization',
       'Automated warehouse operations cutting labour costs',
       'AI forecasting reducing overstock and stockouts',
-      'Seamless ERP, WMS, and TMS system integration',
+      'ERP, WMS, and TMS integration that stays in sync',
       'Reduced carrier costs through data-driven negotiations',
       'Proactive risk alerts preventing supply chain disruptions',
       'Scalable architecture handling peak season volumes',

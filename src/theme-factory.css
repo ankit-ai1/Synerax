@@ -427,7 +427,7 @@ select option { background: var(--surface); color: var(--text); }
   gap: .4rem;
   font-family: var(--font-mono);
   font-size: .625rem;
-  letter-spacing: .12em;
+  letter-spacing: .08em;
   color: var(--accent);
   border: 1px solid var(--accent-line);
   border-radius: 999px;
@@ -452,7 +452,7 @@ select option { background: var(--surface); color: var(--text); }
 .fx-dash__side-lbl {
   font-family: var(--font-mono);
   font-size: .625rem;
-  letter-spacing: .12em;
+  letter-spacing: .08em;
   text-transform: uppercase;
   color: var(--text-faint);
   padding: .5rem .6rem .35rem;
@@ -683,7 +683,7 @@ select option { background: var(--surface); color: var(--text); }
 .iq-compare__ribbon {
   font-family: var(--font-mono) !important;
   font-size: .5625rem !important;
-  letter-spacing: .12em !important;
+  letter-spacing: .08em !important;
   text-transform: uppercase !important;
   background: var(--accent-soft) !important;
   color: var(--accent) !important;
@@ -986,7 +986,7 @@ select option { background: var(--surface); color: var(--text); }
   z-index: 2;
   font-family: var(--font-mono);
   font-size: .625rem;
-  letter-spacing: .12em;
+  letter-spacing: .08em;
   color: var(--text-faint);
 }
 .iq-news:hover .fx-thumb::after { background: radial-gradient(ellipse 70% 80% at 25% 90%, rgba(0,187,254,.44) 0%, transparent 62%); }
@@ -1123,7 +1123,7 @@ select option { background: var(--surface); color: var(--text); }
   font-family: var(--font-mono) !important;
   font-size: .625rem !important;
   font-weight: 400 !important;
-  letter-spacing: .12em !important;
+  letter-spacing: .08em !important;
   text-transform: uppercase !important;
   color: var(--text-faint) !important;
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { LeadProvider } from './context/LeadContext'
-import App from './App'
+import App, { preloadRoute, preloadAllRoutes } from './App'
 import './index.css'
 import './theme-factory.css'
 import './layout-factory.css'
@@ -36,13 +36,24 @@ import './footer.css'
 import './techstrip.css'
 import './nav-mega.css'
 import './testimonials-premium.css'
+import './faq-premium.css'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-      <LeadProvider>
-        <App />
-      </LeadProvider>
-    </BrowserRouter>
-  </React.StrictMode>
-)
+/* #root may already hold this route's prerendered HTML. Wait for the page's
+   chunk so React swaps it for the live page in a single commit, then fetch
+   the remaining pages in the background. */
+const mount = () => {
+  ReactDOM.createRoot(document.getElementById('root')!).render(
+    <React.StrictMode>
+      <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+        <LeadProvider>
+          <App />
+        </LeadProvider>
+      </BrowserRouter>
+    </React.StrictMode>
+  )
+  const prefetch = () => setTimeout(() => { preloadAllRoutes().catch(() => {}) }, 2500)
+  if (document.readyState === 'complete') prefetch()
+  else window.addEventListener('load', prefetch, { once: true })
+}
+
+preloadRoute(window.location.pathname).then(mount, mount)

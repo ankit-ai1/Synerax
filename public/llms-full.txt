@@ -6,7 +6,7 @@
 
 Synerax is a team of engineers, designers and AI specialists, founded and headquartered in Noida, India. Its mission is to make enterprise-grade technology accessible to every business, regardless of size or location. What started as a small development shop has grown into a full-service digital engineering company serving clients across 20+ countries, from early-stage startups to Fortune 500 enterprises. Cross-functional teams bring expertise in software engineering, artificial intelligence and cloud architecture to every engagement.
 
-Page: https://synerax.in/about
+Page: https://www.synerax.in/about
 
 ### A Technology Studio Built for Scale
 
@@ -34,11 +34,11 @@ To become the most trusted technology partner for enterprises undergoing digital
 
 ## Services
 
-All solutions: https://synerax.in/solutions
+All solutions: https://www.synerax.in/solutions
 
 ### Web & Enterprise Applications
 
-Page: https://synerax.in/solutions/web-enterprise-applications
+Page: https://www.synerax.in/solutions/web-enterprise-applications
 
 Custom web platforms and enterprise-grade applications, engineered to scale. High-performance front ends, deep systems integration, and architecture that holds up as your business grows.
 
@@ -53,7 +53,7 @@ We build web platforms and internal applications that sit at the centre of how a
 
 ### DevSecOps & FinOps
 
-Page: https://synerax.in/solutions/devsecops-finops
+Page: https://www.synerax.in/solutions/devsecops-finops
 
 Secure automated delivery and cloud cost efficiency, together. Pipelines that scan as they ship, infrastructure as code, and spend you can actually explain.
 
@@ -68,7 +68,7 @@ Delivery speed and cloud spend are the same problem viewed from two ends. We bui
 
 ### Agentic AI Solutions
 
-Page: https://synerax.in/solutions/agentic-ai
+Page: https://www.synerax.in/solutions/agentic-ai
 
 Autonomous LLM agents and AI workflows for your business. Custom pipelines, retrieval over your own data, and agents that complete work rather than just answer questions.
 
@@ -83,7 +83,7 @@ We build AI systems around a specific job to be done — triaging a queue, draft
 
 ### Cloud Engineering & Migration
 
-Page: https://synerax.in/solutions/cloud-engineering-migration
+Page: https://www.synerax.in/solutions/cloud-engineering-migration
 
 Cloud architecture, migration, and optimization. AWS, Azure and GCP environments built as code, moved without drama, and tuned for both availability and cost.
 
@@ -98,7 +98,7 @@ Migration work fails on cutover, not on design. We plan in waves, keep a working
 
 ### Observability, SRE & Production Engineering
 
-Page: https://synerax.in/solutions/observability-sre
+Page: https://www.synerax.in/solutions/observability-sre
 
 Reliability engineering and full-stack observability. Metrics, logs and traces joined up, service levels that mean something, and an on-call rotation that people can live with.
 
@@ -113,7 +113,7 @@ Observability is not three tools bolted together. We instrument services so metr
 
 ### Application Modernization
 
-Page: https://synerax.in/solutions/application-modernization
+Page: https://www.synerax.in/solutions/application-modernization
 
 Legacy systems re-architected for the cloud era. Monoliths decomposed, platforms replaced, and technical debt paid down without stopping delivery.
 
@@ -128,7 +128,7 @@ Rewrites fail because they ask a business to wait. We modernise incrementally �
 
 ### IT Service Management (ITSM)
 
-Page: https://synerax.in/solutions/itsm
+Page: https://www.synerax.in/solutions/itsm
 
 Streamlined IT operations and service delivery. ITIL-aligned processes, a service desk people actually use, and SLA governance backed by real reporting.
 
@@ -145,7 +145,7 @@ Most ITSM programmes fail by adding process faster than they remove friction. We
 
 ### Healthcare
 
-Page: https://synerax.in/industries/healthcare
+Page: https://www.synerax.in/industries/healthcare
 
 Enable secure, compliant, and resilient IT solutions supporting modern healthcare and pharmaceutical operations. Designed to protect sensitive data, enable digital workflows, and support critical systems at scale.
 
@@ -153,7 +153,7 @@ Specialisations: Digital Healthcare Systems (electronic health records support, 
 
 ### Financial Services
 
-Page: https://synerax.in/industries/financial-services
+Page: https://www.synerax.in/industries/financial-services
 
 Power banks, fintech startups, and insurance companies with secure, compliant, and high-availability IT infrastructure engineered for the demands of modern financial operations.
 
@@ -161,7 +161,7 @@ Specialisations: Core Banking Systems; Financial Data Protection; FinTech & Anal
 
 ### Retail & E-Commerce
 
-Page: https://synerax.in/industries/retail
+Page: https://www.synerax.in/industries/retail
 
 Drive conversions, reduce cart abandonment, and handle peak traffic effortlessly with modern e-commerce platforms, real-time inventory systems, and AI-powered personalisation engines.
 
@@ -169,7 +169,7 @@ Specialisations: Storefront & Checkout; Inventory & Logistics; AI Personalisatio
 
 ### Government
 
-Page: https://synerax.in/industries/government
+Page: https://www.synerax.in/industries/government
 
 Deliver citizen-centric digital services, secure national infrastructure, and compliant data management systems that modernize public sector operations while maintaining the highest security standards.
 
@@ -177,7 +177,7 @@ Specialisations: Digital Government Services; Critical Infrastructure Protection
 
 ### Education & EdTech
 
-Page: https://synerax.in/industries/education
+Page: https://www.synerax.in/industries/education
 
 Empower educators, students, and institutions with scalable learning platforms, AI-driven personalisation, and secure campus infrastructure — built to transform how the world learns.
 
@@ -185,7 +185,7 @@ Specialisations: Learning Platforms; Campus Data Protection; Analytics & Outcome
 
 ### Logistics & Supply Chain
 
-Page: https://synerax.in/industries/logistics
+Page: https://www.synerax.in/industries/logistics
 
 Optimize every link in your supply chain with real-time tracking, AI-driven demand forecasting, warehouse automation, and carrier integrations that eliminate delays and reduce costs.
 
@@ -198,23 +198,23 @@ Specialisations: Warehouse Management; Transport & Fleet; AI & Forecasting.
 
 ## Resources
 
-Blog & Insights: https://synerax.in/blog (case studies are also published here)
+Blog & Insights: https://www.synerax.in/blog (case studies are also published here)
 
-- [The Future of Contact Centers: AI-Powered Customer Excellence](https://synerax.in/blog/future-of-contact-centers-ai) — How AI is changing customer engagement and what it means for enterprise contact center strategy.
-- [Scaling to 50 Million Interactions Monthly: Our AWS Architecture Story](https://synerax.in/blog/scaling-aws-50-million-interactions) — The infrastructure and engineering decisions behind 99.9% uptime at scale using AWS, Kubernetes and Terraform.
-- [Building a High-Performance Development Team Across Time Zones](https://synerax.in/blog/high-performance-team-across-time-zones) — Strategies for hiring, onboarding and retaining engineers in a distributed organisation.
-- [The Rise of Omnichannel Customer Support in 2025](https://synerax.in/blog/omnichannel-customer-support-2025) — Why businesses are moving to unified voice, chat, email and WhatsApp support.
-- [Security First: How We Protect Your Data at Every Layer](https://synerax.in/blog/security-first-data-protection) — Zero-trust architecture, compliance as code and incident response.
-- [Next-Gen API Design: Building for Scale, Speed, and the Future](https://synerax.in/blog/next-gen-api-design) — Designing REST and GraphQL APIs that scale and stay backward compatible.
-- [Agentic AI in the Enterprise: Beyond Chatbots to Autonomous Workflows](https://synerax.in/blog/agentic-ai-enterprise-workflows) — How LLM-powered agents take on business workflows, from document processing to customer triage.
-- [From 2-Hour Deploys to 8-Minute Pipelines: Our CI/CD Transformation](https://synerax.in/blog/cicd-transformation-8-minute-pipelines) — Rebuilding a legacy deployment process with GitHub Actions and ArgoCD.
-- [Digital Transformation in Healthcare: Lessons from the Frontline](https://synerax.in/blog/digital-transformation-healthcare) — Building HIPAA-compliant EHR systems and patient portals.
+- [The Future of Contact Centers: Where AI Actually Helps](https://www.synerax.in/blog/future-of-contact-centers-ai) — How AI is changing customer engagement and what it means for enterprise contact center strategy.
+- [Scaling to 50 Million Interactions Monthly: Our AWS Architecture Story](https://www.synerax.in/blog/scaling-aws-50-million-interactions) — The infrastructure and engineering decisions behind 99.9% uptime at scale using AWS, Kubernetes and Terraform.
+- [Building a High-Performance Development Team Across Time Zones](https://www.synerax.in/blog/high-performance-team-across-time-zones) — Strategies for hiring, onboarding and retaining engineers in a distributed organisation.
+- [The Rise of Omnichannel Customer Support in 2025](https://www.synerax.in/blog/omnichannel-customer-support-2025) — Why businesses are moving to unified voice, chat, email and WhatsApp support.
+- [Security First: How We Protect Your Data at Every Layer](https://www.synerax.in/blog/security-first-data-protection) — Zero-trust architecture, compliance as code and incident response.
+- [API Design That Lasts: Building for Scale and Speed](https://www.synerax.in/blog/next-gen-api-design) — Designing REST and GraphQL APIs that scale and stay backward compatible.
+- [Agentic AI in the Enterprise: Beyond Chatbots to Autonomous Workflows](https://www.synerax.in/blog/agentic-ai-enterprise-workflows) — How LLM-powered agents take on business workflows, from document processing to customer triage.
+- [From 2-Hour Deploys to 8-Minute Pipelines: Our CI/CD Transformation](https://www.synerax.in/blog/cicd-transformation-8-minute-pipelines) — Rebuilding a legacy deployment process with GitHub Actions and ArgoCD.
+- [Digital Transformation in Healthcare: Lessons from the Frontline](https://www.synerax.in/blog/digital-transformation-healthcare) — Building HIPAA-compliant EHR systems and patient portals.
 
 ## Company
 
 ### Careers
 
-Page: https://synerax.in/careers · Apply: careers@synerax.in
+Page: https://www.synerax.in/careers · Apply: careers@synerax.in
 
 Values: Ship with pride; Own the outcome; Communicate openly; Grow together.
 
@@ -224,16 +224,16 @@ Hiring process: Apply (CV and a short note) → Intro Call (30 minutes with the 
 
 ### About
 
-Page: https://synerax.in/about
+Page: https://www.synerax.in/about
 
 ### Contact
 
-Page: https://synerax.in/contact
+Page: https://www.synerax.in/contact
 
 - Email: syneraxcloudtechnologies@gmail.com
 - Location: Noida, India — serving clients globally
 
 ### Legal
 
-- [Privacy Policy](https://synerax.in/privacy-policy)
-- [Terms of Service](https://synerax.in/terms-of-service)
+- [Privacy Policy](https://www.synerax.in/privacy-policy)
+- [Terms of Service](https://www.synerax.in/terms-of-service)

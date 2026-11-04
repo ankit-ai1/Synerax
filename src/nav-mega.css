@@ -229,7 +229,7 @@ html:root body .nav .nm-dd.open > .nm-trigger {
   font-family: var(--font-mono);
   font-size: .6875rem;
   font-weight: 600;
-  letter-spacing: .18em;
+  letter-spacing: .08em;
   text-transform: uppercase;
   color: #00bbfe;
 }

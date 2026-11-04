@@ -50,7 +50,7 @@
 }
 .fxv__live {
   display: inline-flex; align-items: center; gap: .35rem;
-  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: .12em;
+  font-family: var(--font-mono); font-size: .5625rem; letter-spacing: .08em;
   text-transform: uppercase; color: var(--accent);
   border: 1px solid var(--accent-line); border-radius: 999px; padding: .15rem .5rem;
 }
@@ -194,7 +194,7 @@
   display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px;
   border-radius: 4px; background: rgba(110,158,90,.16); color: var(--data-4);
   border: 1px solid rgba(110,158,90,.4);
-  animation: fxv-tick .45s cubic-bezier(.34,1.56,.64,1) backwards;
+  animation: fxv-tick .45s cubic-bezier(.22,1,.36,1) backwards;
 }
 @keyframes fxv-tick { from { transform: scale(.4); opacity: 0 } to { transform: scale(1); opacity: 1 } }
 .fxv-scan__s {
@@ -286,7 +286,7 @@
 .fx-pillar.iq-visible .iq-mini-feed__item:nth-child(1) { animation-delay: .15s }
 .fx-pillar.iq-visible .iq-mini-feed__item:nth-child(2) { animation-delay: .33s }
 .fx-pillar.iq-visible .iq-mini-feed__item:nth-child(3) { animation-delay: .51s }
-.fx-pillar.iq-visible .iq-mini-feed__check { animation: fxv-tick .45s cubic-bezier(.34,1.56,.64,1) backwards; }
+.fx-pillar.iq-visible .iq-mini-feed__check { animation: fxv-tick .45s cubic-bezier(.22,1,.36,1) backwards; }
 .fx-pillar.iq-visible .iq-mini-feed__item:nth-child(1) .iq-mini-feed__check { animation-delay: .32s }
 .fx-pillar.iq-visible .iq-mini-feed__item:nth-child(2) .iq-mini-feed__check { animation-delay: .50s }
 .fx-pillar.iq-visible .iq-mini-feed__item:nth-child(3) .iq-mini-feed__check { animation-delay: .68s }

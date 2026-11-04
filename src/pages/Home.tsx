@@ -4,6 +4,8 @@ import { useLenis } from 'lenis/react'
 import { useGsap, gsap, ScrollTrigger, revealFrom, prefersReduced } from '../lib/motion'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import FaqSection from '../components/FaqSection'
+import { homeFaqs } from '../data/faqs'
 import HeroCommand from '../components/HeroCommand'
 import EcosystemFlow from '../components/EcosystemFlow'
 import ServiceStack from '../components/ServiceStack'
@@ -41,14 +43,14 @@ const whyCards = [
   {
     accent: '#00bbfe', iconBg: '#1a2b48', metric: '200+', tag: 'TEAM',
     title: 'Senior-Only Execution',
-    desc: 'Every project is led by a senior engineer. No juniors-as-proxies — you work directly with the people building your product.',
+    desc: 'Every project is led by a senior engineer. No juniors as proxies. You work directly with the people building your product.',
     img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80',
     icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>),
   },
   {
-    accent: '#7C3AED', iconBg: '#1a2b48', metric: '6–8 Wks', tag: 'DELIVERY',
+    accent: '#2563eb', iconBg: '#1a2b48', metric: '6–8 Wks', tag: 'DELIVERY',
     title: 'Rapid MVP Delivery',
-    desc: 'From zero to production-ready in 6–8 weeks. Tested, documented, and deployed — speed without cutting corners.',
+    desc: 'From zero to production-ready in 6–8 weeks. Tested, documented and deployed, without cutting corners.',
     img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80',
     icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>),
   },
@@ -62,7 +64,7 @@ const whyCards = [
   {
     accent: '#D97706', iconBg: '#1a2b48', metric: '100%', tag: 'TRANSPARENCY',
     title: 'Full Transparency',
-    desc: 'Weekly demos, real-time dashboards, and a dedicated PM. You\'re always in the loop — never left wondering.',
+    desc: 'Weekly demos, real-time dashboards, and a dedicated PM. You\'re always in the loop.',
     img: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80',
     icon: (<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>),
   },
@@ -127,19 +129,22 @@ export default function Home() {
         const len = w.getTotalLength()
         gsap.set(w, { strokeDasharray: len, strokeDashoffset: len })
       })
+      // starts as soon as the board's top edge enters the viewport, and every
+      // part runs in parallel — the right-hand panel no longer waits for the
+      // wires, so the whole card is filled by the time it is in view
       gsap.timeline({
         defaults: { ease: 'power3.out' },
-        scrollTrigger: { trigger: eco, start: 'top 80%', once: true },
+        scrollTrigger: { trigger: eco, start: 'top bottom', once: true },
       })
-        .from(eco, { y: 48, opacity: 0, scale: 0.98, duration: 0.9, clearProps: 'transform,opacity' })
-        .from(eco.querySelector('.eco-node'), { x: -30, opacity: 0, duration: 0.6, clearProps: 'transform,opacity' }, '-=0.4')
+        .from(eco, { y: 32, opacity: 0, duration: 0.5, clearProps: 'transform,opacity' }, 0)
+        .from(eco.querySelector('.eco-node'), { x: -20, opacity: 0, duration: 0.4, clearProps: 'transform,opacity' }, 0.1)
+        .from(eco.querySelector('.eco-side'), { x: 24, opacity: 0, duration: 0.45, clearProps: 'transform,opacity' }, 0.1)
         .to(wires, {
-          strokeDashoffset: 0, duration: 0.9, stagger: 0.06, ease: 'power2.inOut',
+          strokeDashoffset: 0, duration: 0.55, stagger: 0.03, ease: 'power2.inOut',
           // hand the dash pattern back to CSS so the active wires can flow
           onComplete: () => wires.forEach(w => gsap.set(w, { clearProps: 'strokeDasharray,strokeDashoffset' })),
-        }, '-=0.3')
-        .from(eco.querySelectorAll('.eco-cap'), { x: 24, opacity: 0, stagger: 0.06, duration: 0.5, clearProps: 'transform,opacity' }, '-=0.9')
-        .from(eco.querySelector('.eco-side'), { x: 40, opacity: 0, duration: 0.8, clearProps: 'transform,opacity' }, '-=0.8')
+        }, 0.15)
+        .from(eco.querySelectorAll('.eco-cap'), { x: 16, opacity: 0, stagger: 0.035, duration: 0.35, clearProps: 'transform,opacity' }, 0.2)
     }
 
 
@@ -201,7 +206,7 @@ export default function Home() {
 
           <p className="iq-hero__sub hx__sub">
             Say what you need shipped. We turn it into a plan, a team and a
-            production system — cloud, AI and contact centers, built to scale.
+            production system: cloud, AI and contact centers, built to scale.
           </p>
 
           <div className="iq-hero__btns hx__btns">
@@ -219,7 +224,7 @@ export default function Home() {
 
       {/* ══ 1b. PLATFORM LOGOS — own band, so the hero is exactly one viewport ══ */}
       <div className="iq-techstrip iq-reveal iq-d3">
-        <p className="iq-techstrip__lbl">Built on world-class platforms</p>
+        <p className="iq-techstrip__lbl">The platforms we build on</p>
         <div className="fx-marquee">
           <div className="fx-marquee__track">
             {/* two identical groups; each carries a trailing gap so a
@@ -247,7 +252,7 @@ export default function Home() {
               <span className="eco__grad">Every layer, connected.</span>
             </h2>
             <p className="iq-body eco__sub">
-              Strategy, build and run — one team, zero hand-offs.
+              Strategy, build and run. One team, zero hand-offs.
             </p>
           </div>
 
@@ -270,7 +275,7 @@ export default function Home() {
               <span className="svs-lede__grad">engineered to one standard.</span>
             </h2>
             <p className="iq-body svs-lede__sub">
-              Cloud to code to customer — one senior team, accountable end to end.
+              Cloud to code to customer, with one senior team accountable end to end.
             </p>
           </div>
 
@@ -286,7 +291,7 @@ export default function Home() {
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                 <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z" />
               </svg>
-              AI-Powered
+              Applied AI
             </p>
             <h2 className="iq-h2 aih-lede__h2">
               AI that solves<br />
@@ -314,7 +319,7 @@ export default function Home() {
             </div>
             <div className="kb-hdr__side">
               <p className="iq-body kb-hdr__sub">
-                Field-tested playbooks on AI, cloud and delivery — written by the engineers who ship them.
+                Field-tested playbooks on AI, cloud and delivery, written by the engineers who ship them.
               </p>
               <Link to="/blog" className="kb-hdr__all">
                 Explore all articles
@@ -354,7 +359,7 @@ export default function Home() {
               <span className="ixp-lede__grad">where downtime isn't an option.</span>
             </h2>
             <p className="iq-body ixp-lede__sub">
-              Six sectors, each with its own regulators, peak loads and stakes — and a team that already speaks the language.
+              Six sectors, each with its own regulators, peak loads and stakes. Our team already speaks the language.
             </p>
           </div>
 
@@ -369,17 +374,20 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ══ FAQ — copy shared with the FAQPage JSON-LD (src/seo.ts) ══ */}
+      <FaqSection faqs={homeFaqs} sub="Quick answers about Synerax, our services and how to start." />
+
       {/* ══ 9. CTA — rounded floating panel ══ */}
       <section className="iq-cta">
         <div className="iq-wrap">
           <div className="iq-cta__panel fx-lede--center iq-reveal" style={{textAlign:'center'}}>
-            <p className="iq-eye iq-eye--light">Ready to Build the Future</p>
+            <p className="iq-eye iq-eye--light">Start a Conversation</p>
             <h2 className="iq-cta__h2">
               Technology That<br />
               Moves Business <span className="iq-cta__em">Forward.</span>
             </h2>
             <p className="iq-cta__sub">
-              Partner with Synerax to build secure cloud platforms, AI-powered applications,
+              Partner with Synerax to build secure cloud platforms, AI applications,
               and enterprise software engineered for performance, scalability, and long-term growth.
             </p>
             <div className="iq-cta__btns">

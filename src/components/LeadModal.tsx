@@ -1,5 +1,4 @@
 import { useState, useEffect, FormEvent } from 'react'
-import emailjs from '@emailjs/browser'
 import { useLead, Lead } from '../context/LeadContext'
 
 const SERVICES = [
@@ -65,8 +64,9 @@ export default function LeadModal() {
     // Save locally first (always works)
     saveLead(lead)
 
-    // Send email via EmailJS
+    // Send email via EmailJS — loaded on submit so it stays out of the first-load bundle
     try {
+      const { default: emailjs } = await import('@emailjs/browser')
       await emailjs.send(EJS_SERVICE, EJS_TEMPLATE, {
         from_name:    form.name,
         from_email:   form.email,

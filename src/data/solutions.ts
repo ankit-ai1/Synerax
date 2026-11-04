@@ -90,7 +90,7 @@ export const solutions: Solution[] = [
       { title: 'Design Systems', desc: 'Typed, tested component libraries so every team ships a consistent interface without re-solving the basics.', svgPath: ICON.blocks },
     ],
     ctaTag: 'Web & Enterprise Experts',
-    ctaHeadline: 'Ready to Build\nYour Next Platform?',
+    ctaHeadline: 'Build Your Next\nPlatform With Us',
     ctaDesc: 'Get a detailed application proposal within 24 hours. No commitment required.',
   },
 
@@ -125,7 +125,7 @@ export const solutions: Solution[] = [
       { title: 'Rightsizing & Optimisation', desc: 'Continuous instance, storage, and commitment analysis that turns waste into a tracked, closable backlog.', svgPath: ICON.graph },
     ],
     ctaTag: 'DevSecOps & FinOps Experts',
-    ctaHeadline: 'Ready to Ship Faster\nand Spend Less?',
+    ctaHeadline: 'Ship Faster\nand Spend Less',
     ctaDesc: 'Get a pipeline and cloud-spend assessment within 24 hours. No commitment required.',
   },
 
@@ -160,7 +160,7 @@ export const solutions: Solution[] = [
       { title: 'Guardrails & Observability', desc: 'Every action logged and replayable, with policy checks, cost ceilings, and evaluation dashboards.', svgPath: ICON.shieldOk },
     ],
     ctaTag: 'Agentic AI Experts',
-    ctaHeadline: 'Ready to Put Agents\nto Work?',
+    ctaHeadline: 'Put Your Agents\nto Work',
     ctaDesc: 'Get an AI automation proposal within 24 hours. No commitment required.',
   },
 
@@ -195,7 +195,7 @@ export const solutions: Solution[] = [
       { title: 'High Availability', desc: 'Multi-AZ and multi-region designs with tested failover and a documented recovery objective.', svgPath: ICON.globe },
     ],
     ctaTag: 'Cloud Engineering Experts',
-    ctaHeadline: 'Ready to Move\nto the Cloud?',
+    ctaHeadline: 'Plan Your Move\nto the Cloud',
     ctaDesc: 'Get a migration plan and cost model within 24 hours. No commitment required.',
   },
 
@@ -230,7 +230,7 @@ export const solutions: Solution[] = [
       { title: 'Instrumentation & Pipelines', desc: 'OpenTelemetry instrumentation with sampling strategy and retention that keeps the bill predictable.', svgPath: ICON.server },
     ],
     ctaTag: 'SRE & Observability Experts',
-    ctaHeadline: 'Ready to Make\nProduction Predictable?',
+    ctaHeadline: 'Make Production\nPredictable',
     ctaDesc: 'Get a reliability assessment within 24 hours. No commitment required.',
   },
 
@@ -265,7 +265,7 @@ export const solutions: Solution[] = [
       { title: 'Technical Debt Reduction', desc: 'Debt inventoried, risk-ranked, and burnt down on a schedule alongside feature work rather than instead of it.', svgPath: ICON.gear },
     ],
     ctaTag: 'Modernization Experts',
-    ctaHeadline: 'Ready to Modernise\nWithout the Risk?',
+    ctaHeadline: 'Modernise\nWithout the Risk',
     ctaDesc: 'Get a modernisation roadmap within 24 hours. No commitment required.',
   },
 
@@ -300,7 +300,7 @@ export const solutions: Solution[] = [
       { title: 'SLA Governance & Reporting', desc: 'Service levels defined with the business, measured continuously, and reviewed on a fixed cadence.', svgPath: ICON.chart },
     ],
     ctaTag: 'ITSM Experts',
-    ctaHeadline: 'Ready to Streamline\nIT Operations?',
+    ctaHeadline: 'Streamline Your\nIT Operations',
     ctaDesc: 'Get an ITSM assessment within 24 hours. No commitment required.',
   },
 ]

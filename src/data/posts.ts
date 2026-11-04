@@ -9,6 +9,7 @@ export const posts = [
     date: 'May 18, 2025',
     read: '8 min read',
     title: 'The Future of Contact Centers: Where AI Actually Helps',
+    seoTitle: 'Where AI Actually Helps in Contact Centers',
     desc: 'How AI is changing customer engagement, reducing handle times by 45%, and what it means for enterprise contact center strategy in the modern era.',
     featured: true,
     content: [
@@ -32,6 +33,7 @@ export const posts = [
     date: 'May 10, 2025',
     read: '12 min read',
     title: 'Scaling to 50 Million Interactions Monthly: Our AWS Architecture Story',
+    seoTitle: 'Scaling AWS to 50 Million Interactions a Month',
     desc: 'A deep dive into the infrastructure and engineering decisions behind 99.9% uptime at massive scale using AWS, Kubernetes, and Terraform.',
     featured: false,
     content: [
@@ -55,6 +57,7 @@ export const posts = [
     date: 'May 5, 2025',
     read: '6 min read',
     title: 'Building a High-Performance Development Team Across Time Zones',
+    seoTitle: 'Building a Dev Team That Works Across Time Zones',
     desc: 'Our proven strategies for hiring, onboarding, and retaining senior engineers in a fully distributed engineering organisation.',
     featured: false,
     content: [
@@ -77,6 +80,7 @@ export const posts = [
     date: 'Apr 28, 2025',
     read: '7 min read',
     title: 'The Rise of Omnichannel Customer Support in 2025',
+    seoTitle: 'The Rise of Omnichannel Customer Support in 2025',
     desc: 'Why businesses are moving beyond single-channel solutions and embracing true omnichannel (voice, chat, email, WhatsApp) in one unified workspace.',
     featured: false,
     content: [
@@ -97,6 +101,7 @@ export const posts = [
     date: 'Apr 20, 2025',
     read: '9 min read',
     title: 'Security First: How We Protect Your Data at Every Layer',
+    seoTitle: 'Security First: Protecting Data at Every Layer',
     desc: 'Understanding the security measures, zero-trust architecture, and compliance frameworks we implement to keep your customer data safe.',
     featured: false,
     content: [
@@ -119,6 +124,7 @@ export const posts = [
     date: 'Apr 12, 2025',
     read: '10 min read',
     title: 'API Design That Lasts: Building for Scale and Speed',
+    seoTitle: 'API Design That Lasts: Scale and Speed',
     desc: 'Best practices for designing REST and GraphQL APIs that scale to millions of requests and remain backward compatible.',
     featured: false,
     content: [
@@ -141,6 +147,7 @@ export const posts = [
     date: 'Apr 5, 2025',
     read: '11 min read',
     title: 'Agentic AI in the Enterprise: Beyond Chatbots to Autonomous Workflows',
+    seoTitle: 'Agentic AI in the Enterprise: Beyond Chatbots',
     desc: 'How LLM-powered agents are replacing entire business workflows (from document processing to customer triage) delivering measurable ROI.',
     featured: false,
     content: [
@@ -163,6 +170,7 @@ export const posts = [
     date: 'Mar 28, 2025',
     read: '8 min read',
     title: 'From 2-Hour Deploys to 8-Minute Pipelines: Our CI/CD Transformation',
+    seoTitle: 'From 2-Hour Deploys to 8-Minute CI/CD Pipelines',
     desc: 'A practical walkthrough of how we rebuilt a legacy deployment process into a modern CI/CD pipeline with GitHub Actions and ArgoCD.',
     featured: false,
     content: [
@@ -185,6 +193,7 @@ export const posts = [
     date: 'Mar 20, 2025',
     read: '7 min read',
     title: 'Digital Transformation in Healthcare: Lessons from the Frontline',
+    seoTitle: 'Healthcare Digital Transformation: Field Lessons',
     desc: 'What we learned building HIPAA-compliant EHR systems and patient portals: the engineering decisions that separate great healthcare IT.',
     featured: false,
     content: [

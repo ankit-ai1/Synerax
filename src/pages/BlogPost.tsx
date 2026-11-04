@@ -72,7 +72,7 @@ export default function BlogPost() {
             {/* CTA inside article */}
             <div className="bpost-cta-box">
               <div className="bpost-cta-box__text">
-                <h3>Ready to implement this in your organisation?</h3>
+                <h3>Put this to work in your organisation</h3>
                 <p>Talk to our experts and get a free consultation tailored to your needs.</p>
               </div>
               <button onClick={() => openLead(post.tag)} className="bpost-cta-box__btn">

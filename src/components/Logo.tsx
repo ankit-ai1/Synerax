@@ -27,7 +27,7 @@ export default function Logo(_: { lockup?: boolean }) {
   return (
     <span className="brand__wm">
       <img className="brand__wm-img brand__wm-img--ink" src={WORDMARK_INK} alt="Synerax" width={1234} height={160} decoding="async" />
-      <img className="brand__wm-img brand__wm-img--light" src={WORDMARK_LIGHT} alt="" aria-hidden="true" width={1234} height={160} decoding="async" />
+      <img className="brand__wm-img brand__wm-img--light" src={WORDMARK_LIGHT} alt="Synerax" aria-hidden="true" width={1234} height={160} decoding="async" />
     </span>
   )
 }

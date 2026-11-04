@@ -73,7 +73,7 @@ export default function IndustryExplorer() {
             aria-expanded={on}
             aria-label={ind.name}
           >
-            <img className="ixa-panel__img" src={ind.featureImage} alt="" loading="lazy" />
+            <img className="ixa-panel__img" src={ind.featureImage} alt={`${ind.name} industry`} loading="lazy" />
             <span className="ixa-panel__shade" aria-hidden="true" />
             <span className="ixa-panel__shine" aria-hidden="true" />
 

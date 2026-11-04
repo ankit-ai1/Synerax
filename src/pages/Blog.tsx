@@ -2,7 +2,9 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import FaqSection from '../components/FaqSection'
 import { posts } from '../data/posts'
+import { blogFaqs } from '../data/faqs'
 
 const TAG_COLORS: Record<string, { bg: string; color: string }> = {
   Product:     { bg: 'rgba(0,187,254,0.12)',  color: '#00bbfe' },
@@ -140,6 +142,9 @@ export default function Blog() {
           )}
         </div>
       </section>
+
+      {/* ── FAQ ── */}
+      <FaqSection faqs={blogFaqs} sub="What we write about, who writes it, and how to put it to use." />
 
       {/* ── NEWSLETTER ── */}
       <section className="bl-newsletter">

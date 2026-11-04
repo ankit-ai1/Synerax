@@ -282,11 +282,11 @@ export default function About() {
       <section className="cta-band">
         <div className="container">
           <div className="cta-band__tag">Work With Us</div>
-          <h2>Ready to Build<br /><span>Something Great?</span></h2>
+          <h2>Let's Build<br /><span>Something Great</span></h2>
           <p>Join 80+ enterprises that trust Synerax to power their digital transformation.</p>
           <div className="cta-band__actions">
             <button onClick={() => openLead()} className="btn btn--white">Start a Conversation</button>
-            <Link to="/services" className="btn btn--outline" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.4)' }}>View Solutions</Link>
+            <Link to="/solutions" className="btn btn--outline" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.4)' }}>View Solutions</Link>
           </div>
         </div>
       </section>

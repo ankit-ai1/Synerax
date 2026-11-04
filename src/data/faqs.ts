@@ -45,12 +45,19 @@ export const contactFaqs: Faq[] = [
   { q: 'Can you work with our existing team and codebase?', a: 'Absolutely. Many engagements involve augmenting existing teams or inheriting legacy codebases. We conduct a thorough technical audit first, then provide a transparent assessment before we begin.' },
 ]
 
+export const blogFaqs: Faq[] = [
+  { q: 'What does the Synerax blog cover?', a: 'Practical engineering writing on agentic AI, AWS and cloud architecture, CI/CD and DevOps, security, contact centers and digital transformation in industries such as healthcare. Each article draws on delivery work and focuses on the decisions, trade-offs and results behind it rather than product announcements.' },
+  { q: 'Who writes these articles?', a: 'The Synerax engineering team. Posts come out of real projects, such as scaling an AWS platform to 50 million interactions a month or cutting deploys from two hours to eight minutes, so the advice reflects what held up in production rather than what looked good on a slide.' },
+  { q: 'Can Synerax help apply these ideas to my project?', a: 'Yes. Every topic here maps to one of our seven practices, from agentic AI to cloud migration and DevSecOps. Send a brief through the contact page and a senior specialist replies within 24 hours to arrange a free 30-minute discovery call about your situation.' },
+]
+
 /** Pages that carry a visible FAQ block, keyed by route. */
 export const faqsByPath: Record<string, Faq[]> = {
   '/': homeFaqs,
   '/solutions': solutionsFaqs,
   '/services': solutionsFaqs,
   '/about': aboutFaqs,
+  '/blog': blogFaqs,
   '/careers': careersFaqs,
   '/contact': contactFaqs,
 }

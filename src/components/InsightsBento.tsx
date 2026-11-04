@@ -16,7 +16,7 @@ function OverlayCard({ p, featured = false }: { p: Post; featured?: boolean }) {
   return (
     <Link to={`/blog/${p.slug}`} className={`kb-card kb-card--overlay${featured ? ' kb-card--feature' : ''}`}>
       <span className="kb-card__media">
-        <img src={p.image} alt="" loading="lazy" />
+        <img src={p.image} alt={p.title} loading="lazy" />
       </span>
       <span className="kb-card__scrim" aria-hidden="true" />
       <span className="kb-card__top">

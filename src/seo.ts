@@ -33,7 +33,7 @@ const pageTitle = (name: string) => `${name} | Synerax`
 
 const STATIC: Record<string, { title: string; description: string; crumb?: string }> = {
   '/': {
-    title: 'Synerax Cloud Technologies | Cloud, AI & Enterprise Engineering',
+    title: 'Synerax Cloud Technologies | Cloud & AI Engineering',
     description: 'Synerax engineers cloud platforms, agentic AI, contact centers and enterprise applications, from code to cloud.',
   },
   '/solutions': {
@@ -62,12 +62,12 @@ const STATIC: Record<string, { title: string; description: string; crumb?: strin
     crumb: 'Careers',
   },
   '/privacy-policy': {
-    title: pageTitle('Privacy Policy'),
+    title: `Privacy Policy | ${SITE_NAME}`,
     description: 'How Synerax Cloud Technologies collects, uses and protects personal information shared through this website and our services.',
     crumb: 'Privacy Policy',
   },
   '/terms-of-service': {
-    title: pageTitle('Terms of Service'),
+    title: `Terms of Service | ${SITE_NAME}`,
     description: 'The terms that govern use of the Synerax Cloud Technologies website and our engineering services.',
     crumb: 'Terms of Service',
   },
@@ -157,7 +157,9 @@ export function getSeo(rawPath: string): RouteSeo {
     if (post) return {
       ...base,
       type: 'article',
-      title: pageTitle(post.title),
+      // seoTitle keeps the <title> under 60 characters; the full headline
+      // stays on the page and in the BlogPosting schema
+      title: pageTitle(post.seoTitle),
       description: clip(post.desc),
       image: post.image,
       jsonLd: [

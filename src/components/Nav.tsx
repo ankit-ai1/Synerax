@@ -113,13 +113,13 @@ const products = [
     label: 'Apply Express',
     desc:  'AI job autopilot for the US.',
     href:  'https://applyexpress.synerax.in',
-    icon:  <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1793080644/favicon_flw5v0.ico" alt="" />,
+    icon:  <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1793080644/favicon_flw5v0.ico" alt="Apply Express" aria-hidden="true" />,
   },
   {
     label: 'Staffing',
     desc:  'Synerax Staffing: talent and hiring solutions.',
     href:  'https://staffing.synerax.in',
-    icon:  <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1793081628/icon_acndrs.png" alt="" />,
+    icon:  <img src="https://res.cloudinary.com/dtg3lepr4/image/upload/v1793081628/icon_acndrs.png" alt="Synerax Staffing" aria-hidden="true" />,
   },
 ]
 

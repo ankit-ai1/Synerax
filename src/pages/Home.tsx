@@ -233,7 +233,7 @@ export default function Home() {
               <div className="fx-marquee__group" key={copy} aria-hidden={copy === 1}>
                 {platforms.map(t => (
                   <span key={t.name} className="fx-marquee__item" title={t.name}>
-                    <img src={t.src} alt="" aria-hidden="true" loading="lazy" />
+                    <img src={t.src} alt={t.name} aria-hidden="true" loading="lazy" />
                     <span>{t.name}</span>
                   </span>
                 ))}

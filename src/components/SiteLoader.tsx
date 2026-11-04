@@ -77,13 +77,13 @@ export default function SiteLoader() {
             <rect x="2" y="2" width="68" height="68" rx="18" pathLength={1} />
           </svg>
           {/* both inks render; CSS shows the one that suits the loader's theme */}
-          <img className="site-loader__mark site-loader__mark--light" src={FAVICON_LIGHT} alt="" decoding="async" />
-          <img className="site-loader__mark site-loader__mark--dark" src={FAVICON_DARK} alt="" decoding="async" />
+          <img className="site-loader__mark site-loader__mark--light" src={FAVICON_LIGHT} alt="Synerax" decoding="async" />
+          <img className="site-loader__mark site-loader__mark--dark" src={FAVICON_DARK} alt="Synerax" decoding="async" />
         </div>
 
         <span className="site-loader__word">
           <img className="site-loader__wm site-loader__wm--ink" src={WORDMARK_INK} alt="Synerax" decoding="async" />
-          <img className="site-loader__wm site-loader__wm--light" src={WORDMARK_LIGHT} alt="" decoding="async" />
+          <img className="site-loader__wm site-loader__wm--light" src={WORDMARK_LIGHT} alt="Synerax" decoding="async" />
         </span>
 
         <p className="site-loader__tagline">From Code to <em>Cloud.</em></p>

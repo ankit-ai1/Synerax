@@ -60,7 +60,7 @@ export default function SolutionPage() {
      replacement rather than dropping visitors on the listing page. */
   if (!solution) {
     const replacement = slug ? retiredSolutionSlugs[slug] : undefined
-    return <Navigate to={replacement ? `/solutions/${replacement}` : '/services'} replace />
+    return <Navigate to={replacement ? `/solutions/${replacement}` : '/solutions'} replace />
   }
 
   const accent = meta?.accentColor ?? '#00bbfe'
@@ -78,7 +78,7 @@ export default function SolutionPage() {
           <nav className="tl-breadcrumb">
             <Link to="/">Home</Link>
             <span>›</span>
-            <Link to="/services">Solutions</Link>
+            <Link to="/solutions">Solutions</Link>
             <span>›</span>
             <span>{solution.name}</span>
           </nav>

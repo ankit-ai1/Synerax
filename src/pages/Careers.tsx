@@ -177,7 +177,7 @@ export default function Careers() {
           {/* General apply */}
           <div className="car-general-apply">
             <div className="car-general-apply__text">
-              <h3>Don't see a perfect fit?</h3>
+              <h3>No role that fits yet</h3>
               <p>We're always looking for exceptional talent. Send us your CV and we'll reach out when the right role opens up.</p>
             </div>
             <button onClick={() => openLead('Careers, General Application')} className="btn btn--primary">
@@ -221,7 +221,7 @@ export default function Careers() {
       <section className="cta-band">
         <div className="container">
           <div className="cta-band__tag">Join the Team</div>
-          <h2>Ready to do the best<br />work of your career?</h2>
+          <h2>Do the best<br />work of your career</h2>
           <p>We are building something meaningful. Come build it with us.</p>
           <div className="cta-band__actions">
             <a href="#openings" className="btn btn--white">See Open Roles</a>

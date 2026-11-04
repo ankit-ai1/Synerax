@@ -6,7 +6,7 @@ import react from '@vitejs/plugin-react'
    variables (or a local .env):
      VITE_GTM_ID             = GTM-XXXXXXX  → Google Tag Manager (GA4 configured inside GTM)
      VITE_GA_MEASUREMENT_ID  = G-XXXXXXXXXX → GA4 directly via gtag.js
-   With neither set, nothing is injected. GA4's enhanced measurement counts
+   With neither set, the site's own GA4 ID (below) is used. GA4's enhanced measurement counts
    the app's client-side route changes as page views by default. */
 function analytics(gtmId?: string, gaId?: string): Plugin {
   return {
@@ -45,6 +45,7 @@ export default defineConfig(({ mode }) => {
   // loadEnv also picks up VITE_* variables set in the shell / on Vercel
   const env = loadEnv(mode, '.', 'VITE_')
   return {
-    plugins: [react(), analytics(env.VITE_GTM_ID, env.VITE_GA_MEASUREMENT_ID)],
+    // G-C4PE3LJRN7 is the site's GA4 stream; an env var still overrides it
+    plugins: [react(), analytics(env.VITE_GTM_ID, env.VITE_GA_MEASUREMENT_ID || 'G-C4PE3LJRN7')],
   }
 })

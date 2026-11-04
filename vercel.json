@@ -4,5 +4,6 @@
   "framework": "vite",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [{ "source": "/services", "destination": "/solutions", "permanent": true }],
   "rewrites": [{ "source": "/(.*)", "destination": "/app-shell.html" }]
 }

@@ -33,31 +33,31 @@ const pageTitle = (name: string) => `${name} | Synerax`
 
 const STATIC: Record<string, { title: string; description: string; crumb?: string }> = {
   '/': {
-    title: 'Synerax Cloud Technologies — Cloud, AI & Enterprise Engineering',
-    description: 'Synerax engineers cloud platforms, agentic AI, contact centers and enterprise applications — from code to cloud, engineered to last.',
+    title: 'Synerax Cloud Technologies | Cloud, AI & Enterprise Engineering',
+    description: 'Synerax engineers cloud platforms, agentic AI, contact centers and enterprise applications, from code to cloud.',
   },
   '/solutions': {
-    title: pageTitle('Solutions — Cloud, AI, DevSecOps & Enterprise Apps'),
+    title: pageTitle('Solutions: Cloud, AI, DevSecOps & Enterprise Apps'),
     description: 'Seven engineering practices under one senior team: enterprise apps, cloud migration, agentic AI, DevSecOps & FinOps, observability & SRE, modernization and ITSM.',
     crumb: 'Solutions',
   },
   '/about': {
-    title: pageTitle('About Us — Senior Cloud & AI Engineering Team'),
+    title: pageTitle('About Us: Senior Cloud & AI Engineering Team'),
     description: 'Meet Synerax Cloud Technologies: a senior engineering team in Noida, India, building and running cloud, AI and enterprise platforms for clients worldwide.',
     crumb: 'About',
   },
   '/contact': {
-    title: pageTitle('Contact Us — Start a Project'),
+    title: pageTitle('Contact Us: Start a Project'),
     description: 'Tell us about your project. A senior specialist replies within 24 hours with a free, no-obligation scoping call and a detailed proposal. NDA available.',
     crumb: 'Contact',
   },
   '/blog': {
-    title: pageTitle('Blog & Insights — AI, Cloud and Engineering'),
+    title: pageTitle('Blog & Insights: AI, Cloud and Engineering'),
     description: 'Field-tested playbooks from the Synerax engineering floor on agentic AI, AWS architecture, DevOps, security and digital transformation.',
     crumb: 'Blog',
   },
   '/careers': {
-    title: pageTitle('Careers — Remote Engineering, AI & Design Jobs'),
+    title: pageTitle('Careers: Remote Engineering, AI & Design Jobs'),
     description: 'Join a remote-first senior team at Synerax. Open roles in engineering, AI & research, infrastructure, design and sales, with a learning budget and 20% R&D time.',
     crumb: 'Careers',
   },

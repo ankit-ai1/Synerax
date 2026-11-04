@@ -70,7 +70,7 @@ export default function SolutionPage() {
       <Nav />
 
       {/* ═══════════════════════════════════════
-          1. HERO — dark navy, white text
+          1. HERO, dark navy, white text
       ═══════════════════════════════════════ */}
       <section className="tl-hero fx-pagehero">
         {/* Breadcrumb */}
@@ -111,7 +111,7 @@ export default function SolutionPage() {
             <div className="tl-hero__img-wrap">
               <DataCard
                 variant="console"
-                title={`${solution.name} — delivery`}
+                title={`${solution.name}: delivery`}
                 labels={solution.capabilities.map(c => c.title.toLowerCase())}
               />
             </div>
@@ -135,7 +135,7 @@ export default function SolutionPage() {
 
 
       {/* ═══════════════════════════════════════
-          3. CAPABILITIES — "Everything you need"
+          3. CAPABILITIES, "Everything you need"
       ═══════════════════════════════════════ */}
       <section className="tl-caps" id="capabilities">
         <div className="container">
@@ -167,7 +167,7 @@ export default function SolutionPage() {
       </section>
 
       {/* ═══════════════════════════════════════
-          4. ENTERPRISE — 2-col image + text
+          4. ENTERPRISE, 2-col image + text
       ═══════════════════════════════════════ */}
       {meta && (
         <section className="tl-enterprise">
@@ -177,9 +177,9 @@ export default function SolutionPage() {
               <div className="tl-enterprise__img-wrap">
                 <DataCard
                   variant="checklist"
-                  title={`${solution.name} — what ships`}
+                  title={`${solution.name}: what ships`}
                   rows={solution.pillars.map(p => [p.title, p.desc] as [string, string])}
-                  caption={meta.technologies.slice(0, 4).join(' · ')}
+                  caption={meta.technologies.slice(0, 4).join(', ')}
                 />
                 {/* Floating accent badge */}
                 <div className="tl-enterprise__badge" style={{ background: accent }}>
@@ -218,7 +218,7 @@ export default function SolutionPage() {
       )}
 
       {/* ═══════════════════════════════════════
-          5. INDUSTRY USE CASES — 2-col
+          5. INDUSTRY USE CASES, 2-col
       ═══════════════════════════════════════ */}
       {meta && (
         <section className="tl-usecases">
@@ -250,9 +250,9 @@ export default function SolutionPage() {
               <div className="tl-usecases__img-wrap">
                 <DataCard
                   variant="orbit"
-                  title={`${solution.name} — where it runs`}
+                  title={`${solution.name}: where it runs`}
                   labels={meta.useCases.map(u => u.title)}
-                  caption="Hover a use case — each one feeds the same shared context."
+                  caption="Hover a use case, each one feeds the same shared context."
                 />
                 <div className="tl-usecases__img-deco" style={{ borderColor: `${accent}30` }} />
               </div>
@@ -262,13 +262,13 @@ export default function SolutionPage() {
       )}
 
       {/* ═══════════════════════════════════════
-          6. DARK FEATURE IMAGE — full width
+          6. DARK FEATURE IMAGE, full width
       ═══════════════════════════════════════ */}
       {meta && (
         <div className="tl-dark-feature">
           <DataCard
             variant="stacked"
-            title={`${solution.name} — workload split`}
+            title={`${solution.name}: workload split`}
             labels={solution.pillars.map(p => p.title)}
             unit={solution.stats[0]?.suffix?.includes('%') ? '%' : 'K'}
             max={48}
@@ -281,7 +281,7 @@ export default function SolutionPage() {
                   Enterprise-grade {solution.name.toLowerCase()} for the <span>modern stack</span>
                 </h3>
                 <p className="tl-dark-feature__sub">
-                  Scalable. Secure. Delivered on time — every time.
+                  Scalable. Secure. Delivered on time, every time.
                 </p>
                 <button onClick={() => openLead(solution.name)} className="btn btn--white" style={{ marginTop: '1.5rem' }}>
                   Talk to an Expert
@@ -293,7 +293,7 @@ export default function SolutionPage() {
       )}
 
       {/* ═══════════════════════════════════════
-          7. TECHNOLOGY STACK — 2-col
+          7. TECHNOLOGY STACK, 2-col
       ═══════════════════════════════════════ */}
       {meta && (
         <section className="tl-techstack">
@@ -303,7 +303,7 @@ export default function SolutionPage() {
               <div className="tl-techstack__img-wrap">
                 <DataCard
                   variant="area"
-                  title={`${solution.name} — throughput`}
+                  title={`${solution.name}: throughput`}
                   labels={['Q1', 'Q2', 'Q3', 'Now']}
                   unit="K rps"
                   max={26}
@@ -342,7 +342,7 @@ export default function SolutionPage() {
         <div className="container">
           <div className="tl-related__label tl-reveal">Explore Related Solutions</div>
           {/* Driven off the solutions list so the chips can never point at a
-              retired slug — the current page drops itself out. */}
+              retired slug: the current page drops itself out. */}
           <div className="tl-related__chips tl-reveal">
             {solutions
               .filter(s => s.slug !== slug)

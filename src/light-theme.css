@@ -259,8 +259,7 @@
    ───────────────────────────────────────────── */
 :root[data-theme='light'] .nav,
 :root[data-theme='light'] .nav.scrolled {
-  background: rgba(255,255,255,.86) !important;
-  backdrop-filter: saturate(1.4) blur(14px);
+  background: #ffffff !important;
   border-bottom: 1px solid var(--border) !important;
 }
 /* the logo is a white PNG — it needs re-darkening, not inverting */

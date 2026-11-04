@@ -43,7 +43,7 @@ export default function Blog() {
           </h1>
           <p className="bl-hero__sub">
             Technical deep dives, AI trends, cloud architecture, and engineering
-            culture — from the team building tomorrow's digital infrastructure.
+            culture, from the team building tomorrow's digital infrastructure.
           </p>
           <div className="bl-filters">
             {ALL_TAGS.map(tag => (
@@ -154,7 +154,7 @@ export default function Blog() {
             <div>
               <h2 className="bl-newsletter__h2">Stay in the loop</h2>
               <p className="bl-newsletter__sub">
-                Weekly insights on AI, cloud, and enterprise tech — no spam, unsubscribe anytime.
+                Weekly insights on AI, cloud, and enterprise tech, no spam, unsubscribe anytime.
               </p>
             </div>
           </div>

@@ -8,18 +8,18 @@
        time, and components/Seo.tsx keeps them current while navigating.
        Values come from src/seo.ts. -->
   <!--seo:start-->
-  <title>Synerax Cloud Technologies — Cloud, AI &amp; Enterprise Engineering</title>
-  <meta name="description" content="Synerax engineers cloud platforms, agentic AI, contact centers and enterprise applications — from code to cloud, engineered to last." />
+  <title>Synerax Cloud Technologies | Cloud, AI &amp; Enterprise Engineering</title>
+  <meta name="description" content="Synerax engineers cloud platforms, agentic AI, contact centers and enterprise applications, from code to cloud." />
   <link rel="canonical" href="https://www.synerax.in/" />
   <meta property="og:site_name" content="Synerax Cloud Technologies" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Synerax Cloud Technologies — Cloud, AI &amp; Enterprise Engineering" />
-  <meta property="og:description" content="Synerax engineers cloud platforms, agentic AI, contact centers and enterprise applications — from code to cloud, engineered to last." />
+  <meta property="og:title" content="Synerax Cloud Technologies | Cloud, AI &amp; Enterprise Engineering" />
+  <meta property="og:description" content="Synerax engineers cloud platforms, agentic AI, contact centers and enterprise applications, from code to cloud." />
   <meta property="og:url" content="https://www.synerax.in/" />
   <meta property="og:image" content="https://www.synerax.in/icons/icon-512.png" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Synerax Cloud Technologies — Cloud, AI &amp; Enterprise Engineering" />
-  <meta name="twitter:description" content="Synerax engineers cloud platforms, agentic AI, contact centers and enterprise applications — from code to cloud, engineered to last." />
+  <meta name="twitter:title" content="Synerax Cloud Technologies | Cloud, AI &amp; Enterprise Engineering" />
+  <meta name="twitter:description" content="Synerax engineers cloud platforms, agentic AI, contact centers and enterprise applications, from code to cloud." />
   <meta name="twitter:image" content="https://www.synerax.in/icons/icon-512.png" />
   <!--seo:end-->
   <script type="application/ld+json">
@@ -55,7 +55,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <meta name="theme-color" content="#ffffff">
   <script>
     /* The site is light-only. Set the theme before first paint, and clear
@@ -67,7 +67,7 @@
       try { localStorage.removeItem('synerax-theme'); } catch (e) { /* ignore */ }
     })();
     /* On a visit where the intro loader will play (first page of the session,
-       motion allowed — mirrors shouldShow() in SiteLoader.tsx), keep the
+       motion allowed; mirrors shouldShow() in SiteLoader.tsx), keep the
        prerendered page hidden until the loader mounts and removes the class,
        so the page does not flash first. The timeout is a safety net in case
        the app never starts. */
@@ -75,7 +75,7 @@
       try {
         if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
         if (sessionStorage.getItem('synerax-loader-seen')) return;
-      } catch (e) { /* storage blocked — the loader still plays */ }
+      } catch (e) { /* storage blocked: the loader still plays */ }
       var html = document.documentElement;
       html.classList.add('sx-preload');
       setTimeout(function () { html.classList.remove('sx-preload'); }, 6000);

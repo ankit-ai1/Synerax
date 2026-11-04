@@ -229,7 +229,7 @@ html:root body .nav .nm-dd.open > .nm-trigger {
   font-family: var(--font-mono);
   font-size: .6875rem;
   font-weight: 600;
-  letter-spacing: .08em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: #00bbfe;
 }
@@ -304,7 +304,7 @@ html:root body .nav .nm-item:hover::before { transform: scaleY(1); }
   border-radius: 13px;
   background: color-mix(in srgb, var(--c) 10%, #fff);
   color: var(--c);
-  transition: background .25s ease, color .25s ease, border-color .25s ease, transform .3s cubic-bezier(.3,1.5,.5,1);
+  transition: background .25s ease, color .25s ease, border-color .25s ease, transform .3s cubic-bezier(.22,1,.36,1);
 }
 .nm-item__ico svg { width: 20px; height: 20px; }
 /* !important: light-theme.css re-colours every [class*='-item'] border */

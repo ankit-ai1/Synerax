@@ -180,7 +180,7 @@ export default function Careers() {
               <h3>Don't see a perfect fit?</h3>
               <p>We're always looking for exceptional talent. Send us your CV and we'll reach out when the right role opens up.</p>
             </div>
-            <button onClick={() => openLead('Careers — General Application')} className="btn btn--primary">
+            <button onClick={() => openLead('Careers, General Application')} className="btn btn--primary">
               Send General Application
             </button>
           </div>
@@ -199,8 +199,8 @@ export default function Careers() {
             {[
               { step: '01', title: 'Apply', desc: 'Submit your CV and a short note about what excites you about Synerax. No cover letter essays required.' },
               { step: '02', title: 'Intro Call', desc: '30-minute video call with the hiring manager. We talk about your experience, goals, and answer your questions.' },
-              { step: '03', title: 'Technical Round', desc: 'A practical, take-home exercise relevant to the role. No whiteboard algorithms — real problems we actually face.' },
-              { step: '04', title: 'Team Interview', desc: 'Meet the team you\'ll be working with. A 60-minute conversation — no trick questions, just genuine discussion.' },
+              { step: '03', title: 'Technical Round', desc: 'A practical, take-home exercise relevant to the role. No whiteboard algorithms, real problems we actually face.' },
+              { step: '04', title: 'Team Interview', desc: 'Meet the team you\'ll be working with. A 60-minute conversation, no trick questions, just genuine discussion.' },
               { step: '05', title: 'Offer', desc: 'We move fast. Successful candidates receive an offer within 48 hours of the final interview.' },
             ].map((s, i) => (
               <div key={i} className="car-process__step">

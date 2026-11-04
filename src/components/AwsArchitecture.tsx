@@ -105,11 +105,11 @@ export default function AwsArchitecture() {
 
       {/* ── Region ──────────────────────────────────────────── */}
       <rect className="awsa__region" x="32" y="102" width="896" height="846" rx="5" />
-      <text className="awsa__zone-lbl awsa__zone-lbl--region" x="52" y="122">Region · us-east-1</text>
+      <text className="awsa__zone-lbl awsa__zone-lbl--region" x="52" y="122">Region: us-east-1</text>
 
       {/* ── VPC ─────────────────────────────────────────────── */}
       <rect className="awsa__vpc" x="50" y="134" width="860" height="800" rx="5" />
-      <text className="awsa__zone-lbl awsa__zone-lbl--vpc" x="70" y="154">VPC · 10.0.0.0/16</text>
+      <text className="awsa__zone-lbl awsa__zone-lbl--vpc" x="70" y="154">VPC: 10.0.0.0/16</text>
 
       {/* ── Tier bands, drawn behind the AZ columns ─────────── */}
       <rect className="awsa__tier awsa__tier--web" x="66" y="224" width="828" height="212" rx="4" />
@@ -129,22 +129,22 @@ export default function AwsArchitecture() {
 
       {/* ── Subnets ─────────────────────────────────────────── */}
       <rect className="awsa__subnet awsa__subnet--pub" x="90" y="238" width="332" height="184" rx="3" />
-      <text className="awsa__subnet-lbl awsa__subnet-lbl--pub" x="104" y="256">Public Subnet 1 · 10.0.0.0/20</text>
+      <text className="awsa__subnet-lbl awsa__subnet-lbl--pub" x="104" y="256">Public Subnet 1: 10.0.0.0/20</text>
 
       <rect className="awsa__subnet awsa__subnet--pub" x="538" y="238" width="332" height="184" rx="3" />
-      <text className="awsa__subnet-lbl awsa__subnet-lbl--pub" x="552" y="256">Public Subnet 2 · 10.0.16.0/20</text>
+      <text className="awsa__subnet-lbl awsa__subnet-lbl--pub" x="552" y="256">Public Subnet 2: 10.0.16.0/20</text>
 
       <rect className="awsa__subnet" x="90" y="486" width="332" height="184" rx="3" />
-      <text className="awsa__subnet-lbl" x="104" y="504">Private subnet 1 · 10.0.128.0/20</text>
+      <text className="awsa__subnet-lbl" x="104" y="504">Private subnet 1: 10.0.128.0/20</text>
 
       <rect className="awsa__subnet" x="538" y="486" width="332" height="184" rx="3" />
-      <text className="awsa__subnet-lbl" x="552" y="504">Private subnet 2 · 10.0.144.0/20</text>
+      <text className="awsa__subnet-lbl" x="552" y="504">Private subnet 2: 10.0.144.0/20</text>
 
       <rect className="awsa__subnet" x="90" y="734" width="332" height="168" rx="3" />
-      <text className="awsa__subnet-lbl" x="104" y="752">Private subnet 3 · 10.0.160.0/20</text>
+      <text className="awsa__subnet-lbl" x="104" y="752">Private subnet 3: 10.0.160.0/20</text>
 
       <rect className="awsa__subnet" x="538" y="734" width="332" height="168" rx="3" />
-      <text className="awsa__subnet-lbl" x="552" y="752">Private subnet 4 · 10.0.176.0/20</text>
+      <text className="awsa__subnet-lbl" x="552" y="752">Private subnet 4: 10.0.176.0/20</text>
 
       {/* ── Auto Scaling groups ─────────────────────────────── */}
       <rect className="awsa__asg" x="150" y="292" width="660" height="124" rx="3" />

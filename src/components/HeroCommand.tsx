@@ -4,7 +4,7 @@ import { prefersReduced } from '../lib/motion'
 /* ─── Briefs the command bar types, and the plan each one produces ─── */
 const runs = [
   {
-    brief: 'Migrate on-prem ERP to AWS · zero downtime · 10 weeks',
+    brief: 'Migrate on-prem ERP to AWS, zero downtime, 10 weeks',
     cards: [
       { fit: '96% fit', title: 'Cloud Migration Blueprint', meta: ['AWS', 'Landing Zone', 'Terraform'], eta: '3 wks', team: 3 },
       { fit: '92% fit', title: 'Zero-Downtime Cutover',     meta: ['Blue/Green', 'DMS', 'Runbooks'],     eta: '4 wks', team: 4 },
@@ -12,7 +12,7 @@ const runs = [
     ],
   },
   {
-    brief: 'AI agent for claims processing · SOC 2 · 6 weeks',
+    brief: 'AI agent for claims processing, SOC 2, 6 weeks',
     cards: [
       { fit: '97% fit', title: 'Agentic Claims Pipeline', meta: ['LangGraph', 'RAG', 'Human-in-loop'], eta: '4 wks', team: 4 },
       { fit: '93% fit', title: 'Compliance Pack',         meta: ['SOC 2', 'PII redaction', 'Audit logs'], eta: '2 wks', team: 2 },
@@ -20,7 +20,7 @@ const runs = [
     ],
   },
   {
-    brief: 'Contact center for 2M calls/month · 99.9% uptime',
+    brief: 'Contact center for 2M calls/month, 99.9% uptime',
     cards: [
       { fit: '95% fit', title: 'Omnichannel Contact Center', meta: ['Amazon Connect', 'Lex', 'CRM sync'], eta: '6 wks', team: 5 },
       { fit: '91% fit', title: 'Real-time Analytics',        meta: ['Sentiment', 'QA scoring', 'Dashboards'], eta: '3 wks', team: 3 },
@@ -88,12 +88,7 @@ export default function HeroCommand() {
           <path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z" />
         </svg>
         <p className="hx-bar__text" aria-live="polite">
-          {typed.split(' · ').map((part, i) => (
-            <span key={i}>
-              {i > 0 && <b className="hx-bar__sep"> · </b>}
-              {part}
-            </span>
-          ))}
+          {typed}
           <i className="hx-bar__caret" aria-hidden="true" />
         </p>
         <span className={`hx-go hx-go--${go}`} aria-hidden="true">
@@ -120,7 +115,7 @@ export default function HeroCommand() {
             Example run
           </p>
           <span className="hx-panel__state">
-            {stage === 3 ? '3 workstreams · ready to start' : live ? 'Matching engineers & architecture…' : 'Waiting for a brief'}
+            {stage === 3 ? '3 workstreams, ready to start' : live ? 'Matching engineers & architecture…' : 'Waiting for a brief'}
           </span>
         </div>
 
@@ -145,7 +140,7 @@ export default function HeroCommand() {
                     </span>
                   </div>
                   <h3 className="hx-card__title">{c.title}</h3>
-                  <p className="hx-card__meta">{c.meta.join(' · ')}</p>
+                  <p className="hx-card__meta">{c.meta.join(', ')}</p>
                   <div className="hx-card__foot">
                     <span className="hx-card__team">
                       {Array.from({ length: c.team }).map((_, k) => <i key={k} style={{ '--k': k } as React.CSSProperties} />)}

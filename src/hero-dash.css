@@ -42,7 +42,7 @@
 .fx-dash__chip {
   font-family: var(--font-mono);
   font-size: .5625rem;
-  letter-spacing: .08em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--d-mid);
   border: 1px solid var(--d-line);
@@ -58,7 +58,7 @@
   gap: .35rem;
   font-family: var(--font-mono);
   font-size: .5625rem;
-  letter-spacing: .08em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--d-mid) !important;
   -webkit-text-fill-color: var(--d-mid) !important;
@@ -74,7 +74,7 @@
 .fx-dash__range {
   font-family: var(--font-mono);
   font-size: .5625rem;
-  letter-spacing: .1em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--d-mid);
   border: 1px solid var(--d-line);
@@ -172,7 +172,7 @@
 .fxd-radar__foot {
   font-family: var(--font-mono);
   font-size: .5rem;
-  letter-spacing: .11em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--d-low);
   white-space: nowrap;
@@ -290,7 +290,7 @@
   font-family: var(--font-mono) !important;
   font-size: .625rem !important;
   font-weight: 400 !important;
-  letter-spacing: .1em !important;
+  letter-spacing: .03em !important;
   text-transform: uppercase;
   color: var(--d-ink) !important;
   -webkit-text-fill-color: var(--d-ink) !important;
@@ -318,7 +318,7 @@
 .fxd-stage__row dt {
   font-family: var(--font-mono);
   font-size: .4375rem;
-  letter-spacing: .1em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--d-low);
   white-space: nowrap;
@@ -393,7 +393,7 @@
 .fxd-card__title {
   font-family: var(--font-mono);
   font-size: .5rem;
-  letter-spacing: .08em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--d-mid);
   white-space: nowrap;
@@ -403,7 +403,7 @@
 .fxd-card__tag {
   font-family: var(--font-mono);
   font-size: .4375rem;
-  letter-spacing: .1em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--d-low);
   border: 1px solid var(--d-line);
@@ -422,7 +422,7 @@
 }
 .fxd-card__val small {
   font-size: .5rem;
-  letter-spacing: .1em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--d-low);
   margin-left: .15rem;
@@ -461,7 +461,7 @@
 .fxd-plot__yaxis span {
   font-family: var(--font-mono);
   font-size: .375rem;
-  letter-spacing: .1em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--d-low);
   line-height: 1;
@@ -518,7 +518,7 @@
   background: var(--fx-05, #1a2b48);
   font-family: var(--font-mono);
   font-size: .4375rem;
-  letter-spacing: .08em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--d-low);
   white-space: nowrap;
@@ -537,7 +537,7 @@
 .fxd-plot__xaxis span {
   font-family: var(--font-mono);
   font-size: .375rem;
-  letter-spacing: .1em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--d-low);
 }
@@ -557,7 +557,7 @@
   gap: .28rem;
   font-family: var(--font-mono);
   font-size: .4375rem;
-  letter-spacing: .1em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--d-low);
   white-space: nowrap;
@@ -593,7 +593,7 @@
 .fxd-log__meta {
   font-family: var(--font-mono);
   font-size: .4375rem;
-  letter-spacing: .1em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--d-low);
 }

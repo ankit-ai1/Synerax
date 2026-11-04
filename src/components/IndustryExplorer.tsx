@@ -82,9 +82,8 @@ export default function IndustryExplorer() {
               {on && !still && <i key={`${active}-${tick}`} style={{ animationDuration: `${CYCLE}ms` }} />}
             </span>
 
-            {/* folded state: number on top, vertical name */}
+            {/* folded state: vertical name */}
             <div className="ixa-strip" aria-hidden={on}>
-              <span className="ixa-strip__num">{String(i + 1).padStart(2, '0')}</span>
               <span className="ixa-strip__name">{ind.name}</span>
               <span className="ixa-strip__plus" aria-hidden="true">
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"><path d="M8 3v10M3 8h10" /></svg>
@@ -97,7 +96,7 @@ export default function IndustryExplorer() {
                 <div className="ixa-body__top">
                   <span className="ixa-pill"><i aria-hidden="true" />{ind.tag}</span>
                   <span className="ixa-count">
-                    <b>{String(i + 1).padStart(2, '0')}</b> / {String(industries.length).padStart(2, '0')}
+                    <b>{i + 1}</b> of {industries.length}
                   </span>
                 </div>
 

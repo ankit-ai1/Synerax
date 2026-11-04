@@ -73,7 +73,7 @@
 }
 .awsa__zone-lbl {
   font-size: 13px;
-  letter-spacing: .1em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   fill: var(--a-mid);
 }
@@ -82,7 +82,7 @@
 
 .awsa__az-lbl {
   font-size: 12px;
-  letter-spacing: .1em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   fill: var(--a-blue);
 }
@@ -95,14 +95,14 @@
 
 .awsa__tier-lbl {
   font-size: 12.5px;
-  letter-spacing: .08em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   fill: var(--a-ink);
   text-anchor: middle;
 }
 .awsa__asg-lbl {
   font-size: 11px;
-  letter-spacing: .1em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   fill: var(--a-accent);
   opacity: 1;

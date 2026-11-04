@@ -113,7 +113,7 @@ html:root body .fx-slider .fx-slide__mark {
   line-height: 1 !important;
   opacity: 1 !important;
   box-shadow: 0 10px 20px -10px rgba(0,187,254,.7);
-  transition: transform .45s cubic-bezier(.3,1.5,.5,1);
+  transition: transform .45s cubic-bezier(.22,1,.36,1);
 }
 html:root body .fx-slider .iq-testi:hover .fx-slide__mark { opacity: 1 !important; transform: rotate(-8deg) scale(1.06); }
 

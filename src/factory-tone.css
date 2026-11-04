@@ -37,7 +37,7 @@
   --font-heading: 'Instrument Sans', system-ui, -apple-system, sans-serif !important;
   --font-body:    'Instrument Sans', system-ui, -apple-system, sans-serif !important;
   --font-sans:    'Instrument Sans', system-ui, -apple-system, sans-serif !important;
-  --font-mono:    'JetBrains Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace !important;
+  --font-mono:    ui-monospace, 'SFMono-Regular', Consolas, monospace !important;
 
   --accent:        #00bbfe !important;
   --accent-bright: #2cc6fe !important;
@@ -268,7 +268,7 @@ h1, h2, h3 {
   font-family: var(--font-mono) !important;
   font-size: .6875rem !important;
   font-weight: 400 !important;
-  letter-spacing: .08em !important;
+  letter-spacing: .03em !important;
   text-transform: uppercase !important;
   color: rgba(255,255,255,.42) !important;
 }
@@ -319,7 +319,7 @@ h1, h2, h3 {
   border-radius: 4px !important;
   font-family: var(--font-mono) !important;
   font-size: .8125rem !important;
-  letter-spacing: .06em !important;
+  letter-spacing: .03em !important;
   text-transform: uppercase !important;
   box-shadow: none !important;
 }
@@ -343,7 +343,7 @@ h1, h2, h3 {
   border-radius: 4px !important;
   font-family: var(--font-mono) !important;
   font-size: .8125rem !important;
-  letter-spacing: .06em !important;
+  letter-spacing: .03em !important;
   text-transform: uppercase !important;
 }
 .iq-btn-ring:hover,
@@ -410,14 +410,14 @@ h1, h2, h3 {
   color: var(--bg);
   display: grid;
   place-items: center;
-  transition: transform .32s cubic-bezier(.5,1.6,.5,1), background .28s ease;
+  transition: transform .32s cubic-bezier(.22,1,.36,1), background .28s ease;
 }
 /* aria-checked is the source of truth — no extra class to keep in sync */
 .nav__theme[aria-checked='true'] .nav__theme-knob { transform: translateX(22px); }
 
 .nav__theme-ico {
   position: absolute;
-  transition: opacity .22s ease, transform .32s cubic-bezier(.5,1.6,.5,1);
+  transition: opacity .22s ease, transform .32s cubic-bezier(.22,1,.36,1);
 }
 .nav__theme-ico--sun { opacity: 0; transform: rotate(-90deg) scale(.6); }
 .nav__theme-ico--moon { opacity: 1; transform: none; }

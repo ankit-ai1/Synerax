@@ -7,7 +7,7 @@ import { solutions } from '../data/solutions'
 
 /* Cards are derived from the single solutions source, so the listing can
    never drift out of sync with the nav, the footer and the pages. The icon
-   reuses each solution's first capability glyph — same 48-unit system the
+   reuses each solution's first capability glyph, same 48-unit system the
    hand-written cards used. */
 const servicesCards = solutions.map(s => ({
   slug: s.slug,
@@ -90,7 +90,7 @@ export default function Services() {
           <h1 className="srv-hero__h1">
             End-to-End Digital <span>Engineering</span>
           </h1>
-          <p>From pixel-perfect interfaces to intelligent AI systems, enterprise contact centers, and cloud infrastructure — we handle every layer of your digital stack.</p>
+          <p>From pixel-perfect interfaces to intelligent AI systems, enterprise contact centers, and cloud infrastructure. We handle every layer of your digital stack.</p>
           <div style={{ display: 'flex', gap: '0.9rem', justifyContent: 'center', marginTop: '2rem', flexWrap: 'wrap' }}>
             <Link to="/contact" className="srv-hero__btn-primary">
               Get a Free Consultation
@@ -110,7 +110,7 @@ export default function Services() {
             <h2 className="section-title">
               8 Specialised Practice <span>Areas</span>
             </h2>
-            <p className="section-sub" style={{ margin: '0.75rem auto 0' }}>Every solution is delivered by dedicated specialists — ensuring deep expertise at every engagement.</p>
+            <p className="section-sub" style={{ margin: '0.75rem auto 0' }}>Every solution is delivered by dedicated specialists, ensuring deep expertise at every engagement.</p>
           </div>
           <div className="solutions__grid srv-grid">
             {servicesCards.map(card => (
@@ -133,7 +133,7 @@ export default function Services() {
             <h2 className="section-title">
               Our Technology <span>Stack</span>
             </h2>
-            <p className="section-sub" style={{ margin: '0.75rem auto 0' }}>Certified across the most in-demand platforms — we stay ahead of the curve so you don't have to.</p>
+            <p className="section-sub" style={{ margin: '0.75rem auto 0' }}>Certified across the most in-demand platforms. We stay ahead of the curve so you don't have to.</p>
           </div>
           <div className="tech-categories">
             {techCategories.map(cat => (
@@ -182,7 +182,7 @@ export default function Services() {
             <div className="process-step">
               <div className="process-step__num">02</div>
               <h3>Design &amp; Prototype</h3>
-              <p>Wireframes, design systems, and clickable prototypes — validated before a single line of production code is written.</p>
+              <p>Wireframes, design systems, and clickable prototypes, validated before a single line of production code is written.</p>
             </div>
             <div className="process-step">
               <div className="process-step__num">03</div>
@@ -198,7 +198,7 @@ export default function Services() {
         </div>
       </section>
 
-      <FaqSection faqs={solutionsFaqs} sub="How we engage, deliver and support — answered." />
+      <FaqSection faqs={solutionsFaqs} sub="How we engage, deliver and support, answered." />
 
       <section className="cta-band">
         <div className="container">

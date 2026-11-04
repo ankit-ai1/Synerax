@@ -321,7 +321,7 @@ function Orbit({ labels, tick }: { labels: string[]; tick: number }) {
                   free to use transform for its hover scale */}
               <span className="dcard__orbit-spinback">
                 <span className={`dcard__orbit-node${i === active ? ' is-on' : ''}`}>
-                  <b className="dcard__orbit-idx">{String(i + 1).padStart(2, '0')}</b>
+                  <b className="dcard__orbit-idx">{i + 1}</b>
                   {l}
                 </span>
               </span>

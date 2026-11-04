@@ -24,7 +24,7 @@ function OverlayCard({ p, featured = false }: { p: Post; featured?: boolean }) {
         <span className="kb-card__go"><Arrow /></span>
       </span>
       <span className="kb-card__copy">
-        <span className="kb-card__meta">{p.date} · {p.read}</span>
+        <span className="kb-card__meta">{p.date}, {p.read}</span>
         <h3 className="kb-card__title">{p.title}</h3>
         {featured && <p className="kb-card__desc">{p.desc}</p>}
         <span className="kb-card__cta">Read article <Arrow /></span>

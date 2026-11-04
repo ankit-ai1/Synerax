@@ -175,7 +175,7 @@ export const solutions: Solution[] = [
     overviewTitle: 'Move to the Cloud Without Betting the Business',
     overviewDesc: 'Migration work fails on cutover, not on design. We plan in waves, keep a working rollback at every step, and prove each workload in its new home before the old one is retired.\n\nWhat lands is a cloud environment defined entirely in Terraform, running on Kubernetes where that earns its keep, with availability targets and cost guardrails set before the first workload moves.',
     pillars: [
-      { icon: '☁️', title: 'AWS · Azure · GCP', desc: 'Well-architected environments on any major cloud.' },
+      { icon: '☁️', title: 'AWS, Azure, GCP', desc: 'Well-architected environments on any major cloud.' },
       { icon: '🚚', title: 'Cloud Migration', desc: 'Wave-based moves with rollback at every step.' },
       { icon: '📜', title: 'Infrastructure as Code', desc: 'Terraform-defined, reviewable, reproducible.' },
       { icon: '⚙️', title: 'Kubernetes', desc: 'Container platforms with autoscaling and self-healing.' },
@@ -282,7 +282,7 @@ export const solutions: Solution[] = [
     pillars: [
       { icon: '📋', title: 'ITIL-Aligned Processes', desc: 'Right-sized to your organisation, not the textbook.' },
       { icon: '🎫', title: 'Service Desk', desc: 'Single intake with routing, self-service, and knowledge.' },
-      { icon: '🔧', title: 'Incident · Change · Problem', desc: 'Clear paths from raise to resolution to prevention.' },
+      { icon: '🔧', title: 'Incident, Change, Problem', desc: 'Clear paths from raise to resolution to prevention.' },
       { icon: '📈', title: 'SLA Governance', desc: 'Targets, reporting, and review that hold up.' },
     ],
     stats: [

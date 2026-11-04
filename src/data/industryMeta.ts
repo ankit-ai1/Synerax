@@ -171,7 +171,7 @@ export const industries: Industry[] = [
       },
     ],
     complianceTitle: 'Regulatory Compliance & Risk Management',
-    complianceDesc: 'We build compliance into every layer of your architecture — from encrypted data storage to automated audit trails. Our engineering teams understand PCI-DSS, GDPR, SOX, and regional banking regulations, ensuring your systems meet every standard without sacrificing performance.',
+    complianceDesc: 'We build compliance into every layer of your architecture, from encrypted data storage to automated audit trails. Our engineering teams understand PCI-DSS, GDPR, SOX, and regional banking regulations, ensuring your systems meet every standard without sacrificing performance.',
     complianceImage: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=700&q=80',
     benefitsTitle: 'Key Benefits for Financial Organizations',
     benefitsBg: '#1a2b48',
@@ -206,7 +206,7 @@ export const industries: Industry[] = [
       { value: '24/7', label: 'Order Processing' },
     ],
     challengeTitle: 'Technology Challenges in Retail',
-    challengeDesc: 'Modern retailers must deliver consistent omnichannel experiences while managing complex inventory, logistics, and payments across dozens of platforms. Flash sales, seasonal spikes, and rising customer expectations demand infrastructure that is fast, reliable, and intelligent — at any scale.',
+    challengeDesc: 'Modern retailers must deliver consistent omnichannel experiences while managing complex inventory, logistics, and payments across dozens of platforms. Flash sales, seasonal spikes, and rising customer expectations demand infrastructure that is fast, reliable, and intelligent, at any scale.',
     challenges: [
       'Handling Black Friday and seasonal traffic spikes',
       'Unifying inventory across online, in-store, and marketplace channels',
@@ -323,7 +323,7 @@ export const industries: Industry[] = [
       },
     ],
     complianceTitle: 'Security & Compliance at Every Layer',
-    complianceDesc: 'We understand the non-negotiable compliance requirements of government IT. Every system we architect follows defence-in-depth principles, undergoes rigorous security testing, and is documented for full audit readiness — from access controls to data residency.',
+    complianceDesc: 'We understand the non-negotiable compliance requirements of government IT. Every system we architect follows defence-in-depth principles, undergoes rigorous security testing, and is documented for full audit readiness, from access controls to data residency.',
     complianceImage: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80',
     benefitsTitle: 'Key Benefits for Government Agencies',
     benefitsBg: '#1a2b48',
@@ -349,7 +349,7 @@ export const industries: Industry[] = [
     accentColor: '#00bbfe',
     heroTitle: 'Smarter Technology for',
     heroTitleBlue: 'Education & EdTech',
-    heroDesc: 'Give educators, students, and institutions scalable learning platforms, AI-driven personalisation, and secure campus infrastructure — built to transform how the world learns.',
+    heroDesc: 'Give educators, students, and institutions scalable learning platforms, AI-driven personalisation, and secure campus infrastructure, built to transform how the world learns.',
     stats: [
       { value: '1M+',   label: 'Students Supported' },
       { value: '99.9%', label: 'Platform Uptime' },
@@ -399,7 +399,7 @@ export const industries: Industry[] = [
       },
     ],
     complianceTitle: 'Student Data Privacy & FERPA Compliance',
-    complianceDesc: 'Student data is among the most sensitive information an institution holds. We design every system with privacy-first principles — strict access controls, encrypted storage, automated data retention policies, and full FERPA audit trails to protect every learner.',
+    complianceDesc: 'Student data is among the most sensitive information an institution holds. We design every system with privacy-first principles, strict access controls, encrypted storage, automated data retention policies, and full FERPA audit trails to protect every learner.',
     complianceImage: 'https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=700&q=80',
     benefitsTitle: 'Key Benefits for Educational Institutions',
     benefitsBg: '#1a2b48',
@@ -414,7 +414,7 @@ export const industries: Industry[] = [
       'Accessibility compliance for all learner needs',
     ],
     ctaTitle: 'Modernise Your Learning Platform',
-    ctaDesc: 'Partner with technology specialists who understand the unique demands of education — from K-12 to higher education and EdTech startups.',
+    ctaDesc: 'Partner with technology specialists who understand the unique demands of education, from K-12 to higher education and EdTech startups.',
   },
 
   /* ── LOGISTICS & SUPPLY CHAIN ── */
@@ -434,7 +434,7 @@ export const industries: Industry[] = [
       { value: 'AI',    label: 'Demand Forecasting' },
     ],
     challengeTitle: 'Technology Challenges in Logistics',
-    challengeDesc: 'Global supply chains are under constant pressure from demand volatility, carrier disruptions, regulatory complexity, and rising customer expectations for real-time visibility. Modern logistics operations need intelligent systems that connect every node — from supplier to doorstep — in real time.',
+    challengeDesc: 'Global supply chains are under constant pressure from demand volatility, carrier disruptions, regulatory complexity, and rising customer expectations for real-time visibility. Modern logistics operations need intelligent systems that connect every node (from supplier to doorstep) in real time.',
     challenges: [
       'Gaining real-time visibility across multi-carrier networks',
       'Reducing manual errors in warehouse and order management',
@@ -443,7 +443,7 @@ export const industries: Industry[] = [
     ],
     featureImage: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=700&q=80',
     featureTitle: 'Real-Time Tracking & Visibility Platforms',
-    featureDesc: 'Build end-to-end shipment tracking systems that give your operations team and customers live visibility into every order — from warehouse departure to last-mile delivery confirmation.',
+    featureDesc: 'Build end-to-end shipment tracking systems that give your operations team and customers live visibility into every order, from warehouse departure to last-mile delivery confirmation.',
     specializedTitle: 'Specialized Logistics IT Solutions',
     specializations: [
       {
@@ -475,7 +475,7 @@ export const industries: Industry[] = [
       },
     ],
     complianceTitle: 'Supply Chain Resilience & Risk Management',
-    complianceDesc: 'We build intelligent risk monitoring into your supply chain — tracking supplier performance, flagging disruption risks, and triggering automated contingency workflows so your operations continue even when the unexpected happens.',
+    complianceDesc: 'We build intelligent risk monitoring into your supply chain, tracking supplier performance, flagging disruption risks, and triggering automated contingency workflows so your operations continue even when the unexpected happens.',
     complianceImage: 'https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=700&q=80',
     benefitsTitle: 'Key Benefits for Logistics Companies',
     benefitsBg: '#1A3520',

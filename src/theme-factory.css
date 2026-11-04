@@ -79,7 +79,7 @@ select option { background: var(--surface); color: var(--text); }
   font-family: var(--font-mono) !important;
   font-size: 0.6875rem !important;      /* 11px */
   font-weight: 400 !important;
-  letter-spacing: 0.1em !important;
+  letter-spacing: .03em !important;
   text-transform: uppercase !important;
   color: var(--text-faint) !important;
   background: none !important;
@@ -241,8 +241,6 @@ select option { background: var(--surface); color: var(--text); }
    ───────────────────────────────────────────── */
 .nav {
   background: rgba(10,10,11,.72) !important;
-  backdrop-filter: saturate(140%) blur(14px);
-  -webkit-backdrop-filter: saturate(140%) blur(14px);
   border-bottom: 1px solid var(--border) !important;
   box-shadow: none !important;
 }
@@ -257,7 +255,7 @@ select option { background: var(--surface); color: var(--text); }
 .nav__dropdown-trigger {
   font-family: var(--font-mono) !important;
   font-size: 0.6875rem !important;
-  letter-spacing: 0.1em !important;
+  letter-spacing: .03em !important;
   text-transform: uppercase !important;
   font-weight: 400 !important;
   color: var(--text-dim) !important;
@@ -278,7 +276,7 @@ select option { background: var(--surface); color: var(--text); }
   gap: .4rem;
   font-family: var(--font-mono);
   font-size: .6875rem;
-  letter-spacing: .1em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--accent);
   border: 1px solid var(--accent-line);
@@ -416,7 +414,7 @@ select option { background: var(--surface); color: var(--text); }
 .fx-dash__path {
   font-family: var(--font-mono);
   font-size: .6875rem;
-  letter-spacing: .06em;
+  letter-spacing: .03em;
   color: var(--text-faint);
   text-transform: uppercase;
 }
@@ -427,7 +425,7 @@ select option { background: var(--surface); color: var(--text); }
   gap: .4rem;
   font-family: var(--font-mono);
   font-size: .625rem;
-  letter-spacing: .08em;
+  letter-spacing: .03em;
   color: var(--accent);
   border: 1px solid var(--accent-line);
   border-radius: 999px;
@@ -452,7 +450,7 @@ select option { background: var(--surface); color: var(--text); }
 .fx-dash__side-lbl {
   font-family: var(--font-mono);
   font-size: .625rem;
-  letter-spacing: .08em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--text-faint);
   padding: .5rem .6rem .35rem;
@@ -482,7 +480,7 @@ select option { background: var(--surface); color: var(--text); }
 .fx-kpi__lbl {
   font-family: var(--font-mono);
   font-size: .625rem;
-  letter-spacing: .11em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--text-faint);
   display: block;
@@ -522,7 +520,7 @@ select option { background: var(--surface); color: var(--text); }
 .fx-panel__title {
   font-family: var(--font-mono);
   font-size: .625rem;
-  letter-spacing: .11em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--text-faint);
 }
@@ -530,7 +528,7 @@ select option { background: var(--surface); color: var(--text); }
 .fx-legend span {
   font-family: var(--font-mono);
   font-size: .5625rem;
-  letter-spacing: .08em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--text-faint);
   display: inline-flex;
@@ -561,7 +559,7 @@ select option { background: var(--surface); color: var(--text); }
 .fx-axis span {
   font-family: var(--font-mono);
   font-size: .5625rem;
-  letter-spacing: .08em;
+  letter-spacing: .03em;
   color: var(--text-faint);
   text-transform: uppercase;
 }
@@ -582,7 +580,7 @@ select option { background: var(--surface); color: var(--text); }
 .fx-log__meta {
   font-family: var(--font-mono);
   font-size: .625rem;
-  letter-spacing: .08em;
+  letter-spacing: .03em;
   color: var(--text-faint);
   text-transform: uppercase;
 }
@@ -602,7 +600,7 @@ select option { background: var(--surface); color: var(--text); }
 .iq-techstrip__lbl {
   font-family: var(--font-mono) !important;
   font-size: .6875rem !important;
-  letter-spacing: .1em !important;
+  letter-spacing: .03em !important;
   text-transform: uppercase !important;
   color: var(--text-faint) !important;
   text-align: center;
@@ -683,7 +681,7 @@ select option { background: var(--surface); color: var(--text); }
 .iq-compare__ribbon {
   font-family: var(--font-mono) !important;
   font-size: .5625rem !important;
-  letter-spacing: .08em !important;
+  letter-spacing: .03em !important;
   text-transform: uppercase !important;
   background: var(--accent-soft) !important;
   color: var(--accent) !important;
@@ -758,7 +756,7 @@ select option { background: var(--surface); color: var(--text); }
   content: '0' counter(fx-pillar);
   font-family: var(--font-mono);
   font-size: .75rem;
-  letter-spacing: .08em;
+  letter-spacing: .03em;
   color: var(--accent);
 }
 .iq-platform-item__title {
@@ -780,7 +778,7 @@ select option { background: var(--surface); color: var(--text); }
 .iq-hero__card-title {
   font-family: var(--font-mono) !important;
   font-size: .625rem !important;
-  letter-spacing: .11em !important;
+  letter-spacing: .03em !important;
   text-transform: uppercase !important;
   color: var(--text-faint) !important;
 }
@@ -798,7 +796,7 @@ select option { background: var(--surface); color: var(--text); }
 .iq-mini-badge {
   font-family: var(--font-mono) !important;
   font-size: .5625rem !important;
-  letter-spacing: .1em !important;
+  letter-spacing: .03em !important;
   text-transform: uppercase !important;
   background: var(--accent-soft) !important;
   color: var(--accent) !important;
@@ -812,7 +810,7 @@ select option { background: var(--surface); color: var(--text); }
 .iq-mini-feed__time {
   font-family: var(--font-mono) !important;
   font-size: .5625rem !important;
-  letter-spacing: .1em;
+  letter-spacing: .03em;
   text-transform: uppercase;
   color: var(--accent) !important;
 }
@@ -851,7 +849,7 @@ select option { background: var(--surface); color: var(--text); }
 .iq-feat__link {
   font-family: var(--font-mono) !important;
   font-size: .625rem !important;
-  letter-spacing: .11em !important;
+  letter-spacing: .03em !important;
   text-transform: uppercase !important;
   color: var(--accent) !important;
 }
@@ -884,7 +882,7 @@ select option { background: var(--surface); color: var(--text); }
 .iq-feat-hero__chat-lbl {
   font-family: var(--font-mono) !important;
   font-size: .625rem !important;
-  letter-spacing: .11em !important;
+  letter-spacing: .03em !important;
   text-transform: uppercase !important;
   color: var(--text-faint) !important;
 }
@@ -895,7 +893,7 @@ select option { background: var(--surface); color: var(--text); }
   -webkit-text-fill-color: var(--accent) !important;
   background: none !important;
 }
-.iq-feat-hero__stat-lbl { color: var(--text-faint) !important; font-family: var(--font-mono) !important; font-size: .625rem !important; letter-spacing: .08em; text-transform: uppercase; }
+.iq-feat-hero__stat-lbl { color: var(--text-faint) !important; font-family: var(--font-mono) !important; font-size: .625rem !important; letter-spacing: .03em; text-transform: uppercase; }
 .iq-chat-bubble { border-radius: var(--radius-sm) !important; font-size: .8125rem !important; }
 .iq-chat-bubble--user { background: var(--surface-2) !important; color: var(--text-dim) !important; border: 1px solid var(--border) !important; }
 .iq-chat-bubble--ai { background: var(--accent-soft) !important; color: var(--text) !important; border: 1px solid var(--accent-line) !important; }
@@ -933,7 +931,7 @@ select option { background: var(--surface); color: var(--text); }
 .iq-news__tag {
   font-family: var(--font-mono) !important;
   font-size: .625rem !important;
-  letter-spacing: .11em !important;
+  letter-spacing: .03em !important;
   text-transform: uppercase !important;
   color: var(--text-faint) !important;
   background: none !important;
@@ -948,11 +946,11 @@ select option { background: var(--surface); color: var(--text); }
   letter-spacing: -0.015em !important;
 }
 .iq-news:hover .iq-news__title { color: var(--text) !important; }
-.iq-news__desc { color: var(--text-faint) !important; font-family: var(--font-mono) !important; font-size: .625rem !important; letter-spacing: .08em; text-transform: uppercase; }
+.iq-news__desc { color: var(--text-faint) !important; font-family: var(--font-mono) !important; font-size: .625rem !important; letter-spacing: .03em; text-transform: uppercase; }
 .iq-news__link {
   font-family: var(--font-mono) !important;
   font-size: .625rem !important;
-  letter-spacing: .11em !important;
+  letter-spacing: .03em !important;
   text-transform: uppercase !important;
   color: var(--accent) !important;
 }
@@ -986,7 +984,7 @@ select option { background: var(--surface); color: var(--text); }
   z-index: 2;
   font-family: var(--font-mono);
   font-size: .625rem;
-  letter-spacing: .08em;
+  letter-spacing: .03em;
   color: var(--text-faint);
 }
 .iq-news:hover .fx-thumb::after { background: radial-gradient(ellipse 70% 80% at 25% 90%, rgba(0,187,254,.44) 0%, transparent 62%); }
@@ -1012,7 +1010,7 @@ select option { background: var(--surface); color: var(--text); }
   font-weight: 500 !important;
 }
 .iq-testi__name { color: var(--text) !important; font-weight: 500 !important; }
-.iq-testi__role { color: var(--text-faint) !important; font-family: var(--font-mono) !important; font-size: .625rem !important; letter-spacing: .08em; text-transform: uppercase; }
+.iq-testi__role { color: var(--text-faint) !important; font-family: var(--font-mono) !important; font-size: .625rem !important; letter-spacing: .03em; text-transform: uppercase; }
 .iq-testi-nav__arrow {
   background: var(--surface) !important;
   border: 1px solid var(--border) !important;
@@ -1123,7 +1121,7 @@ select option { background: var(--surface); color: var(--text); }
   font-family: var(--font-mono) !important;
   font-size: .625rem !important;
   font-weight: 400 !important;
-  letter-spacing: .08em !important;
+  letter-spacing: .03em !important;
   text-transform: uppercase !important;
   color: var(--text-faint) !important;
 }

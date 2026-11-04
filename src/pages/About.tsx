@@ -19,9 +19,9 @@ const testimonials = [
 /* ─── Values cards ─────────────────────────────────── */
 const values = [
   { accent: '#00bbfe', iconBg: 'rgba(0,187,254,0.1)', icon: '⭐', title: 'Excellence', desc: 'We hold ourselves to the highest technical and service standards in everything we deliver. Good enough is never good enough.' },
-  { accent: '#00bbfe', iconBg: 'rgba(0,187,254,0.1)', icon: '🤝', title: 'Partnership', desc: "We're deeply invested in your success beyond the project. Your wins are our wins — we think long-term, not transactional." },
-  { accent: '#00bbfe', iconBg: 'rgba(0,187,254,0.1)', icon: '🔍', title: 'Integrity', desc: 'Honest timelines, transparent pricing, and clear communication — always. We tell you what you need to hear, even when it\'s hard.' },
-  { accent: '#00bbfe', iconBg: 'rgba(0,187,254,0.1)', icon: '💡', title: 'Innovation', desc: 'We stay ahead of the curve so you don\'t have to. AI, cloud, and emerging tech are not buzzwords — they\'re our daily toolkit.' },
+  { accent: '#00bbfe', iconBg: 'rgba(0,187,254,0.1)', icon: '🤝', title: 'Partnership', desc: "We're deeply invested in your success beyond the project. Your wins are our wins. We think long-term, not transactional." },
+  { accent: '#00bbfe', iconBg: 'rgba(0,187,254,0.1)', icon: '🔍', title: 'Integrity', desc: 'Honest timelines, transparent pricing, and clear communication, always. We tell you what you need to hear, even when it\'s hard.' },
+  { accent: '#00bbfe', iconBg: 'rgba(0,187,254,0.1)', icon: '💡', title: 'Innovation', desc: 'We stay ahead of the curve so you don\'t have to. AI, cloud, and emerging tech are not buzzwords. They\'re our daily toolkit.' },
 ]
 
 /* ─── Stat cards (reuse st-card style) ────────────── */
@@ -37,7 +37,7 @@ const statCards = [
 /* ─── Process steps ────────────────────────────────── */
 const steps = [
   { num: '01', title: 'Assess & Discover', desc: 'We audit your landscape, understand your goals, and map a clear, realistic technical roadmap aligned to your business objectives.' },
-  { num: '02', title: 'Design & Prototype', desc: 'Wireframes, design systems, clickable prototypes — validated with real users before a single line of production code is written.' },
+  { num: '02', title: 'Design & Prototype', desc: 'Wireframes, design systems, clickable prototypes, validated with real users before a single line of production code is written.' },
   { num: '03', title: 'Implement & Build', desc: 'Agile two-week sprints, CI/CD pipelines, and weekly demos keep delivery on track, transparent, and always aligned to your goals.' },
   { num: '04', title: 'Operate & Optimise', desc: 'Zero-downtime deployment, 24/7 monitoring, SLA-backed uptime, and continuous performance optimisation post-launch.' },
 ]
@@ -74,7 +74,7 @@ export default function About() {
           </h1>
           <p className="ab-hero__sub">
             We're a team of engineers, designers, and AI specialists building the digital
-            infrastructure of tomorrow — headquartered in Noida, India, serving clients across 20+ countries.
+            infrastructure of tomorrow, headquartered in Noida, India, serving clients across 20+ countries.
           </p>
           <div className="ab-hero__actions">
             <button onClick={() => openLead()} className="ht-hero__btn-primary">START A PROJECT</button>
@@ -84,7 +84,7 @@ export default function About() {
       </section>
 
       {/* ══════════════════════════════════════════
-          STORY — 2-col light section
+          STORY, 2-col light section
       ══════════════════════════════════════════ */}
       <section className="about-story">
         <div className="container about-story__grid">
@@ -102,7 +102,7 @@ export default function About() {
             <div className="section-tag">Our Story</div>
             <h2>From a Small Studio to a Global Engineering Partner</h2>
             <p>Synerax was founded in Noida, India with a singular mission: to make enterprise-grade technology accessible to every business, regardless of size or location.</p>
-            <p>What started as a small development shop has grown into a full-service digital engineering company serving clients across 20+ countries — from early-stage startups to Fortune 500 enterprises.</p>
+            <p>What started as a small development shop has grown into a full-service digital engineering company serving clients across 20+ countries, from early-stage startups to Fortune 500 enterprises.</p>
             <p>Our cross-functional teams bring deep expertise in software engineering, artificial intelligence, and cloud architecture to every engagement.</p>
             <div className="about-pillars">
               <div className="pillar">
@@ -116,7 +116,7 @@ export default function About() {
                 <div className="pillar__icon">🏆</div>
                 <div>
                   <strong>98% Client Satisfaction</strong>
-                  <p>We don't just deliver projects — we build partnerships that last for years.</p>
+                  <p>We don't just deliver projects. We build partnerships that last for years.</p>
                 </div>
               </div>
               <div className="pillar">
@@ -132,7 +132,7 @@ export default function About() {
       </section>
 
       {/* ══════════════════════════════════════════
-          MISSION & VISION — teal glass cards
+          MISSION & VISION, teal glass cards
       ══════════════════════════════════════════ */}
       <section className="ab-mv">
         <div className="container">
@@ -147,21 +147,21 @@ export default function About() {
             <div className="ab-mv-card">
               <div className="ab-mv-card__badge">Mission</div>
               <h3 className="ab-mv-card__title">Why We Exist</h3>
-              <p className="ab-mv-card__desc">Delivering secure, scalable technology solutions that simplify complexity and accelerate digital transformation — enabling organisations of every size to compete at the highest level.</p>
+              <p className="ab-mv-card__desc">Delivering secure, scalable technology solutions that simplify complexity and accelerate digital transformation, enabling organisations of every size to compete at the highest level.</p>
               <p className="ab-mv-card__desc" style={{ marginTop: '1rem' }}>We believe the best technology should be accessible, not just to Fortune 500s, but to every ambitious business ready to grow.</p>
             </div>
             <div className="ab-mv-card">
               <div className="ab-mv-card__badge">Vision</div>
               <h3 className="ab-mv-card__title">Where We're Going</h3>
-              <p className="ab-mv-card__desc">To become the most trusted technology partner for enterprises undergoing digital transformation — recognised globally for our depth of expertise, quality of delivery, and long-term client relationships.</p>
-              <p className="ab-mv-card__desc" style={{ marginTop: '1rem' }}>A world where technology removes barriers instead of creating them — that's the future Synerax is building toward.</p>
+              <p className="ab-mv-card__desc">To become the most trusted technology partner for enterprises undergoing digital transformation, recognised globally for our depth of expertise, quality of delivery, and long-term client relationships.</p>
+              <p className="ab-mv-card__desc" style={{ marginTop: '1rem' }}>A world where technology removes barriers instead of creating them. That's the future Synerax is building toward.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════
-          VALUES — wp-card style (matching home)
+          VALUES, wp-card style (matching home)
       ══════════════════════════════════════════ */}
       <section className="wp-section">
         <div className="container">
@@ -186,13 +186,13 @@ export default function About() {
       </section>
 
       {/* ══════════════════════════════════════════
-          STATS — st-section style (matching home)
+          STATS, st-section style (matching home)
       ══════════════════════════════════════════ */}
       <section className="st-section">
         <div className="container st-section__inner">
           <div className="st-section__left">
             <h2 className="st-section__title">Synerax by the <span>Numbers</span></h2>
-            <p className="st-section__sub">Real results, measurable impact — powering the world's most demanding enterprises.</p>
+            <p className="st-section__sub">Real results, measurable impact, powering the world's most demanding enterprises.</p>
             <div className="st-section__grid">
               {statCards.map((s, i) => (
                 <div key={i} className="st-card">
@@ -220,7 +220,7 @@ export default function About() {
       </section>
 
       {/* ══════════════════════════════════════════
-          PROCESS — dark navy glass cards
+          PROCESS, dark navy glass cards
       ══════════════════════════════════════════ */}
       <section className="ab-process">
         <div className="container">
@@ -242,7 +242,7 @@ export default function About() {
       </section>
 
       {/* ══════════════════════════════════════════
-          TESTIMONIALS — new style (matching home)
+          TESTIMONIALS, new style (matching home)
       ══════════════════════════════════════════ */}
       <section className="testimonials">
         <div className="container">

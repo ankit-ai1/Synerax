@@ -174,7 +174,6 @@ export default function ServiceStack() {
 
             <div className="svs-card__copy">
               <div className="svs-card__meta svs-reveal">
-                <span className="svs-card__num">{String(i + 1).padStart(2, '0')}</span>
                 <span className="svs-card__ico"><Icon d={ic[s.icon]} size={20} /></span>
                 <span className="svs-card__tag">{s.tag}</span>
               </div>

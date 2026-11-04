@@ -155,7 +155,7 @@ export default function Contact() {
             <h2 className="ct-left__h2">Start a Project <span>Consultation</span></h2>
             <p className="ct-left__desc">
               Fill out the form and one of our senior specialists will schedule
-              a discovery call — free, no strings attached.
+              a discovery call, free, no strings attached.
             </p>
 
             <ul className="ct-perks">
@@ -184,7 +184,7 @@ export default function Contact() {
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
                 </svg>
-                Noida, India — Serving clients globally
+                Noida, India. Serving clients globally
               </div>
             </div>
           </div>

@@ -34,7 +34,7 @@ export default function IndustryPage() {
       <Nav />
 
       {/* ═══════════════════════════════════════
-          1. HERO — dark colored bg
+          1. HERO, dark colored bg
       ═══════════════════════════════════════ */}
       <section className="ind-hero fx-pagehero">
         <div className="container">
@@ -97,7 +97,7 @@ export default function IndustryPage() {
       </section>
 
       {/* ═══════════════════════════════════════
-          4. FEATURE — image left, text right
+          4. FEATURE, image left, text right
       ═══════════════════════════════════════ */}
       <section className="ind-feature">
         <div className="container ind-feature__inner">
@@ -117,7 +117,7 @@ export default function IndustryPage() {
       </section>
 
       {/* ═══════════════════════════════════════
-          5. SPECIALIZED SOLUTIONS — 3-col
+          5. SPECIALIZED SOLUTIONS, 3-col
       ═══════════════════════════════════════ */}
       <section className="ind-specialized" id="solutions">
         <div className="container">
@@ -142,7 +142,7 @@ export default function IndustryPage() {
       </section>
 
       {/* ═══════════════════════════════════════
-          6. COMPLIANCE — text left, image right
+          6. COMPLIANCE, text left, image right
       ═══════════════════════════════════════ */}
       <section className="ind-compliance">
         <div className="container ind-compliance__inner">
@@ -156,7 +156,7 @@ export default function IndustryPage() {
           <div className="ind-compliance__img-col ind-reveal">
             <DataCard
               variant="checklist"
-              title={`${industry.name} — challenges solved`}
+              title={`${industry.name}: challenges solved`}
               rows={industry.challenges.map(c => [c, 'Addressed in every engagement'] as [string, string])}
               caption="Verified continuously, not at renewal."
             />
@@ -165,7 +165,7 @@ export default function IndustryPage() {
       </section>
 
       {/* ═══════════════════════════════════════
-          7. KEY BENEFITS — dark colored bg
+          7. KEY BENEFITS, dark colored bg
       ═══════════════════════════════════════ */}
       <section className="ind-benefits" style={{ background: ac }}>
         <div className="container">

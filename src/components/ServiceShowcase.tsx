@@ -232,7 +232,7 @@ export const VizDevSecOps = () => (
       <span className="fxv-road__track"><i /></span>
       {[
         ['Build', 'Cached, parallel stages'],
-        ['Scan', 'SAST · SCA · secrets'],
+        ['Scan', 'SAST, SCA, secrets'],
         ['Release', 'Canary with rollback'],
       ].map(([t, s], i) => (
         <div className="fxv-road__stop" key={t} style={{ animationDelay: `${0.2 + i * 0.22}s` }}>
@@ -299,7 +299,7 @@ export const VizITSM = () => (
               <polyline points="20 6 9 17 4 12" />
             </svg>
           </span>
-          <span className="fxv-scan__n">{id} · {s}</span>
+          <span className="fxv-scan__n">{id}: {s}</span>
           <span className="fxv-scan__s" style={{ animationDelay: `${i * 0.22 + 0.15}s` }}>{state}</span>
         </div>
       ))}

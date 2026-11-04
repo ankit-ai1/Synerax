@@ -19,7 +19,7 @@ html:root body .kb-hdr .kb-hdr__lede { max-width: none !important; margin: 0 !im
 html:root body .kb-hdr .kb-hdr__eye.kb-hdr__eye {
   color: #00bbfe !important;
   -webkit-text-fill-color: #00bbfe !important;
-  letter-spacing: .08em !important;
+  letter-spacing: .03em !important;
   margin-bottom: 20px !important;
 }
 html:root body .kb-hdr .kb-hdr__h2 {
@@ -106,7 +106,7 @@ html:root body .kb-hdr .kb-hdr__all:hover::before { transform: translateX(120%);
   border-radius: 50%;
   background: #fff;
   color: #00bbfe;
-  transition: transform .45s cubic-bezier(.3,1.5,.5,1);
+  transition: transform .45s cubic-bezier(.22,1,.36,1);
 }
 /* two arrows: the first slides out, the second slides in */
 .kb-hdr__all-ico svg {
@@ -183,7 +183,7 @@ html:root body .kb .kb-card {
   color: #fff;
   font-size: .75rem;
   font-weight: 600;
-  letter-spacing: .08em;
+  letter-spacing: .03em;
   text-transform: uppercase;
 }
 .kb-card__go {
@@ -195,7 +195,7 @@ html:root body .kb .kb-card {
   color: #0a1628;
   box-shadow: 0 8px 20px -8px rgba(10,22,40,.5);
   transform: scale(.85);
-  transition: transform .45s cubic-bezier(.3,1.5,.5,1), background .3s ease, color .3s ease;
+  transition: transform .45s cubic-bezier(.22,1,.36,1), background .3s ease, color .3s ease;
 }
 .kb-card__go svg { width: 16px; height: 16px; transition: transform .45s ease; }
 .kb-card:hover .kb-card__go { transform: scale(1); background: #00bbfe; color: #fff; }

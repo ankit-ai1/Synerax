@@ -1,7 +1,7 @@
 /* ═════════════════════════════════════════════════════════════
    TYPE — Apply Express type system on Synerax
    Loaded last. Instrument Sans for everything, including the accent
-   words in headings (set apart by colour only), JetBrains Mono for eyebrows.
+   words in headings (set apart by colour only). Eyebrows in the body face.
    Colours, layout and content are untouched — only type.
    Selectors are prefixed with `html:root body` so they outrank the
    !important rules spread across the earlier factory layers.
@@ -13,7 +13,7 @@ html:root[data-theme] {
   --font-body:    'Instrument Sans', system-ui, -apple-system, sans-serif !important;
   --font-sans:    'Instrument Sans', system-ui, -apple-system, sans-serif !important;
   --font:         'Instrument Sans', system-ui, -apple-system, sans-serif !important;
-  --font-mono:    'JetBrains Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace !important;
+  --font-mono:    ui-monospace, 'SFMono-Regular', Consolas, monospace !important;
   --font-accent:  'Instrument Sans', system-ui, -apple-system, sans-serif;
 }
 
@@ -80,7 +80,7 @@ html:root body :is(
   font-family: var(--font-body) !important;
   font-weight: 600 !important;
   font-size: 13px !important;
-  letter-spacing: .08em !important;
+  letter-spacing: .03em !important;
   text-transform: uppercase !important;
 }
 
@@ -500,7 +500,7 @@ html:root body .site-loader__tagline em {
   animation: site-loader-fadein .3s ease 1.6s forwards;
 }
 html:root body .site-loader__count {
-  font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+  font-family: var(--font-mono) !important;
   font-weight: 500 !important;
   font-size: .75rem !important;
   letter-spacing: .2em !important;
@@ -535,7 +535,7 @@ html:root body .site-loader__skip {
   border-radius: 6px;
   background: transparent;
   cursor: pointer;
-  font-family: 'JetBrains Mono', ui-monospace, monospace !important;
+  font-family: var(--font-mono) !important;
   font-weight: 500 !important;
   font-size: .75rem !important;
   letter-spacing: .14em !important;
